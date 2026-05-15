@@ -11,17 +11,17 @@ Dory can run as a desktop app, local web app, or Docker-based self-hosted deploy
 
 | Page | Use case | Focus |
 | --- | --- | --- |
-| [Self-Hosting](./self-hosting) | Run Dory in your own environment | Architecture, secrets, persistence, proxying, and rollout checks. |
-| [Docker](./docker) | Start Dory quickly in a container | `docker run`, `.env`, ports, volumes, and upgrades. |
-| [Environment Variables](./environment-variables) | Configure runtime behavior | Auth, AI, email, OAuth, MCP, and init user variables. |
-| [Auth / SSO](./auth-sso) | Plan team identity | Email verification, Google/GitHub login, provisioning, and offboarding. |
+| [Self-Hosting](/en/docs/deploy/self-hosting) | Run Dory in your own environment | Architecture, secrets, persistence, proxying, and rollout checks. |
+| [Docker](/en/docs/deploy/docker) | Start Dory quickly in a container | `docker run`, `.env`, ports, volumes, and upgrades. |
+| [Environment Variables](/en/docs/deploy/environment-variables) | Configure runtime behavior | Auth, AI, email, OAuth, MCP, and init user variables. |
+| [Auth / SSO](/en/docs/deploy/auth-sso) | Plan team identity | Email verification, Google/GitHub login, provisioning, and offboarding. |
 
 ## Recommended Rollout
 
-1. Run Dory locally or on a test server with [Docker](./docker).
-2. Prepare secrets, auth URL, and AI configuration in [Environment Variables](./environment-variables).
+1. Run Dory locally or on a test server with [Docker](/en/docs/deploy/docker).
+2. Prepare secrets, auth URL, and AI configuration in [Environment Variables](/en/docs/deploy/environment-variables).
 3. Put Dory behind HTTPS.
-4. Decide login and verification rules in [Auth / SSO](./auth-sso).
+4. Decide login and verification rules in [Auth / SSO](/en/docs/deploy/auth-sso).
 5. Validate SQL Console, Explorer, and AI on test databases.
 6. Add production databases with readonly accounts first.
 
@@ -31,7 +31,7 @@ Dory can be self-hosted with Docker. Production deployments need `DS_SECRET_KEY`
 
 ## Related Docs
 
-- [Docker](./docker)
-- [Self-Hosting](./self-hosting)
-- [Environment Variables](./environment-variables)
-- [Auth / SSO](./auth-sso)
+- [Docker](/en/docs/deploy/docker)
+- [Self-Hosting](/en/docs/deploy/self-hosting)
+- [Environment Variables](/en/docs/deploy/environment-variables)
+- [Auth / SSO](/en/docs/deploy/auth-sso)

@@ -9,67 +9,67 @@ description: 从 Dory 公开 GitHub 仓库同步的 Release Notes。
 
 ## 同步范围
 
-- 最新同步版本：[v0.13.1](./v0-13-1)
-- 最早同步版本：[v0.3.7](./v0-3-7)
+- 最新同步版本：[v0.13.1](/zh/docs/release-notes/v0-13-1)
+- 最早同步版本：[v0.3.7](/zh/docs/release-notes/v0-3-7)
 - 来源：[GitHub release-notes](https://github.com/dorylab/dory/tree/main/release-notes)
 
 ## 所有版本
 
 | 版本 | 摘要 |
 | --- | --- |
-| [v0.13.1](./v0-13-1) | Simplified Docker image builds by removing the Yarn release dependency from the build process, reducing bui... |
-| [v0.13.0](./v0-13-0) | Added MCP (Model Context Protocol) server support |
-| [v0.12.2](./v0-12-2) | Added full offline support for desktop apps, including anonymous sign-in flow without network dependency |
-| [v0.12.1](./v0-12-1) | Added DuckDB support |
-| [v0.12.0](./v0-12-0) | Added DuckDB support |
-| [v0.11.4](./v0-11-4) | Improved SQL Console Copilot reliability |
-| [v0.11.3](./v0-11-3) | Updated chart rendering components (chart-canvas.tsx, charts-result/index.tsx) for better performance and c... |
-| [v0.11.2](./v0-11-2) | Refined background colors across loading and splash screens in both desktop and web apps for improved visua... |
-| [v0.11.1](./v0-11-1) | Stabilized the height of the Insights tab in the SQL Console Copilot panel to prevent layout shifts during... |
-| [v0.11.0](./v0-11-0) | No user-facing changes recorded. |
-| [v0.10.0](./v0-10-0) | Resolved an infinite sorting update loop in the virtualized result table that caused UI freezes during inte... |
-| [v0.9.0](./v0-9-0) | AI Usage Tracking |
-| [v0.8.3](./v0-8-3) | Fixed an error that prevented automatic organization creation during user sign-up or authentication flows. |
-| [v0.8.2](./v0-8-2) | Fixed chat message display |
-| [v0.8.1](./v0-8-1) | Chatbot internationalization |
-| [v0.8.0](./v0-8-0) | Added SQL generation capability to the SQL Console: users can now ask natural language questions and get co... |
-| [v0.7.13](./v0-7-13) | Fixed Copilot quick actions not working on the first click in the SQL console. |
-| [v0.7.12](./v0-7-12) | Added a refresh button to the SQL Console sidebar to manually reload database and schema listings. |
-| [v0.7.11](./v0-7-11) | Fixed an exit error in the web app’s bootstrap script (bootstrap.mjs), preventing unexpected failures durin... |
-| [v0.7.10](./v0-7-10) | Removed guest login functionality and introduced a new demo sign-in flow, allowing users to quickly explore... |
-| [v0.7.9](./v0-7-9) | Enhanced SQL safety checks to allow PRAGMA and DESCRIBE statements in read-only mode—enabling broader compa... |
-| [v0.7.8](./v0-7-8) | No user-facing changes recorded. |
-| [v0.7.7](./v0-7-7) | Added release notes file release-notes/v0.7.6.md for this version. |
-| [v0.7.6](./v0-7-6) | No user-facing changes recorded. |
-| [v0.7.5](./v0-7-5) | Added performanceGuard to key chat API endpoints (/api/chat, /api/chat/sql-runner) and SQL tooling logic to... |
-| [v0.7.4](./v0-7-4) | Data Preview pagination |
-| [v0.7.3](./v0-7-3) | No user-facing changes recorded. |
-| [v0.7.2](./v0-7-2) | No user-facing changes recorded. |
-| [v0.7.1](./v0-7-1) | Email verification toggle |
-| [v0.7.0](./v0-7-0) | New Automation API |
-| [v0.6.3](./v0-6-3) | No user-facing changes recorded. |
-| [v0.6.2](./v0-6-2) | Added full support for Japanese (ja), Spanish (es), and Simplified Chinese (zh_CN) across both desktop and... |
-| [v0.6.1](./v0-6-1) | No user-facing changes recorded. |
-| [v0.6.0](./v0-6-0) | Added experimental SQLite support across the application, including |
-| [v0.5.6](./v0-5-6) | Added automatic column width adjustment (autofit) to the SQL console result table, improving readability of... |
-| [v0.5.5](./v0-5-5) | Added automatic column width calculation and autofit behavior to the SQL console result table’s virtualized... |
-| [v0.5.4](./v0-5-4) | Added automatic column width adjustment (autofit) to the SQL console result table, improving readability of... |
-| [v0.5.3](./v0-5-3) | No user-facing changes recorded. |
-| [v0.5.2](./v0-5-2) | Added visual highlighting for the currently selected table in the SQL console sidebar, improving navigation... |
-| [v0.5.1](./v0-5-1) | No user-facing changes recorded. |
-| [v0.5.0](./v0-5-0) | Added basic MySQL connection support, including connection form, metadata exploration, table information re... |
-| [v0.4.11](./v0-4-11) | Added automatic Homebrew tap updates: macOS stable releases now trigger auto-updates to the dorylab/homebre... |
-| [v0.4.10](./v0-4-10) | Resolved workflow failures in macOS and Windows packaging pipelines. |
-| [v0.4.9](./v0-4-9) | Fixed workflow failures in macOS and Windows packaging, as well as the main release pipeline, ensuring reli... |
-| [v0.4.8](./v0-4-8) | Added support for a dedicated beta environment, enabling safer testing and preview of upcoming features. |
-| [v0.4.7](./v0-4-7) | Added periodic update checks to the desktop app to improve auto-update reliability. |
-| [v0.4.6](./v0-4-6) | Organization support |
-| [v0.4.3](./v0-4-3) | Organization plugin integration |
-| [v0.4.2](./v0-4-2) | Fixed build failures in privilege management pages (roles, users, and the main privileges view). |
-| [v0.4.1](./v0-4-1) | UI Consistency |
-| [v0.4.0](./v0-4-0) | PostgreSQL support added |
-| [v0.3.11](./v0-3-11) | Workspace export and import |
-| [v0.3.10](./v0-3-10) | Saved queries now support folders |
-| [v0.3.9](./v0-3-9) | Fixed duplicate error dialogs appearing when update checks fail — now only one dialog is shown per failure,... |
-| [v0.3.8](./v0-3-8) | Refactored connection implementation for better maintainability and consistency across database APIs (e.g.,... |
-| [v0.3.7](./v0-3-7) | Fixed SQL Copilot retry logic to prevent infinite retries when generating read-only SQL statements. |
+| [v0.13.1](/zh/docs/release-notes/v0-13-1) | Simplified Docker image builds by removing the Yarn release dependency from the build process, reducing bui... |
+| [v0.13.0](/zh/docs/release-notes/v0-13-0) | Added MCP (Model Context Protocol) server support |
+| [v0.12.2](/zh/docs/release-notes/v0-12-2) | Added full offline support for desktop apps, including anonymous sign-in flow without network dependency |
+| [v0.12.1](/zh/docs/release-notes/v0-12-1) | Added DuckDB support |
+| [v0.12.0](/zh/docs/release-notes/v0-12-0) | Added DuckDB support |
+| [v0.11.4](/zh/docs/release-notes/v0-11-4) | Improved SQL Console Copilot reliability |
+| [v0.11.3](/zh/docs/release-notes/v0-11-3) | Updated chart rendering components (chart-canvas.tsx, charts-result/index.tsx) for better performance and c... |
+| [v0.11.2](/zh/docs/release-notes/v0-11-2) | Refined background colors across loading and splash screens in both desktop and web apps for improved visua... |
+| [v0.11.1](/zh/docs/release-notes/v0-11-1) | Stabilized the height of the Insights tab in the SQL Console Copilot panel to prevent layout shifts during... |
+| [v0.11.0](/zh/docs/release-notes/v0-11-0) | No user-facing changes recorded. |
+| [v0.10.0](/zh/docs/release-notes/v0-10-0) | Resolved an infinite sorting update loop in the virtualized result table that caused UI freezes during inte... |
+| [v0.9.0](/zh/docs/release-notes/v0-9-0) | AI Usage Tracking |
+| [v0.8.3](/zh/docs/release-notes/v0-8-3) | Fixed an error that prevented automatic organization creation during user sign-up or authentication flows. |
+| [v0.8.2](/zh/docs/release-notes/v0-8-2) | Fixed chat message display |
+| [v0.8.1](/zh/docs/release-notes/v0-8-1) | Chatbot internationalization |
+| [v0.8.0](/zh/docs/release-notes/v0-8-0) | Added SQL generation capability to the SQL Console: users can now ask natural language questions and get co... |
+| [v0.7.13](/zh/docs/release-notes/v0-7-13) | Fixed Copilot quick actions not working on the first click in the SQL console. |
+| [v0.7.12](/zh/docs/release-notes/v0-7-12) | Added a refresh button to the SQL Console sidebar to manually reload database and schema listings. |
+| [v0.7.11](/zh/docs/release-notes/v0-7-11) | Fixed an exit error in the web app’s bootstrap script (bootstrap.mjs), preventing unexpected failures durin... |
+| [v0.7.10](/zh/docs/release-notes/v0-7-10) | Removed guest login functionality and introduced a new demo sign-in flow, allowing users to quickly explore... |
+| [v0.7.9](/zh/docs/release-notes/v0-7-9) | Enhanced SQL safety checks to allow PRAGMA and DESCRIBE statements in read-only mode—enabling broader compa... |
+| [v0.7.8](/zh/docs/release-notes/v0-7-8) | No user-facing changes recorded. |
+| [v0.7.7](/zh/docs/release-notes/v0-7-7) | Added release notes file release-notes/v0.7.6.md for this version. |
+| [v0.7.6](/zh/docs/release-notes/v0-7-6) | No user-facing changes recorded. |
+| [v0.7.5](/zh/docs/release-notes/v0-7-5) | Added performanceGuard to key chat API endpoints (/api/chat, /api/chat/sql-runner) and SQL tooling logic to... |
+| [v0.7.4](/zh/docs/release-notes/v0-7-4) | Data Preview pagination |
+| [v0.7.3](/zh/docs/release-notes/v0-7-3) | No user-facing changes recorded. |
+| [v0.7.2](/zh/docs/release-notes/v0-7-2) | No user-facing changes recorded. |
+| [v0.7.1](/zh/docs/release-notes/v0-7-1) | Email verification toggle |
+| [v0.7.0](/zh/docs/release-notes/v0-7-0) | New Automation API |
+| [v0.6.3](/zh/docs/release-notes/v0-6-3) | No user-facing changes recorded. |
+| [v0.6.2](/zh/docs/release-notes/v0-6-2) | Added full support for Japanese (ja), Spanish (es), and Simplified Chinese (zh_CN) across both desktop and... |
+| [v0.6.1](/zh/docs/release-notes/v0-6-1) | No user-facing changes recorded. |
+| [v0.6.0](/zh/docs/release-notes/v0-6-0) | Added experimental SQLite support across the application, including |
+| [v0.5.6](/zh/docs/release-notes/v0-5-6) | Added automatic column width adjustment (autofit) to the SQL console result table, improving readability of... |
+| [v0.5.5](/zh/docs/release-notes/v0-5-5) | Added automatic column width calculation and autofit behavior to the SQL console result table’s virtualized... |
+| [v0.5.4](/zh/docs/release-notes/v0-5-4) | Added automatic column width adjustment (autofit) to the SQL console result table, improving readability of... |
+| [v0.5.3](/zh/docs/release-notes/v0-5-3) | No user-facing changes recorded. |
+| [v0.5.2](/zh/docs/release-notes/v0-5-2) | Added visual highlighting for the currently selected table in the SQL console sidebar, improving navigation... |
+| [v0.5.1](/zh/docs/release-notes/v0-5-1) | No user-facing changes recorded. |
+| [v0.5.0](/zh/docs/release-notes/v0-5-0) | Added basic MySQL connection support, including connection form, metadata exploration, table information re... |
+| [v0.4.11](/zh/docs/release-notes/v0-4-11) | Added automatic Homebrew tap updates: macOS stable releases now trigger auto-updates to the dorylab/homebre... |
+| [v0.4.10](/zh/docs/release-notes/v0-4-10) | Resolved workflow failures in macOS and Windows packaging pipelines. |
+| [v0.4.9](/zh/docs/release-notes/v0-4-9) | Fixed workflow failures in macOS and Windows packaging, as well as the main release pipeline, ensuring reli... |
+| [v0.4.8](/zh/docs/release-notes/v0-4-8) | Added support for a dedicated beta environment, enabling safer testing and preview of upcoming features. |
+| [v0.4.7](/zh/docs/release-notes/v0-4-7) | Added periodic update checks to the desktop app to improve auto-update reliability. |
+| [v0.4.6](/zh/docs/release-notes/v0-4-6) | Organization support |
+| [v0.4.3](/zh/docs/release-notes/v0-4-3) | Organization plugin integration |
+| [v0.4.2](/zh/docs/release-notes/v0-4-2) | Fixed build failures in privilege management pages (roles, users, and the main privileges view). |
+| [v0.4.1](/zh/docs/release-notes/v0-4-1) | UI Consistency |
+| [v0.4.0](/zh/docs/release-notes/v0-4-0) | PostgreSQL support added |
+| [v0.3.11](/zh/docs/release-notes/v0-3-11) | Workspace export and import |
+| [v0.3.10](/zh/docs/release-notes/v0-3-10) | Saved queries now support folders |
+| [v0.3.9](/zh/docs/release-notes/v0-3-9) | Fixed duplicate error dialogs appearing when update checks fail — now only one dialog is shown per failure,... |
+| [v0.3.8](/zh/docs/release-notes/v0-3-8) | Refactored connection implementation for better maintainability and consistency across database APIs (e.g.,... |
+| [v0.3.7](/zh/docs/release-notes/v0-3-7) | Fixed SQL Copilot retry logic to prevent infinite retries when generating read-only SQL statements. |
