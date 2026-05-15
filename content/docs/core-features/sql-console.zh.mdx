@@ -72,17 +72,50 @@ LIMIT 100;
 
 ## AI Copilot
 
-AI Copilot 能理解当前连接、Schema、编辑器 SQL 和查询结果。常见操作包括：
+AI Copilot 能理解当前连接、Schema、编辑器 SQL 和查询结果，并按 **Ask**、**Action**、**Context** 三个标签页组织能力。AI 输出适合作为高质量草稿，对生产库执行前仍需人工确认查询范围和影响。
 
-- **Ask**：用自然语言提问，例如“这段 SQL 为什么没有结果？”。
-- **Fix**：结合错误信息修复当前 SQL。
-- **Optimize**：重写复杂 SQL 或降低扫描成本。
-- **Explain**：解释 SQL 逻辑、Join、窗口函数和聚合口径。
-- **Continue analysis**：基于结果生成下一步分析 SQL。
+### Ask
 
-AI 输出适合作为高质量草稿。对生产库执行前，仍需人工确认查询范围和影响。
+**Ask** 适合开放式 SQL 问答。你可以让 Copilot 生成查询、解释当前 SQL、分析错误原因，或基于当前编辑器和查询结果建议下一步分析。
 
 ![Dory SQL Console Ask AI 面板](/images/ask.png)
+
+### Action
+
+打开 Copilot 的 **Action** 标签页，可以基于当前编辑器 SQL 和最近一次执行上下文运行定向 SQL 动作。
+
+![Dory SQL Console Copilot Actions](/images/core-features/dory-copilot-actions.png)
+
+常用动作包括：
+
+- **Fix SQL errors**：结合最近一次执行错误，生成修复后的 SQL。
+- **Optimize performance**：重写 SQL，减少不必要扫描、精简过滤条件或改善执行形态。
+- **Rewrite SQL**：在保留意图的前提下，提升 SQL 可读性和结构清晰度。
+- **Convert to aggregation**：把明细查询转换成按维度聚合的指标 SQL，便于汇总和图表分析。
+
+执行动作后，Copilot 会打开结果面板，展示简短解释、SQL Preview 或 Diff，并提供 **Copy** / **Apply** 控制。
+
+#### Fix SQL errors
+
+![Dory Copilot Fix SQL errors 执行效果](/images/core-features/dory-copilot-action-fix-sql-errors.png)
+
+#### Optimize performance
+
+![Dory Copilot Optimize performance 执行效果](/images/core-features/dory-copilot-action-optimize-performance.png)
+
+#### Rewrite SQL
+
+![Dory Copilot Rewrite SQL 执行效果](/images/core-features/dory-copilot-action-rewrite-sql.png)
+
+#### Convert to aggregation
+
+![Dory Copilot Convert to aggregation 执行效果](/images/core-features/dory-copilot-action-convert-to-aggregation.png)
+
+### Context
+
+打开 **Context** 标签页，可以检查 Copilot 回答前会使用的上下文，包括编辑器 SQL、选中的 SQL、数据库、引用表、置信度、执行状态、行数和结果 Profile。它适合用来确认 Copilot 是否拿到了正确的查询和结果集。
+
+![Dory SQL Console Copilot Context](/images/core-features/dory-copilot-context.png)
 
 ## 结果与图表
 

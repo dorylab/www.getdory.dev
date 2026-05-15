@@ -54,9 +54,50 @@ Open tables in Explorer when you need more detail.
 
 ## AI Copilot
 
-Use AI to generate SQL, explain SQL, fix errors, optimize queries, or reshape output for charts. Always review the generated SQL before running it.
+Use AI to generate SQL, explain SQL, fix errors, optimize queries, or reshape output for charts. Copilot is organized into **Ask**, **Action**, and **Context** tabs. Always review generated SQL before running it.
+
+### Ask
+
+Use **Ask** for open-ended SQL help. You can ask Copilot to generate a query, explain current SQL, reason about an error, or suggest the next analysis step from the current editor and result context.
 
 ![Dory SQL Console Ask AI panel](/images/ask.png)
+
+### Action
+
+Open the **Action** tab in Copilot to run focused SQL actions against the current editor SQL and latest execution context.
+
+![Dory SQL Console Copilot actions](/images/core-features/dory-copilot-actions.png)
+
+Use the built-in actions for common SQL iteration loops:
+
+- **Fix SQL errors**: uses the latest execution error to propose a corrected SQL version.
+- **Optimize performance**: rewrites SQL to reduce unnecessary scans, simplify filters, or improve execution shape.
+- **Rewrite SQL**: restructures SQL for readability while preserving the intent.
+- **Convert to aggregation**: turns row-level SQL into grouped, metric-oriented SQL for summaries and charts.
+
+After you run an action, Copilot opens a result panel with a short explanation, SQL preview or diff, and **Copy** / **Apply** controls.
+
+#### Fix SQL errors
+
+![Dory Copilot Fix SQL errors result](/images/core-features/dory-copilot-action-fix-sql-errors.png)
+
+#### Optimize performance
+
+![Dory Copilot Optimize performance result](/images/core-features/dory-copilot-action-optimize-performance.png)
+
+#### Rewrite SQL
+
+![Dory Copilot Rewrite SQL result](/images/core-features/dory-copilot-action-rewrite-sql.png)
+
+#### Convert to aggregation
+
+![Dory Copilot Convert to aggregation result](/images/core-features/dory-copilot-action-convert-to-aggregation.png)
+
+### Context
+
+Open the **Context** tab to inspect what Copilot will use before it answers: editor SQL, selected SQL, database, referenced tables, confidence, execution status, row count, and result profile. Use it to confirm Copilot is working from the right query and result set.
+
+![Dory SQL Console Copilot context](/images/core-features/dory-copilot-context.png)
 
 ## Results and Charts
 

@@ -3,6 +3,8 @@ title: Explorer
 description: Use Dory Explorer to inspect databases, schemas, tables, columns, and sample data before writing SQL.
 ---
 
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
 # Explorer
 
 Explorer helps you understand a database before writing SQL. It is the safest place to start when you are unfamiliar with a schema.
@@ -16,6 +18,92 @@ Explorer helps you understand a database before writing SQL. It is the safest pl
 | Columns | Names, types, and likely meanings |
 | Sample rows | Representative values and null patterns |
 | Relationships | IDs, foreign-key-like names, and join candidates |
+
+## Database Browser
+
+Start from the database list to confirm that the connection exposes the expected namespaces. The left panel lets you filter objects and move between databases without leaving the current connection.
+
+![Dory Explorer database list](/images/core-features/dory-explorer-databases.png)
+
+## Database Type Differences
+
+Explorer adapts the object groups and table detail tabs to the database driver. The table below reflects what Dory shows for each database type.
+
+<Tabs items={['ClickHouse', 'Postgres', 'MySQL']}>
+  <Tab>
+    | Area | What Explorer Shows |
+    | --- | --- |
+    | Database level | Summary, Tables, Views, and Materialized Views. |
+    | Sidebar objects | Databases, Tables, Views, and Materialized views. |
+    | Table detail tabs | Overview, Data Preview, Structure, and Stats. |
+  </Tab>
+  <Tab>
+    | Area | What Explorer Shows |
+    | --- | --- |
+    | Database level | Databases and schemas. |
+    | Sidebar objects | Schemas, Tables, Views, Materialized views, and Functions. |
+    | Table detail tabs | Overview, Data, Structure, Stats, and Indexes. |
+  </Tab>
+  <Tab>
+    | Area | What Explorer Shows |
+    | --- | --- |
+    | Database level | Databases. |
+    | Sidebar objects | Tables and Views. |
+    | Table detail tabs | Overview, Data, Structure, Stats, and Indexes. |
+  </Tab>
+</Tabs>
+
+## Database Details
+
+### Summary
+
+Open a database to review high-level metadata such as table count, view count, total size, object mix, largest tables, and recently updated objects.
+
+![Dory Explorer database summary](/images/core-features/dory-explorer-database-summary.png)
+
+### Tables
+
+Use the **Tables** tab to compare table names, engines, row counts, data size, and update time before choosing which table to inspect or query.
+
+![Dory Explorer tables list](/images/core-features/dory-explorer-tables.png)
+
+### Views
+
+Use the **Views** tab to find saved virtual tables exposed by the current database. Search by name or comment, then check engine, row-count metadata, size, and last updated time when the database provides it.
+
+![Dory Explorer views list](/images/core-features/dory-explorer-database-views.png)
+
+### Materialized Views
+
+Use the **Materialized Views** tab to inspect persisted view-like objects separately from regular tables and views. This helps you distinguish reusable query definitions from precomputed or storage-backed objects before querying.
+
+![Dory Explorer materialized views list](/images/core-features/dory-explorer-database-materialized-views.png)
+
+## Table Details
+
+### Overview
+
+Open a table and start from **Overview** for an AI-generated summary, key highlights, schema and storage facts, semantic field grouping, and ready-to-adapt query snippets.
+
+![Dory Explorer table overview](/images/core-features/dory-explorer-table-overview.png)
+
+### Data Preview
+
+Use **Data Preview** to inspect sample rows before writing filters, joins, or aggregations. The grid supports scanning real values, comparing columns, searching, paging, and refreshing the preview.
+
+![Dory Explorer table data preview](/images/core-features/dory-explorer-table-data-preview.png)
+
+### Structure
+
+Open a table and use **Structure** to inspect columns, types, nullability, tags, keys, table properties, and DDL. This is the best place to verify exact column names before writing SQL or asking AI to generate a query.
+
+![Dory Explorer table structure](/images/core-features/dory-explorer-table-structure.png)
+
+### Stats
+
+Use **Stats** to review size, row count, compression, partitions, parts, and active mutations when the database exposes those metrics. This is useful before performance work or when deciding whether a query should be sampled first.
+
+![Dory Explorer table stats](/images/core-features/dory-explorer-table-stats.png)
 
 ## Why It Matters
 
@@ -31,10 +119,6 @@ Explorer helps you understand a database before writing SQL. It is the safest pl
 3. Open a table and inspect columns.
 4. Preview a small sample when available.
 5. Move to SQL Console or AI Chat with the table context in mind.
-
-## Table Detail Pages
-
-Use table details to understand column names, data types, and examples before writing filters, joins, or aggregations.
 
 ## Working with AI
 
