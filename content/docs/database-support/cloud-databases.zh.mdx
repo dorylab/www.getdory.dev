@@ -1,9 +1,16 @@
 ---
-title: Dory 云数据库连接指南
+title: 云数据库
 description: 了解如何在 Dory 中连接云数据库和托管数据库，配置 TLS、IP 白名单、SSH Tunnel、密钥和团队访问边界。
 ---
 
-# Dory 云数据库连接指南
+# 云数据库
+
+<div className="flex items-center gap-3">
+  <img src="/icons/databases/clickhouse.svg" alt="ClickHouse logo" width="40" height="40" />
+  <img src="/icons/databases/neon.svg" alt="Neon logo" width="40" height="40" />
+  <img src="/icons/databases/postgresql.svg" alt="PostgreSQL logo" width="40" height="40" />
+  <img src="/icons/databases/mysql.svg" alt="MySQL logo" width="40" height="40" />
+</div>
 
 云数据库和托管数据库通常不只是填写 Host 和密码，还需要处理网络、安全、TLS、密钥和团队权限。Dory 支持连接多种云数据库，但连接前需要先确认部署环境能访问目标数据库。
 

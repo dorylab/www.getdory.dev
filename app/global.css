@@ -180,6 +180,18 @@ a {
   text-underline-offset: 0.2em;
 }
 
+.dory-db-icon {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0 0.5rem 0 0;
+  vertical-align: -0.25rem;
+}
+
+.dory-db-name {
+  white-space: nowrap;
+}
+
 .dory-shell {
   position: relative;
 }

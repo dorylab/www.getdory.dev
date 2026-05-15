@@ -25,9 +25,11 @@ export function baseOptions(locale: string): BaseLayoutProps {
     nav: {
       title: (
         <span className="flex items-center gap-2 font-semibold">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[linear-gradient(135deg,#ff6a3d,#f7b733)] text-white shadow-sm">
-            <BookOpen className="h-4 w-4" />
-          </span>
+          <img
+            src="/logo.png"
+            alt="Dory"
+            className="h-8 w-8 rounded-xl object-contain shadow-sm"
+          />
           {isZh ? 'Dory 文档' : 'Dory Docs'}
         </span>
       )
@@ -35,9 +37,9 @@ export function baseOptions(locale: string): BaseLayoutProps {
     links: [
       {
         type: 'main',
-        text: isZh ? '文档' : 'Docs',
-        url: '/docs',
-        active: 'nested-url',
+        text: isZh ? '官网' : 'Website',
+        url: 'https://www.getdory.dev',
+        external: true,
         icon: <BookOpen />
       },
       {
