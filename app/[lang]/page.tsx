@@ -59,7 +59,7 @@ const moreFeatureIcons = [
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <div className="mb-5 inline-flex items-center gap-2 border border-slate-950/12 bg-white px-3 py-1.5 text-xs font-medium tracking-wide text-slate-700 uppercase dark:border-white/12 dark:bg-white/6 dark:text-slate-300">
+    <div className="mb-5 inline-flex items-center gap-2 border border-dory-brand-line bg-dory-brand-soft px-3 py-1.5 text-xs font-semibold tracking-wide text-brand uppercase shadow-[var(--dory-shadow-sm)]">
       <Sparkles className="size-3.5" />
       {children}
     </div>
@@ -73,7 +73,7 @@ export default async function Page({ params }: PageProps) {
 
   const heroTitle = t.rich("heroTitle", {
     brand: (chunks) => (
-      <span className="block text-slate-500 dark:text-slate-300">{chunks}</span>
+      <span className="block text-brand">{chunks}</span>
     ),
   });
   const heroSubtitle = t.rich("heroSubtitle", {
@@ -82,15 +82,18 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <MarketingLayout lang={lang}>
-      <main className="min-h-screen bg-[#f7f7f3] px-4 pt-14 pb-20 text-slate-950 sm:px-6 md:px-10 dark:bg-[#0d1117] dark:text-white">
+      <main className="min-h-screen overflow-x-clip bg-dory-page px-4 pt-14 pb-20 text-dory-ink sm:px-6 md:px-10">
         <div className="mx-auto flex w-full max-w-[1180px] flex-col">
-          <section className="grid gap-10 border-b border-slate-950/10 pt-10 pb-14 md:grid-cols-[0.92fr_1.08fr] md:items-end md:pt-16 md:pb-18 dark:border-white/12">
-            <div>
+          <section className="relative grid min-h-[calc(100vh-4rem)] gap-10 border-b border-slate-950/10 pt-12 pb-14 md:grid-cols-[0.84fr_1.16fr] md:items-center md:pt-16 md:pb-18 dark:border-white/12">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[image:var(--dory-brand-glow)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[image:var(--dory-grid-background)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent_78%)]" />
+
+            <div className="relative z-10">
               <SectionLabel>{t("heroTagline")}</SectionLabel>
-              <h1 className="max-w-[780px] text-5xl leading-[0.98] font-semibold text-balance [word-break:keep-all] sm:text-6xl md:text-8xl dark:text-white">
+              <h1 className="max-w-[780px] text-5xl leading-[0.94] font-semibold tracking-[-0.02em] text-balance [word-break:keep-all] sm:text-6xl md:text-8xl dark:text-white">
                 {heroTitle}
               </h1>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 md:text-xl md:leading-9 dark:text-slate-300">
+              <p className="mt-7 max-w-xl text-lg leading-8 text-dory-muted md:text-xl md:leading-9">
                 {t("heroDescription")}
               </p>
 
@@ -99,11 +102,11 @@ export default async function Page({ params }: PageProps) {
                   macUrl={downloads.macUrl}
                   windowsUrl={downloads.windowsUrl}
                   fallbackUrl={downloads.releaseUrl}
-                  className="h-12 rounded-none bg-slate-950 px-5 text-sm font-medium text-white shadow-none hover:bg-slate-800 sm:min-w-[13.5rem] dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                  className="h-12 rounded-none bg-brand px-5 text-sm font-medium text-brand-foreground shadow-[var(--dory-shadow-brand)] hover:bg-brand-200 sm:min-w-[13.5rem]"
                 />
                 <Link
                   href="/download"
-                  className="inline-flex h-12 items-center justify-center gap-2 border border-slate-950/10 bg-white px-5 text-sm font-medium text-slate-700 transition hover:border-slate-950/30 hover:text-slate-950 dark:border-white/12 dark:bg-white/6 dark:text-slate-300 dark:hover:border-white/30 dark:hover:text-white"
+                  className="inline-flex h-12 items-center justify-center gap-2 border border-dory-line bg-dory-surface/85 px-5 text-sm font-medium text-dory-muted shadow-[var(--dory-shadow-sm)] transition hover:border-dory-brand-line hover:bg-dory-surface hover:text-dory-ink"
                 >
                   <LayoutGrid className="size-4" />
                   {t("allPlatform")}
@@ -112,7 +115,7 @@ export default async function Page({ params }: PageProps) {
                   href="https://app.getdory.dev"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-12 items-center justify-center gap-2 border border-slate-950/10 px-5 text-sm font-medium text-slate-700 transition hover:border-slate-950/30 hover:text-slate-950 dark:border-white/12 dark:text-slate-300 dark:hover:border-white/30 dark:hover:text-white"
+                  className="inline-flex h-12 items-center justify-center gap-2 border border-dory-line bg-dory-page/60 px-5 text-sm font-medium text-dory-muted transition hover:border-dory-brand-line hover:bg-dory-surface/70 hover:text-dory-ink"
                 >
                   {t("heroExperienceCta")}
                   <ArrowRight className="size-4" />
@@ -120,17 +123,44 @@ export default async function Page({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="min-w-0 border border-slate-950/10 bg-white p-2 shadow-[0_24px_80px_rgba(15,23,42,0.12)] dark:border-white/12 dark:bg-white/6 dark:shadow-none">
-              <Image
-                src={HeroPreview}
-                alt={t("heroPreviewAlt")}
-                priority
-                className="aspect-[1.28/1] w-full object-cover object-left-top"
-              />
+            <div className="relative z-10 min-w-0">
+              <div className="absolute -top-8 right-8 hidden w-48 border border-dory-brand-line bg-dory-brand-soft p-4 text-sm shadow-[var(--dory-shadow-floating)] md:block">
+                <div className="mb-3 flex items-center gap-2 text-xs font-semibold tracking-wide text-brand uppercase">
+                  <Bot className="size-3.5" />
+                  {t("heroContextReady")}
+                </div>
+                <div className="space-y-2 text-dory-muted">
+                  <div className="h-2 w-28 bg-brand/20" />
+                  <div className="h-2 w-36 bg-brand/14" />
+                  <div className="h-2 w-24 bg-brand/14" />
+                </div>
+              </div>
+              <div className="border border-dory-line bg-dory-brand-soft p-3 shadow-[var(--dory-shadow-panel)]">
+                <div className="mb-3 flex items-center justify-between border border-dory-line bg-dory-surface px-3 py-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="size-2.5 bg-[var(--dory-danger-accent)]" />
+                    <span className="size-2.5 bg-[var(--dory-warm-accent)]" />
+                    <span className="size-2.5 bg-brand-secondary" />
+                  </div>
+                  <div className="hidden text-xs font-medium text-dory-muted sm:block">
+                    {t("heroWindowLabel")}
+                  </div>
+                </div>
+                <Image
+                  src={HeroPreview}
+                  alt={t("heroPreviewAlt")}
+                  priority
+                  className="aspect-[1.45/1] w-full border border-dory-line object-cover object-left-top"
+                />
+              </div>
+              <div className="absolute -bottom-7 left-8 hidden border border-dory-line bg-dory-surface px-4 py-3 text-xs font-medium text-dory-muted shadow-[var(--dory-shadow-floating)] md:flex md:items-center md:gap-3">
+                <TerminalSquare className="size-4 text-brand" />
+                {t("heroWorkflowNote")}
+              </div>
             </div>
           </section>
 
-          <section className="grid gap-5 border-b border-slate-950/10 py-10 md:grid-cols-[0.8fr_1.2fr] md:py-14 dark:border-white/12">
+          <section className="grid gap-6 border-b border-slate-950/10 py-10 md:grid-cols-[0.8fr_1.2fr] md:py-14 dark:border-white/12">
             <p className="max-w-[620px] text-3xl leading-tight font-semibold text-balance md:text-5xl">
               {heroSubtitle}
             </p>
@@ -141,9 +171,10 @@ export default async function Page({ params }: PageProps) {
                 return (
                   <div
                     key={key}
-                    className="border border-slate-950/10 bg-white p-5 dark:border-white/12 dark:bg-white/6"
+                    className="group relative overflow-hidden border border-dory-line bg-dory-surface p-5 shadow-[var(--dory-shadow-sm)] transition hover:-translate-y-0.5 hover:shadow-[var(--dory-shadow-card)]"
                   >
-                    <Icon className="mb-8 size-5 text-slate-500 dark:text-slate-300" />
+                    <div className="absolute inset-x-0 top-0 h-1 bg-brand opacity-80" />
+                    <Icon className="mb-8 size-5 text-brand" />
                     <h2 className="text-lg font-medium">{t(`heroCards.${key}.title`)}</h2>
                     <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
                       {t(`heroCards.${key}.description`)}
@@ -159,9 +190,9 @@ export default async function Page({ params }: PageProps) {
               <SectionLabel>{t("aiNative.badge")}</SectionLabel>
               <h2 className="max-w-[620px] text-4xl leading-tight font-semibold text-balance md:text-6xl">
                 {t.rich("aiNative.heading", {
-                  ask: (chunks) => <span>{chunks}</span>,
-                  act: (chunks) => <span>{chunks}</span>,
-                  stay: (chunks) => <span className="text-slate-500 dark:text-slate-300">{chunks}</span>,
+                  ask: (chunks) => <span className="text-dory-ink">{chunks}</span>,
+                  act: (chunks) => <span className="text-brand">{chunks}</span>,
+                  stay: (chunks) => <span className="text-dory-brand-accent">{chunks}</span>,
                 })}
               </h2>
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
@@ -169,18 +200,23 @@ export default async function Page({ params }: PageProps) {
               </p>
             </div>
 
-            <div className="divide-y divide-slate-950/10 border border-slate-950/10 bg-white dark:divide-white/12 dark:border-white/12 dark:bg-white/6">
-              {(["ask", "actions", "context"] as const).map((key) => (
-                <div key={key} className="p-5 md:p-6">
-                  <div className="mb-4 text-xs font-medium tracking-wide text-slate-500 uppercase dark:text-slate-400">
-                    {t(`aiNative.tabs.${key}.label`)}
+            <div className="divide-y divide-slate-950/10 border border-dory-line bg-dory-surface shadow-[var(--dory-shadow-card)] dark:divide-white/12">
+              {(["ask", "actions", "context"] as const).map((key, index) => (
+                <div key={key} className="grid gap-5 p-5 md:grid-cols-[4rem_1fr] md:p-6">
+                  <div className="flex size-12 items-center justify-center border border-dory-brand-line bg-dory-brand-soft text-lg font-semibold text-brand">
+                    0{index + 1}
                   </div>
-                  <h3 className="text-2xl font-semibold text-balance">
-                    {t(`aiNative.tabs.${key}.title`)}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
-                    {t(`aiNative.tabs.${key}.description`)}
-                  </p>
+                  <div>
+                    <div className="mb-4 text-xs font-semibold tracking-wide text-dory-brand-accent uppercase">
+                    {t(`aiNative.tabs.${key}.label`)}
+                    </div>
+                    <h3 className="text-2xl font-semibold text-balance">
+                      {t(`aiNative.tabs.${key}.title`)}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                      {t(`aiNative.tabs.${key}.description`)}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>

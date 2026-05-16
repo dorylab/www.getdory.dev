@@ -59,11 +59,11 @@ export default async function DownloadPage({
 
   return (
     <MarketingLayout lang={lang}>
-      <main className="min-h-screen bg-[#f7f7f3] px-4 pt-14 pb-20 text-slate-950 sm:px-6 md:px-10 dark:bg-[#0d1117] dark:text-white">
+      <main className="min-h-screen bg-dory-page px-4 pt-14 pb-20 text-dory-ink sm:px-6 md:px-10">
         <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-14">
           <section className="grid gap-10 border-b border-slate-950/10 pt-10 pb-14 md:grid-cols-[1fr_360px] md:items-end md:pt-16 md:pb-18 dark:border-white/12">
             <div>
-              <div className="mb-5 inline-flex items-center gap-2 border border-slate-950/12 bg-white px-3 py-1.5 text-xs font-medium tracking-wide text-slate-700 uppercase dark:border-white/12 dark:bg-white/6 dark:text-slate-300">
+              <div className="mb-5 inline-flex items-center gap-2 border border-dory-brand-line bg-dory-brand-soft px-3 py-1.5 text-xs font-medium tracking-wide text-brand uppercase">
                 <Package className="size-3.5" />
                 {t("latestVersion")} {version}
               </div>
@@ -85,7 +85,7 @@ export default async function DownloadPage({
                 windowsInstallerUrl={downloads.windowsInstallerUrl}
                 windowsUrl={downloads.windowsUrl}
                 fallbackUrl="/download/redirect"
-                className="h-12 w-full rounded-none bg-slate-950 px-5 text-sm font-medium text-white shadow-none hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+                  className="h-12 w-full rounded-none bg-brand px-5 text-sm font-medium text-brand-foreground shadow-none hover:bg-brand-200"
               />
               <a
                 href={downloads.releaseUrl}
@@ -100,7 +100,7 @@ export default async function DownloadPage({
           </section>
 
           <section className="grid min-w-0 gap-5 md:grid-cols-[0.9fr_1.4fr]">
-            <div className="min-w-0 overflow-hidden border border-slate-950/10 bg-[#101418] p-5 text-white md:min-h-[360px] md:p-6 dark:border-white/12">
+            <div className="min-w-0 overflow-hidden border border-dory-line bg-dory-brand-panel p-5 text-brand-foreground md:min-h-[360px] md:p-6">
               <div>
                 <div className="mb-6 flex size-11 items-center justify-center border border-white/14 bg-white/8">
                   <SquareTerminal className="size-5" />
@@ -141,7 +141,7 @@ export default async function DownloadPage({
                       className="group grid gap-4 p-5 transition hover:bg-slate-950/[0.035] sm:grid-cols-[1fr_auto] sm:items-center md:p-6 dark:hover:bg-white/8"
                     >
                       <div className="flex min-w-0 items-start gap-4">
-                        <div className="flex size-11 shrink-0 items-center justify-center border border-slate-950/10 bg-[#f7f7f3] text-slate-700 dark:border-white/12 dark:bg-white/6 dark:text-slate-200">
+                        <div className="flex size-11 shrink-0 items-center justify-center border border-dory-line bg-dory-brand-soft text-dory-muted">
                           <Icon className="size-5" />
                         </div>
                         <div className="min-w-0">
@@ -173,7 +173,7 @@ export default async function DownloadPage({
                   className="group grid gap-4 p-5 transition hover:bg-slate-950/[0.035] sm:grid-cols-[1fr_auto] sm:items-center md:p-6 dark:hover:bg-white/8"
                 >
                   <div className="flex min-w-0 items-start gap-4">
-                    <div className="flex size-11 shrink-0 items-center justify-center border border-slate-950/10 bg-[#f7f7f3] text-slate-700 dark:border-white/12 dark:bg-white/6 dark:text-slate-200">
+                    <div className="flex size-11 shrink-0 items-center justify-center border border-dory-line bg-dory-brand-soft text-dory-muted">
                       <Package className="size-5" />
                     </div>
                     <div className="min-w-0">

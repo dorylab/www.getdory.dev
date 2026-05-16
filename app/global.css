@@ -6,8 +6,23 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-brand: hsl(214 95% 52%);
-  --color-brand-foreground: white;
+  --color-brand: var(--dory-brand);
+  --color-brand-foreground: var(--dory-brand-foreground);
+  --color-brand-200: var(--dory-brand-hover);
+  --color-brand-secondary: var(--dory-brand-secondary);
+  --color-brand-secondary-foreground: var(--dory-brand-secondary-foreground);
+  --color-dory-page: var(--dory-page);
+  --color-dory-ink: var(--dory-ink);
+  --color-dory-muted: var(--dory-muted);
+  --color-dory-brand-panel: var(--dory-brand-panel);
+  --color-dory-brand-soft: var(--dory-brand-soft);
+  --color-dory-brand-muted: var(--dory-brand-muted);
+  --color-dory-brand-line: var(--dory-brand-line);
+  --color-dory-brand-accent: var(--dory-brand-accent);
+  --color-dory-page-wash: var(--dory-page-wash);
+  --color-dory-surface: var(--dory-surface-strong);
+  --color-dory-surface-soft: var(--dory-surface-soft);
+  --color-dory-line: var(--dory-line);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -39,14 +54,56 @@
 
 :root {
   --spacing-page: 1436px;
-  --color-brand: hsl(214 95% 52%);
-  --color-brand-foreground: white;
-  --color-brand-200: hsl(214 95% 60%);
-  --color-brand-secondary: #18a890;
-  --color-brand-secondary-foreground: white;
-  --color-landing-foreground: #0b1220;
+  --dory-brand: #08111f;
+  --dory-brand-hover: #172033;
+  --dory-brand-foreground: #ffffff;
+  --dory-brand-secondary: #24496f;
+  --dory-brand-secondary-foreground: #ffffff;
+  --dory-brand-accent: #6b7f9f;
+  --dory-brand-accent-strong: #2f4668;
+  --dory-brand-panel: #0f172a;
+  --dory-brand-panel-2: #172033;
+  --dory-brand-muted: #6b7f9f;
+  --dory-brand-soft: #e9eef7;
+  --dory-brand-soft-2: #f4f6fb;
+  --dory-brand-line: rgba(8, 17, 31, 0.12);
+  --dory-brand-line-strong: rgba(8, 17, 31, 0.22);
+  --dory-page: #f7f7f3;
+  --dory-page-wash: #fbfbf7;
+  --dory-page-panel: #ffffff;
+  --dory-landing-foreground: #08111f;
+  --dory-landing-muted: #42526b;
+  --dory-warm-accent: #d2b46f;
+  --dory-danger-accent: #ef6b5b;
+  --dory-success-accent: #24496f;
+  --dory-grid-soft: rgba(8, 17, 31, 0.035);
+  --dory-grid-faint: rgba(8, 17, 31, 0.026);
+  --dory-brand-glow:
+    radial-gradient(circle at 24% 28%, rgba(36, 73, 111, 0.16), transparent 30%),
+    radial-gradient(circle at 78% 42%, rgba(210, 180, 111, 0.16), transparent 28%);
+  --dory-grid-background:
+    linear-gradient(var(--dory-grid-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--dory-grid-soft) 1px, transparent 1px);
+  --dory-release-background:
+    radial-gradient(circle at 20% 20%, color-mix(in oklab, var(--dory-brand-secondary) 72%, transparent), transparent 30%),
+    radial-gradient(circle at 80% 60%, color-mix(in oklab, var(--dory-brand-accent-strong) 52%, transparent), transparent 28%),
+    linear-gradient(135deg, var(--dory-brand), var(--dory-brand-panel-2) 62%, var(--dory-brand-soft));
+  --dory-release-fade:
+    linear-gradient(to top, var(--dory-brand), color-mix(in oklab, var(--dory-brand) 74%, transparent), transparent);
+  --dory-shadow-sm: 0 1px 0 rgba(8, 17, 31, 0.04);
+  --dory-shadow-brand: 0 16px 36px rgba(8, 17, 31, 0.16);
+  --dory-shadow-card: 0 18px 40px rgba(8, 17, 31, 0.08);
+  --dory-shadow-panel: 0 34px 100px rgba(8, 17, 31, 0.22);
+  --dory-shadow-floating: 0 18px 44px rgba(8, 17, 31, 0.1);
+  --dory-shadow-landing: 0 20px 60px rgba(8, 17, 31, 0.06);
+  --color-brand: var(--dory-brand);
+  --color-brand-foreground: var(--dory-brand-foreground);
+  --color-brand-200: var(--dory-brand-hover);
+  --color-brand-secondary: var(--dory-brand-secondary);
+  --color-brand-secondary-foreground: var(--dory-brand-secondary-foreground);
+  --color-landing-foreground: var(--dory-landing-foreground);
   --color-landing-foreground-dark: #eaf2ff;
-  --color-landing-foreground-200: #38506b;
+  --color-landing-foreground-200: var(--dory-landing-muted);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -75,32 +132,29 @@
   --color-fd-card: #ffffff;
   --color-fd-card-foreground: #171717;
   --color-fd-border: rgba(23, 23, 23, 0.11);
-  --color-fd-primary: #121826;
-  --color-fd-primary-foreground: #ffffff;
+  --color-fd-primary: var(--dory-brand);
+  --color-fd-primary-foreground: var(--dory-brand-foreground);
   --color-fd-secondary: #ffffff;
   --color-fd-secondary-foreground: #121826;
   --color-fd-accent: #ffffff;
   --color-fd-accent-foreground: #121826;
   --color-fd-ring: rgba(18, 24, 38, 0.18);
   --color-fd-overlay: rgba(18, 24, 38, 0.08);
-  --dory-ink: #171717;
+  --dory-ink: var(--dory-landing-foreground);
   --dory-ink-inverse: #f8fbff;
-  --dory-muted: #666663;
-  --dory-line: rgba(23, 23, 23, 0.11);
+  --dory-muted: var(--dory-landing-muted);
+  --dory-line: var(--dory-brand-line);
   --dory-warm: #f7f1e8;
-  --dory-orange: #ff6a3d;
-  --dory-orange-strong: #e95520;
-  --dory-orange-soft: #fff2ec;
-  --dory-gold: #f7b733;
-  --dory-panel: #ffffff;
-  --dory-background-color: #ffffff;
+  --dory-gold: var(--dory-warm-accent);
+  --dory-panel: var(--dory-page-panel);
+  --dory-background-color: var(--dory-page-panel);
   --dory-background-image: none;
-  --dory-grid-line: rgba(23, 23, 23, 0.026);
-  --dory-hero-background: #ffffff;
-  --dory-hero-shadow: 0 20px 60px rgba(18, 24, 38, 0.06);
-  --dory-chip-background: #ffffff;
-  --dory-surface-soft: #f4f4f2;
-  --dory-surface-strong: #ffffff;
+  --dory-grid-line: var(--dory-grid-faint);
+  --dory-hero-background: var(--dory-page-panel);
+  --dory-hero-shadow: var(--dory-shadow-landing);
+  --dory-chip-background: var(--dory-page-panel);
+  --dory-surface-soft: var(--dory-brand-soft-2);
+  --dory-surface-strong: var(--dory-page-panel);
   --dory-surface-hover: #efefed;
   --dory-sidebar-background: #fafafa;
   --dory-sidebar-foreground: #171717;
@@ -138,13 +192,55 @@
 :root[class~='dark'],
 :root[data-theme='dark'],
 .dark {
+  --dory-brand: #e9eef7;
+  --dory-brand-hover: #ffffff;
+  --dory-brand-foreground: #08111f;
+  --dory-brand-secondary: #9fb1cf;
+  --dory-brand-secondary-foreground: #08111f;
+  --dory-brand-accent: #9fb1cf;
+  --dory-brand-accent-strong: #c8d4e8;
+  --dory-brand-panel: #08111f;
+  --dory-brand-panel-2: #111827;
+  --dory-brand-muted: #9eabc0;
+  --dory-brand-soft: rgba(233, 238, 247, 0.1);
+  --dory-brand-soft-2: rgba(233, 238, 247, 0.06);
+  --dory-brand-line: rgba(233, 238, 247, 0.16);
+  --dory-brand-line-strong: rgba(233, 238, 247, 0.28);
+  --dory-page: #0d1117;
+  --dory-page-wash: #111827;
+  --dory-page-panel: rgb(17, 17, 17);
+  --dory-landing-foreground: #eaf2ff;
+  --dory-landing-muted: #9eabc0;
+  --dory-warm-accent: #e6d3ad;
+  --dory-danger-accent: #ef8d82;
+  --dory-success-accent: #c8d4e8;
+  --dory-grid-soft: rgba(233, 238, 247, 0.045);
+  --dory-grid-faint: rgba(148, 163, 184, 0.06);
+  --dory-brand-glow:
+    radial-gradient(circle at 24% 28%, rgba(159, 177, 207, 0.14), transparent 30%),
+    radial-gradient(circle at 78% 42%, rgba(230, 211, 173, 0.12), transparent 28%);
+  --dory-grid-background:
+    linear-gradient(var(--dory-grid-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--dory-grid-soft) 1px, transparent 1px);
+  --dory-release-background:
+    radial-gradient(circle at 20% 20%, color-mix(in oklab, var(--dory-brand-secondary) 35%, transparent), transparent 30%),
+    radial-gradient(circle at 80% 60%, color-mix(in oklab, var(--dory-brand-accent-strong) 25%, transparent), transparent 28%),
+    linear-gradient(135deg, var(--dory-brand-panel), var(--dory-brand-panel-2) 62%, #182235);
+  --dory-release-fade:
+    linear-gradient(to top, var(--dory-brand-panel), color-mix(in oklab, var(--dory-brand-panel) 74%, transparent), transparent);
+  --dory-shadow-sm: 0 1px 0 rgba(233, 238, 247, 0.04);
+  --dory-shadow-brand: 0 16px 36px rgba(0, 0, 0, 0.34);
+  --dory-shadow-card: 0 18px 40px rgba(0, 0, 0, 0.28);
+  --dory-shadow-panel: 0 34px 100px rgba(0, 0, 0, 0.38);
+  --dory-shadow-floating: 0 18px 44px rgba(0, 0, 0, 0.32);
+  --dory-shadow-landing: 0 24px 72px rgba(2, 8, 23, 0.3);
   --color-landing-foreground: #eaf2ff;
-  --color-landing-foreground-200: #a9c7ff;
-  --color-brand: #6fb1ff;
-  --color-brand-foreground: white;
-  --color-brand-200: white;
-  --color-brand-secondary: #2ed3b7;
-  --color-brand-secondary-foreground: #06110f;
+  --color-landing-foreground-200: var(--dory-brand-muted);
+  --color-brand: var(--dory-brand);
+  --color-brand-foreground: var(--dory-brand-foreground);
+  --color-brand-200: var(--dory-brand-hover);
+  --color-brand-secondary: var(--dory-brand-secondary);
+  --color-brand-secondary-foreground: var(--dory-brand-secondary-foreground);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -172,28 +268,28 @@
   --color-fd-card: rgb(17, 17, 17);
   --color-fd-card-foreground: #f3f7fb;
   --color-fd-border: rgba(148, 163, 184, 0.16);
-  --color-fd-primary: #f3f7fb;
-  --color-fd-primary-foreground: #0d1522;
+  --color-fd-primary: var(--dory-brand);
+  --color-fd-primary-foreground: var(--dory-brand-foreground);
   --color-fd-secondary: rgb(17, 17, 17);
   --color-fd-secondary-foreground: #e8eef7;
   --color-fd-accent: rgba(255, 255, 255, 0.08);
   --color-fd-accent-foreground: #eff5ff;
   --color-fd-ring: #7187a8;
   --color-fd-overlay: rgba(2, 6, 23, 0.4);
-  --dory-ink: #e8eef7;
+  --dory-ink: var(--dory-landing-foreground);
   --dory-ink-inverse: #08111f;
-  --dory-muted: #9eabc0;
-  --dory-line: rgba(148, 163, 184, 0.16);
-  --dory-panel: rgb(17, 17, 17);
-  --dory-background-color: rgb(17, 17, 17);
+  --dory-muted: var(--dory-landing-muted);
+  --dory-line: var(--dory-brand-line);
+  --dory-panel: var(--dory-page-panel);
+  --dory-background-color: var(--dory-page-panel);
   --dory-background-image: none;
-  --dory-grid-line: rgba(148, 163, 184, 0.06);
-  --dory-hero-background: rgb(17, 17, 17);
-  --dory-hero-shadow: 0 24px 72px rgba(2, 8, 23, 0.3);
-  --dory-chip-background: rgb(17, 17, 17);
-  --dory-surface-soft: rgb(17, 17, 17);
-  --dory-surface-strong: rgb(17, 17, 17);
-  --dory-surface-hover: rgb(17, 17, 17);
+  --dory-grid-line: var(--dory-grid-faint);
+  --dory-hero-background: var(--dory-page-panel);
+  --dory-hero-shadow: var(--dory-shadow-landing);
+  --dory-chip-background: var(--dory-page-panel);
+  --dory-surface-soft: var(--dory-brand-soft-2);
+  --dory-surface-strong: var(--dory-page-panel);
+  --dory-surface-hover: var(--dory-page-panel);
   --dory-sidebar-background: rgb(17, 17, 17);
   --dory-sidebar-foreground: #e8eef7;
   --dory-sidebar-muted: rgb(17, 17, 17);
@@ -220,28 +316,28 @@
     --color-fd-card: rgb(17, 17, 17);
     --color-fd-card-foreground: #f3f7fb;
     --color-fd-border: rgba(148, 163, 184, 0.16);
-    --color-fd-primary: #f3f7fb;
-    --color-fd-primary-foreground: #0d1522;
+    --color-fd-primary: var(--dory-brand);
+    --color-fd-primary-foreground: var(--dory-brand-foreground);
     --color-fd-secondary: rgb(17, 17, 17);
     --color-fd-secondary-foreground: #e8eef7;
     --color-fd-accent: rgba(255, 255, 255, 0.08);
     --color-fd-accent-foreground: #eff5ff;
     --color-fd-ring: #7187a8;
     --color-fd-overlay: rgba(2, 6, 23, 0.4);
-    --dory-ink: #e8eef7;
+    --dory-ink: var(--dory-landing-foreground);
     --dory-ink-inverse: #08111f;
-    --dory-muted: #9eabc0;
-    --dory-line: rgba(148, 163, 184, 0.16);
-    --dory-panel: rgb(17, 17, 17);
-    --dory-background-color: rgb(17, 17, 17);
+    --dory-muted: var(--dory-landing-muted);
+    --dory-line: var(--dory-brand-line);
+    --dory-panel: var(--dory-page-panel);
+    --dory-background-color: var(--dory-page-panel);
     --dory-background-image: none;
-    --dory-grid-line: rgba(148, 163, 184, 0.06);
-    --dory-hero-background: rgb(17, 17, 17);
-    --dory-hero-shadow: 0 24px 72px rgba(2, 8, 23, 0.3);
-    --dory-chip-background: rgb(17, 17, 17);
-    --dory-surface-soft: rgb(17, 17, 17);
-    --dory-surface-strong: rgb(17, 17, 17);
-    --dory-surface-hover: rgb(17, 17, 17);
+    --dory-grid-line: var(--dory-grid-faint);
+    --dory-hero-background: var(--dory-page-panel);
+    --dory-hero-shadow: var(--dory-shadow-landing);
+    --dory-chip-background: var(--dory-page-panel);
+    --dory-surface-soft: var(--dory-brand-soft-2);
+    --dory-surface-strong: var(--dory-page-panel);
+    --dory-surface-hover: var(--dory-page-panel);
     --dory-sidebar-background: rgb(17, 17, 17);
     --dory-sidebar-foreground: #e8eef7;
     --dory-sidebar-muted: rgb(17, 17, 17);
@@ -372,7 +468,7 @@ a {
 
 .dory-docs-shell {
   font-family: var(--dory-docs-font);
-  background: #ffffff;
+  background: var(--dory-background-color);
 }
 
 .dory-docs-shell header,
@@ -386,15 +482,15 @@ a {
 .dory-docs-shell header a[aria-current='page'],
 .dory-docs-shell [data-fd-navbar] a[data-active='true'],
 .dory-docs-shell [data-fd-navbar] a[aria-current='page'] {
-  color: var(--dory-orange-strong);
-  box-shadow: inset 0 -2px 0 var(--dory-orange);
+  color: var(--dory-brand);
+  box-shadow: inset 0 -2px 0 var(--dory-brand-accent);
 }
 
 .dory-docs-shell header a[data-active='true']::after,
 .dory-docs-shell header a[aria-current='page']::after,
 .dory-docs-shell [data-fd-navbar] a[data-active='true']::after,
 .dory-docs-shell [data-fd-navbar] a[aria-current='page']::after {
-  background: var(--dory-orange);
+  background: var(--dory-brand-accent);
 }
 
 .dory-docs-shell #nd-sidebar {
@@ -466,7 +562,7 @@ a {
 .dory-docs-shell #nd-sidebar a[data-active='true'],
 .dory-docs-shell #nd-sidebar a[aria-current='page'] {
   background: var(--dory-sidebar-active) !important;
-  color: var(--dory-orange-strong);
+  color: var(--dory-brand);
   font-weight: 400;
 }
 
@@ -565,19 +661,19 @@ a {
 }
 
 .dory-docs-layout #nd-page .prose a {
-  color: var(--dory-orange-strong);
+  color: var(--dory-brand);
   font-weight: 500;
-  text-decoration-color: color-mix(in oklab, var(--dory-orange) 35%, transparent);
+  text-decoration-color: color-mix(in oklab, var(--dory-brand-accent) 35%, transparent);
 }
 
 .dory-docs-layout #nd-page .prose a:hover {
-  text-decoration-color: var(--dory-orange-strong);
+  text-decoration-color: var(--dory-brand);
 }
 
 .dory-docs-layout #nd-page .prose code:not(pre code) {
   border: 1px solid var(--dory-line);
   border-radius: 0.25rem;
-  background: color-mix(in oklab, var(--dory-orange-soft) 72%, var(--dory-surface-soft));
+  background: color-mix(in oklab, var(--dory-brand-soft) 72%, var(--dory-surface-soft));
   padding: 0.12rem 0.3rem;
   font-size: 0.86em;
   font-weight: 500;
@@ -609,8 +705,8 @@ a {
 }
 
 .dory-docs-layout #nd-page .prose blockquote {
-  border-left-color: var(--dory-orange);
-  background: color-mix(in oklab, var(--dory-orange-soft) 55%, transparent);
+  border-left-color: var(--dory-brand-accent);
+  background: color-mix(in oklab, var(--dory-brand-soft) 55%, transparent);
   color: color-mix(in oklab, var(--dory-ink) 78%, transparent);
 }
 
@@ -621,7 +717,7 @@ a {
 }
 
 .dory-docs-layout #nd-page .prose th {
-  background: color-mix(in oklab, var(--dory-orange-soft) 58%, var(--dory-surface-soft));
+  background: color-mix(in oklab, var(--dory-brand-soft) 58%, var(--dory-surface-soft));
 }
 
 .dory-docs-layout #nd-page .prose th:last-child,
@@ -816,7 +912,7 @@ a {
     backdrop-filter: blur(18px) saturate(145%);
     box-shadow:
       inset 0 1px 0 color-mix(in oklab, white 72%, transparent),
-      0 18px 44px color-mix(in oklab, #0f172a 7%, transparent);
+      0 18px 44px color-mix(in oklab, var(--dory-brand-panel) 7%, transparent);
   }
 
   .dark .marketing-panel {

@@ -40,24 +40,24 @@ export default async function BlogIndexPage({
 
   return (
     <MarketingLayout lang={lang}>
-    <main className="min-h-screen bg-[#f7f7f3] px-4 pt-10 pb-20 text-slate-950 sm:px-6 md:px-10 dark:bg-[#0d1117] dark:text-white">
+    <main className="min-h-screen bg-dory-page px-4 pt-10 pb-20 text-dory-ink sm:px-6 md:px-10">
       <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-12">
         <section className="grid min-h-[28rem] gap-px overflow-hidden border border-slate-950/10 bg-slate-950/10 md:grid-cols-[1.22fr_0.78fr] dark:border-white/10 dark:bg-white/10">
           {latestPost ? (
             <Link
               href={releaseNoteHref(latestPost.slug)}
-              className="group relative flex min-h-[26rem] flex-col justify-end overflow-hidden bg-[#0f172a] p-6 text-white md:p-8 lg:p-10"
+              className="group relative flex min-h-[26rem] flex-col justify-end overflow-hidden bg-dory-brand-panel p-6 text-brand-foreground md:p-8 lg:p-10"
             >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.5),transparent_30%),radial-gradient(circle_at_80%_60%,rgba(20,184,166,0.38),transparent_28%),linear-gradient(135deg,#08111f,#172033_62%,#e9eef7)]" />
-              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950 via-slate-950/74 to-transparent" />
+              <div className="absolute inset-0 bg-[image:var(--dory-release-background)]" />
+              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[image:var(--dory-release-fade)]" />
               <div className="relative max-w-2xl">
-                <div className="mb-4 inline-flex border border-white/18 bg-white/10 px-3 py-1 text-xs font-medium tracking-[0.18em] uppercase text-blue-100">
+                <div className="mb-4 inline-flex border border-white/18 bg-white/10 px-3 py-1 text-xs font-medium tracking-[0.18em] uppercase text-brand-foreground">
                   {t("latestRelease")} · {formatReleaseLabel(latestPost.version)}
                 </div>
                 <h1 className="text-4xl leading-[0.98] font-semibold tracking-[-0.055em] text-balance md:text-6xl">
                   {latestPost.title}
                 </h1>
-                <p className="mt-5 max-w-xl text-base leading-7 text-slate-200 md:text-lg">
+                <p className="mt-5 max-w-xl text-base leading-7 text-brand-foreground/80 md:text-lg">
                   {latestPost.description}
                 </p>
                 <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white">
@@ -73,7 +73,7 @@ export default async function BlogIndexPage({
               <Link
                 key={post.slug}
                 href={releaseNoteHref(post.slug)}
-                className="group flex min-h-[9rem] flex-col justify-between bg-[#fbfbf7] p-5 transition hover:bg-white md:p-6 dark:bg-[#111827] dark:hover:bg-[#151f2e]"
+                  className="group flex min-h-[9rem] flex-col justify-between bg-dory-page-wash p-5 transition hover:bg-dory-surface md:p-6 dark:hover:bg-dory-brand-soft"
               >
                 <div>
                   <div className="mb-3 text-xs font-medium tracking-[0.16em] text-slate-500 uppercase dark:text-slate-400">
@@ -107,7 +107,7 @@ export default async function BlogIndexPage({
         </section>
 
         <section className="flex flex-wrap gap-2 border-y border-slate-950/10 py-4 dark:border-white/10">
-          <span className="bg-slate-950 px-4 py-2 text-sm font-medium text-white dark:bg-white dark:text-slate-950">
+          <span className="bg-brand px-4 py-2 text-sm font-medium text-brand-foreground">
             {t("postCount", { count: posts.length })}
           </span>
           {categories.map((category) => (
@@ -153,7 +153,7 @@ export default async function BlogIndexPage({
           )}
         </section>
 
-        <section className="grid gap-6 bg-[#e9edf3] p-6 md:grid-cols-[1fr_auto] md:items-end md:p-8 dark:bg-white/8">
+        <section className="grid gap-6 bg-dory-brand-soft p-6 md:grid-cols-[1fr_auto] md:items-end md:p-8">
           <div>
             <div className="text-xs font-semibold tracking-[0.2em] text-slate-500 uppercase dark:text-slate-400">
               {t("categoryLabel")}
