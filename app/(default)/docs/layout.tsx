@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
+import { HomeLayout } from 'fumadocs-ui/layouts/home';
 
 import { baseOptions } from '@/lib/layout.shared';
 import { source } from '@/lib/source';
@@ -11,9 +12,24 @@ export default function DefaultDocsLayout({
 }: {
   children: ReactNode;
 }) {
+  const options = baseOptions(lang);
+
   return (
-    <DocsLayout {...baseOptions(lang)} tree={source.getPageTree(lang)}>
-      {children}
-    </DocsLayout>
+    <HomeLayout {...options} className="dory-docs-shell min-h-screen bg-transparent">
+      <DocsLayout
+        {...options}
+        githubUrl={undefined}
+        i18n={false}
+        links={[]}
+        nav={{}}
+        searchToggle={{ enabled: false }}
+        sidebar={{ collapsible: false }}
+        themeSwitch={{ enabled: false }}
+        tree={source.getPageTree(lang)}
+        containerProps={{ className: 'docs-with-site-header dory-docs-layout' }}
+      >
+        {children}
+      </DocsLayout>
+    </HomeLayout>
   );
 }
