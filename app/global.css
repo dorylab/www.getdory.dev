@@ -66,7 +66,7 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --color-fd-background: #fbfbfa;
+  --color-fd-background: #ffffff;
   --color-fd-foreground: #171717;
   --color-fd-muted: #f4f4f2;
   --color-fd-muted-foreground: #666663;
@@ -93,16 +93,16 @@
   --dory-orange-soft: #fff2ec;
   --dory-gold: #f7b733;
   --dory-panel: #ffffff;
-  --dory-background-color: #fbfbfa;
+  --dory-background-color: #ffffff;
   --dory-background-image: none;
-  --dory-grid-line: rgba(23, 23, 23, 0.035);
+  --dory-grid-line: rgba(23, 23, 23, 0.026);
   --dory-hero-background: #ffffff;
   --dory-hero-shadow: 0 20px 60px rgba(18, 24, 38, 0.06);
   --dory-chip-background: #ffffff;
   --dory-surface-soft: #f4f4f2;
   --dory-surface-strong: #ffffff;
   --dory-surface-hover: #efefed;
-  --dory-sidebar-background: #fbfbfa;
+  --dory-sidebar-background: #fafafa;
   --dory-sidebar-foreground: #171717;
   --dory-sidebar-muted: #f4f4f2;
   --dory-sidebar-muted-foreground: #666663;
@@ -115,6 +115,7 @@
   --dory-toc-foreground: #8a8883;
   --dory-toc-hover: #4f4d49;
   --dory-toc-active: #242321;
+  --dory-docs-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Helvetica, Arial, sans-serif;
 }
 
 #nd-sidebar,
@@ -310,6 +311,10 @@ a {
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 85%);
 }
 
+.dory-shell:has(.dory-docs-shell)::before {
+  display: none;
+}
+
 .hero-card {
   background: var(--dory-hero-background);
   border: 1px solid var(--dory-line);
@@ -366,9 +371,8 @@ a {
 }
 
 .dory-docs-shell {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.58), transparent 17rem),
-    var(--dory-background-color);
+  font-family: var(--dory-docs-font);
+  background: #ffffff;
 }
 
 .dory-docs-shell header,
@@ -395,9 +399,7 @@ a {
 
 .dory-docs-shell #nd-sidebar {
   border-right: 1px solid var(--dory-sidebar-border);
-  background:
-    linear-gradient(180deg, color-mix(in oklab, white 42%, transparent), transparent 18rem),
-    var(--dory-sidebar-background);
+  background: var(--dory-sidebar-background);
 }
 
 .dory-docs-shell #nd-sidebar > div:first-child {
@@ -491,8 +493,8 @@ a {
   background: transparent;
 }
 
-.dory-docs-layout #nd-page article {
-  max-width: 48rem;
+.dory-docs-layout #nd-page {
+  max-width: 44rem;
 }
 
 .dory-docs-layout #nd-page > div:first-child:not(.prose) {
@@ -508,14 +510,18 @@ a {
 }
 
 .dory-docs-layout #nd-page .prose {
-  font-size: 0.95rem;
-  line-height: 1.75;
+  flex: 0 1 40rem;
+  max-width: 40rem;
+  font-family: var(--dory-docs-font);
+  font-size: 15px;
+  line-height: 1.72;
+  letter-spacing: 0;
 }
 
 .dory-docs-layout #nd-page .prose h1 {
   margin-bottom: 1rem;
   color: var(--dory-ink);
-  font-size: 3rem;
+  font-size: 2.75rem;
   line-height: 1.06;
   letter-spacing: 0;
 }

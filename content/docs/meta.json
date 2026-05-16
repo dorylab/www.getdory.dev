@@ -3,13 +3,13 @@
     "---Start---",
     "index",
     "getting-started",
-    "release-notes",
     "---Product---",
     "core-features",
     "workflows",
     "database-support",
     "---Operate---",
     "deploy",
-    "reference"
+    "reference",
+    "release-notes"
   ]
 }
