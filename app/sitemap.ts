@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
 
-import { getReleaseNotes } from '@/lib/blog';
 import { defaultLanguage, locales } from '@/lib/i18n';
 import { source } from '@/lib/source';
 
@@ -61,13 +60,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }))
     );
 
-  const releaseNotes = await getReleaseNotes();
   const marketingPaths = [
     '',
     '/download',
-    '/blog',
-    '/blog/release-notes',
-    ...releaseNotes.map((post) => `/blog/release-notes/${post.slug}`)
+    '/blog'
   ];
 
   const marketingEntries = locales.flatMap((locale) =>

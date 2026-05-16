@@ -35,6 +35,8 @@ export default async function BlogIndexPage({
   const latestPost = posts[0] ?? null;
   const featuredPosts = posts.slice(0, 4);
   const recentPosts = posts.slice(0, 12);
+  const releaseNoteHref = (slug: string) =>
+    `/docs/release-notes/${slug.replaceAll(".", "-")}`;
 
   return (
     <MarketingLayout lang={lang}>
@@ -43,7 +45,7 @@ export default async function BlogIndexPage({
         <section className="grid min-h-[28rem] gap-px overflow-hidden border border-slate-950/10 bg-slate-950/10 md:grid-cols-[1.22fr_0.78fr] dark:border-white/10 dark:bg-white/10">
           {latestPost ? (
             <Link
-              href={`/blog/release-notes/${latestPost.slug}`}
+              href={releaseNoteHref(latestPost.slug)}
               className="group relative flex min-h-[26rem] flex-col justify-end overflow-hidden bg-[#0f172a] p-6 text-white md:p-8 lg:p-10"
             >
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.5),transparent_30%),radial-gradient(circle_at_80%_60%,rgba(20,184,166,0.38),transparent_28%),linear-gradient(135deg,#08111f,#172033_62%,#e9eef7)]" />
@@ -70,7 +72,7 @@ export default async function BlogIndexPage({
             {featuredPosts.slice(1, 4).map((post, index) => (
               <Link
                 key={post.slug}
-                href={`/blog/release-notes/${post.slug}`}
+                href={releaseNoteHref(post.slug)}
                 className="group flex min-h-[9rem] flex-col justify-between bg-[#fbfbf7] p-5 transition hover:bg-white md:p-6 dark:bg-[#111827] dark:hover:bg-[#151f2e]"
               >
                 <div>
@@ -111,7 +113,7 @@ export default async function BlogIndexPage({
           {categories.map((category) => (
             <Link
               key={category.slug}
-              href={`/blog/${category.slug}`}
+              href="/docs/release-notes"
               className="border border-slate-950/12 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-950 hover:text-slate-950 dark:border-white/12 dark:text-slate-300 dark:hover:border-white dark:hover:text-white"
             >
               {category.title}
@@ -124,7 +126,7 @@ export default async function BlogIndexPage({
             recentPosts.map((post) => (
               <Link
                 key={post.slug}
-                href={`/blog/release-notes/${post.slug}`}
+                href={releaseNoteHref(post.slug)}
                 className="group grid gap-4 border-b border-slate-950/10 py-6 transition hover:bg-white/60 md:grid-cols-[10rem_minmax(0,1fr)_8rem] md:items-start md:px-2 dark:border-white/10 dark:hover:bg-white/5"
               >
                 <div className="text-sm font-medium text-slate-500 dark:text-slate-400">
@@ -162,7 +164,7 @@ export default async function BlogIndexPage({
           </div>
           {latestPost ? (
             <Link
-              href="/blog/release-notes"
+              href="/docs/release-notes"
               className="inline-flex items-center gap-2 text-sm font-semibold text-slate-950 dark:text-white"
             >
               {t("readLatest")}

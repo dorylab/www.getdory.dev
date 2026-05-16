@@ -10,8 +10,7 @@ const defaultLanguagePaths = [
   '/docs',
   '/download',
   '/download/redirect',
-  '/blog',
-  '/blog/release-notes'
+  '/blog'
 ];
 
 export default function proxy(request: NextRequest, event: NextFetchEvent) {
@@ -20,6 +19,7 @@ export default function proxy(request: NextRequest, event: NextFetchEvent) {
   if (
     defaultLanguagePaths.includes(pathname) ||
     pathname.startsWith('/docs/') ||
+    pathname === '/blog/release-notes' ||
     pathname.startsWith('/blog/release-notes/')
   ) {
     return NextResponse.next();
