@@ -1,4 +1,4 @@
-import { BookOpen, MonitorSmartphone, Sparkles } from 'lucide-react';
+import { BookOpen, Download, Newspaper } from 'lucide-react';
 import { defineI18nUI } from 'fumadocs-ui/i18n';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
@@ -30,34 +30,31 @@ export function baseOptions(locale: string): BaseLayoutProps {
             alt="Dory"
             className="h-8 w-8 rounded-xl object-contain shadow-sm"
           />
-          {isZh ? 'Dory 文档' : 'Dory Docs'}
+          Dory
         </span>
       )
     },
     links: [
       {
         type: 'main',
-        text: isZh ? '官网' : 'Website',
-        url: 'https://www.getdory.dev',
-        external: true,
+        text: isZh ? '文档' : 'Docs',
+        url: '/docs',
+        active: 'nested-url',
         icon: <BookOpen />
       },
       {
-        text: isZh ? '演示' : 'Demo',
-        url: 'https://app.getdory.dev',
-        external: true,
-        icon: <MonitorSmartphone />
-      },
-      {
-        text: 'GitHub',
-        url: 'https://github.com/dorylab/dory',
-        external: true
-      },
-      {
-        text: isZh ? 'AI 能力' : 'AI Features',
-        url: '/docs/reference/ai-providers',
+        type: 'main',
+        text: isZh ? '博客' : 'Blog',
+        url: '/blog',
         active: 'nested-url',
-        icon: <Sparkles />
+        icon: <Newspaper />
+      },
+      {
+        type: 'main',
+        text: isZh ? '下载' : 'Download',
+        url: '/download',
+        active: 'nested-url',
+        icon: <Download />
       }
     ]
   };

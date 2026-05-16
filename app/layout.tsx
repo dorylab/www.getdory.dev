@@ -6,11 +6,11 @@ import type { ReactNode } from 'react';
 export const metadata: Metadata = {
   metadataBase: new URL('https://docs.getdory.dev'),
   title: {
-    default: 'Dory Docs',
-    template: '%s | Dory Docs'
+    default: 'Dory',
+    template: '%s | Dory'
   },
   description:
-    'Documentation for Dory, the AI-native data workspace for modern databases.',
+    'Dory is an AI-native data workspace for querying databases, understanding spreadsheets, and talking with data.',
   icons: {
     icon: '/logo.png'
   }

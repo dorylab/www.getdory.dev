@@ -1,5 +1,7 @@
 import type { MetadataRoute } from 'next';
 
+import { getReleaseNotes } from '@/lib/blog';
+import { defaultLanguage, locales } from '@/lib/i18n';
 import { source } from '@/lib/source';
 
 const siteUrl = 'https://docs.getdory.dev';
@@ -17,7 +19,12 @@ function getPriority(slugs: string[]) {
   return 0.6;
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+function localePath(locale: string, pathname: string) {
+  if (locale === defaultLanguage) return pathname || '/';
+  return `/${locale}${pathname}`;
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pagesBySlug = new Map<
     string,
     Array<{ language: string; url: string; slugs: string[] }>
@@ -37,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  return Array.from(pagesBySlug.values())
+  const docEntries = Array.from(pagesBySlug.values())
     .flatMap((pages) =>
       pages.map<SitemapEntry>((page) => ({
         url: absoluteUrl(page.url),
@@ -52,6 +59,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
           )
         }
       }))
-    )
-    .sort((a, b) => a.url.localeCompare(b.url));
+    );
+
+  const releaseNotes = await getReleaseNotes();
+  const marketingPaths = [
+    '',
+    '/download',
+    '/blog',
+    '/blog/release-notes',
+    ...releaseNotes.map((post) => `/blog/release-notes/${post.slug}`)
+  ];
+
+  const marketingEntries = locales.flatMap((locale) =>
+    marketingPaths.map<SitemapEntry>((pathname) => ({
+      url: absoluteUrl(localePath(locale, pathname)),
+      changeFrequency: 'weekly',
+      priority: pathname === '' ? 1 : 0.6
+    }))
+  );
+
+  return [...marketingEntries, ...docEntries].sort((a, b) =>
+    a.url.localeCompare(b.url)
+  );
 }

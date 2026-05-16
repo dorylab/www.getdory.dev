@@ -1,8 +1,71 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-brand: hsl(214 95% 52%);
+  --color-brand-foreground: white;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
 :root {
+  --spacing-page: 1436px;
+  --color-brand: hsl(214 95% 52%);
+  --color-brand-foreground: white;
+  --color-brand-200: hsl(214 95% 60%);
+  --color-brand-secondary: #18a890;
+  --color-brand-secondary-foreground: white;
+  --color-landing-foreground: #0b1220;
+  --color-landing-foreground-dark: #eaf2ff;
+  --color-landing-foreground-200: #38506b;
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
   --color-fd-background: #ffffff;
   --color-fd-foreground: #121826;
   --color-fd-muted: #ffffff;
@@ -68,6 +131,31 @@
 :root[class~='dark'],
 :root[data-theme='dark'],
 .dark {
+  --color-landing-foreground: #eaf2ff;
+  --color-landing-foreground-200: #a9c7ff;
+  --color-brand: #6fb1ff;
+  --color-brand-foreground: white;
+  --color-brand-200: white;
+  --color-brand-secondary: #2ed3b7;
+  --color-brand-secondary-foreground: #06110f;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
   --color-fd-background: rgb(17, 17, 17);
   --color-fd-foreground: #e8eef7;
   --color-fd-muted: rgb(17, 17, 17);
@@ -256,6 +344,169 @@ a {
 
 #nd-docs-layout .text-fd-muted-foreground {
   color: var(--dory-muted);
+}
+
+@layer components {
+  .landing-content-shell {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .landing-content-shell::before,
+  .landing-content-shell::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .landing-content-shell::before {
+    inset: 0;
+    background:
+      radial-gradient(
+        circle at 12% 8%,
+        color-mix(in oklab, var(--color-brand) 13%, transparent),
+        transparent 28rem
+      ),
+      radial-gradient(
+        circle at 88% 36%,
+        color-mix(in oklab, var(--color-brand-secondary) 12%, transparent),
+        transparent 26rem
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--background) 86%, transparent),
+        color-mix(in oklab, #f7fbff 54%, transparent) 42%,
+        color-mix(in oklab, var(--background) 88%, transparent)
+      );
+  }
+
+  .landing-content-shell::after {
+    inset: 0;
+    background-image:
+      linear-gradient(
+        color-mix(in oklab, var(--foreground) 4%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--foreground) 4%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 42px 42px;
+    mask-image: linear-gradient(
+      180deg,
+      transparent,
+      black 16%,
+      black 72%,
+      transparent
+    );
+    opacity: 0.34;
+  }
+
+  .dark .landing-content-shell::before {
+    background:
+      radial-gradient(
+        circle at 12% 8%,
+        color-mix(in oklab, var(--color-brand) 18%, transparent),
+        transparent 28rem
+      ),
+      radial-gradient(
+        circle at 88% 36%,
+        color-mix(in oklab, var(--color-brand-secondary) 14%, transparent),
+        transparent 26rem
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, #07101f 76%, transparent),
+        color-mix(in oklab, #0b1220 82%, transparent) 42%,
+        color-mix(in oklab, #070b14 80%, transparent)
+      );
+  }
+
+  .dark .landing-content-shell::after {
+    opacity: 0.22;
+  }
+
+  .marketing-grid-shell {
+    position: relative;
+  }
+
+  .marketing-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in oklab, var(--border) 78%, transparent);
+    background: color-mix(in oklab, var(--background) 78%, white 12%);
+    padding: 0.42rem 0.78rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: color-mix(in oklab, var(--foreground) 50%, transparent);
+  }
+
+  .marketing-title {
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  .marketing-lead {
+    color: color-mix(in oklab, var(--foreground) 56%, transparent);
+    line-height: 1.72;
+  }
+
+  .dark .marketing-lead {
+    color: color-mix(in oklab, white 70%, transparent);
+  }
+
+  .marketing-panel {
+    position: relative;
+    border: 1px solid color-mix(in oklab, var(--border) 78%, transparent);
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, white 70%, transparent),
+        color-mix(in oklab, var(--background) 72%, transparent)
+      ),
+      color-mix(in oklab, var(--background) 72%, transparent);
+    backdrop-filter: blur(18px) saturate(145%);
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklab, white 72%, transparent),
+      0 18px 44px color-mix(in oklab, #0f172a 7%, transparent);
+  }
+
+  .dark .marketing-panel {
+    border-color: color-mix(in oklab, white 10%, transparent);
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, white 8%, transparent),
+        color-mix(in oklab, var(--background) 78%, white 3%)
+      ),
+      color-mix(in oklab, var(--background) 84%, white 3%);
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklab, white 10%, transparent),
+      0 20px 54px color-mix(in oklab, black 26%, transparent);
+  }
+
+  .marketing-image-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid color-mix(in oklab, var(--border) 86%, transparent);
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, white 70%, transparent),
+        color-mix(in oklab, var(--background) 84%, transparent)
+      ),
+      color-mix(in oklab, var(--background) 90%, transparent);
+    box-shadow: 0 24px 68px
+      color-mix(in oklab, var(--foreground) 10%, transparent);
+  }
 }
 
 #nd-docs-layout .text-fd-foreground,

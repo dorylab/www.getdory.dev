@@ -1,0 +1,372 @@
+{
+  "landing": {
+    "heroTagline": "AI 原生工作流",
+    "heroTitle": "<brand>AI 原生</brand>数据工作室",
+    "heroDescription": "连接数据库，用 SQL、AI 与可视化完成探索、分析与复用。",
+    "heroSubtitle": "查询数据库、理解表格并与数据对话——都在<brand>一个</brand>现代化工作空间中。",
+    "heroExperienceTitle": "无需下载，30 秒体验 Dory",
+    "heroExperienceDescription": "使用公开数据集体验 SQL + AI",
+    "heroExperienceCta": "体验在线 Demo",
+    "heroPreviewAlt": "Dory 工作区预览",
+    "heroImageAlt": "Dory 工作区主视觉",
+    "tryDory": "体验 Dory",
+    "downloadLatest": "下载最新版本",
+    "downloadForMac": "下载 macOS",
+    "downloadForWindows": "下载 Windows 版",
+    "allPlatform": "全平台",
+    "viewOnGitHub": "在 GitHub 上查看",
+    "heroCards": {
+      "aiChat": {
+        "title": "AI 副驾驶",
+        "description": "基于当前连接、Schema 和查询上下文生成 SQL、解释结果。"
+      },
+      "sqlConsole": {
+        "title": "SQL 工作台",
+        "description": "编辑器、Schema 浏览、查询结果和执行记录保持在同一工作流中。"
+      },
+      "teamFlow": {
+        "title": "保存与复用",
+        "description": "保存常用查询和结果上下文，把一次探索沉淀成可复用的工作流。"
+      }
+    },
+    "aiNative": {
+      "badge": "原生 AI 工作流",
+      "heading": "<ask>提问。</ask> <act>行动。</act> <stay>保持脚踏实地。</stay>",
+      "description": "无需切换上下文。没有杜撰字段。只有准确的 SQL 和真实结果。",
+      "tabs": {
+        "ask": {
+          "label": "提问",
+          "title": "提问任何问题。没有虚构的字段。",
+          "description": "模式感知的自动补全和 SQL 生成让 AI 保持真实 —— 每个建议都基于真实的表、字段与关联。",
+          "pills": {
+            "pill1": "模式感知",
+            "pill2": "无虚构字段",
+            "pill3": "可运行的 SQL"
+          }
+        },
+        "actions": {
+          "label": "行动",
+          "title": "不仅仅对话 —— 直接执行操作。",
+          "description": "从工作流内运行转换、保存和分享查询，并触发常见分析任务 —— 无需复制粘贴、无需切换标签。",
+          "pills": {
+            "pill1": "不跳标签",
+            "pill2": "保存与分享",
+            "pill3": "快速分析"
+          }
+        },
+        "context": {
+          "label": "上下文",
+          "title": "保持掌控的上下文。",
+          "description": "Dory 跟踪你正在处理的表、关系和最近的查询，让 Ask、Action 和 Context 之间的结果保持一致。",
+          "pills": {
+            "pill1": "表与关系",
+            "pill2": "结果一致",
+            "pill3": "可靠的关联"
+          }
+        }
+      }
+    },
+    "tableOverview": {
+      "badge": "AI 表概览",
+      "title": "自动理解每张表的设计与分布。",
+      "description": "自动生成表级的数据概览、语义注释与使用提示，让 AI 在生成 SQL 之前就掌握业务上下文。",
+      "insights": {
+        "summary": {
+          "title": "自动概览与语义",
+          "description": "Dory 读取计数、新鲜度与关联，从业务角度描述表内的数据和价值。"
+        },
+        "fields": {
+          "title": "字段含义与信号",
+          "description": "为每列提供简短语义说明，并提示数值范围、基数及常见关联。"
+        },
+        "context": {
+          "title": "分布线索与 SQL 上下文",
+          "description": "数据分布、倾斜度和业务备注为 AI 提供可信的上下文，以生成贴合预期的 SQL。"
+        }
+      },
+      "screenshotAlt": "AI 表概览界面截图"
+    },
+    "chatbot": {
+      "badge": "数据库对话",
+      "title": "与你的数据库对话",
+      "description": "Dory 的聊天机器人不是通用 AI 助手。它是一个数据库原生的副驾驶，理解你的模式，写出真正的 SQL，并通过对话帮助你探索数据。",
+      "bullets": {
+        "schema": "在真实表中进行模式感知的对话",
+        "sql": "自然语言直达可执行 SQL",
+        "context": "多回合、上下文感知的分析",
+        "visualization": "自动可视化与解释"
+      }
+    },
+    "coreWorkspace": {
+      "badge": "核心工作区",
+      "title": "专为真实 SQL 工作打造 — <brand>不仅仅是聊天</brand>。",
+      "description": "快速的编辑器、值得信赖的模式视图和可重复使用的保存内容 —— 构成日常数据工作的基础。",
+      "screenshotAlt": "Dory 工作区截图",
+      "highlights": {
+        "item1": "模式感知的自动补全与语法提示",
+        "item2": "多标签 / 多结果集查询体验",
+        "item3": "高性能结果表格，支持排序、筛选、快速定位",
+        "item4": "适合大数据量与复杂查询的交互设计"
+      },
+      "features": {
+        "editor": {
+          "title": "如同原生的 SQL 编辑器",
+          "description": "快速、以键盘为先的编辑，配合模式感知自动补全 —— 让你在不中断节奏的情况下写出正确的 SQL。",
+          "bullets": {
+            "bullet1": "模式感知自动补全",
+            "bullet2": "以键盘为先的工作流",
+            "bullet3": "精准执行你的写法"
+          }
+        },
+        "schema": {
+          "title": "值得信赖的模式浏览器",
+          "description": "在上下文中浏览表、字段与类型 —— 也是 AI 避免杜撰字段的依据。",
+          "bullets": {
+            "bullet1": "表、字段、类型",
+            "bullet2": "快速筛选",
+            "bullet3": "为 AI 提供依据"
+          }
+        },
+        "saved": {
+          "title": "保存的查询与结果",
+          "description": "将一次性探索变为工作流程。保存、重访并分享那些重要的查询。",
+          "bullets": {
+            "bullet1": "保存与整理",
+            "bullet2": "重复使用结果",
+            "bullet3": "与团队共享"
+          }
+        }
+      }
+    },
+    "databaseSupport": {
+      "badge": "DATABASE SUPPORT",
+      "title": "连接你已经在使用的数据栈。",
+      "description": "支持 PostgreSQL、MySQL、SQLite、MariaDB、Neon 与 ClickHouse。\n一个现代化工作台，用于查询、探索与分析你的数据。",
+      "panelTitle": "Supported Databases",
+      "highlightTitle": "⭐ Advanced Experience for ClickHouse",
+      "highlightFeatures": [
+        "Deep schema support",
+        "Query analytics dashboard",
+        "Team-ready workspace"
+      ],
+      "comingNextLabel": "Coming Next"
+    },
+    "moreFeatures": {
+      "badge": "更多功能",
+      "title": "为日常数据工作设计",
+      "description": "本地优先、响应迅速",
+      "features": {
+        "secure": {
+          "title": "本地优先",
+          "description": "你的数据查询、个人设置与工作流都保存在本地，确保隐私与安全。"
+        },
+        "connectivity": {
+          "title": "SSH Tunnel",
+          "description": "通过 SSH Tunnel 为每条连接加密护航，凭据与数据始终留在你控制的网络隧道内，不会被明文暴露。"
+        },
+        "save": {
+          "title": "保存查询与工作流",
+          "description": "保存查询、上下文与结果，反复使用让探索成为可复用的工作流。"
+        },
+        "modern": {
+          "title": "现代化体验",
+          "description": "干净克制的界面，让你一直沉浸在工作节奏中。"
+        },
+        "themes": {
+          "title": "亮 / 暗 & 多主题",
+          "description": "明暗主题与多主题，适配你的工作环境，保持可读且舒适的视觉体验。"
+        },
+        "open-source": {
+          "title": "开源",
+          "description": "Apache 2.0 协议，透明且可扩展，可根据需要自托管。"
+        }
+      }
+    },
+    "cta": {
+      "badge": "几分钟体验 Dory",
+      "title": "现在开始",
+      "subtitle": "面向现代数据库的 AI 原生 SQL 工作空间。",
+      "description": "立即下载 Dory，或者直接用 Docker 在本地部署并连接你的真实数据库。",
+      "dockerDeploy": "Docker 部署",
+      "quickStart": "Docker 部署",
+      "commands": {
+        "copy": "复制命令",
+        "copied": "已复制"
+      },
+      "tip": "启动后在界面中添加数据库连接。"
+    },
+    "faq": {
+      "headerLabel": "常见问题",
+      "title": "常见问题与解答",
+      "items": {
+        "free": {
+          "question": "Dory 是否免费？",
+          "answer": {
+            "paragraph1": "是的。Dory 提供免费版本，可用于个人项目和本地工作流。",
+            "paragraph2": "随着项目发展，我们将探索付费能力和团队功能，但核心的 SQL 工作空间将保持免费。"
+          }
+        },
+        "aiCopilot": {
+          "question": "AI 副驾驶如何工作？",
+          "answer": {
+            "paragraph1": "Dory 的 AI 副驾驶理解你的数据库模式、表格和查询上下文，帮助生成 SQL、解释查询并加速探索。",
+            "paragraph2": "相比通用提示，Dory 会提供来自工作区的结构化上下文，让 AI 的回答更准确、更实用。"
+          }
+        },
+        "providers": {
+          "question": "支持哪些 AI 提供商？",
+          "answer": {
+            "paragraph1": "桌面版本内置了 OpenAI 模型。提供更好的使用体验，开源版本通过可配置环境变量支持多家模型供应商（如 OpenAI、Anthropic、Google Gemini 等）。",
+            "paragraph2": "你也可以通过自己的 AI 网关或企业基础设施路由请求。"
+          }
+        },
+        "databases": {
+          "question": "Dory 支持哪些数据库？",
+          "answer": {
+            "paragraph1": "Dory 当前已支持 ClickHouse、PostgreSQL、Neon、MySQL、MariaDB 和 SQLite，其中 ClickHouse 提供深度集成体验。",
+            "paragraph2": "DuckDB 已在规划中，我们会持续扩展支持范围，为现代数据库提供一致的 AI 原生工作空间。"
+          }
+        },
+        "openSource": {
+          "question": "Dory 是开源的吗？",
+          "answer": {
+            "paragraph1": "Dory 采用 Apache 2.0 协议，面向开发者友好，可自托管。",
+            "paragraph2": "我们欢迎社区贡献，无论是代码、文档还是新功能建议。"
+          }
+        },
+        "dataSafety": {
+          "question": "我的数据安全吗？",
+          "answer": {
+            "paragraph1": "Dory 遵循本地优先理念。使用桌面版时，连接信息和工作区元数据等都留在你的设备上。",
+            "paragraph2": "AI 功能只会根据你的配置发送所需的最小上下文，目前 Dory 使用 OpenAI 模型。"
+          }
+        }
+      }
+    },
+    "deployment": {
+      "badge": "数据库与部署",
+      "heading": "在 <brand>你的数据</brand> 所在地运行 Dory。",
+      "description": "连接真实数据库，并在你的环境中部署——本地、Docker 或完全自托管。",
+      "databases": {
+        "title": "数据库",
+        "description": "模式感知、查询原生的集成。",
+        "shield": "无需强制上传。Dory 运行在你的环境中，通过你控制的连接访问数据库。",
+        "items": {
+          "clickhouse": {
+            "note": "主要体验"
+          },
+          "postgres": {
+            "note": "进行中"
+          },
+          "mysql": {
+            "note": "进行中"
+          },
+          "sqlite": {
+            "note": "进行中"
+          }
+        }
+      },
+      "deployment": {
+        "title": "部署",
+        "description": "选择本地优先的速度或自托管的控制。",
+        "options": {
+          "local": {
+            "title": "本地部署",
+            "description": "在你的机器上运行，设置最简单、速度最快。"
+          },
+          "docker": {
+            "title": "Docker",
+            "description": "通过单个容器在几分钟内部署。"
+          },
+          "selfhost": {
+            "title": "自托管",
+            "description": "与你的数据库一起部署到你的环境中。"
+          },
+          "cloud": {
+            "title": "你的云",
+            "description": "在你的数据所在的地方运行——VPC、VPN 或内部网络。"
+          }
+        }
+      },
+      "status": {
+        "stable": "稳定",
+        "beta": "测试版",
+        "planned": "规划中"
+      },
+      "extra": "支持私有网络（VPC/VPN）和自托管数据库。你保留密钥、网络以及数据通路。",
+      "footer": "想要下一个数据库集成？ <open>在 GitHub 上提交 issue</open>。"
+    }
+  },
+  "downloadPage": {
+    "eyebrow": "Dory 下载",
+    "title": "感谢下载 {product}",
+    "description": "你的 {platform} 下载即将自动开始。如果没有自动开始，可以直接点击下方按钮。",
+    "statusPreparing": "正在准备下载",
+    "statusStarted": "已开始下载",
+    "cardTitle": "{platform} 安装包正在启动",
+    "cardDescription": "通常会在几秒内开始。如果浏览器拦截了下载，使用下方手动下载链接即可。",
+    "manualDownload": "立即下载",
+    "retryFromRelease": "从 Release 页面重试",
+    "fallbackLink": "如果没有自动开始，点击这里下载 {platform} 版本",
+    "tip": "如果你需要其他平台或想查看完整变更记录，可以前往最新 Release 页面。",
+    "viewAllReleases": "查看所有下载"
+  },
+  "downloadCenter": {
+    "eyebrow": "全平台",
+    "title": "下载 Dory",
+    "description": "下载适合你设备的最新 {product}，通过 Homebrew 安装，或前往 GitHub 查看完整发布归档。",
+    "latestVersion": "最新版本",
+    "tip": "如果你希望系统自动判断设备平台，也可以使用自动识别下载页。",
+    "autoDetect": "打开自动识别下载页",
+    "homebrewTitle": "Install via Homebrew",
+    "homebrewDescription": "如果你更习惯在 macOS 终端里安装，可以直接使用 Dory 的 Homebrew cask。",
+    "allPlatformsTitle": "All platforms",
+    "allPlatformsDescription": "以下链接直达当前最新 GitHub Release Tag 的安装包。",
+    "appleSilicon": "Apple Silicon",
+    "intel": "Intel",
+    "portable": "便携版",
+    "installer": "安装版",
+    "macTitle": "macOS",
+    "macAppleSiliconDescription": "适用于 Apple Silicon Mac 的 DMG 安装包。",
+    "macIntelDescription": "适用于 Intel Mac 的 DMG 安装包。",
+    "windowsTitle": "Windows",
+    "windowsPortableDescription": "无需安装的便携版 EXE。",
+    "windowsInstallerDescription": "标准安装流程的 Setup EXE。",
+    "releaseTitle": "全部版本",
+    "releaseDescription": "查看 Dory GitHub 仓库里的所有已发布版本、更新说明和备用安装资源。",
+    "releaseRowDescription": "打开完整 Release 页面，查看校验信息、发布说明和所有已发布资源。",
+    "downloadAsset": "下载",
+    "viewAllReleases": "浏览 Releases"
+  },
+  "navbar": {
+    "toggleMenu": "切换导航菜单",
+    "tagline": "AI 原生数据工作空间",
+    "githubDescription": "查看源码、进展和发布记录",
+    "theme": {
+      "toggle": "切换主题",
+      "switchToLight": "切换到浅色模式",
+      "switchToDark": "切换到深色模式",
+      "currentDark": "当前为深色主题",
+      "currentLight": "当前为浅色主题"
+    },
+    "home": "首页",
+    "blog": "博客",
+    "releaseNotes": "发布说明",
+    "download": "下载"
+  },
+  "blog": {
+    "eyebrow": "Dory 博客",
+    "title": "博客与发布说明",
+    "description": "查看 Dory 的产品更新、发布说明，以及后续分享的内容与动态。",
+    "categoryLabel": "分类",
+    "releaseNotes": "发布说明",
+    "releaseNotesDescription": "查看 Dory 每个版本的新功能、改进与修复，快速了解产品最近有哪些更新。",
+    "postCount": "{count, plural, one {# 条记录} other {# 条记录}}",
+    "latestRelease": "最新版本",
+    "readLatest": "阅读最新说明",
+    "readPost": "阅读文章",
+    "empty": "暂时还没有发布说明。",
+    "blogHome": "博客",
+    "backToReleaseNotes": "返回发布说明"
+  }
+}

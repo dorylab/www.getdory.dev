@@ -1,0 +1,618 @@
+{
+  "siteTitle": "Cockapoo Guide",
+  "menu": "Menu",
+  "aboutBreed": "About Breed",
+  "personality": "Personality",
+  "careGuide": "Care Guide",
+  "feedingTips": "Feeding Tips",
+  "trainingTips": "Training Tips",
+  "heroTitle": "Meet the Adorable Cockapoo",
+  "heroSubtitle": "The Perfect Family Companion",
+  "heroDescription": "Discover everything you need to know about this charming crossbreed between Cocker Spaniels and Poodles. From their loving personality to essential care tips.",
+  "learnMore": "Learn More",
+  "aboutTitle": "About the Cockapoo Breed",
+  "aboutDescription": "The Cockapoo is a delightful crossbreed that combines the best traits of both Cocker Spaniels and Poodles. Known for their intelligence, affectionate nature, and low-shedding coat, they make excellent family pets.",
+  "origin": "Origin",
+  "originText": "First bred in the 1960s in the United States",
+  "size": "Size",
+  "sizeText": "12-24 pounds, 10-15 inches tall",
+  "lifespan": "Lifespan",
+  "lifespanText": "12-15 years with proper care",
+  "personalityTitle": "Personality & Temperament",
+  "personalityDescription": "Cockapoos are known for their wonderful temperament and adaptability. They inherit the best qualities from both parent breeds.",
+  "friendly": "Friendly & Social",
+  "friendlyText": "Excellent with children and other pets",
+  "intelligent": "Highly Intelligent",
+  "intelligentText": "Easy to train and eager to please",
+  "energetic": "Playful & Energetic",
+  "energeticText": "Loves games and outdoor activities",
+  "careTitle": "Care & Grooming",
+  "careDescription": "Proper care and grooming are essential for keeping your Cockapoo healthy and happy. Their coat requires regular maintenance.",
+  "grooming": "Regular Grooming",
+  "groomingText": "Brush 2-3 times per week to prevent matting",
+  "exercise": "Daily Exercise",
+  "exerciseText": "30-60 minutes of activity per day",
+  "health": "Health Monitoring",
+  "healthText": "Regular vet checkups and vaccinations",
+  "feedingTitle": "Feeding Guidelines",
+  "feedingDescription": "A balanced diet is crucial for your Cockapoo's health and wellbeing. Follow these guidelines for optimal nutrition.",
+  "puppyFeeding": "Puppy Feeding",
+  "puppyFeedingText": "3-4 small meals per day with high-quality puppy food",
+  "adultFeeding": "Adult Feeding",
+  "adultFeedingText": "2 meals per day, 1/2 to 1 cup of dry food total",
+  "treats": "Treats & Snacks",
+  "treatsText": "Limit treats to 10% of daily caloric intake",
+  "trainingTitle": "Training & Socialization",
+  "trainingDescription": "Cockapoos are intelligent and eager to please, making them relatively easy to train with consistent, positive methods.",
+  "basicCommands": "Basic Commands",
+  "basicCommandsText": "Start with sit, stay, come, and down commands",
+  "houseTraining": "House Training",
+  "houseTrainingText": "Consistent schedule and positive reinforcement",
+  "socialization": "Early Socialization",
+  "socializationText": "Expose to various people, animals, and environments",
+  "breedOverviewTitle": "Complete Breed Guide",
+  "breedOverviewDescription": "Comprehensive information about Cockapoo origins, characteristics, and health considerations for prospective and current owners.",
+  "historyOrigin": "History & Origin",
+  "historyText": "The Cockapoo emerged in the 1960s as one of the first 'designer dogs,' created by crossing Cocker Spaniels with Poodles to combine the best traits of both breeds.",
+  "firstDesignerBreed": "One of the first designer dog breeds",
+  "popularSince1960s": "Popular family pet since the 1960s",
+  "crossbreedPurpose": "Bred for intelligence and low-shedding coat",
+  "physicalTraits": "Physical Characteristics",
+  "sizeWeight": "Size & Weight",
+  "sizeWeightText": "Toy: 6-12 lbs, Miniature: 13-18 lbs, Standard: 19-24 lbs",
+  "coatColors": "Coat Colors",
+  "coatColorsText": "Black, brown, red, cream, white, parti-color, phantom, merle",
+  "coatTexture": "Coat Texture",
+  "coatTextureText": "Ranges from straight to curly, typically wavy and soft",
+  "healthLifespan": "Health & Lifespan",
+  "averageLifespan": "Average Lifespan",
+  "averageLifespanText": "12-15 years with proper care, nutrition, and regular veterinary checkups.",
+  "commonHealthIssues": "Common Health Issues",
+  "earInfections": "Ear infections (due to floppy ears)",
+  "hipDysplasia": "Hip dysplasia",
+  "eyeProblems": "Progressive retinal atrophy",
+  "allergies": "Food and environmental allergies",
+  "preventiveCare": "Preventive Care",
+  "regularVetCheckups": "Annual veterinary examinations",
+  "earCleaning": "Weekly ear cleaning and inspection",
+  "dentalCare": "Regular dental care and teeth cleaning",
+  "weightManagement": "Proper weight management",
+  "detailedCareTitle": "Comprehensive Care Guide",
+  "detailedCareDescription": "Everything you need to know about grooming, nutrition, exercise, and training your Cockapoo for optimal health and happiness.",
+  "groomingTab": "Grooming",
+  "nutritionTab": "Nutrition",
+  "exerciseTab": "Exercise",
+  "trainingTab": "Training",
+  "dailyGrooming": "Daily Care",
+  "brushingFrequency": "Brush daily to prevent matting",
+  "mattingPrevention": "Pay special attention to legs and ears",
+  "eyeCleaning": "Clean eyes daily with damp cloth",
+  "earCareDaily": "Check ears for debris and odor",
+  "professionalGrooming": "Professional Care",
+  "groomingSchedule": "Professional grooming every 6-8 weeks",
+  "bathingFrequency": "Bath monthly or as needed",
+  "nailTrimming": "Trim nails every 2-3 weeks",
+  "professionalCuts": "Puppy cut, teddy bear cut, or full coat",
+  "puppyNutrition": "Puppy Nutrition (2-12 months)",
+  "puppyNutritionText": "Growing puppies need high-quality food with proper protein and fat ratios for healthy development.",
+  "highQualityPuppyFood": "Premium puppy formula with real meat",
+  "frequentMeals": "3-4 small meals per day",
+  "growthFormula": "DHA for brain and eye development",
+  "adultNutrition": "Adult Nutrition (1-7 years)",
+  "adultNutritionText": "Adult Cockapoos need balanced nutrition to maintain energy levels and healthy weight.",
+  "balancedAdultFood": "High-quality adult dog food",
+  "portionControl": "1/2 to 1 cup daily, divided into 2 meals",
+  "mealSchedule": "Feed at consistent times daily",
+  "foodsToAvoid": "Foods to Avoid",
+  "chocolate": "Chocolate (toxic to dogs)",
+  "grapes": "Grapes and raisins",
+  "onions": "Onions and garlic",
+  "xylitol": "Xylitol (artificial sweetener)",
+  "fattyFoods": "High-fat human foods",
+  "exerciseNeeds": "Exercise Requirements",
+  "exerciseNeedsText": "Cockapoos are moderately active dogs that need daily physical activity to stay healthy and happy.",
+  "recommendedActivities": "Recommended Activities",
+  "dailyWalks": "30-60 minutes of walking daily",
+  "fetchGames": "Fetch and retrieval games",
+  "swimmingActivity": "Swimming (many love water)",
+  "agilityTraining": "Agility training and obstacle courses",
+  "mentalStimulation": "Mental Stimulation",
+  "mentalStimulationText": "Mental exercise is just as important as physical activity for this intelligent breed.",
+  "puzzleToys": "Puzzle toys and treat dispensers",
+  "trainingGames": "Training sessions as mental exercise",
+  "hideAndSeek": "Hide and seek games",
+  "newEnvironments": "Exploring new environments",
+  "basicObedience": "Basic Obedience Training",
+  "essentialCommands": "Essential Commands",
+  "sitCommand": "Sit - foundation command",
+  "stayCommand": "Stay - impulse control",
+  "comeCommand": "Come - recall training",
+  "downCommand": "Down - relaxation command",
+  "heelCommand": "Heel - leash walking",
+  "positiveReinforcement": "Use positive reinforcement only",
+  "shortSessions": "Keep sessions short (5-10 minutes)",
+  "consistency": "Be consistent with commands",
+  "patience": "Practice patience and persistence",
+  "housebreaking": "House Training",
+  "regularSchedule": "Maintain consistent potty schedule",
+  "crateTraining": "Use crate training effectively",
+  "rewardSuccess": "Reward successful outdoor elimination",
+  "cleanAccidents": "Clean accidents thoroughly",
+  "socializationImportance": "Socialization",
+  "earlyExposure": "Early exposure to various stimuli",
+  "puppyClasses": "Enroll in puppy socialization classes",
+  "meetPeople": "Introduce to different people",
+  "differentEnvironments": "Experience various environments",
+  "healthVeterinaryTitle": "Health & Veterinary Care",
+  "healthVeterinaryDescription": "Essential health information, common diseases, vaccination schedules, and preventive care guidelines for your Cockapoo.",
+  "commonDiseases": "Common Health Issues",
+  "earInfectionsTitle": "Ear Infections",
+  "earInfectionsText": "Cockapoos are prone to ear infections due to their floppy ears that trap moisture and debris.",
+  "earInfectionsPrevention": "Prevention: Weekly cleaning, keep ears dry after baths",
+  "skinProblemsTitle": "Skin Problems",
+  "skinProblemsText": "Allergies and skin sensitivities can cause itching, redness, and hot spots.",
+  "skinProblemsPrevention": "Prevention: Quality diet, regular grooming, allergy testing",
+  "dentalHealthTitle": "Dental Health",
+  "dentalHealthText": "Small dogs are prone to dental issues including tartar buildup and tooth loss.",
+  "dentalHealthPrevention": "Prevention: Daily brushing, dental chews, regular cleanings",
+  "vaccinationSchedule": "Vaccination & Prevention",
+  "puppyVaccinations": "Puppy Vaccinations",
+  "firstShots": "6-8 weeks: DHPP (distemper, hepatitis, parvovirus, parainfluenza)",
+  "secondShots": "10-12 weeks: DHPP booster",
+  "thirdShots": "14-16 weeks: DHPP final booster",
+  "rabiesVaccine": "12-16 weeks: Rabies vaccine",
+  "adultVaccinations": "Adult Vaccinations",
+  "annualBoosters": "Annual DHPP boosters",
+  "rabiesBooster": "Rabies booster (1-3 years depending on local laws)",
+  "optionalVaccines": "Optional: Bordetella, Lyme disease, Canine influenza",
+  "dewormingSchedule": "Parasite Prevention",
+  "puppyDeworming": "Puppies: Deworming every 2-3 weeks until 6 months",
+  "adultDeworming": "Adults: Annual fecal exam and deworming as needed",
+  "fleaTreatment": "Year-round flea and tick prevention",
+  "spayingNeutering": "Spaying & Neutering",
+  "optimalTiming": "Optimal Timing",
+  "optimalTimingText": "Generally recommended between 6-12 months, consult with your veterinarian for the best timing.",
+  "healthBenefits": "Health Benefits",
+  "cancerPrevention": "Reduces risk of reproductive cancers",
+  "behaviorImprovement": "May reduce marking and roaming behaviors",
+  "populationControl": "Helps control pet overpopulation",
+  "breedingConsiderations": "Breeding Considerations",
+  "breedingConsiderationsText": "Only breed healthy, genetically tested dogs with good temperaments.",
+  "regularCheckups": "Regular Health Checkups",
+  "puppyCheckups": "Puppy Checkups",
+  "puppyCheckupsText": "Every 3-4 weeks until 16 weeks old for vaccinations and health monitoring.",
+  "adultCheckups": "Adult Checkups",
+  "adultCheckupsText": "Annual wellness exams including blood work and dental evaluation.",
+  "seniorCheckups": "Senior Checkups",
+  "seniorCheckupsText": "Bi-annual checkups for dogs over 7 years old to catch age-related issues early.",
+  "warningSignsTitle": "Warning Signs",
+  "appetiteChanges": "Changes in appetite or water consumption",
+  "behaviorChanges": "Unusual behavior or lethargy",
+  "physicalSymptoms": "Vomiting, diarrhea, or difficulty breathing",
+  "lifestyleInteractionTitle": "Lifestyle & Social Interaction",
+  "lifestyleInteractionDescription": "How Cockapoos interact with family members, other pets, and adapt to different living situations and travel.",
+  "familyCompatibility": "Family Compatibility",
+  "withChildren": "With Children",
+  "withChildrenText": "Cockapoos are excellent with children of all ages, known for their gentle and patient nature.",
+  "gentleNature": "Naturally gentle and patient",
+  "playfulEnergy": "Matches children's energy levels",
+  "patientTemperament": "Tolerant of children's behavior",
+  "withCats": "With Cats",
+  "withCatsText": "Generally good with cats, especially when socialized early. Proper introduction is key.",
+  "catIntroductionTips": "Tip: Introduce gradually and supervise initial interactions",
+  "withOtherDogs": "With Other Dogs",
+  "withOtherDogsText": "Usually friendly with other dogs due to their social nature and good breeding.",
+  "dogSocializationTips": "Tip: Early socialization helps ensure good dog-to-dog relationships",
+  "livingEnvironment": "Living Environment",
+  "apartmentLiving": "Apartment Living",
+  "apartmentLivingText": "Well-suited for apartment living due to their moderate size and adaptable nature.",
+  "moderateSize": "Compact size suitable for smaller spaces",
+  "adaptableNature": "Adapts well to indoor living",
+  "exerciseNeeded": "Requires daily walks and playtime",
+  "houseWithYard": "House with Yard",
+  "houseWithYardText": "Thrives in homes with yards where they can play and explore safely.",
+  "fencedYard": "Secure fencing recommended",
+  "safeEnvironment": "Remove toxic plants and hazards",
+  "outdoorPlay": "Enjoys outdoor games and exploration",
+  "climateConsiderations": "Climate Considerations",
+  "climateConsiderationsText": "Adaptable to various climates but may need protection in extreme weather.",
+  "travelingWithCockapoo": "Traveling with Your Cockapoo",
+  "carTravel": "Car Travel",
+  "carSafety": "Use proper car restraints or carriers",
+  "frequentBreaks": "Stop every 2-3 hours for breaks",
+  "comfortItems": "Bring familiar blankets and toys",
+  "airTravel": "Air Travel",
+  "carrierRequirements": "Airline-approved carrier for cabin travel",
+  "healthCertificate": "Health certificate from veterinarian",
+  "stressReduction": "Consider calming aids for anxious dogs",
+  "accommodations": "Pet-Friendly Accommodations",
+  "accommodationsText": "Research pet policies and fees in advance, bring vaccination records.",
+  "mentalHealthWellbeing": "Mental Health & Wellbeing",
+  "separationAnxiety": "Separation Anxiety",
+  "separationAnxietyText": "Cockapoos can develop separation anxiety due to their strong bond with owners.",
+  "preventionStrategies": "Prevention Strategies",
+  "gradualTraining": "Gradual alone-time training",
+  "comfortZone": "Create a comfortable safe space",
+  "mentalStimulationToys": "Provide engaging toys when alone",
+  "routineEstablishment": "Establish consistent routines",
+  "stressManagement": "Stress Management",
+  "calmEnvironment": "Maintain calm, predictable environment",
+  "consistentRoutine": "Keep consistent daily routines",
+  "positiveAssociation": "Create positive associations with alone time",
+  "landing": {
+    "heroTagline": "AI-native workflow",
+    "heroTitle": "<brand>AI-native</brand> Data Studio",
+    "heroDescription": "Connect databases and use SQL, AI, and visualization to explore, analyze, and reuse.",
+    "heroSubtitle": "Query databases, understand tables, and talk to data - <brand>All in One</brand> modern workspace.",
+    "heroExperienceTitle": "No download needed, experience Dory in 30 seconds",
+    "heroExperienceDescription": "Use a public dataset to experience SQL + AI",
+    "heroExperienceCta": "Try the online demo",
+    "heroPreviewAlt": "Dory workspace preview",
+    "heroImageAlt": "Dory workspace hero visual",
+    "tryDory": "Try Dory",
+    "downloadLatest": "Download latest",
+    "downloadForMac": "Download macOS",
+    "downloadForWindows": "Download for Windows",
+    "allPlatform": "All Platform",
+    "viewOnGitHub": "View on GitHub",
+    "heroCards": {
+      "aiChat": {
+        "title": "AI copilot",
+        "description": "Generate SQL and explain results from the current connection, schema, and query context."
+      },
+      "sqlConsole": {
+        "title": "SQL workbench",
+        "description": "Keep the editor, schema browser, query results, and execution history in one workflow."
+      },
+      "teamFlow": {
+        "title": "Save & reuse",
+        "description": "Save useful queries and result context so one-off exploration becomes a reusable workflow."
+      }
+    },
+    "aiNative": {
+      "badge": "AI-native workflow",
+      "heading": "<ask>Ask.</ask> <act>Act.</act> <stay>Stay grounded.</stay>",
+      "description": "No context switching. No hallucinated fields. Just accurate SQL and real results.",
+      "tabs": {
+        "ask": {
+          "label": "Ask",
+          "title": "Ask anything. No made-up columns.",
+          "description": "Schema-aware autocomplete and SQL generation keep the AI honest — every suggestion is based on real tables, real fields, and real joins.",
+          "pills": {
+            "pill1": "Schema-aware",
+            "pill2": "No made-up fields",
+            "pill3": "Runnable SQL"
+          }
+        },
+        "actions": {
+          "label": "Actions",
+          "title": "Do more than chat — take action.",
+          "description": "Run transformations, save and share queries, and trigger common analytics tasks right from the workflow — no copy-paste, no tab hopping.",
+          "pills": {
+            "pill1": "No tab hopping",
+            "pill2": "Save & share",
+            "pill3": "Quick analytics"
+          }
+        },
+        "context": {
+          "label": "Context",
+          "title": "Context that keeps you in control.",
+          "description": "Dory tracks what you’re working on — tables, relationships, and recent queries — so results stay consistent across Ask, Action, and Context.",
+          "pills": {
+            "pill1": "Tables & relationships",
+            "pill2": "Consistent results",
+            "pill3": "Trustworthy joins"
+          }
+        }
+      }
+    },
+    "tableOverview": {
+      "badge": "AI Table Overview",
+      "title": "Auto table intelligence that frames every column and distribution.",
+      "description": "Automatically generates table-level overviews, semantic annotations, and usage cues so AI understands business data before it writes SQL.",
+      "insights": {
+        "summary": {
+          "title": "Auto summary & semantics",
+          "description": "Dory reads counts, freshness, and relationships to describe what a table holds and why it matters."
+        },
+        "fields": {
+          "title": "Field meanings & signal",
+          "description": "Each column gets a short semantic note plus hints about ranges, cardinality, and helpful joins."
+        },
+        "context": {
+          "title": "Distribution cues & SQL context",
+          "description": "Data distributions, skew, and business notes supply the grounded context AI needs for trustworthy SQL."
+        }
+      },
+      "screenshotAlt": "AI table overview UI"
+    },
+    "chatbot": {
+      "badge": "Database chat",
+      "title": "Chat with Your Database",
+      "description": "Dory’s Chatbot is not a generic AI assistant. It’s a database-native copilot that understands your schema, writes real SQL, and helps you explore data through conversation.",
+      "bullets": {
+        "schema": "Schema-aware conversations with real tables",
+        "sql": "Natural language to executable SQL",
+        "context": "Multi-turn, context-aware analysis",
+        "visualization": "Automatic visualization and explanations"
+      },
+      "multilingual": "Supports multiple languages",
+      "callout": {
+        "label": "Live chat",
+        "title": "Grounded answers, every time",
+        "description": "Queries are written with real fields, real joins, and real confidence."
+      }
+    },
+    "coreWorkspace": {
+      "badge": "Core workspace",
+      "title": "Built for real SQL work — <brand>not just chat</brand>.",
+      "description": "A fast editor, a trustworthy schema view, and saved work you can reuse — the foundation of daily data work.",
+      "screenshotAlt": "Dory workspace screenshot",
+      "highlights": {
+        "item1": "Schema-aware autocomplete with syntax guidance.",
+        "item2": "Multi-tab, multi-result-set query workflows.",
+        "item3": "High-performance result grids with sorting, filtering, and fast navigation.",
+        "item4": "Designed for large data volumes and complex analytics."
+      },
+      "features": {
+        "editor": {
+          "title": "SQL Editor that feels native",
+          "description": "Fast, keyboard-first editing with schema-aware autocomplete — so you can write correct SQL without breaking flow.",
+          "bullets": {
+            "bullet1": "Schema-aware autocomplete",
+            "bullet2": "Keyboard-first workflow",
+            "bullet3": "Runs exactly what you write"
+          }
+        },
+        "schema": {
+          "title": "Schema Explorer you can trust",
+          "description": "Browse tables, columns, and types in context — the same grounding the AI uses to avoid hallucinated fields.",
+          "bullets": {
+            "bullet1": "Tables, columns, types",
+            "bullet2": "Quick filtering",
+            "bullet3": "Grounding for AI"
+          }
+        },
+        "saved": {
+          "title": "Saved Queries & Results",
+          "description": "Turn one-off exploration into a workflow. Save, revisit, and share the queries that matter.",
+          "bullets": {
+            "bullet1": "Save & organize",
+            "bullet2": "Reuse results",
+            "bullet3": "Share with your team"
+          }
+        }
+      }
+    },
+    "databaseSupport": {
+      "badge": "DATABASE SUPPORT",
+      "title": "Connect the data stack you already use.",
+      "description": "Supports PostgreSQL, MySQL, SQLite, MariaDB, Neon, and ClickHouse.\nA modern workspace for querying, exploring, and analyzing your data.",
+      "panelTitle": "Supported Databases",
+      "highlightTitle": "⭐ Advanced Experience for ClickHouse",
+      "highlightFeatures": [
+        "Deep schema support",
+        "Query analytics dashboard",
+        "Team-ready workspace"
+      ],
+      "comingNextLabel": "Coming Next"
+    },
+    "moreFeatures": {
+      "badge": "More features",
+      "title": "SQL workspace designed for everyday data work",
+      "description": "Local-first, responsive",
+      "features": {
+        "secure": {
+          "title": "Local-first security",
+          "description": "Queries, personal settings, and workflows stay on your computer so privacy and control never leave your hands."
+        },
+        "connectivity": {
+          "title": "SSH Tunneling",
+          "description": "SSH tunnels wrap every connection in strong encryption, so your credentials, queries, and data never leave your network in plain text."
+        },
+        "save": {
+          "title": "Save Queries & Workflows",
+          "description": "Save queries, context, and results so you can rerun and build on work again and again."
+        },
+        "modern": {
+          "title": "Modern experience",
+          "description": "A clean, restrained interface that keeps you immersed in the rhythm of your work."
+        },
+        "themes": {
+          "title": "Bright / Dark & Multi Themes",
+          "description": "Light, dark, and multiple accent themes adapt to your environment while keeping the visuals readable and comfortable."
+        },
+        "open-source": {
+          "title": "Open Source",
+          "description": "Apache 2.0 licensed, extensible, and ready for self-hosting."
+        }
+      }
+    },
+    "cta": {
+      "badge": "Try Dory in minutes",
+      "title": "Start now",
+      "subtitle": "The AI-native SQL workspace for modern databases.",
+      "description": "Download Dory now, or deploy it locally with Docker and connect it to your real database.",
+      "dockerDeploy": "Docker Deploy",
+      "quickStart": "Docker Deploy",
+      "commands": {
+        "copy": "Copy command",
+        "copied": "Copied"
+      },
+      "tip": "After startup, add your database connection in the UI."
+    },
+    "faq": {
+      "headerLabel": "FAQ",
+      "title": "Questions and Answers",
+      "items": {
+        "free": {
+          "question": "Is Dory free to use?",
+          "answer": {
+            "paragraph1": "Yes. Dory provides a free version that you can use for personal projects and local workflows.",
+            "paragraph2": "As the project evolves, we will explore paid capabilities and team features, but the core SQL workspace will remain free."
+          }
+        },
+        "aiCopilot": {
+          "question": "How does the AI Copilot work?",
+          "answer": {
+            "paragraph1": "Dory’s AI Copilot understands your database schema, tables, and query context to help generate SQL, explain queries, and explore data faster.",
+            "paragraph2": "Instead of generic prompts, Dory provides structured context from your workspace so AI responses are more accurate and practical."
+          }
+        },
+        "providers": {
+          "question": "Which AI providers are supported?",
+          "answer": {
+            "paragraph1": "The desktop version comes with OpenAI models built in for a better out-of-the-box experience. The open source version supports multiple model providers through configurable environment variables, including OpenAI, Anthropic, Google Gemini, and more.",
+            "paragraph2": "You can also route requests through your own AI Gateway or enterprise infrastructure."
+          }
+        },
+        "databases": {
+          "question": "What databases does Dory support?",
+          "answer": {
+            "paragraph1": "Dory currently supports ClickHouse, PostgreSQL, Neon, MySQL, MariaDB, and SQLite, with a deeply integrated experience for ClickHouse.",
+            "paragraph2": "DuckDB is planned, and we will continue expanding support to provide a consistent AI-native workspace across modern databases."
+          }
+        },
+        "openSource": {
+          "question": "Is Dory open source?",
+          "answer": {
+            "paragraph1": "Dory is licensed under Apache 2.0, is developer-friendly, and can be self-hosted.",
+            "paragraph2": "We welcome community contributions, whether in code, documentation, or new feature ideas."
+          }
+        },
+        "dataSafety": {
+          "question": "Is my data safe?",
+          "answer": {
+            "paragraph1": "Dory follows a local-first philosophy. Your connections and workspace metadata can stay on your machine when using the desktop version.",
+            "paragraph2": "AI features only send the minimum required context based on your configuration. At the moment, Dory uses OpenAI models."
+          }
+        }
+      }
+    },
+    "deployment": {
+      "badge": "Databases & Deployment",
+      "heading": "Run Dory where <brand>your data</brand> lives.",
+      "description": "Connect to real databases and deploy in your environment — local, Docker, or fully self-hosted.",
+      "databases": {
+        "title": "Databases",
+        "description": "Schema-aware, query-native integrations.",
+        "shield": "No forced uploads. Dory runs in your environment and talks to your database over the connections you control.",
+        "items": {
+          "clickhouse": {
+            "note": "Primary experience"
+          },
+          "postgres": {
+            "note": "In progress"
+          },
+          "mysql": {
+            "note": "In progress"
+          },
+          "sqlite": {
+            "note": "In progress"
+          }
+        }
+      },
+      "deployment": {
+        "title": "Deployment",
+        "description": "Choose local-first speed or self-hosted control.",
+        "options": {
+          "local": {
+            "title": "Local app",
+            "description": "Run on your machine for the fastest, simplest setup."
+          },
+          "docker": {
+            "title": "Docker",
+            "description": "Self-host in minutes with a single container."
+          },
+          "selfhost": {
+            "title": "Self-hosted",
+            "description": "Deploy alongside your database in your own environment."
+          },
+          "cloud": {
+            "title": "Your cloud",
+            "description": "Run where your data lives — VPC, VPN, or internal network."
+          }
+        }
+      },
+      "status": {
+        "stable": "Stable",
+        "beta": "Beta",
+        "planned": "Planned"
+      },
+      "extra": "Works with private networks (VPC/VPN) and self-managed databases. You keep the keys, the network, and the data path.",
+      "footer": "Want a database integration next? <open>Open an issue on GitHub</open>."
+    }
+  },
+  "downloadPage": {
+    "eyebrow": "Dory Download",
+    "title": "Thanks for downloading {product}",
+    "description": "Your {platform} download will start automatically. If it doesn't, use the direct download button below.",
+    "statusPreparing": "Preparing download",
+    "statusStarted": "Download started",
+    "cardTitle": "Starting your {platform} installer",
+    "cardDescription": "This usually begins within a few seconds. If your browser blocks the download, use the manual link below.",
+    "manualDownload": "Download now",
+    "retryFromRelease": "Retry from Releases",
+    "fallbackLink": "If the download didn't start, click here for the {platform} build",
+    "tip": "Need another platform or the full changelog? Open the latest release page.",
+    "viewAllReleases": "View all downloads"
+  },
+  "downloadCenter": {
+    "eyebrow": "All Platform",
+    "title": "Download Dory",
+    "description": "Download the latest {product} build for your machine, install via Homebrew, or open the full release archive on GitHub.",
+    "latestVersion": "Latest version",
+    "tip": "Need a quick handoff instead? Use the auto-detect page and let Dory choose the best installer for this device.",
+    "autoDetect": "Open auto-detect download",
+    "homebrewTitle": "Install via Homebrew",
+    "homebrewDescription": "Prefer a terminal install on macOS? Use the Dory cask and keep updates aligned with Homebrew.",
+    "allPlatformsTitle": "All platforms",
+    "allPlatformsDescription": "Direct downloads from the latest GitHub release tag.",
+    "appleSilicon": "Apple Silicon",
+    "intel": "Intel",
+    "portable": "Portable",
+    "installer": "Installer",
+    "macTitle": "macOS",
+    "macAppleSiliconDescription": "Disk image for Apple Silicon Macs.",
+    "macIntelDescription": "Disk image for Intel Macs.",
+    "windowsTitle": "Windows",
+    "windowsPortableDescription": "Portable executable without an installer.",
+    "windowsInstallerDescription": "Setup executable for a standard Windows install.",
+    "releaseTitle": "All releases",
+    "releaseDescription": "Browse every published build, release note, and fallback asset from the Dory GitHub repository.",
+    "releaseRowDescription": "Open the full release page for checksums, release notes, and every published asset.",
+    "downloadAsset": "Download",
+    "viewAllReleases": "Browse releases"
+  },
+  "navbar": {
+    "toggleMenu": "Toggle navigation menu",
+    "tagline": "AI native data workspace",
+    "githubDescription": "Browse release updates",
+    "theme": {
+      "toggle": "Toggle theme",
+      "switchToLight": "Switch to light mode",
+      "switchToDark": "Switch to dark mode",
+      "currentDark": "Currently using dark theme",
+      "currentLight": "Currently using light theme"
+    },
+    "home": "Home",
+    "blog": "Blog",
+    "releaseNotes": "Release Notes",
+    "download": "Download"
+  },
+  "blog": {
+    "eyebrow": "Dory Blog",
+    "title": "Blog & release notes",
+    "description": "Follow Dory product updates, release notes, and future writing from the team.",
+    "categoryLabel": "Category",
+    "releaseNotes": "Release Notes",
+    "releaseNotesDescription": "See what shipped in each Dory release, including new features, improvements, and fixes.",
+    "postCount": "{count, plural, one {# note} other {# notes}}",
+    "latestRelease": "Latest release",
+    "readLatest": "Read latest note",
+    "readPost": "Read post",
+    "empty": "No release notes are available yet.",
+    "blogHome": "Blog",
+    "backToReleaseNotes": "Back to release notes"
+  }
+}
