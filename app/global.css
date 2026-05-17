@@ -54,7 +54,7 @@
 
 :root {
   --spacing-page: 1300px;
-  --dory-brand: #08111f;
+  --dory-brand: #26251e;
   --dory-brand-hover: #172033;
   --dory-brand-foreground: #ffffff;
   --dory-brand-secondary: #24496f;
@@ -71,7 +71,7 @@
   --dory-page: #f7f7f3;
   --dory-page-wash: #fbfbf7;
   --dory-page-panel: #ffffff;
-  --dory-landing-foreground: #08111f;
+  --dory-landing-foreground: #26251e;
   --dory-landing-muted: #42526b;
   --dory-warm-accent: #d2b46f;
   --dory-danger-accent: #ef6b5b;
@@ -147,7 +147,7 @@
   --dory-warm: #f7f1e8;
   --dory-gold: var(--dory-warm-accent);
   --dory-panel: var(--dory-page-panel);
-  --dory-background-color: var(--dory-page-panel);
+  --dory-background-color: var(--dory-page);
   --dory-background-image: none;
   --dory-grid-line: var(--dory-grid-faint);
   --dory-hero-background: var(--dory-page-panel);
@@ -281,7 +281,7 @@
   --dory-muted: var(--dory-landing-muted);
   --dory-line: var(--dory-brand-line);
   --dory-panel: var(--dory-page-panel);
-  --dory-background-color: var(--dory-page-panel);
+  --dory-background-color: var(--dory-page);
   --dory-background-image: none;
   --dory-grid-line: var(--dory-grid-faint);
   --dory-hero-background: var(--dory-page-panel);
@@ -329,7 +329,7 @@
     --dory-muted: var(--dory-landing-muted);
     --dory-line: var(--dory-brand-line);
     --dory-panel: var(--dory-page-panel);
-    --dory-background-color: var(--dory-page-panel);
+    --dory-background-color: var(--dory-page);
     --dory-background-image: none;
     --dory-grid-line: var(--dory-grid-faint);
     --dory-hero-background: var(--dory-page-panel);
@@ -458,15 +458,15 @@ a {
 }
 
 #nd-nav > div {
-  border-bottom-color: transparent;
-  background: var(--dory-page);
-  backdrop-filter: none;
+  border-bottom-color: transparent !important;
+  background: var(--dory-page) !important;
+  backdrop-filter: none !important;
 }
 
 #nd-nav > div:hover,
 #nd-nav:focus-within > div {
-  background: var(--dory-page);
-  backdrop-filter: none;
+  background: var(--dory-page) !important;
+  backdrop-filter: none !important;
 }
 
 .dory-button-primary {
@@ -507,9 +507,9 @@ a {
 
 .dory-docs-shell header,
 .dory-docs-shell [data-fd-navbar] {
-  border-color: transparent;
-  background: var(--dory-page);
-  backdrop-filter: none;
+  border-color: transparent !important;
+  background: var(--dory-page) !important;
+  backdrop-filter: none !important;
 }
 
 .dory-docs-shell header a[data-active='true'],

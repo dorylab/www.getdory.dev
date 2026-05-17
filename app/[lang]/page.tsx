@@ -88,8 +88,8 @@ export default async function Page({ params }: PageProps) {
       <main className="min-h-screen overflow-x-clip bg-dory-page px-4 pt-0 pb-20 text-dory-ink sm:px-6 md:px-10">
         <div className="mx-auto flex w-full max-w-[1300px] flex-col">
           <section className="relative grid gap-10 border-b border-slate-950/10 bg-dory-page pt-6 pb-14 md:min-h-[760px] md:grid-cols-[0.84fr_1.16fr] md:items-center md:pt-8 md:pb-16 lg:min-h-[820px] dark:border-white/12">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(circle_at_72%_18%,rgba(36,73,111,0.08),transparent_34%),radial-gradient(circle_at_46%_12%,rgba(210,180,111,0.08),transparent_30%)] dark:bg-[radial-gradient(circle_at_72%_18%,rgba(159,177,207,0.12),transparent_34%),radial-gradient(circle_at_46%_12%,rgba(230,211,173,0.08),transparent_30%)]" />
-            <div className="pointer-events-none absolute inset-0 opacity-60 bg-[image:var(--dory-grid-background)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.72),rgba(0,0,0,0.42)_48%,transparent_82%)]" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(circle_at_72%_18%,rgba(36,73,111,0.08),transparent_34%),radial-gradient(circle_at_46%_12%,rgba(210,180,111,0.08),transparent_30%)] dark:bg-[radial-gradient(circle_at_72%_18%,rgba(96,165,250,0.08),transparent_34%),radial-gradient(circle_at_46%_12%,rgba(230,211,173,0.04),transparent_30%)]" />
+            <div className="pointer-events-none absolute inset-0 opacity-60 dark:opacity-45 bg-[image:var(--dory-grid-background)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.72),rgba(0,0,0,0.42)_48%,transparent_82%)]" />
 
             <div className="relative z-10">
               <SectionLabel>{t("heroTagline")}</SectionLabel>
