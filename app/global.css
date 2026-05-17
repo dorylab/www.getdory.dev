@@ -457,6 +457,18 @@ a {
   background: var(--dory-surface-hover);
 }
 
+#nd-nav > div {
+  border-bottom-color: transparent;
+  background: var(--dory-page);
+  backdrop-filter: none;
+}
+
+#nd-nav > div:hover,
+#nd-nav:focus-within > div {
+  background: var(--dory-page);
+  backdrop-filter: none;
+}
+
 .dory-button-primary {
   background: var(--dory-ink);
   color: var(--dory-ink-inverse);
@@ -495,9 +507,9 @@ a {
 
 .dory-docs-shell header,
 .dory-docs-shell [data-fd-navbar] {
-  border-color: var(--dory-line);
-  background: color-mix(in oklab, var(--dory-background-color) 92%, transparent);
-  backdrop-filter: blur(16px) saturate(150%);
+  border-color: transparent;
+  background: var(--dory-page);
+  backdrop-filter: none;
 }
 
 .dory-docs-shell header a[data-active='true'],

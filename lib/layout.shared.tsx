@@ -33,6 +33,7 @@ export function baseOptions(locale: string): BaseLayoutProps {
     i18n: false,
     githubUrl: undefined,
     nav: {
+      transparentMode: 'always',
       title: (
         <span className="flex items-center gap-2 font-semibold">
           <img
