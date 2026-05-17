@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 
+import FooterSection from '@/components/sections/footer';
 import { baseOptions } from '@/lib/layout.shared';
 import { source } from '@/lib/source';
 
@@ -31,6 +32,7 @@ export default async function DocsLayoutPage({
       >
         {children}
       </DocsLayout>
+      <FooterSection />
     </HomeLayout>
   );
 }

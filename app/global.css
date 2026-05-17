@@ -483,14 +483,15 @@ a {
 .dory-docs-shell [data-fd-navbar] a[data-active='true'],
 .dory-docs-shell [data-fd-navbar] a[aria-current='page'] {
   color: var(--dory-brand);
-  box-shadow: inset 0 -2px 0 var(--dory-brand-accent);
+  box-shadow: none;
 }
 
 .dory-docs-shell header a[data-active='true']::after,
 .dory-docs-shell header a[aria-current='page']::after,
 .dory-docs-shell [data-fd-navbar] a[data-active='true']::after,
 .dory-docs-shell [data-fd-navbar] a[aria-current='page']::after {
-  background: var(--dory-brand-accent);
+  display: none;
+  content: none;
 }
 
 .dory-docs-shell #nd-sidebar {

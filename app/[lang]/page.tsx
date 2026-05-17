@@ -16,6 +16,7 @@ import { getTranslations } from "next-intl/server";
 
 import { DownloadButton } from "@/components/landing/download-button";
 import { MarketingLayout } from "@/components/marketing-layout";
+import FooterSection from "@/components/sections/footer";
 import { Link } from "@/i18n/navigation";
 import { getLatestReleaseDownloads } from "@/lib/github-release";
 import AiTablePreview from "@/public/ai-table-overview.png";
@@ -82,9 +83,9 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <MarketingLayout lang={lang}>
-      <main className="min-h-screen overflow-x-clip bg-dory-page px-4 pt-14 pb-20 text-dory-ink sm:px-6 md:px-10">
+      <main className="min-h-screen overflow-x-clip bg-dory-page px-4 pt-0 pb-20 text-dory-ink sm:px-6 md:px-10">
         <div className="mx-auto flex w-full max-w-[1180px] flex-col">
-          <section className="relative grid min-h-[calc(100vh-4rem)] gap-10 border-b border-slate-950/10 pt-12 pb-14 md:grid-cols-[0.84fr_1.16fr] md:items-center md:pt-16 md:pb-18 dark:border-white/12">
+          <section className="relative grid gap-10 border-b border-slate-950/10 pt-6 pb-14 md:min-h-[760px] md:grid-cols-[0.84fr_1.16fr] md:items-center md:pt-8 md:pb-16 lg:min-h-[820px] dark:border-white/12">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[image:var(--dory-brand-glow)]" />
             <div className="pointer-events-none absolute inset-0 bg-[image:var(--dory-grid-background)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent_78%)]" />
 
@@ -123,39 +124,14 @@ export default async function Page({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="relative z-10 min-w-0">
-              <div className="absolute -top-8 right-8 hidden w-48 border border-dory-brand-line bg-dory-brand-soft p-4 text-sm shadow-[var(--dory-shadow-floating)] md:block">
-                <div className="mb-3 flex items-center gap-2 text-xs font-semibold tracking-wide text-brand uppercase">
-                  <Bot className="size-3.5" />
-                  {t("heroContextReady")}
-                </div>
-                <div className="space-y-2 text-dory-muted">
-                  <div className="h-2 w-28 bg-brand/20" />
-                  <div className="h-2 w-36 bg-brand/14" />
-                  <div className="h-2 w-24 bg-brand/14" />
-                </div>
-              </div>
-              <div className="border border-dory-line bg-dory-brand-soft p-3 shadow-[var(--dory-shadow-panel)]">
-                <div className="mb-3 flex items-center justify-between border border-dory-line bg-dory-surface px-3 py-2">
-                  <div className="flex items-center gap-1.5">
-                    <span className="size-2.5 bg-[var(--dory-danger-accent)]" />
-                    <span className="size-2.5 bg-[var(--dory-warm-accent)]" />
-                    <span className="size-2.5 bg-brand-secondary" />
-                  </div>
-                  <div className="hidden text-xs font-medium text-dory-muted sm:block">
-                    {t("heroWindowLabel")}
-                  </div>
-                </div>
+            <div className="relative z-10 min-w-0 md:h-[520px] lg:h-[580px]">
+              <div className="border border-dory-line bg-dory-brand-soft p-3 shadow-[var(--dory-shadow-panel)] md:absolute md:top-1/2 md:left-0 md:w-[760px] md:-translate-y-1/2 md:rounded-[28px] md:p-0 lg:w-[900px] xl:w-[980px]">
                 <Image
                   src={HeroPreview}
                   alt={t("heroPreviewAlt")}
                   priority
-                  className="aspect-[1.45/1] w-full border border-dory-line object-cover object-left-top"
+                  className="aspect-[1.45/1] w-full border border-dory-line object-cover object-left-top md:rounded-[28px]"
                 />
-              </div>
-              <div className="absolute -bottom-7 left-8 hidden border border-dory-line bg-dory-surface px-4 py-3 text-xs font-medium text-dory-muted shadow-[var(--dory-shadow-floating)] md:flex md:items-center md:gap-3">
-                <TerminalSquare className="size-4 text-brand" />
-                {t("heroWorkflowNote")}
               </div>
             </div>
           </section>
@@ -419,6 +395,7 @@ export default async function Page({ params }: PageProps) {
           </section>
         </div>
       </main>
+      <FooterSection />
     </MarketingLayout>
   );
 }

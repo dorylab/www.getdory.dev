@@ -7,6 +7,7 @@ import { getTranslations } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
 import { MarketingLayout } from "@/components/marketing-layout";
+import FooterSection from "@/components/sections/footer";
 import {
   formatReleaseLabel,
   getBlogCategories,
@@ -174,6 +175,7 @@ export default async function BlogIndexPage({
         </section>
       </div>
     </main>
+    <FooterSection />
     </MarketingLayout>
   );
 }

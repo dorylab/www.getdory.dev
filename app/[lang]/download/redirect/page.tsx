@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { DownloadRedirect } from "@/components/landing/download-redirect";
 import { buttonVariants } from "@/components/landing/variants";
 import { MarketingLayout } from "@/components/marketing-layout";
+import FooterSection from "@/components/sections/footer";
 import { getLatestReleaseDownloads } from "@/lib/github-release";
 import { cn } from "@/lib/utils";
 
@@ -108,6 +109,7 @@ export default async function DownloadRedirectPage({
         </section>
       </div>
     </main>
+    <FooterSection />
     </MarketingLayout>
   );
 }

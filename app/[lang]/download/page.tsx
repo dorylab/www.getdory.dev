@@ -10,6 +10,7 @@ import { getTranslations } from "next-intl/server";
 import { DownloadButton } from "@/components/landing/download-button";
 import { DownloadCommandBar } from "@/components/landing/download-command-bar";
 import { MarketingLayout } from "@/components/marketing-layout";
+import FooterSection from "@/components/sections/footer";
 import { getLatestReleaseDownloads } from "@/lib/github-release";
 
 export default async function DownloadPage({
@@ -206,6 +207,7 @@ export default async function DownloadPage({
           </section>
         </div>
       </main>
+      <FooterSection />
     </MarketingLayout>
   );
 }
