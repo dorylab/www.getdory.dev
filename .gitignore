@@ -5,3 +5,5 @@ out
 dist
 tsconfig.tsbuildinfo
 .DS_Store
+.env
+.env*.local

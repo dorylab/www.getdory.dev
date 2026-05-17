@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { DocsBody, DocsPage } from 'fumadocs-ui/layouts/docs/page';
 
+import { Feedback } from '@/components/feedback/client';
 import { getMDXComponents } from '@/mdx-components';
 import { source } from '@/lib/source';
 
@@ -55,6 +56,7 @@ export default async function DocPage({
             a: createRelativeLink(source, page)
           })}
         />
+        <Feedback locale={lang} />
       </DocsBody>
     </DocsPage>
   );
