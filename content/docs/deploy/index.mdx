@@ -14,14 +14,14 @@ A shared Dory deployment usually starts with runtime, persistence, public URL, a
 | [Self-Hosting](/en/docs/deploy/self-hosting) | You are planning a team deployment | Architecture choices, persistence decisions, rollout checks, and operational boundaries. |
 | [Docker](/en/docs/deploy/docker) | You need concrete container commands | `docker run`, `.env`, ports, volumes, Postgres mode, and upgrades. |
 | [Environment Variables](/en/docs/deploy/environment-variables) | You need the configuration reference | Required secrets, application database, AI, auth, email, OAuth, and related variables. |
-| [Auth / SSO](/en/docs/deploy/auth-sso) | You are deciding how users sign in | Email login, verification, OAuth, initial admin, provisioning, and offboarding. |
+| [Auth](/en/docs/deploy/auth-sso) | You are deciding how users sign in | Email login, verification, OAuth, initial admin, provisioning, and offboarding. |
 
 ## Recommended Order
 
 1. Read [Self-Hosting](/en/docs/deploy/self-hosting) to choose storage, network, HTTPS, auth, and rollout boundaries.
 2. Use [Docker](/en/docs/deploy/docker) for the actual container start command.
 3. Fill in required values from [Environment Variables](/en/docs/deploy/environment-variables).
-4. Configure login rules in [Auth / SSO](/en/docs/deploy/auth-sso).
+4. Configure login rules in [Auth](/en/docs/deploy/auth-sso).
 5. Validate with a test database before adding production connections.
 
 ## Launch Checklist

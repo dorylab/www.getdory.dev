@@ -1,9 +1,9 @@
 ---
-title: 认证与 SSO 配置
+title: 认证配置
 description: 规划 Dory 团队部署中的邮箱登录、邮箱验证、GitHub 登录、Google 登录、用户开通和离职回收。
 ---
 
-# 认证与 SSO 配置
+# 认证配置
 
 Dory 团队部署前，需要先确定用户如何登录、谁可以加入、如何邀请成员，以及成员离职或不再需要访问时如何回收权限。
 
@@ -93,7 +93,7 @@ GOOGLE_CLIENT_SECRET=replace_with_client_secret
 
 - 撤销数据库账号或角色。
 - 撤销 MCP Token。
-- 撤销 OAuth 或 SSO 访问。
+- 撤销 OAuth 访问。
 - 轮换共享 Secret。
 - 检查 Saved Queries 和连接是否依赖该成员个人账号。
 
@@ -107,9 +107,9 @@ GOOGLE_CLIENT_SECRET=replace_with_client_secret
 
 检查 `RESEND_API_KEY`、`EMAIL_FROM`、发件域名验证状态，以及邮箱垃圾箱。
 
-### 是否必须启用 SSO？
+### 是否必须启用 OAuth？
 
-小团队可以先使用邮箱登录和初始化管理员。更大团队建议接入统一 OAuth / SSO，并建立离职回收流程。
+不必须。小团队可以先使用邮箱登录和初始化管理员；需要统一身份入口时再启用 GitHub 或 Google OAuth。
 
 ## 相关文档
 

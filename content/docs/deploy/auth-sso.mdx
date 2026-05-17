@@ -1,9 +1,9 @@
 ---
-title: Dory Auth and SSO Configuration
+title: Auth
 description: Plan email login, email verification, GitHub login, Google login, user provisioning, and offboarding for Dory team deployments.
 ---
 
-# Dory Auth and SSO Configuration
+# Auth
 
 Before rolling Dory out to a team, decide how users sign in, who can join, how members are invited, and how access is removed during offboarding.
 
@@ -92,9 +92,9 @@ Check that `BETTER_AUTH_URL` matches the public reverse-proxy URL.
 
 Check `RESEND_API_KEY`, `EMAIL_FROM`, sender-domain verification, and spam folders.
 
-### Is SSO required?
+### Is OAuth required?
 
-No. SSO is optional, but recommended for teams that need centralized identity, easier onboarding, and cleaner offboarding.
+No. Smaller teams can start with email login and an initial admin user. Enable GitHub or Google OAuth only when it fits your team identity flow.
 
 ## Related Docs
 

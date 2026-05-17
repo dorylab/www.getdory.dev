@@ -1,5 +1,6 @@
 import './global.css';
 
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html suppressHydrationWarning>
       <body className="dory-shell flex min-h-screen flex-col font-[family-name:'IBM_Plex_Sans','Segoe_UI',sans-serif]">
         {children}
+        <Analytics />
       </body>
     </html>
   );

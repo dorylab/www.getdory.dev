@@ -39,10 +39,10 @@ const footerColumns: FooterColumn[] = [
   {
     title: "Deploy",
     links: [
-      { label: "Self-host Dory", href: "/docs/deploy" },
+      { label: "Self-hosting", href: "/docs/deploy" },
       { label: "Docker", href: "/docs/deploy/docker" },
       { label: "Environment variables", href: "/docs/deploy/environment-variables" },
-      { label: "Auth & SSO", href: "/docs/deploy/auth-sso" },
+      { label: "Auth", href: "/docs/deploy/auth-sso" },
     ],
   },
   {
