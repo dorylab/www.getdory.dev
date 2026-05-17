@@ -361,7 +361,7 @@ html {
 body {
   min-height: 100vh;
   color: var(--dory-ink);
-  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  font-family: var(--dory-docs-font);
   background-color: var(--dory-background-color);
   background-image: var(--dory-background-image);
   background-repeat: no-repeat;
@@ -393,6 +393,28 @@ a {
 
 .dory-shell {
   position: relative;
+  font-family: var(--dory-docs-font);
+  font-weight: 400;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dory-shell .font-medium {
+  font-weight: 450;
+}
+
+.dory-shell .font-semibold {
+  font-weight: 500;
+}
+
+.dory-shell .font-bold {
+  font-weight: 600;
+}
+
+.dory-shell .font-extrabold,
+.dory-shell .font-black {
+  font-weight: 650;
 }
 
 .dory-shell::before {
@@ -562,7 +584,7 @@ a {
   padding: 0 0.75rem;
   color: var(--dory-sidebar-muted-foreground);
   font-size: 0.76rem;
-  font-weight: 650;
+  font-weight: 500;
   line-height: 1.2;
 }
 
@@ -651,6 +673,7 @@ a {
   max-width: 40rem;
   font-family: var(--dory-docs-font);
   font-size: 15px;
+  font-weight: 400;
   line-height: 1.72;
   letter-spacing: 0;
 }
@@ -659,6 +682,7 @@ a {
   margin-bottom: 1rem;
   color: var(--dory-ink);
   font-size: 2.75rem;
+  font-weight: 500;
   line-height: 1.06;
   letter-spacing: 0;
 }
@@ -669,6 +693,7 @@ a {
   border-top: 1px solid var(--dory-line);
   color: var(--dory-ink);
   font-size: 1.42rem;
+  font-weight: 500;
   letter-spacing: 0;
 }
 
@@ -676,6 +701,7 @@ a {
   margin-top: 1.8rem;
   color: var(--dory-ink);
   font-size: 1.05rem;
+  font-weight: 500;
   letter-spacing: 0;
 }
 
@@ -683,6 +709,7 @@ a {
 .dory-docs-layout #nd-page .prose h5,
 .dory-docs-layout #nd-page .prose h6 {
   color: var(--dory-ink);
+  font-weight: 500;
   letter-spacing: 0;
 }
 
@@ -701,9 +728,14 @@ a {
   color: color-mix(in oklab, var(--dory-ink) 82%, transparent);
 }
 
+.dory-docs-layout #nd-page .prose strong,
+.dory-docs-layout #nd-page .prose b {
+  font-weight: 550;
+}
+
 .dory-docs-layout #nd-page .prose a {
   color: var(--dory-brand);
-  font-weight: 500;
+  font-weight: 450;
   text-decoration-color: color-mix(in oklab, var(--dory-brand-accent) 35%, transparent);
 }
 
@@ -717,7 +749,7 @@ a {
   background: color-mix(in oklab, var(--dory-brand-soft) 72%, var(--dory-surface-soft));
   padding: 0.12rem 0.3rem;
   font-size: 0.86em;
-  font-weight: 500;
+  font-weight: 450;
 }
 
 .dory-docs-layout #nd-page .prose pre {
@@ -919,7 +951,7 @@ a {
     background: color-mix(in oklab, var(--background) 78%, white 12%);
     padding: 0.42rem 0.78rem;
     font-size: 0.68rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: color-mix(in oklab, var(--foreground) 50%, transparent);
