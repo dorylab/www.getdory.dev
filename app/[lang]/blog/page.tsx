@@ -47,18 +47,18 @@ export default async function BlogIndexPage({
           {latestPost ? (
             <Link
               href={releaseNoteHref(latestPost.slug)}
-              className="group relative flex min-h-[26rem] flex-col justify-end overflow-hidden bg-dory-brand-panel p-6 text-brand-foreground md:p-8 lg:p-10"
+              className="group relative flex min-h-[26rem] flex-col justify-end overflow-hidden bg-dory-brand-panel p-6 text-[#f7f7f4] md:p-8 lg:p-10"
             >
               <div className="absolute inset-0 bg-[image:var(--dory-release-background)]" />
               <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[image:var(--dory-release-fade)]" />
               <div className="relative max-w-2xl">
-                <div className="mb-4 inline-flex border border-white/18 bg-white/10 px-3 py-1 text-xs font-medium tracking-[0.18em] uppercase text-brand-foreground">
+                <div className="mb-4 inline-flex border border-white/18 bg-white/10 px-3 py-1 text-xs font-medium tracking-[0.18em] text-[#f7f7f4] uppercase">
                   {t("latestRelease")} · {formatReleaseLabel(latestPost.version)}
                 </div>
                 <h1 className="text-4xl leading-[0.98] font-semibold tracking-[-0.055em] text-balance md:text-6xl">
                   {latestPost.title}
                 </h1>
-                <p className="mt-5 max-w-xl text-base leading-7 text-brand-foreground/80 md:text-lg">
+                <p className="mt-5 max-w-xl text-base leading-7 text-[#dbe3ef] md:text-lg">
                   {latestPost.description}
                 </p>
                 <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white">
@@ -74,13 +74,13 @@ export default async function BlogIndexPage({
               <Link
                 key={post.slug}
                 href={releaseNoteHref(post.slug)}
-                  className="group flex min-h-[9rem] flex-col justify-between bg-dory-page-wash p-5 transition hover:bg-dory-surface md:p-6 dark:hover:bg-dory-brand-soft"
+                  className="group flex min-h-[9rem] flex-col justify-between bg-dory-page-wash p-5 text-dory-ink transition hover:bg-dory-surface md:p-6 dark:bg-[#111827] dark:text-[#eaf2ff] dark:hover:bg-white/[0.06]"
               >
                 <div>
                   <div className="mb-3 text-xs font-medium tracking-[0.16em] text-slate-500 uppercase dark:text-slate-400">
                     {formatReleaseLabel(post.version)}
                   </div>
-                  <h2 className="text-xl leading-tight font-semibold tracking-[-0.03em] text-balance md:text-2xl">
+                  <h2 className="text-xl leading-tight font-semibold tracking-[-0.03em] text-balance text-slate-950 md:text-2xl dark:text-[#eaf2ff]">
                     {post.title}
                   </h2>
                 </div>
@@ -134,7 +134,7 @@ export default async function BlogIndexPage({
                   {formatReleaseLabel(post.version)}
                 </div>
                 <div>
-                  <h2 className="text-2xl leading-tight font-semibold tracking-[-0.035em] text-balance md:text-3xl">
+                  <h2 className="text-2xl leading-tight font-semibold tracking-[-0.035em] text-balance text-slate-950 md:text-3xl dark:text-[#eaf2ff]">
                     {post.title}
                   </h2>
                   <p className="mt-2 line-clamp-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
