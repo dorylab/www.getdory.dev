@@ -1,0 +1,94 @@
+---
+title: Depurar consultas SQL lentas con Dory
+description: Utilice la consola Dory SQL, AI Chat y ClickHouse Monitoring para investigar consultas lentas, altos costos de escaneo y uniones costosas.
+---
+
+# Depurar consultas SQL lentas con Dory
+
+La depuración lenta de consultas funciona mejor cuando aísla la parte costosa antes de reescribir el SQL completo. Reduzca el rango de escaneo, valide las uniones, inspeccione la agregación y la clasificación, luego solicite a AI alternativas revisables.
+
+## Cuándo utilizar este flujo de trabajo
+
+- SQL es lento o se agota el tiempo de espera.
+- La consulta analiza demasiados datos.
+- Las uniones, agrupaciones o pedidos son costosos.
+- ClickHouse Monitoring muestra consultas lentas.
+- El SQL generado por IA es correcto pero demasiado costoso.
+
+## 1. Localice la consulta lenta
+
+Para ClickHouse, comience con [Monitoreo](/es/docs/core-features/monitoring):
+
+- Consultar consultas lentas en la última hora o día.
+- Inspeccionar la latencia deP95yQPM.
+- Filtrar por usuario, base de datos, tipo de consulta o palabra clave.
+- Copie el SQL en la consola SQL.
+
+Para otras bases de datos, comience con SQL Duración, errores y recuento de filas de la consola.
+
+## 2. Reducir el rango de datos
+
+```sql
+SELECT ...
+FROM your_table
+WHERE event_time >= now() - INTERVAL 1 DAY
+LIMIT 100;
+```
+
+Compruebe que la consulta tenga un rango de tiempo, utilice campos de partición o de clasificación siempre que sea posible, seleccione solo las columnas necesarias y evite ` SELECT *`ilimitado.
+
+## 3. Complejo dividido SQL
+
+Validar cada parte de forma independiente:
+
+1. Filtros básicos.
+2. Unir tamaños de entrada.
+3. Lógica de agregación.
+4. Orden final o Top-N.
+
+Esto ayuda a identificar si filtrar, unir, agrupar u ordenar es el cuello de botella.
+
+## 4. Solicite a AI una reescritura de rendimiento
+
+```text
+This ClickHouse SQL is slow. Optimize it without changing the metric definition:
+- only analyze the last 7 days
+- avoid SELECT *
+- use event_time filtering
+- keep the final output columns
+Explain why each change may be faster.
+```
+
+## 5. Compara el antes y el después
+
+Ejecute ambas versiones y compare la duración, el recuento de filas, los valores de las métricas, el alcance del análisis y la capacidad de mantenimiento. Si los resultados difieren, investigue antes de adoptar la consulta optimizada.
+
+## Causas comunes
+
+| Causa | Arreglar |
+| --- | --- |
+| Sin filtro de tiempo | Agregue un rango de tiempo claro. |
+| Demasiadas columnas | Seleccione solo los campos obligatorios. |
+| Unir entradas demasiado grandes | Filtre o agregue previamente antes de unirse. |
+| Demasiadas dimensiones de grupo | Reduzca dimensiones o analice en capas. |
+| Ordenar un resultado grande | Agregue o limite primero al Top-N. |
+
+## FAQ
+
+### ¿Qué pasa si la IA cambia el resultado?
+
+No lo adoptes. Compare filtros, tipo de unión, deduplicación y granulado de agregación.
+
+### ¿Qué debo verificar primero para ClickHouse?
+
+Rango de tiempo, claves de partición, claves de clasificación, filas de lectura, bytes de lectura y dimensiones de grupo.
+
+### ¿Cuándo debo involucrar a un administrador de base de datos?
+
+Solicite ayuda deDBAcuando la consulta necesite cambios de esquema, cambios de índice o partición, ajuste de clúster o coordinación de cargas de trabajo de producción.
+
+## Próximos pasos
+
+- Reescribir con [Generar SQL con AI](/es/docs/workflows/generate-sql-with-ai).
+- Cree elementos visuales con [Crear gráficos a partir de SQL](/es/docs/workflows/build-charts-from-sql).
+- Guarde consultas comprobadas en [Consultas guardadas](/es/docs/core-features/saved-queries).

@@ -1,0 +1,77 @@
+---
+title: Explora mesas desconocidas con Dory
+description: Utilice Dory Explorer, vista previa de tablas, consola SQL y AI Chat para comprender rápidamente esquemas de bases de datos desconocidos.
+---
+
+# Explora mesas desconocidas con Dory
+
+Cuando abra una nueva base de datos o esquema, no comience con una consulta compleja generada por IA. Primero inspeccione la estructura de la tabla, los tipos de columnas y las filas de muestra. Luego, pídale a AI que explique las relaciones o genere SQL con contexto real.
+
+## Cuándo utilizar este flujo de trabajo
+
+- Conectó una nueva base de datos ClickHouse, PostgreSQL, MySQL, SQLite o DuckDB.
+- No está seguro de qué tabla contiene una métrica.
+- Los nombres de tablas y columnas no son familiares.
+- Heredaste un conjunto de datos de otro equipo.
+- Debes decidir si los datos están listos para el gráfico.
+
+## 1. Comience en el Explorador
+
+Abra [Explorador](/es/docs/core-features/explorer) y confirme que las bases de datos, esquemas, tablas y vistas se carguen correctamente.
+
+Busque nombres de tablas, columnas de tiempo, campos de estado, ID, métricas numéricas, comentarios, claves de partición y claves de clasificación.
+
+## 2. Clasificar la tabla
+
+| tipo de tabla | Signos comunes | como analizar |
+| --- | --- | --- |
+| tabla de detalles | ID, marcas de tiempo, estados, montos | Primero, obtenga una vista previa y luego agregue por tiempo y dimensión. |
+| tabla de dimensiones | Recuento de filas, nombres, categorías y atributos más pequeños | Úselo para uniones y explicación de etiquetas. |
+| tabla agregada | Columnas de fecha o métricas ya presentes | Evite el doble conteo o la agregación repetida. |
+| tabla de registro | Gran volumen, muchos campos, columna de tiempo clara | Filtre siempre por tiempo y limite las filas. |
+
+## 3. Ejecute una consulta de vista previa segura
+
+```sql
+SELECT *
+FROM your_table
+LIMIT 50;
+```
+
+Para tablas grandes, agregue primero un filtro de tiempo.
+
+## 4. Pídale a AI que explique la estructura
+
+```text
+Based on the current table schema, explain what business data this table likely contains. Identify time dimensions, measures, and categorical dimensions.
+```
+
+## 5. Generar consultas de exploración
+
+Solicite a AI consultas de exploración de bajo riesgo:
+
+```text
+Generate 3 exploration queries for the current table: daily row volume, status distribution, and recent abnormal records. Include a safe time range or LIMIT.
+```
+
+Revise el SQL generado antes de ejecutarlo.
+
+## FAQ
+
+### ¿Qué pasa si la IA no puede inferir relaciones?
+
+Confirme los nombres de tablas y columnas en el Explorador y luego proporcione explícitamente las tablas probablemente relacionadas.
+
+### ¿Qué pasa si las consultas de vista previa son lentas?
+
+Encuentre la hora, la partición o la clave de clasificación y limite el rango antes de realizar la consulta.
+
+### ¿Cuándo puedo empezar a escribir consultas de producción?
+
+Comience después de comprender el detalle de la tabla, las columnas importantes, la semántica del rango de tiempo y los filtros seguros. Primero, valide las suposiciones con pequeñas consultas de vista previa.
+
+## Próximos pasos
+
+- Generar una primera consulta de negocio con [Generar SQL con IA](/es/docs/workflows/generate-sql-with-ai).
+- Ejecutarlo y validarlo en [SQL Console](/es/docs/core-features/sql-console).
+- Cree elementos visuales con [Crear gráficos a partir de SQL](/es/docs/workflows/build-charts-from-sql).

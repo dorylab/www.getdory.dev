@@ -1,0 +1,59 @@
+---
+title: Atajos de teclado
+description: Atajos de teclado de Dory para edición SQL, ejecución de consultas, chat AI, consultas guardadas y tablas de resultados.
+---
+
+# Atajos de teclado
+
+Los atajos de teclado de Dory están optimizados para una exploración rápida SQL: escriba una consulta, pida ayuda a AI, ejecútela, inspeccione los resultados y guarde la versión útil sin salir del teclado.
+
+En macOS, use `Cmd ` donde esta página dice `Cmd/Ctrl `. En Windows y Linux, utilice ` Ctrl `.
+
+## editor SQL
+
+| Atajo | Acción | Notas |
+| --- | --- | --- |
+| ` Cmd/Ctrl + Enter ` | Ejecutar consulta | Ejecuta la pestaña activa SQL. Si se selecciona texto, utilice la selección como contexto de consulta cuando lo admita el flujo del editor. |
+| ` Cmd/Ctrl + Shift + F ` | Formato SQL | Formatea SQL en el editor activo. |
+| ` Cmd/Ctrl + S ` | Guardar SQL | Abre el cuadro de diálogo para guardar el texto SQL actual. |
+| ` Cmd/Ctrl + Alt + L ` | Nueva pestaña SQL | Crea y activa una nueva pestaña de consulta. |
+| `/` en una línea de editor vacía | Preguntar en línea a la IA | Abre el mensaje AI en línea en la línea actual. |
+| `/` en otro lugar | Escribe una barra | Si la línea actual ya tiene texto SQL, la barra diagonal se inserta normalmente. |
+
+## panel de IA
+
+| Atajo | Acción | Notas |
+| --- | --- | --- |
+| `Cmd/Ctrl + I ` | Alternar panel de chat AI | Abre o cierra el panel AI de la consola SQL para la pestaña SQL activa. |
+| `/` fuera de los controles editables | Abrir en línea Preguntar a AI | Funciona cuando la pestaña activa es una pestaña SQL y el foco no está dentro de otra entrada. |
+
+## Tabla de resultados
+
+| Atajo | Acción | Notas |
+| --- | --- | --- |
+| `Cmd/Ctrl + F ` | Resultados de la búsqueda | Abre la búsqueda en la tabla de resultados cuando la tabla de resultados está activa. |
+| ` Cmd/Ctrl + C ` | Copiar celdas seleccionadas | Copia las celdas de resultados seleccionadas de la tabla virtualizada. |
+
+## Consultas guardadas
+
+| Atajo | Acción | Notas |
+| --- | --- | --- |
+| ` Cmd/Ctrl + S ` | Guardar SQL actual | Úselo cuando una consulta sea lo suficientemente reutilizable como para nombrarla, organizarla y compartirla. |
+
+## Flujo de trabajo práctico
+
+1. Presione ` Cmd/Ctrl + Alt + L `para iniciar una pestaña limpia.
+2. Escriba `/` en una línea vacía para pedirle a Dory AI un borrador de consulta.
+3. Revise el SQL, luego presione `Cmd/Ctrl + Shift + F ` para formatearlo.
+4. Presione `Cmd/Ctrl + Enter ` para ejecutar la consulta.
+5. Utilice `Cmd/Ctrl + F ` para buscar en la tabla de resultados.
+6. Presione `Cmd/Ctrl + S ` para guardar la consulta finalizada.
+
+## Solución de problemas de atajos
+
+| Problema | Arreglar |
+| --- | --- |
+| Se abre la búsqueda del navegador en lugar de la búsqueda de resultados | Haga clic dentro de la tabla de resultados, luego presione `Cmd/Ctrl + F ` nuevamente. |
+| `/` escribe una barra diagonal en lugar de abrir AI | Vaya a una línea de editor vacía o asegúrese de que el foco no esté dentro de otra entrada. |
+| `Cmd/Ctrl + S ` activa el guardado del navegador | Asegúrese de que la página de la consola SQL esté enfocada. |
+| El acceso directo entra en conflicto con la configuración del sistema operativo | Cambie el sistema operativo o el acceso directo del navegador si intercepta la clave antes de que Dory la reciba. |

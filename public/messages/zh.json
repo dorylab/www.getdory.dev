@@ -6,7 +6,7 @@
     "heroSubtitle": "查询数据库、理解表格并与数据对话——都在<brand>一个</brand>现代化工作空间中。",
     "heroExperienceTitle": "无需下载，30 秒体验 Dory",
     "heroExperienceDescription": "使用公开数据集体验 SQL + AI",
-    "heroExperienceCta": "Try the online demo",
+    "heroExperienceCta": "体验在线 Demo",
     "heroPreviewAlt": "Dory 工作区预览",
     "heroImageAlt": "Dory 工作区主视觉",
     "heroContextReady": "上下文就绪",
@@ -14,7 +14,7 @@
     "heroWorkflowNote": "运行、解释、可视化、保存。",
     "tryDory": "体验 Dory",
     "downloadLatest": "下载最新版本",
-    "downloadForMac": "Download for macOS",
+    "downloadForMac": "下载 macOS 版",
     "downloadForWindows": "下载 Windows 版",
     "allPlatform": "全平台",
     "viewOnGitHub": "在 GitHub 上查看",
@@ -98,6 +98,12 @@
         "sql": "自然语言直达可执行 SQL",
         "context": "多回合、上下文感知的分析",
         "visualization": "自动可视化与解释"
+      },
+      "multilingual": "支持多语言",
+      "callout": {
+        "label": "实时对话",
+        "title": "每次回答都有依据",
+        "description": "查询基于真实字段、真实关联和可靠上下文生成。"
       }
     },
     "coreWorkspace": {
@@ -142,17 +148,17 @@
       }
     },
     "databaseSupport": {
-      "badge": "DATABASE SUPPORT",
+      "badge": "数据库支持",
       "title": "连接你已经在使用的数据栈。",
       "description": "支持 PostgreSQL、MySQL、SQLite、MariaDB、Neon 与 ClickHouse。\n一个现代化工作台，用于查询、探索与分析你的数据。",
-      "panelTitle": "Supported Databases",
-      "highlightTitle": "⭐ Advanced Experience for ClickHouse",
+      "panelTitle": "支持的数据库",
+      "highlightTitle": "⭐ ClickHouse 深度体验",
       "highlightFeatures": [
-        "Deep schema support",
-        "Query analytics dashboard",
-        "Team-ready workspace"
+        "深度 Schema 支持",
+        "查询分析面板",
+        "适合团队的工作区"
       ],
-      "comingNextLabel": "Coming Next"
+      "comingNextLabel": "即将支持"
     },
     "moreFeatures": {
       "badge": "更多功能",
@@ -321,9 +327,9 @@
     "latestVersion": "最新版本",
     "tip": "如果你希望系统自动判断设备平台，也可以使用自动识别下载页。",
     "autoDetect": "打开自动识别下载页",
-    "homebrewTitle": "Install via Homebrew",
+    "homebrewTitle": "通过 Homebrew 安装",
     "homebrewDescription": "如果你更习惯在 macOS 终端里安装，可以直接使用 Dory 的 Homebrew cask。",
-    "allPlatformsTitle": "All platforms",
+    "allPlatformsTitle": "所有平台",
     "allPlatformsDescription": "以下链接直达当前最新 GitHub Release Tag 的安装包。",
     "appleSilicon": "Apple Silicon",
     "intel": "Intel",

@@ -1,0 +1,60 @@
+---
+title: mysql
+description: Conecte MySQL o MariaDB a Dory, ejecute SQL, explore tablas, genere consultas con IA y analice datos operativos.
+---
+
+# MySQL
+
+<img src="/icons/databases/mysql.svg" alt="MySQL logo" width="48" height="48" />
+
+Dory admite MySQL y MariaDB para bases de datos de aplicaciones web, análisis operativos, informes y resolución de problemas de producción. Utilice SQL Console, Explorer, AI Chat, gráficos de resultados y consultas guardadas en un solo flujo de trabajo.
+
+## Casos de uso más adecuados
+
+- Consultar usuarios, pedidos, productos, pagos y otras tablas de aplicaciones.
+- Comprender esquemas de aplicaciones desconocidos.
+- Generar informes SQL o resolución de problemas SQL con IA.
+- Guardar consultas operativas recurrentes.
+- Visualizar resultados de consultas agregados.
+
+## Capacidades admitidas
+
+| Capacidad | Soporte MySQL/MariaDB |
+| --- | --- |
+| Conexiones | Host, puerto, base de datos, nombre de usuario, contraseña, túnelSSLySSH. |
+| Explorador | Bases de datos, tablas, vistas y columnas. |
+| Consola SQL | Edición, ejecución y resultados de MySQL SQL. |
+| Chat de IA | Generación, explicación y corrección de errores de SQL basada en esquemas. |
+| Gráficos y resultados | Análisis visual para resultados agregados. |
+| Consultas guardadas | Guarde consultas MySQL reutilizables. |
+
+## Consejos de consulta
+
+Utilice `LIMIT ` durante la exploración, agregue filtros de tiempo explícitos, verifique los índices antes de ejecutar uniones generadas por IA y tenga en cuenta la compatibilidad con funciones específicas de la versión.
+
+## Requisitos de conexión
+
+- Host, puerto, nombre de la base de datos, nombre de usuario y contraseña.
+- Acceso a la red desde el runtime de Dory.
+- ConfiguracionesSSLsi el servidor o proveedor de la nube las requiere.
+- Permisos para leer metadatos de esquema y tablas de destino.
+
+## FAQ
+
+### ¿Dory es compatible con MariaDB?
+
+Sí. MariaDB tiene su propio tipo de conexión y funciona de manera similar a MySQL.
+
+### ¿Por qué falla mi conexión MySQL?
+
+Verifique el host, el puerto, la base de datos, el nombre de usuario, la contraseña, la lista de redes permitidas y el requisitoSSL.
+
+### ¿Qué pasa si MySQL SQL generado por IA no coincide con la sintaxis real?
+
+Dígale a AI la versión de MySQL o MariaDB y pegue el error exacto. Verifique las funciones, la sintaxis de la fecha y las operaciones JSON antes de volver a ejecutarlas.
+
+## Documentos relacionados
+
+- [Conecte su base de datos](/es/docs/getting-started/connect-your-database)
+- [Consola SQL](/es/docs/core-features/sql-console)
+- [Bases de datos en la nube](/es/docs/database-support/cloud-databases)

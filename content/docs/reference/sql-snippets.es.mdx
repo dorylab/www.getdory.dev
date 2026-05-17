@@ -1,0 +1,202 @@
+---
+title: Fragmentos de SQL
+description: Fragmentos reutilizables de Dory SQL para exploración de bases de datos, controles de calidad de datos, análisis y flujos de trabajo de consultas seguros.
+---
+
+# fragmentos SQL
+
+Utilice estos fragmentos de SQL como puntos de partida en Dory. Adapte los nombres de las tablas, las columnas de marca de tiempo y las funciones de fecha específicas de la base de datos antes de ejecutarlas.
+
+## Vista previa segura
+
+Obtenga una vista previa de una tabla sin escanear más filas de las necesarias.
+
+```sql
+SELECT *
+FROM your_table
+LIMIT 100;
+```
+
+Para tablas anchas, inspeccione solo las columnas que necesita:
+
+```sql
+SELECT id, created_at, status
+FROM your_table
+ORDER BY created_at DESC
+LIMIT 100;
+```
+
+## Contar filas
+
+```sql
+SELECT COUNT(*) AS row_count
+FROM your_table;
+```
+
+Utilice esto antes de un análisis más profundo para comprender el tamaño de la tabla.
+
+## Valores N principales
+
+```sql
+SELECT status, COUNT(*) AS records
+FROM your_table
+GROUP BY status
+ORDER BY records DESC
+LIMIT 20;
+```
+
+Bueno para campos de estado, categorías, países, nombres de eventos, planes y códigos de error.
+
+## Registros recientes
+
+```sql
+SELECT *
+FROM your_table
+WHERE created_at >= CURRENT_DATE - INTERVAL '7 days'
+ORDER BY created_at DESC
+LIMIT 200;
+```
+
+La aritmética de fechas difiere según la base de datos. Si su base de datos no admite esta expresión exacta, pídale a Dory AI que la convierta para PostgreSQL, MySQL, ClickHouse, SQLite, DuckDB o MariaDB.
+
+## Tendencia diaria
+
+PostgreSQL, DuckDB y muchos motores compatibles:
+
+```sql
+SELECT
+  DATE_TRUNC('day', created_at) AS day,
+  COUNT(*) AS records
+FROM your_table
+WHERE created_at >= CURRENT_DATE - INTERVAL '30 days'
+GROUP BY day
+ORDER BY day;
+```
+
+Haga clic en Casa:
+
+```sql
+SELECT
+  toStartOfDay(created_at) AS day,
+  count() AS records
+FROM your_table
+WHERE created_at >= now() - INTERVAL 30 DAY
+GROUP BY day
+ORDER BY day;
+```
+
+MySQL y MariaDB:
+
+```sql
+SELECT
+  DATE(created_at) AS day,
+  COUNT(*) AS records
+FROM your_table
+WHERE created_at >= CURRENT_DATE - INTERVAL 30 DAY
+GROUP BY day
+ORDER BY day;
+```
+
+## Verificación nula
+
+```sql
+SELECT
+  COUNT(*) AS total_rows,
+  SUM(CASE WHEN email IS NULL THEN 1 ELSE 0 END) AS missing_email,
+  SUM(CASE WHEN created_at IS NULL THEN 1 ELSE 0 END) AS missing_created_at
+FROM users;
+```
+
+Utilice esto antes de depender de una columna para uniones, filtros de tiempo o agrupaciones de gráficos.
+
+## Verificación de clave duplicada
+
+```sql
+SELECT id, COUNT(*) AS duplicates
+FROM your_table
+GROUP BY id
+HAVING COUNT(*) > 1
+ORDER BY duplicates DESC
+LIMIT 100;
+```
+
+Úselo para suposiciones de clave primaria, datos importados y tablas de eventos que deben ser únicos por clave natural.
+
+## Unirse a la plantilla
+
+```sql
+SELECT
+  o.id AS order_id,
+  o.created_at,
+  o.total_amount,
+  u.id AS user_id,
+  u.email
+FROM orders o
+JOIN users u ON u.id = o.user_id
+WHERE o.created_at >= CURRENT_DATE - INTERVAL '30 days'
+ORDER BY o.created_at DESC
+LIMIT 200;
+```
+
+Verifique siempre la cardinalidad de la unión antes de usar una unión para ingresos, uso o recuento de clientes.
+
+## Unirse a la verificación de cardinalidad
+
+```sql
+SELECT
+  COUNT(*) AS joined_rows,
+  COUNT(DISTINCT o.id) AS distinct_orders,
+  COUNT(DISTINCT u.id) AS distinct_users
+FROM orders o
+JOIN users u ON u.id = o.user_id
+WHERE o.created_at >= CURRENT_DATE - INTERVAL '30 days';
+```
+
+Si ` joined_rows `es mucho mayor que el recuento distinto esperado, inspeccione claves duplicadas o uniones de muchos a muchos.
+
+## Embudo de conversión
+
+```sql
+SELECT
+  COUNT(DISTINCT CASE WHEN event_name = 'viewed_page' THEN user_id END) AS viewed_page,
+  COUNT(DISTINCT CASE WHEN event_name = 'started_checkout' THEN user_id END) AS started_checkout,
+  COUNT(DISTINCT CASE WHEN event_name = 'completed_purchase' THEN user_id END) AS completed_purchase
+FROM events
+WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+```
+
+Ajuste los nombres de los eventos y las columnas de identidad para que coincidan con el esquema de análisis de su producto.
+
+## Investigación de errores
+
+```sql
+SELECT
+  error_code,
+  COUNT(*) AS occurrences,
+  MAX(created_at) AS last_seen
+FROM application_logs
+WHERE level = 'error'
+  AND created_at >= CURRENT_DATE - INTERVAL '24 hours'
+GROUP BY error_code
+ORDER BY occurrences DESC
+LIMIT 20;
+```
+
+Úselo con registros, ejecuciones de trabajos, operaciones de sincronización y tablas de ingesta.
+
+## Muestra de consulta lenta
+
+```sql
+SELECT
+  query_id,
+  user_name,
+  duration_ms,
+  created_at,
+  query_text
+FROM query_log
+WHERE duration_ms > 5000
+ORDER BY duration_ms DESC
+LIMIT 50;
+```
+
+Los nombres de las columnas varían según la base de datos y la tabla de monitoreo. Utilice Dory Schema Explorer o AI Chat para adaptar este patrón.

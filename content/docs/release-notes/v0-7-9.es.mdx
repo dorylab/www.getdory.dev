@@ -1,0 +1,20 @@
+---
+title: v0.7.9
+description: Notas de la versión de Dory para v0.7.9.
+---
+
+# v0.7.9
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.7.9.md)
+
+## ¿Qué ha cambiado?
+### Correcciones
+- Se corrigió un error de aviso al usar múltiples bases de datos (MySQL + ClickHouse) en la generación de SQL asistida por IA.
+- Se corrigieron problemas de diseño del chatbot y se mejoró la agregación de pasos de ejecución de herramientas del agente para una visibilidad más clara.
+### Mejoras
+- Comprobaciones de seguridad SQL mejoradas para permitir declaraciones `PRAGMA ` y `DESCRIBE ` en modo de solo lectura, lo que permite una compatibilidad más amplia con SQLite y otros dialectos.
+- Representación de resultados SQL simplificada y refinada: los reintentos intermedios ahora están ocultos, el comportamiento de plegado es más intuitivo y el espaciado alrededor de los resultados es más estrecho y consistente.
+- Se actualizó la interfaz de usuario de la barra lateral del chatbot para una mejor navegación y gestión de sesiones.
+- Se mejoró el manejo de respaldo y la representación de mensajes para interacciones de chat relacionadas con SQL, lo que hace que los errores y los resultados parciales sean más comprensibles.
+- Se permitió la selección de clave privadaSSHsin requerir extensiones de archivo (por ejemplo, claves denominadas `id_rsa ` en lugar de `id_rsa.pem `).
+- Se eliminó el estilo de fondo innecesario de las herramientas de chat y se incluyó la base de datos SQLite de demostración (incluidos los archivos `-shm ` y `-wal `) para demostraciones portátiles confiables.

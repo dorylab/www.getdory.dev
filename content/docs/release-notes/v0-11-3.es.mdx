@@ -1,0 +1,21 @@
+---
+title: v0.11.3
+description: Notas de la versión de Dory para v0.11.3.
+---
+
+# v0.11.3
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.11.3.md)
+
+## ¿Qué ha cambiado?
+### Correcciones
+- Se corrigió un error en la lógica de representación de mensajes del chatbot que podía causar fallas inesperadas durante la visualización del hilo.
+- Se resolvió un problema de representación de gráficos en los resultados de gráficos generados por IA, mejorando la confiabilidad y la coherencia visual.
+### Mejoras
+- Componentes de representación de gráficos actualizados (`chart-canvas.tsx `,` charts-result/index.tsx `) para un mejor rendimiento y compatibilidad con dependencias actualizadas.
+- Interfaz de usuario y comportamiento del chatbot mejorados en múltiples archivos, incluido el manejo de sesiones, la visualización del estado vacío y la entrada de chat, lo que resulta en interacciones más fluidas y comentarios con mayor capacidad de respuesta.
+- Herramientas y mensajes de IA relacionados con SQL mejorados (` sql.tools.ts `,` sql-runner.ts `) para mejorar la precisión y el conocimiento del contexto en la asistencia de consultas de bases de datos.
+### Dependencias
+- Se actualizó ` icu-minify `de 4.9.1 a 4.11.0 (transitivo, a través de ` next-intl `).
+- Se actualizó ` hono `de 4.12.14 a 4.12.18 para mejorar la estabilidad del tiempo de ejecución y corregir errores menores.
+- Se actualizó ` next-intl `de 4.9.1 a 4.9.2, incluidas correcciones y optimizaciones relacionadas con la localización.

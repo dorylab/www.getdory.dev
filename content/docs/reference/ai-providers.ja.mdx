@@ -1,0 +1,137 @@
+---
+title: AI プロバイダー
+description: Dory の AI 機能で使用されるモデル プロバイダーを構成します。
+---
+
+AI プロバイダーの数
+
+Dory は、AI チャット、SQL の生成、チャートの提案、スキーマを意識した分析にプラグイン可能な AI プロバイダー アーキテクチャを使用しています。アプリケーション コードを変更せずに、環境変数を使用してプロバイダーを切り替えることができます。
+
+## サポートされているプロバイダー
+
+| プロバイダー | `DORY_AI_PROVIDER `値 | 注意事項 |
+| --- | --- | --- |
+| Open AI | ` openai ` | 公式 Open AI APIを使用します。 |
+| Open AI 対応 | ` openai-compatible ` | Open AI 互換のAPIを公開するサービスの場合。 |
+| 人間的 | ` anthropic ` | Claude モデルは Anthropic のAPI経由で作成されます。 |
+| グーグル | ` google ` | Google Generative AI を介した Gemini モデル。 |
+| クウェン | ` qwen ` | 互換性のあるエンドポイントを介して Qwen モデルを作成します。 |
+| x AI | ` xai ` | x AI APIを介して Grok モデルを作成します。 |
+
+## コア変数
+
+ほとんどのデプロイメントでは次の値が必要です。
+
+```bash
+export DORY_AI_PROVIDER=openai
+export DORY_AI_MODEL=gpt-4o-mini
+export DORY_AI_API_KEY=your_api_key_here
+export DORY_AI_URL=https://api.openai.com/v1
+```
+
+| 変数 | 必須 | 説明 |
+| --- | --- | --- |
+| ` DORY_AI_PROVIDER ` | はい | プロバイダーアダプターを選択します。 |
+| ` DORY_AI_MODEL ` | はい | Dory AI 機能で使用されるモデルを選択します。 |
+| ` DORY_AI_API_KEY ` | いつもの | プロバイダーによって受け入れられたAPIキーまたはベアラー トークン。 |
+| ` DORY_AI_URL ` | プロバイダーに依存する | Open AI 互換プロバイダーまたはカスタム エンドポイントのベースURL。 |
+
+フロントエンド コード、チェックインされた`.env `ファイル、スクリーンショット、またはサポート チケットにプロバイダーの資格情報を含めないでください。
+
+## プロバイダーの例
+
+### Open AI
+
+```bash
+DORY_AI_PROVIDER=openai
+DORY_AI_MODEL=gpt-4o-mini
+DORY_AI_API_KEY=sk-...
+DORY_AI_URL=https://api.openai.com/v1
+```
+
+Dory AI SQL 生成の最も直接的な文書化されたセットアップが必要な場合は、このパスを使用します。
+
+### Open AI 互換
+
+```bash
+DORY_AI_PROVIDER=openai-compatible
+DORY_AI_MODEL=your-model-name
+DORY_AI_API_KEY=your_provider_key
+DORY_AI_URL=https://your-compatible-endpoint.example.com/v1
+```
+
+組織がすでに Open AI 互換のAPIサーフェスを標準化している場合は、このパスを使用します。
+
+### 人間的
+
+```bash
+DORY_AI_PROVIDER=anthropic
+DORY_AI_MODEL=claude-3-5-sonnet-latest
+DORY_AI_API_KEY=your_anthropic_key
+```
+
+チームがより長いコンテキスト推論やポリシー上の理由からクロード モデルを好む場合は、Anthropic を使用します。
+
+＃＃＃ グーグル
+
+```bash
+DORY_AI_PROVIDER=google
+DORY_AI_MODEL=gemini-1.5-pro
+DORY_AI_API_KEY=your_google_key
+```
+
+組織がすでに Gemini ワークフローを実行している場合は、Google を使用してください。
+
+### クウェン
+
+```bash
+DORY_AI_PROVIDER=qwen
+DORY_AI_MODEL=qwen-plus
+DORY_AI_API_KEY=your_qwen_key
+```
+
+Qwen が言語、地域、またはコスト プロファイルに適したモデル ファミリである場合は、Qwen を使用してください。
+
+### x AI
+
+```bash
+DORY_AI_PROVIDER=xai
+DORY_AI_MODEL=grok-2-latest
+DORY_AI_API_KEY=your_xai_key
+```
+
+Grok モデルが承認された AI スタックの一部である場合は、x AI を使用します。
+
+## プロバイダーの選択
+
+| 要件 | 推奨方向 |
+| --- | --- |
+| 最速の標準セットアップ | まずは Open AI から始めましょう。 |
+| 既存の互換性のあるエンドポイントまたはプロキシ | Open AI 互換のものを使用してください。 |
+| 長い推論タスク | Anthropic モデルと Open AI モデルを比較します。 |
+| 既存の Google AI の使用状況 | Googleを使用してください。 |
+| 地域、言語、またはコストの適合 | Qwen と他の承認されたプロバイダーを比較します。 |
+| 社内コンプライアンス要件 | 組織によってすでに承認されているプロバイダーを選択してください。 |
+
+## 検証チェックリスト
+
+1. プロバイダーの値が、文書化された` DORY_AI_PROVIDER `値のいずれかに一致することを確認します。
+2. そのプロバイダーにモデル名が存在することを確認します。
+3. APIキーに、選択したモデルを呼び出す権限があることを確認します。
+4. 互換性のあるエンドポイントを使用している場合は、` DORY_AI_URL `に正しいベース パスが含まれていることを確認します。
+5. プロバイダー変数を変更した後、Dory サーバーを再起動します。
+6. 大規模な SQL 生成タスクをテストする前に、小さなスキーマの質問で AI Chat をテストします。
+
+## トラブルシューティング
+
+| 症状 | 考えられる原因 | 修理 |
+| --- | --- | --- |
+| AI チャットが認証エラーを返す | APIキーが無効または欠落しています。 | キーをローテーションして、` DORY_AI_API_KEY `を更新します。 |
+| モデルが見つかりません | 選択したプロバイダーのモデル名が間違っています。 | そのプロバイダーがサポートするモデル名を使用してください。 |
+| 互換性のあるエンドポイントが失敗する | ベースURLまたはパスが正しくありません。 | プロバイダーの Open AI 互換ベースURLを確認します。 |
+| SQL の品質に一貫性がありません | モデルのスキーマ推論能力には限界があります。 | より強力なモデルを試し、より明確なテーブル コンテキストを含めてください。 |
+| 応答が遅い | プロバイダーの遅延または大規模なスキーマ コンテキスト。 | より高速なモデルを使用するか、データベース コンテキストを絞り込みます。 |
+
+## 制限事項
+
+プロバイダーのサポートは、同一の出力品質を保証しません。SQL 生成の品質は、モデル、スキーマの複雑さ、プロンプトの明瞭さによって異なります。

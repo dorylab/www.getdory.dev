@@ -1,0 +1,33 @@
+---
+title: Descripción general
+description: Planifique una implementación en equipo, inicie el contenedor Docker, configure las variables de entorno y configure la autenticación.
+---
+
+# Descripción general
+
+Una implementación compartida de Dory generalmente comienza con tiempo de ejecución, persistencia, URLpúblico, autenticación, proveedor de IA, red de base de datos y decisiones de gestión de secretos.
+
+## Enlaces rápidos
+
+| Página | Caso de uso | Enfocar |
+| --- | --- | --- |
+| [Autohospedaje](/es/docs/deploy/self-hospedaje) | Estás planeando un despliegue de equipo | Opciones de arquitectura, decisiones de persistencia, comprobaciones de implementación y límites operativos. |
+| [Docker](/es/docs/deploy/docker) | Necesitas comandos de contenedor concretos | `docker run `,`.env `, puertos, volúmenes, modo Postgres y actualizaciones. |
+| [Variables de entorno](/es/docs/deploy/variables-de-entorno) | Necesitas la referencia de configuración. | Secretos necesarios, base de datos de aplicaciones, IA, autenticación, correo electrónico, OAuth y variables relacionadas. |
+| [Autenticación](/es/docs/deploy/auth-sso) | Tú decides cómo inician sesión los usuarios. | Inicio de sesión de correo electrónico, verificación, OAuth, administración inicial, aprovisionamiento y baja. |
+
+## Orden recomendado
+
+1. Lea [Autoalojamiento](/es/docs/deploy/self-hosting) para elegir los límites de almacenamiento, red, HTTPS, autenticación y despliegue.
+2. Utilice [Docker](/es/docs/deploy/docker) para el comando de inicio del contenedor real.
+3. Complete los valores requeridos de [Variables de entorno](/es/docs/deploy/environment-variables).
+4. Configure las reglas de inicio de sesión en [Auth](/es/docs/deploy/auth-sso).
+5. Valide con una base de datos de prueba antes de agregar conexiones de producción.
+
+## Lista de verificación de lanzamiento
+
+- El acceso público utilizaHTTPS.
+- ` BETTER_AUTH_URL `coincide con los usuariosURLabiertos.
+- Los datos de la aplicación se conservan a través de un volumen o Postgres.
+- Se deciden la administración inicial, el método de inicio de sesión y el proceso de baja.
+- Las conexiones de bases de datos de producción utilizan primero credenciales de solo lectura.

@@ -2,7 +2,7 @@ import { BookOpen, Newspaper } from 'lucide-react';
 import { defineI18nUI } from 'fumadocs-ui/i18n';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
-import { i18n } from '@/lib/i18n';
+import { defaultLanguage, i18n } from '@/lib/i18n';
 
 export const i18nUI = defineI18nUI(i18n, {
   translations: {
@@ -21,19 +21,71 @@ export const i18nUI = defineI18nUI(i18n, {
       previousPage: '上一页',
       chooseTheme: '主题',
       editOnGithub: '在 GitHub 上编辑'
+    },
+    ja: {
+      displayName: '日本語',
+      search: 'ドキュメントを検索',
+      searchNoResult: '結果が見つかりません',
+      toc: 'このページの内容',
+      tocNoHeadings: '見出しがありません',
+      lastUpdate: '最終更新',
+      chooseLanguage: '言語を選択',
+      nextPage: '次のページ',
+      previousPage: '前のページ',
+      chooseTheme: 'テーマ',
+      editOnGithub: 'GitHub で編集'
+    },
+    es: {
+      displayName: 'Español',
+      search: 'Buscar en la documentación',
+      searchNoResult: 'No se encontraron resultados',
+      toc: 'En esta página',
+      tocNoHeadings: 'No hay encabezados',
+      lastUpdate: 'Última actualización',
+      chooseLanguage: 'Elegir idioma',
+      nextPage: 'Página siguiente',
+      previousPage: 'Página anterior',
+      chooseTheme: 'Tema',
+      editOnGithub: 'Editar en GitHub'
     }
   }
 });
 
 export function baseOptions(locale: string): BaseLayoutProps {
-  const isZh = locale === 'zh';
-  const localePrefix = isZh ? '/zh' : '';
+  const localePrefix = locale === defaultLanguage ? '' : `/${locale}`;
+  const navCopy = {
+    en: {
+      docs: 'Docs',
+      blog: 'Blog',
+      download: 'Download'
+    },
+    zh: {
+      docs: '文档',
+      blog: '博客',
+      download: '下载'
+    },
+    ja: {
+      docs: 'ドキュメント',
+      blog: 'ブログ',
+      download: 'ダウンロード'
+    },
+    es: {
+      docs: 'Documentación',
+      blog: 'Blog',
+      download: 'Descargar'
+    }
+  }[locale] ?? {
+    docs: 'Docs',
+    blog: 'Blog',
+    download: 'Download'
+  };
 
   return {
     i18n: false,
     githubUrl: undefined,
     nav: {
       transparentMode: 'always',
+      url: localePrefix || '/',
       title: (
         <span className="flex items-center gap-2 font-semibold">
           <img
@@ -48,21 +100,21 @@ export function baseOptions(locale: string): BaseLayoutProps {
     links: [
       {
         type: 'main',
-        text: isZh ? '文档' : 'Docs',
+        text: navCopy.docs,
         url: `${localePrefix}/docs`,
         active: 'nested-url',
         icon: <BookOpen />
       },
       {
         type: 'main',
-        text: isZh ? '博客' : 'Blog',
+        text: navCopy.blog,
         url: `${localePrefix}/blog`,
         active: 'nested-url',
         icon: <Newspaper />
       },
       {
         type: 'button',
-        text: isZh ? '下载' : 'Download',
+        text: navCopy.download,
         url: `${localePrefix}/download`,
         active: 'nested-url',
         secondary: true

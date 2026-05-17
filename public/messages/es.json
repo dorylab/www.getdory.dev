@@ -1,0 +1,381 @@
+{
+  "landing": {
+    "heroTagline": "Flujo de trabajo nativo de IA",
+    "heroTitle": "<brand>Estudio de datos</brand> nativo de IA",
+    "heroDescription": "Conecte bases de datos y utiliceSQL, IA y visualización para explorar, analizar y reutilizar.",
+    "heroSubtitle": "Consultar bases de datos, comprender tablas y hablar con datos:<brand>Todo en el espacio de trabajo moderno One</brand>.",
+    "heroExperienceTitle": "No es necesario descargarlo, experimenta Dory en 30 segundos",
+    "heroExperienceDescription": "Utilice un conjunto de datos público para experimentarSQL+ AI",
+    "heroExperienceCta": "Probar la demo en línea",
+    "heroPreviewAlt": "Vista previa del espacio de trabajo de Dory",
+    "heroImageAlt": "Visual del héroe del espacio de trabajo de Dory",
+    "heroContextReady": "Listo para el contexto",
+    "heroWindowLabel": "SQL+ IA + Gráficos",
+    "heroWorkflowNote": "Ejecutar, explicar, visualizar, guardar.",
+    "tryDory": "prueba con dory",
+    "downloadLatest": "Descargar lo último",
+    "downloadForMac": "Descargar para macOS",
+    "downloadForWindows": "Descargar la versión de Windows",
+    "allPlatform": "Toda la plataforma",
+    "viewOnGitHub": "Ver en GitHub",
+    "heroCards": {
+      "aiChat": {
+        "title": "copiloto de IA",
+        "description": "GenereSQLy explique los resultados de la conexión, el esquema y el contexto de consulta actuales."
+      },
+      "sqlConsole": {
+        "title": "banco de trabajoSQL",
+        "description": "Mantenga el editor, el explorador de esquemas, los resultados de las consultas y el historial de ejecución en un solo flujo de trabajo."
+      },
+      "teamFlow": {
+        "title": "Guardar y reutilizar",
+        "description": "Guarde consultas útiles y contexto de resultados para que la exploración única se convierta en un flujo de trabajo reutilizable."
+      }
+    },
+    "aiNative": {
+      "badge": "Flujo de trabajo nativo de IA",
+      "heading": "<ask>Ask.</ask><act>Act.</act><stay>Mantente conectado a tierra.</stay>",
+      "description": "Sin cambio de contexto. Sin campos alucinados. SimplementeSQLpreciso y resultados reales.",
+      "tabs": {
+        "ask": {
+          "label": "Preguntar",
+          "title": "Pregunta cualquier cosa. Sin columnas inventadas.",
+          "description": "El autocompletado con reconocimiento de esquemas y la generaciónSQLmantienen la IA honesta: cada sugerencia se basa en tablas reales, campos reales y uniones reales.",
+          "pills": {
+            "pill1": "Consciente de esquemas",
+            "pill2": "Sin campos inventados",
+            "pill3": "EjecutableSQL"
+          }
+        },
+        "actions": {
+          "label": "Comportamiento",
+          "title": "Haga más que chatear: actúe.",
+          "description": "Ejecute transformaciones, guarde y comparta consultas y active tareas de análisis comunes directamente desde el flujo de trabajo, sin copiar y pegar ni saltar entre pestañas.",
+          "pills": {
+            "pill1": "Sin saltos de pestañas",
+            "pill2": "Guardar y compartir",
+            "pill3": "Análisis rápido"
+          }
+        },
+        "context": {
+          "label": "Contexto",
+          "title": "Contexto que te mantiene en control.",
+          "description": "Dory realiza un seguimiento de en qué estás trabajando (tablas, relaciones y consultas recientes) para que los resultados se mantengan consistentes en Pregunta, Acción y Contexto.",
+          "pills": {
+            "pill1": "Tablas y relaciones",
+            "pill2": "Resultados consistentes",
+            "pill3": "Uniones confiables"
+          }
+        }
+      }
+    },
+    "tableOverview": {
+      "badge": "Descripción general de la tabla de IA",
+      "title": "Inteligencia automática de tablas que enmarca cada columna y distribución.",
+      "description": "Genera automáticamente descripciones generales a nivel de tabla, anotaciones semánticas y señales de uso para que la IA comprenda los datos comerciales antes de escribirSQL.",
+      "insights": {
+        "summary": {
+          "title": "Resumen automático y semántica",
+          "description": "Dory lee recuentos, frescura y relaciones para describir lo que contiene una mesa y por qué es importante."
+        },
+        "fields": {
+          "title": "Significados de campo y señal",
+          "description": "Cada columna recibe una breve nota semántica además de sugerencias sobre rangos, cardinalidad y uniones útiles."
+        },
+        "context": {
+          "title": "Señales de distribución y contextoSQL",
+          "description": "Las distribuciones de datos, la asimetría y las notas comerciales proporcionan el contexto fundamentado que la IA necesita para unSQLconfiable."
+        }
+      },
+      "screenshotAlt": "UI de descripción general de la tabla AI"
+    },
+    "chatbot": {
+      "badge": "Charla de base de datos",
+      "title": "Chatea con tu base de datos",
+      "description": "El Chatbot de Dory no es un asistente de IA genérico. Es un copiloto nativo de la base de datos que comprende su esquema, escribeSQLreal y lo ayuda a explorar datos a través de la conversación.",
+      "bullets": {
+        "schema": "Conversaciones conscientes de esquemas con tablas reales",
+        "sql": "Lenguaje natural al ejecutableSQL",
+        "context": "Análisis multiturno y consciente del contexto",
+        "visualization": "Visualización automática y explicaciones."
+      },
+      "multilingual": "Soporta múltiples idiomas",
+      "callout": {
+        "label": "chat en vivo",
+        "title": "Respuestas fundamentadas, siempre",
+        "description": "Las consultas se escriben con campos reales, uniones reales y confianza real."
+      }
+    },
+    "coreWorkspace": {
+      "badge": "Espacio de trabajo principal",
+      "title": "Creado para un trabajo realSQL:<brand>no solo chat</brand>.",
+      "description": "Un editor rápido, una vista de esquema confiable y trabajo guardado que puede reutilizar: la base del trabajo diario con datos.",
+      "screenshotAlt": "Captura de pantalla del espacio de trabajo de Dory",
+      "highlights": {
+        "item1": "Autocompletar según esquemas con guía de sintaxis.",
+        "item2": "Flujos de trabajo de consulta con múltiples pestañas y múltiples conjuntos de resultados.",
+        "item3": "Cuadrículas de resultados de alto rendimiento con clasificación, filtrado y navegación rápida.",
+        "item4": "Diseñado para grandes volúmenes de datos y análisis complejos."
+      },
+      "features": {
+        "editor": {
+          "title": "SQLEditor que se siente nativo",
+          "description": "Edición rápida con teclado y autocompletar con reconocimiento de esquemas, para que puedas escribirSQLcorrectamente sin interrumpir el flujo.",
+          "bullets": {
+            "bullet1": "Autocompletar con reconocimiento de esquemas",
+            "bullet2": "Flujo de trabajo con teclado primero",
+            "bullet3": "Ejecuta exactamente lo que escribes"
+          }
+        },
+        "schema": {
+          "title": "Explorador de esquemas en el que puede confiar",
+          "description": "Explore tablas, columnas y tipos en contexto: la misma base que utiliza la IA para evitar campos alucinados.",
+          "bullets": {
+            "bullet1": "Tablas, columnas, tipos.",
+            "bullet2": "filtrado rápido",
+            "bullet3": "Conexión a tierra para la IA"
+          }
+        },
+        "saved": {
+          "title": "Consultas y resultados guardados",
+          "description": "Convierta la exploración única en un flujo de trabajo. Guarde, vuelva a visitar y comparta las consultas importantes.",
+          "bullets": {
+            "bullet1": "Guardar y organizar",
+            "bullet2": "Reutilizar resultados",
+            "bullet3": "Comparte con tu equipo"
+          }
+        }
+      }
+    },
+    "databaseSupport": {
+      "badge": "Bases de datos compatibles",
+      "title": "Conecte la pila de datos que ya utiliza.",
+      "description": "Admite PostgreSQL, MySQL, SQLite, MariaDB, Neon y ClickHouse.\nUn espacio de trabajo moderno para consultar, explorar y analizar sus datos.",
+      "panelTitle": "Bases de datos compatibles",
+      "highlightTitle": "⭐ Experiencia avanzada para ClickHouse",
+      "highlightFeatures": [
+        "Soporte profundo de schema",
+        "Panel de análisis de consultas",
+        "Workspace preparado para equipos"
+      ],
+      "comingNextLabel": "Próximamente"
+    },
+    "moreFeatures": {
+      "badge": "Más funciones",
+      "title": "Espacio de trabajoSQLdiseñado para el trabajo diario con datos",
+      "description": "Local primero, receptivo",
+      "features": {
+        "secure": {
+          "title": "Seguridad local primero",
+          "description": "Las consultas, la configuración personal y los flujos de trabajo permanecen en su computadora para que la privacidad y el control nunca abandonen sus manos."
+        },
+        "connectivity": {
+          "title": "SSHtunelización",
+          "description": "Los túnelesSSHenvuelven cada conexión con un cifrado sólido, de modo que sus credenciales, consultas y datos nunca abandonen su red en texto sin formato."
+        },
+        "save": {
+          "title": "Guardar consultas y flujos de trabajo",
+          "description": "Guarde consultas, contexto y resultados para poder volver a ejecutar y desarrollar el trabajo una y otra vez."
+        },
+        "modern": {
+          "title": "experiencia moderna",
+          "description": "Una interfaz limpia y sobria que te mantiene inmerso en el ritmo de tu trabajo."
+        },
+        "themes": {
+          "title": "Temas brillantes/oscuros y múltiples",
+          "description": "Los temas claros, oscuros y con múltiples acentos se adaptan a su entorno y al mismo tiempo mantienen las imágenes legibles y cómodas."
+        },
+        "open-source": {
+          "title": "Código abierto",
+          "description": "Apache 2.0 con licencia, extensible y listo para autohospedaje."
+        }
+      }
+    },
+    "cta": {
+      "badge": "Prueba Dory en minutos",
+      "title": "Empezar ahora",
+      "subtitle": "El espacio de trabajoSQLnativo de IA para bases de datos modernas.",
+      "description": "Descargue Dory ahora o impleméntelo localmente con Docker y conéctelo a su base de datos real.",
+      "dockerDeploy": "Implementación de Docker",
+      "quickStart": "Implementación de Docker",
+      "commands": {
+        "copy": "comando copiar",
+        "copied": "copiado"
+      },
+      "tip": "Después del inicio, agregue la conexión de su base de datos en la interfaz de usuario."
+    },
+    "faq": {
+      "headerLabel": "FAQ",
+      "title": "Preguntas y respuestas",
+      "items": {
+        "free": {
+          "question": "¿Dory es de uso gratuito?",
+          "answer": {
+            "paragraph1": "Sí. Dory proporciona una versión gratuita que puede utilizar para proyectos personales y flujos de trabajo locales.",
+            "paragraph2": "A medida que el proyecto evolucione, exploraremos capacidades pagas y características del equipo, pero el espacio de trabajo principalSQLseguirá siendo gratuito."
+          }
+        },
+        "aiCopilot": {
+          "question": "¿Cómo funciona el copiloto AI?",
+          "answer": {
+            "paragraph1": "AI Copilot de Dory comprende el esquema de su base de datos, las tablas y el contexto de consulta para ayudar a generarSQL, explicar consultas y explorar datos más rápido.",
+            "paragraph2": "En lugar de indicaciones genéricas, Dory proporciona un contexto estructurado desde su espacio de trabajo para que las respuestas de la IA sean más precisas y prácticas."
+          }
+        },
+        "providers": {
+          "question": "¿Qué proveedores de IA son compatibles?",
+          "answer": {
+            "paragraph1": "La versión de escritorio viene con modelos OpenAI integrados para una mejor experiencia lista para usar. La versión de código abierto admite múltiples proveedores de modelos a través de variables de entorno configurables, incluidos OpenAI, Anthropic, Google Gemini y más.",
+            "paragraph2": "También puede enrutar solicitudes a través de su propia puerta de enlace AI o infraestructura empresarial."
+          }
+        },
+        "databases": {
+          "question": "¿Qué bases de datos admite Dory?",
+          "answer": {
+            "paragraph1": "Dory actualmente es compatible con ClickHouse, PostgreSQL, Neon, MySQL, MariaDB y SQLite, con una experiencia profundamente integrada para ClickHouse.",
+            "paragraph2": "DuckDB está planificado y continuaremos ampliando el soporte para proporcionar un espacio de trabajo nativo de IA consistente en todas las bases de datos modernas."
+          }
+        },
+        "openSource": {
+          "question": "¿Dory es de código abierto?",
+          "answer": {
+            "paragraph1": "Dory tiene licencia Apache 2.0, es fácil de usar para desarrolladores y puede autohospedarse.",
+            "paragraph2": "Agradecemos las contribuciones de la comunidad, ya sea en código, documentación o ideas de nuevas funciones."
+          }
+        },
+        "dataSafety": {
+          "question": "¿Están mis datos seguros?",
+          "answer": {
+            "paragraph1": "Dory sigue una filosofía que prioriza lo local. Sus conexiones y metadatos del espacio de trabajo pueden permanecer en su máquina cuando usa la versión de escritorio.",
+            "paragraph2": "Las funciones de IA solo envían el contexto mínimo requerido según su configuración. Por el momento, Dory utiliza modelos OpenAI."
+          }
+        }
+      }
+    },
+    "deployment": {
+      "badge": "Bases de datos e implementación",
+      "heading": "Ejecute Dory donde vive<brand>sus datos</brand>.",
+      "description": "Conéctese a bases de datos reales e implemente en su entorno: local, Docker o totalmente autohospedado.",
+      "databases": {
+        "title": "Bases de datos",
+        "description": "Integraciones nativas de consultas y con reconocimiento de esquemas.",
+        "shield": "Sin cargas forzadas. Dory se ejecuta en su entorno y se comunica con su base de datos a través de las conexiones que usted controla.",
+        "items": {
+          "clickhouse": {
+            "note": "experiencia primaria"
+          },
+          "postgres": {
+            "note": "En curso"
+          },
+          "mysql": {
+            "note": "En curso"
+          },
+          "sqlite": {
+            "note": "En curso"
+          }
+        }
+      },
+      "deployment": {
+        "title": "Despliegue",
+        "description": "Elija la primera velocidad local o el control autohospedado.",
+        "options": {
+          "local": {
+            "title": "aplicación local",
+            "description": "Ejecútelo en su máquina para obtener la configuración más rápida y sencilla."
+          },
+          "docker": {
+            "title": "Estibador",
+            "description": "Autohospédese en minutos con un solo contenedor."
+          },
+          "selfhost": {
+            "title": "Autohospedado",
+            "description": "Implemente junto con su base de datos en su propio entorno."
+          },
+          "cloud": {
+            "title": "Tu nube",
+            "description": "Ejecute donde residen sus datos:VPC,VPNo red interna."
+          }
+        }
+      },
+      "status": {
+        "stable": "Estable",
+        "beta": "Beta",
+        "planned": "Planificado"
+      },
+      "extra": "Funciona con redes privadas (VPC/VPN) y bases de datos autoadministrables. Usted conserva las claves, la red y la ruta de datos.",
+      "footer": "¿Quiere una integración de base de datos a continuación?<open>Abre un problema en GitHub</open>."
+    }
+  },
+  "downloadPage": {
+    "eyebrow": "Descargar Dory",
+    "title": "Gracias por descargar{product}",
+    "description": "La descarga de{platform}comenzará automáticamente. Si no es así, utilice el botón de descarga directa a continuación.",
+    "statusPreparing": "Preparando la descarga",
+    "statusStarted": "Descarga iniciada",
+    "cardTitle": "Iniciando su instalador{platform}",
+    "cardDescription": "Esto suele comenzar a los pocos segundos. Si su navegador bloquea la descarga, utilice el enlace del manual a continuación.",
+    "manualDownload": "Descargar ahora",
+    "retryFromRelease": "Reintentar desde versiones",
+    "fallbackLink": "Si la descarga no comenzó, haga clic aquí para ver la compilación{platform}",
+    "tip": "¿Necesita otra plataforma o el registro de cambios completo? Abra la página de la última versión.",
+    "viewAllReleases": "Ver todas las descargas"
+  },
+  "downloadCenter": {
+    "eyebrow": "Toda la plataforma",
+    "title": "Descargar Dory",
+    "description": "Descargue la última versión de{product}para su máquina, instálela a través de Homebrew o abra el archivo de versión completo en GitHub.",
+    "latestVersion": "Última versión",
+    "tip": "¿Necesita una transferencia rápida? Utilice la página de detección automática y deje que Dory elija el mejor instalador para este dispositivo.",
+    "autoDetect": "Abrir descarga de detección automática",
+    "homebrewTitle": "Instalar a través de Homebrew",
+    "homebrewDescription": "¿Prefieres una instalación de terminal en macOS? Utilice el barril de Dory y mantenga las actualizaciones alineadas con Homebrew.",
+    "allPlatformsTitle": "Todas las plataformas",
+    "allPlatformsDescription": "Descargas directas desde la última etiqueta de versión de GitHub.",
+    "appleSilicon": "Silicio de manzana",
+    "intel": "Intel",
+    "portable": "Portátil",
+    "installer": "Instalador",
+    "macTitle": "macos",
+    "macAppleSiliconDescription": "Imagen de disco para Apple Silicon Macs.",
+    "macIntelDescription": "Imagen de disco para Mac Intel.",
+    "windowsTitle": "ventanas",
+    "windowsPortableDescription": "Ejecutable portátil sin instalador.",
+    "windowsInstallerDescription": "Ejecutable de instalación para una instalación estándar de Windows.",
+    "releaseTitle": "Todos los lanzamientos",
+    "releaseDescription": "Explore cada compilación publicada, nota de versión y recurso alternativo desde el repositorio de Dory GitHub.",
+    "releaseRowDescription": "Abra la página de la versión completa para ver sumas de verificación, notas de la versión y todos los activos publicados.",
+    "downloadAsset": "Descargar",
+    "viewAllReleases": "Explorar lanzamientos"
+  },
+  "navbar": {
+    "toggleMenu": "Alternar menú de navegación",
+    "tagline": "Espacio de trabajo de datos nativos de IA",
+    "githubDescription": "Ver código fuente, progreso y lanzamientos",
+    "theme": {
+      "toggle": "Alternar tema",
+      "switchToLight": "Cambiar al modo de luz",
+      "switchToDark": "Cambiar al modo oscuro",
+      "currentDark": "Actualmente usando tema oscuro",
+      "currentLight": "Actualmente usando tema ligero"
+    },
+    "home": "Inicio",
+    "blog": "Blog",
+    "releaseNotes": "Notas de la versión",
+    "download": "Descargar"
+  },
+  "blog": {
+    "eyebrow": "Blog de Dory",
+    "title": "Blog y notas de la versión",
+    "description": "Siga las actualizaciones de productos de Dory, las notas de la versión y los escritos futuros del equipo.",
+    "categoryLabel": "Categoría",
+    "releaseNotes": "Notas de la versión",
+    "releaseNotesDescription": "Vea lo que se incluye en cada versión de Dory, incluidas nuevas funciones, mejoras y correcciones.",
+    "postCount": "{count, plural, one {# note}otro{# notes}}",
+    "latestRelease": "Última versión",
+    "readLatest": "Leer la última nota",
+    "readPost": "Leer publicación",
+    "empty": "Aún no hay notas de versión disponibles.",
+    "blogHome": "Blog",
+    "backToReleaseNotes": "Volver a las notas de la versión"
+  }
+}

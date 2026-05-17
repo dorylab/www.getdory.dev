@@ -1,0 +1,56 @@
+---
+title: mariadb
+description: Conecte MariaDB a Dory, ejecute SQL, explore tablas de bases de datos, genere consultas con IA y analice datos operativos.
+---
+
+# MariaDB
+
+<img src="/icons/databases/mariadb.svg" alt="MariaDB logo" width="48" height="48" />
+
+Dory admite MariaDB como un tipo de conexión dedicada para aplicaciones web, sistemas internos, informes y análisis operativos. MariaDB se parece a MySQL en Dory, pero el comportamiento SQL específico de la versión puede diferir.
+
+## Casos de uso más adecuados
+
+- Consultar usuarios, pedidos, productos, pagos y otras tablas de aplicaciones.
+- Explora esquemas MariaDB desconocidos.
+- Generar informes SQL con IA.
+- Investigar problemas de datos de producción o puesta en escena.
+- Guarde consultas MariaDB reutilizables para el equipo.
+
+## Capacidades admitidas
+
+| Capacidad | Soporte de MariaDB |
+| --- | --- |
+| Conexiones | Host, puerto, base de datos, nombre de usuario, contraseña, túnelSSLySSH. |
+| Explorador | Bases de datos, tablas, vistas y columnas. |
+| Consola SQL | MariaDB SQL edición, ejecución y resultados. |
+| Chat de IA | Generación, explicación y corrección de SQL basada en esquemas. |
+| Gráficos y resultados | Análisis visual para resultados agregados. |
+| Consultas guardadas | Guarde MariaDB reutilizable SQL. |
+
+## Consejos
+
+Dígale a AI que la base de datos de destino es MariaDB, especialmente cuando las funciones JSON, las funciones de ventana o las tablas del sistema son importantes. Utilice cuentas de solo lectura y rangos de tiempo explícitos en producción.
+
+## Requisitos de conexión
+
+- Host, puerto, nombre de la base de datos, nombre de usuario y contraseña.
+- Acceso a la red desde el runtime de Dory.
+- ConfiguraciónSSLsi su implementación lo requiere.
+- Un usuario con permiso para leer esquemas y tablas de destino.
+
+## FAQ
+
+### ¿Puedo utilizar las recomendaciones de la página MySQL para MariaDB?
+
+Sí, la mayoría de las prácticas de conexión y consulta se superponen. Aún así verifique el comportamiento de la versión específica de MariaDB para funciones, características JSON y modos SQL.
+
+### ¿Qué debo comprobar primero cuando falla la conexión?
+
+Verifique el host, el puerto, las credenciales, las reglas del firewall, el nombre de la base de datos y si el usuario puede acceder al esquema de destino.
+
+## Documentos relacionados
+
+- [MySQL](/es/docs/database-support/mysql)
+- [Conecte su base de datos](/es/docs/getting-started/connect-your-database)
+- [Consola SQL](/es/docs/core-features/sql-console)

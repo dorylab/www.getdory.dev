@@ -1,0 +1,21 @@
+---
+title: v0.7.4
+description: Notas de la versión de Dory para v0.7.4.
+---
+
+# v0.7.4
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.7.4.md)
+
+## ¿Qué ha cambiado?
+### Características
+- **Paginación de vista previa de datos**: se reemplazó la vista previa limitada de 200 filas con paginación configurable (50/100/200/500/1000 filas por página) en PostgreSQL, MySQL, SQLite y ClickHouse. Incluye el recuento total estimado de filas y navegación estilo DataGrip.
+### Mejoras
+- **Arranque de la aplicación de escritorio sin conexión**: se habilitó el inicio sin conexión completo para la aplicación de escritorio; ahora carga la interfaz de usuario del shell y las capacidades incluso sin conectividad a la nube.
+- **Recuperación de sesión de invitado**: las sesiones de invitado ahora se restauran de manera confiable *antes* de que comience el inicio de sesión (tanto web como de escritorio), lo que mejora la continuidad después del cierre de sesión o el reinicio de la aplicación.
+- **Persistencia de la sesión de escritorio**: los usuarios de escritorio que han iniciado sesión conservan el estado de su sesión después de la reautenticación en la nube, lo que reduce los inicios de sesión redundantes.
+### Correcciones
+- **Confiabilidad de la autenticación de invitados**: se corrigieron múltiples errores relacionados con los invitados en los flujos de autenticación de escritorio, incluido el manejo de la sesión de inicio de sesión de GitHub, la migración de la organización, el proxy de cookies y la recuperación basada en enlaces.
+- **Clasificación de columnas numéricas**: Se corrigió la clasificación lexicográfica de columnas enteras/flotantes en las tablas de resultados de la consola SQL; ahora se ordena numéricamente utilizando metadatos de tipo de columna.
+- **flujo de OAuth de escritorio**: Se corrigió el manejo de sesiones en las rutas de devolución de llamada de OAuth (`finalize `) y consumo de token (` consume `) para evitar fallas de autenticación.
+- **Coherencia de UX de inicio de sesión**: actualiza el estado de inicio de sesión después del cierre de sesión del invitado y resuelve errores de representación en el formulario de inicio de sesión en el escritorio.

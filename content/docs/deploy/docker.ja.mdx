@@ -1,0 +1,127 @@
+---
+title: ドッカー
+description: Docker で Dory を実行し、ポート、シークレット、初期ユーザー、AI プロバイダー、および永続データを構成します。
+---
+
+# ドッカー
+
+Docker は、ブラウザからアクセス可能な環境でセルフホスティング Dory を実行するための最も直接的なパスです。コンテナはポート`3000`で待機します。
+
+## 最小限のコマンド
+
+```bash
+docker run -d --name dory \
+  - p 3000:3000 \
+  - e DS_SECRET_KEY="$(openssl rand -base64 32 | tr -d '\n')" \
+  - e BETTER_AUTH_SECRET="$(openssl rand -hex 32)" \
+  - e BETTER_AUTH_URL="http://localhost:3000" \
+  - e NEXT_PUBLIC_REQUIRE_EM AI L_VERIFICATION=false \
+  - e DORY_INIT_USER_EM AI L=admin@getdory.dev \
+  - e DORY_INIT_USER_PASSWORD=admin \
+  dorylab/dory:latest
+```
+
+` http://localhost:3000`を開き、初期化されたユーザーでサインインします。
+
+## AI を有効にする
+
+SQL の生成、AI チャット、結果分析が必要な場合は、AI 環境変数を追加します。
+
+```bash
+  - e DORY_AI_PROVIDER=openai \
+  - e DORY_AI_MODEL=gpt-4o-mini \
+  - e DORY_AI_API_KEY=your_api_key_here \
+  - e DORY_AI_URL=https://api.openai.com/v1 \
+```
+
+サポートされているプロバイダーには、` openai `、` openai-compatible `、` anthropic `、` google `、` qwen `、` xai `、および` meta `が含まれます。
+
+## `.env `ファイルを使用する
+
+```bash
+docker run -d --name dory \
+  - p 3000:3000 \
+  - -env-file .env \
+  dorylab/dory:latest
+```
+
+## データを永続化する
+
+Dory は、独自のアプリケーション データにデフォルトで PGlite ファイル ストレージを使用します。 Docker で、そのファイルを`/app/data `の下に保持し、`/app/data `を永続ディスク ストレージにマウントします。
+
+```bash
+docker volume create dory-data
+
+docker run -d --name dory \
+  - p 3000:3000 \
+  - -env-file .env \
+  - e DB_TYPE=pglite \
+  - v dory-data:/app/data \
+  dorylab/dory:latest
+```
+
+ホスト ディレクトリを使用することもできます。
+
+```bash
+mkdir -p /srv/dory/data
+
+docker run -d --name dory \
+  - p 3000:3000 \
+  - -env-file .env \
+  - e DB_TYPE=pglite \
+  - v /srv/dory/data:/app/data \
+  dorylab/dory:latest
+```
+
+Dory に SQLite および DuckDB ファイルを読み取らせたい場合は、それらのファイルもコンテナにマウントする必要があります。
+
+## アプリケーション データに Postgres を使用する
+
+運用環境では、Dory アプリケーション データを Postgres に保存できます。
+
+```bash
+DB_TYPE=postgres
+DATABASE_URL=postgres://dory:strong_password@postgres.example.com:5432/dory
+POSTGRES_SSL=true
+```
+
+次に、同じ`.env `ファイルを使用してコンテナーを実行します。
+
+```bash
+docker run -d --name dory \
+  - p 3000:3000 \
+  - -env-file .env \
+  dorylab/dory:latest
+```
+
+## リバースプロキシとHTTPS
+
+チーム展開のために Dory をHTTPSの後ろに置きます。` BETTER_AUTH_URL `をパブリック DoryURLに設定し、そのURLを` TRUSTED_ORIGINS `に含めます。
+
+## アップグレードのチェックリスト
+
+1. 永続データと`.env `をバックアップします。
+2. 新しいイメージをプルします。
+3. 古いコンテナを停止します。
+4. 同じ env ファイルとボリュームを使用して新しいコンテナを起動します。
+5. ログイン、接続、SQL コンソール、AI、および保存されたクエリを確認します。
+
+## FAQ
+
+### 認証リンクで間違ったドメインが使用されるのはなぜですか?
+
+` BETTER_AUTH_URL `が、ユーザーが開いているパブリックURLと正確に一致することを確認します。
+
+### AI が利用できないのはなぜですか?
+
+` DORY_AI_PROVIDER `、` DORY_AI_MODEL `、` DORY_AI_API_KEY `、および` DORY_AI_URL `を確認してください。
+
+### Docker がローカルの SQLite または DuckDB ファイルにアクセスできないのはなぜですか?
+
+ファイルはコンテナにマウントする必要があります。 Dory 接続を作成するときは、コンテナ内のパスを使用します。
+
+## 次のステップ
+
+- [環境変数](/ja/docs/deploy/environment-variables)
+- [セルフホスティング](/ja/docs/deploy/self-hosting)
+- [クラウド データベース](/ja/docs/database-support/cloud-databases)

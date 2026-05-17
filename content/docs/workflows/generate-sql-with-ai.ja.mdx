@@ -1,0 +1,82 @@
+---
+title: Dory AI で SQL を生成する
+description: Dory AI Chat と SQL コンソールを使用して、ビジネス上の質問を実行可能でレビュー可能な SQL クエリに変換します。
+---
+
+# Dory AI で SQL を生成する
+
+Dory AI は、現在の接続、スキーマ、テーブル メタデータ、および SQL コンテキストを使用して SQL を生成できます。優れた出力は、明確な質問、実際のスキーマコンテキスト、予想される結果の形状、および人間によるレビューから生まれます。
+
+## AI SQL 生成を使用する場合
+
+- ビジネス上の質問はわかっていますが、正確な SQL はわかっていません。
+- テーブルについては知っていますが、結合や集計についてサポートが必要です。
+- 絞り込むには最初のドラフト クエリが必要です。
+- チャート対応の出力が必要です。
+- ClickHouse、PostgreSQL、MySQL、またはその他のサポートされているデータベースに構文を適合させる必要があります。
+
+## 1. コンテキストを準備する
+
+AI に質問する前に、データベースが接続されていること、Explorer がターゲット テーブルを読み取ることができること、メトリクスが明確であること、時間範囲が定義されていること、および予想される出力形状がわかっていることを確認します。
+
+適切なテーブルがまだわからない場合は、[不明なテーブルの探索](/ja/docs/workflows/explore-unknown-tables) から始めてください。
+
+## 2. 特定のプロンプトを使用する
+
+```text
+Goal: count daily active users for the last 30 days.
+Database: ClickHouse.
+Table: events.
+Fields: user_id, event_time, event_name.
+Filter: event_name = 'app_open'.
+Output: date and dau, ordered by date ascending, suitable for a line chart.
+Requirement: avoid scanning unrelated time ranges.
+```
+
+これは、「DAUクエリを作成する」よりもはるかに信頼性が高くなります。
+
+## 3.SQL コンソールで検証する
+
+生成された SQL を正しいものとして扱う前に、それを確認してください。
+
+1. テーブル名と列名は本物ですか?
+2. 時間範囲は正しいですか?
+3. 集計はビジネス定義と一致していますか?
+4. クエリには重複排除が必要ですか?
+5. フィルターまたは制限は存在しますか?
+6. 構文は現在のデータベースと一致していますか?
+
+## 4. AI にエラーの修正を依頼する
+
+SQL とエラー メッセージを含めます。
+
+```text
+This SQL fails in PostgreSQL with: column "created_date" does not exist.
+Fix it using the current schema and explain the change.
+```
+
+## 5. チャート対応の SQL を生成する
+
+```text
+Rewrite this query for a bar chart. Return only category and value, order by value descending, and limit to the top 10.
+```
+
+## FAQ
+
+### AI で生成された SQL は本番環境で直接実行できますか?
+
+やみくもに実行しないでください。生成された SQL を、特に大きなテーブル、欠落している時間フィルター、および読み取り専用以外の操作について注意深く確認してください。
+
+### AI が欠落している列を参照するのはなぜですか?
+
+Explorer でテーブルを確認し、現在のスキーマを使用して AI に再生成を依頼します。
+
+### AI で SQL をより速く生成するにはどうすればよいですか?
+
+予想される時間範囲、グループ化レベル、フィルター、データベースの種類について説明します。 AI に、スキャンされる行を減らし、同じ結果列を保持するように依頼します。
+
+## 次のステップ
+
+- [Debug Slow Queries](/ja/docs/workflows/debug-slow-queries) を使用してパフォーマンスをデバッグします。
+- [Build Charts from SQL](/ja/docs/workflows/build-charts-from-sql) を使用してビジュアルを構築します。
+- [分析の保存と再利用](/ja/docs/workflows/save-reuse-analysis) で安定した作業を保存します。

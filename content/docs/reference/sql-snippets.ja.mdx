@@ -1,0 +1,202 @@
+---
+title: SQL スニペット
+description: データベース探索、データ品質チェック、分析、安全なクエリ ワークフローのための再利用可能な Dory SQL スニペット。
+---
+
+# SQL スニペット
+
+これらの SQL スニペットを Dory の開始点として使用します。テーブル名、タイムスタンプ列、データベース固有の日付関数を実行する前に調整します。
+
+## 安全なプレビュー
+
+必要以上の行をスキャンせずにテーブルをプレビューします。
+
+```sql
+SELECT *
+FROM your_table
+LIMIT 100;
+```
+
+幅の広いテーブルの場合は、必要な列のみを検査します。
+
+```sql
+SELECT id, created_at, status
+FROM your_table
+ORDER BY created_at DESC
+LIMIT 100;
+```
+
+## 行を数える
+
+```sql
+SELECT COUNT(*) AS row_count
+FROM your_table;
+```
+
+テーブルのサイズを理解するために、より深い分析の前にこれを使用してください。
+
+## 上位 N の値
+
+```sql
+SELECT status, COUNT(*) AS records
+FROM your_table
+GROUP BY status
+ORDER BY records DESC
+LIMIT 20;
+```
+
+ステータス フィールド、カテゴリ、国、イベント名、計画、エラー コードに適しています。
+
+## 最近の記録
+
+```sql
+SELECT *
+FROM your_table
+WHERE created_at >= CURRENT_DATE - INTERVAL '7 days'
+ORDER BY created_at DESC
+LIMIT 200;
+```
+
+日付の計算はデータベースによって異なります。データベースがこの正確な表現をサポートしていない場合は、Dory AI に PostgreSQL、MySQL、ClickHouse、SQLite、DuckDB、または MariaDB 用に変換するよう依頼してください。
+
+## 毎日のトレンド
+
+PostgreSQL、DuckDB、および多くの互換性のあるエンジン:
+
+```sql
+SELECT
+  DATE_TRUNC('day', created_at) AS day,
+  COUNT(*) AS records
+FROM your_table
+WHERE created_at >= CURRENT_DATE - INTERVAL '30 days'
+GROUP BY day
+ORDER BY day;
+```
+
+クリックハウス:
+
+```sql
+SELECT
+  toStartOfDay(created_at) AS day,
+  count() AS records
+FROM your_table
+WHERE created_at >= now() - INTERVAL 30 DAY
+GROUP BY day
+ORDER BY day;
+```
+
+MySQL と MariaDB:
+
+```sql
+SELECT
+  DATE(created_at) AS day,
+  COUNT(*) AS records
+FROM your_table
+WHERE created_at >= CURRENT_DATE - INTERVAL 30 DAY
+GROUP BY day
+ORDER BY day;
+```
+
+## ヌルチェック
+
+```sql
+SELECT
+  COUNT(*) AS total_rows,
+  SUM(CASE WHEN email IS NULL THEN 1 ELSE 0 END) AS missing_email,
+  SUM(CASE WHEN created_at IS NULL THEN 1 ELSE 0 END) AS missing_created_at
+FROM users;
+```
+
+結合、時間フィルター、またはグラフのグループ化のために列に依存する前に、これを使用してください。
+
+## 重複キーのチェック
+
+```sql
+SELECT id, COUNT(*) AS duplicates
+FROM your_table
+GROUP BY id
+HAVING COUNT(*) > 1
+ORDER BY duplicates DESC
+LIMIT 100;
+```
+
+これは、自然キーによって一意である必要がある主キーの仮定、インポートされたデータ、およびイベント テーブルに使用します。
+
+## 結合テンプレート
+
+```sql
+SELECT
+  o.id AS order_id,
+  o.created_at,
+  o.total_amount,
+  u.id AS user_id,
+  u.email
+FROM orders o
+JOIN users u ON u.id = o.user_id
+WHERE o.created_at >= CURRENT_DATE - INTERVAL '30 days'
+ORDER BY o.created_at DESC
+LIMIT 200;
+```
+
+収益、使用量、または顧客数のために結合を使用する前に、必ず結合カーディナリティを確認してください。
+
+## 結合カーディナリティ チェック
+
+```sql
+SELECT
+  COUNT(*) AS joined_rows,
+  COUNT(DISTINCT o.id) AS distinct_orders,
+  COUNT(DISTINCT u.id) AS distinct_users
+FROM orders o
+JOIN users u ON u.id = o.user_id
+WHERE o.created_at >= CURRENT_DATE - INTERVAL '30 days';
+```
+
+` joined_rows `が予想される個別の数よりもはるかに大きい場合は、重複キーまたは多対多の結合を調べてください。
+
+## コンバージョンファネル
+
+```sql
+SELECT
+  COUNT(DISTINCT CASE WHEN event_name = 'viewed_page' THEN user_id END) AS viewed_page,
+  COUNT(DISTINCT CASE WHEN event_name = 'started_checkout' THEN user_id END) AS started_checkout,
+  COUNT(DISTINCT CASE WHEN event_name = 'completed_purchase' THEN user_id END) AS completed_purchase
+FROM events
+WHERE created_at >= CURRENT_DATE - INTERVAL '30 days';
+```
+
+製品分析スキーマに一致するようにイベント名と ID 列を調整します。
+
+## エラー調査
+
+```sql
+SELECT
+  error_code,
+  COUNT(*) AS occurrences,
+  MAX(created_at) AS last_seen
+FROM application_logs
+WHERE level = 'error'
+  AND created_at >= CURRENT_DATE - INTERVAL '24 hours'
+GROUP BY error_code
+ORDER BY occurrences DESC
+LIMIT 20;
+```
+
+これをログ、ジョブ実行、同期操作、取り込みテーブルで使用します。
+
+## 遅いクエリのサンプル
+
+```sql
+SELECT
+  query_id,
+  user_name,
+  duration_ms,
+  created_at,
+  query_text
+FROM query_log
+WHERE duration_ms > 5000
+ORDER BY duration_ms DESC
+LIMIT 50;
+```
+
+カラム名はデータベースや監視テーブルによって異なります。 Dory Schema Explorer または AI Chat を使用して、このパターンを適応させます。

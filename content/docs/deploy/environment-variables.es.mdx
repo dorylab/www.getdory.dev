@@ -1,0 +1,95 @@
+---
+title: Variables de entorno
+description: Configure la autenticación de Dory, los proveedores de IA, el correo electrónico, OAuth, los orígenes MCP y los usuarios de inicio para la implementación.
+---
+
+# Variables de entorno
+
+El comportamiento de implementación de Dory está controlado por variables de entorno. Trate los valores de producción como secretos y no los comprometa a un control de fuentes ni los convierta en imágenes públicas.
+
+## Variables requeridas
+
+| Variable | Objetivo | Ejemplo |
+| --- | --- | --- |
+| `DS_SECRET_KEY ` | Secreto de tiempo de ejecución utilizado por las funciones de seguridad de la aplicación. | ` openssl rand -base64 32` |
+| ` BETTER_AUTH_SECRET ` | Mejor secreto de autenticación. | ` openssl rand -hex 32` |
+| ` BETTER_AUTH_URL ` | Se abre la base pública de usuariosURL. | ` https://dory.example.com ` |
+
+` BETTER_AUTH_URL `debe coincidir con elURLdel navegador, o los enlaces de inicio de sesión, devolución de llamada, invitación y correo electrónico pueden romperse.
+
+## Base de datos de aplicaciones
+
+Dory almacena los datos de su propio espacio de trabajo en una base de datos de la aplicación. Esto es independiente de las bases de datos externas que conecta y consulta a través de Dory.
+
+| Variable | Objetivo |
+| --- | --- |
+| ` DB_TYPE ` | Proveedor de base de datos de aplicaciones. Utilice ` pglite `para el almacenamiento de archivos local o ` postgres `para Postgres de producción. El valor predeterminado es ` pglite `. |
+| ` PGLITE_DB_PATH ` | Ruta del archivo PGlite. En Docker, manténgalo en un directorio montado como `/app/data/dory `. |
+| ` DATABASE_URL ` | Cadena de conexión de Postgres cuando ` DB_TYPE=postgres `. |
+| ` POSTGRES_URL ` | Cadena de conexión alternativa de Postgres si no se establece ` DATABASE_URL `. |
+| ` POSTGRES_CONNECTION_STRING ` | Cadena de conexión de Postgres alternativa si las otras variables de PostgresURLno están configuradas. |
+| ` POSTGRES_SSL ` | Establezca en ` true `cuando el servidor Postgres requieraSSL. |
+| ` POSTGRES_SSL_REJECT_UNAUTHORIZED ` | Configúrelo en ` false `solo cuando necesite omitir intencionalmente la verificación del certificado. |
+| ` POSTGRES_MAX_CONNECTIONS ` | Límite de tamaño del grupo de Postgres opcional. |
+
+Ejemplo de PGlite:
+
+```bash
+DB_TYPE=pglite
+PGLITE_DB_PATH=/app/data/dory
+```
+
+Ejemplo de Postgres:
+
+```bash
+DB_TYPE=postgres
+DATABASE_URL=postgres://dory:strong_password@postgres.example.com:5432/dory
+POSTGRES_SSL=true
+POSTGRES_SSL_REJECT_UNAUTHORIZED=true
+POSTGRES_MAX_CONNECTIONS=10
+```
+
+Para implementaciones de Docker que utilizan PGlite, monte `/app/data ` en un volumen de Docker persistente o en un directorio de host.
+
+## Variables de IA
+
+| Variable | Objetivo |
+| --- | --- |
+| `DORY_AI_PROVIDER ` | Clave de proveedor como ` openai `,` anthropic `,` google `,` qwen `,` xai `,` meta `o ` openai-compatible `. |
+| ` DORY_AI_MODEL ` | Nombre del modelo. |
+| ` DORY_AI_API_KEY ` | Clave del proveedorAPI. |
+| ` DORY_AI_URL ` | Proveedor o base de punto final compatibleURL. |
+
+## Autenticación e inicio de sesión
+
+| Variable | Objetivo |
+| --- | --- |
+| ` NEXT_PUBLIC_REQUIRE_EM AI L_VERIFICATION ` | Requerir verificación por correo electrónico después del registro a menos que esté configurado en ` false `. |
+| ` TRUSTED_ORIGINS ` | Orígenes confiables separados por comas para verificaciones de origen MCP y autenticación. |
+| ` DORY_INIT_USER_EM AI L ` | Correo electrónico para el usuario inicial iniciado. |
+| ` DORY_INIT_USER_PASSWORD ` | Contraseña para el usuario inicial iniciado. |
+| ` GITHUB_CLIENT_ID `/` GITHUB_CLIENT_SECRET ` | Inicio de sesión de GitHub OAuth. |
+| ` GOOGLE_CLIENT_ID `/` GOOGLE_CLIENT_SECRET ` | Inicio de sesión de Google OAuth. |
+
+## Correo electrónico
+
+| Variable | Objetivo |
+| --- | --- |
+| ` RESEND_API_KEY ` | Vuelva a enviar la claveAPIpara correos electrónicos de verificación, restablecimiento e invitación. |
+| ` EM AI L_FROM ` | Dirección del remitente verificada. |
+
+## Consejos de producción
+
+- Genere valores aleatorios fuertes para ` DS_SECRET_KEY `y ` BETTER_AUTH_SECRET `.
+- No rote los secretos de autenticación y cifrado de manera casual después de la implementación.
+- UtiliceHTTPSen ` BETTER_AUTH_URL `.
+- Utilice almacenamiento persistente para PGlite o copias de seguridad administradas para Postgres.
+- Almacene `.env ` a través de su proceso de gestión secreta.
+- Rote deliberadamente las claves de IA, los secretos de OAuth, las claves de correo electrónico y las credenciales de la base de datos.
+
+## Documentos relacionados
+
+- [Docker](/es/docs/deploy/docker)
+- [Autohospedaje](/es/docs/deploy/self-hospedaje)
+- [Auth](/es/docs/deploy/auth-sso)
+- [Proveedores de IA](/es/docs/reference/ai-providers)

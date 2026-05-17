@@ -1,0 +1,54 @@
+---
+title: 監視
+description: Dory 監視ビューを使用して、ClickHouse クエリ アクティビティ、遅いクエリ、エラー、および操作信号を検査します。
+---
+
+＃ 監視
+
+モニタリングは、特に ClickHouse 接続に関するデータベースのアクティビティと運用上の問題を検査するのに役立ちます。
+
+## エントリーポイント
+
+接続ユーザーが必要なシステム テーブルまたは操作メタデータを読み取る権限を持っている場合、サポートされている接続からモニタリングを利用できます。
+
+＃＃ 概要
+
+[概要] を使用して、最近のアクティビティ、ワークロードの形状、および調査する価値のある目に見える運用上のシグナルがデータベースにあるかどうかを理解します。
+
+![Dory Monitoring の概要メトリクスとグラフ](/images/core-features/dory-monitoring-overview.png)
+
+## クエリログ
+
+クエリ ログには、最近の SQL アクティビティが表示されます。これらを使用して、誰が何を、いつ実行し、どのように動作したかを理解します。
+
+![Dory Monitoring クエリ ログ](/images/core-features/dory-monitoring-query-logs.png)
+
+[クエリ ログ]、[スロー クエリ]、または [エラー クエリ] のクエリ ID をクリックして、[SQL の詳細] パネルを開きます。詳細ビューには、実行メタデータ、読み取りボリューム、メモリ使用量、エラー テキスト (利用可能な場合)、および完全な SQL が表示されます。
+
+![Dory Monitoring SQL 詳細パネル](/images/core-features/dory-monitoring-sql-details.png)
+
+## 遅いクエリ
+
+低速クエリは、フィルタリング、集計変更、パーティション プルーニング、またはスキーマ レベルの最適化が必要な可能性がある高価な SQL を特定するのに役立ちます。
+
+![Dory Monitoring の遅いクエリ](/images/core-features/dory-monitoring-slow-queries.png)
+
+## エラークエリ
+
+エラー クエリは、繰り返し発生するエラー、構文の問題、欠落している列、権限の問題、または実行時エラーを見つけるのに役立ちます。
+
+![Dory Monitoring エラー クエリ](/images/core-features/dory-monitoring-error-queries.png)
+
+## 使用上の推奨事項
+
+- 詳細を掘り下げる前に、概要から始めてください。
+- 時間範囲を使用して調査を絞り込みます。
+- 遅いクエリを同様の成功したクエリと比較します。
+- AI に遅いクエリまたは失敗したクエリの説明を求めますが、提案された書き換えを検証します。
+- 可能な場合は読み取り専用の運用アカウントを使用します。
+
+## 関連ページ
+
+- [ClickHouse データベース サポート](/ja/docs/database-support/clickhouse)
+- [遅い SQL クエリのデバッグ](/ja/docs/workflows/debug-slow-queries)
+- [権限](/ja/docs/core-features/privileges)

@@ -1,0 +1,19 @@
+---
+title: v0.7.5
+description: Notas de la versión de Dory para v0.7.5.
+---
+
+# v0.7.5
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.7.5.md)
+
+## ¿Qué ha cambiado?
+### Correcciones
+- Se corrigieron las sugerencias de esquemas de bases de datos y el comportamiento del selector en el chatbot, mejorando la precisión y la capacidad de respuesta al elegir tablas o columnas.
+- Se resolvieron problemas con la transmisión de indicaciones sugeridas y la transferencia de sesiones en el chatbot, lo que garantiza transiciones fluidas entre las indicaciones del usuario y las sugerencias generadas por IA.
+- Se eliminaron los registros de depuración innecesarios de los componentes del chatbot y los recursos relacionados, lo que redujo el ruido y mejoró el rendimiento en tiempo de ejecución.
+### Mejoras
+- Se agregó `performanceGuard ` a los puntos finales de chat claveAPI(`/api/chat `,`/api/chat/sql-runner `) y la lógica de herramientas SQL para evitar que las consultas lentas o que consumen muchos recursos degraden la capacidad de respuesta.
+### Dependencias
+- Actualizado ` next-intl `de v4.9.0 a v4.9.1.
+- Next.js actualizado de v16.2.2 a v16.2.3.

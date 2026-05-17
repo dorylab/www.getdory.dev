@@ -1,0 +1,23 @@
+---
+title: v0.7.1
+description: Notas de la versión de Dory para v0.7.1.
+---
+
+# v0.7.1
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.7.1.md)
+
+## ¿Qué ha cambiado?
+### Características
+- **Alternar verificación de correo electrónico**: se agregaron variables de entorno `NEXT_PUBLIC_REQUIRE_EM AI L_VERIFICATION ` y `EM AI L_FROM ` para habilitar o deshabilitar la verificación de correo electrónico durante el registro, con la interfaz de usuario correspondiente y soporte de backend.
+- **Notificación de copia de seguridad del espacio de trabajo previa a la actualización**: se introdujo una alerta destacada en la aplicación que solicita a los usuarios que realicen una copia de seguridad de su espacio de trabajo antes de actualizar a la versión 0.8.0, traducida para inglés, español, japonés y chino.
+- **Recuperación de usuario anónimo**: los usuarios invitados ahora pueden recuperar su sesión y realizar una transición sin problemas a una cuenta iniciada después de iniciar sesión, conservando las consultas SQL no guardadas, las consultas guardadas, las carpetas y el historial de Copilot.
+- **Copilot SQL completo para invitados**: los usuarios anónimos ahora tienen acceso completo al copiloto SQL(incluida la generación SQL, el modo de tabla y la funcionalidad de guardar), lo que mejora la incorporación y la exploración.
+### Correcciones
+- **Compatibilidad del navegador PGlite**: se corrigieron errores de tiempo de ejecución al inicializar PGlite en entornos de navegador.
+- **Regresión del diseño de la barra lateral**: se corrigieron los márgenes incorrectos en la barra lateral de la aplicación que afectaban la alineación visual.
+- **estabilidad del escritorio**: se revirtió el escritorio de v41 a v39.x para resolver problemas de inestabilidad de la versión durante el inicio.
+- **El arranque del escritorio se bloquea**: se resolvieron bloqueos durante el inicio de la aplicación de escritorio manejando correctamente la finalización del arranque y evitando lanzamientos simultáneos.
+### Mejoras
+- **Actualización de PGlite con migración de datos**: PGlite actualizado de 0.2.17 (PostgreSQL 16) a 0.4.3 (PostgreSQL 17) con una ruta de migración de datos segura y automatizada, preservando todos los datos del espacio de trabajo existente.
+- **Compilaciones de escritorio independientes**: confiabilidad mejorada del empaquetado de aplicaciones independientes al materializar `better-sqlite3`, resolver enlaces simbólicos ` node_modules `y copiar el ` node_modules `web requerido.

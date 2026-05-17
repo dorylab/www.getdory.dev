@@ -1,0 +1,18 @@
+---
+title: v0.4.3
+description: Notas de la versión de Dory para v0.4.3.
+---
+
+# v0.4.3
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.4.3.md)
+
+## ¿Qué ha cambiado?
+### Características
+- **Integración del complemento de organización**: se migró la autenticación central y la lógica de manejo de equipos a un complemento de organización dedicado, lo que permite un soporte multiorganización más escalable y modular en toda la aplicación web.
+### Mejoras
+- **Manejo simplificado del contexto del equipo**: se eliminó la dependencia de `defaultTeamId ` en los flujos de autenticación (consumo/finalización de autenticación de escritorio), rutasAPIy utilidades de autenticación del lado del cliente, lo que reduce la ambigüedad y mejora la coherencia al resolver la organización o el equipo actual.
+### Correcciones
+- **Confiabilidad de la migración de la base de datos**: se actualizaron las herramientas de migración de Drizzle y se agregaron scripts de reparación para garantizar un estado de esquema consistente en los entornos PostgreSQL y pglite, especialmente después de cambios de esquema relacionados con la organización.
+### Documentos
+- **ActualizacionesREADME**: múltiples mejoras iterativas para la claridad de la documentación, incluidas instrucciones de configuración, notas de arquitectura y orientación de uso para los nuevos flujos de trabajo conscientes de la organización.

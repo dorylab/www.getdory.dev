@@ -1,0 +1,22 @@
+---
+title: v0.3.11
+description: Notas de la versión de Dory para v0.3.11.
+---
+
+# v0.3.11
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.3.11.md)
+
+## ¿Qué ha cambiado?
+### Características
+- **Exportación e importación del espacio de trabajo**: se agregó nueva funcionalidad en Configuración > Datos para exportar e importar datos del espacio de trabajo, incluidas conexiones a nivel de equipo y consultas y carpetas guardadas a nivel de usuario. Las exportaciones excluyen credenciales confidenciales (contraseñas, clavesSSH, tokens) y las importaciones manejan automáticamente nombres duplicados agregando un sufijo de marca de tiempo.
+### Correcciones
+- **Reducción del tamaño de la imagen de Docker**: se cambió la etapa Docker `runner ` de `node:lts ` a `node:lts-slim `, reduciendo el tamaño de la imagen de ~1,5 GB a ~575 MB mediante la eliminación de herramientas de tiempo de compilación innecesarias.
+- **Advertencia de seguimiento de archivos de Turbopack**: se corrigió una advertencia de seguimiento de archivos demasiado amplia en el cliente pglite al refactorizar el uso de ` path.resolve()`para evitar activadores de análisis estáticos durante las compilaciones.
+### Mejoras
+- **Actualización de Yarn a v4**: migró todo el monorepo de Yarn v1 a Yarn v4, incluido:
+  - Formato de archivo de bloqueo actualizado y flujos de trabajo de CI (`--frozen-lockfile `→`--immutable `)
+  - Versión actualizada de Node.js en CI a ` lts/*`
+  - Se cambió el nombre del espacio de trabajo raíz a ` dory-monorepo `para resolver conflictos de nombres con el escritorio.
+  - Se actualizó `@ai-sdk/openai-compatible ` a v2 para compatibilidad con dependencia de pares
+  - Se corrigió un error de tipo en `reasoning.tsx ` relacionado con los accesorios `Streamdown `.

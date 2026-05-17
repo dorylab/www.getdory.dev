@@ -1,0 +1,76 @@
+---
+title: Guardar y reutilizar análisis en Dory
+description: Utilice las consultas guardadas de Dory para preservar SQL, documentar suposiciones, organizar carpetas y crear activos de análisis de equipo reutilizables.
+---
+
+# Guardar y reutilizar análisis en Dory
+
+Una consulta útil no debe permanecer en una pestaña temporal. Dory Saved Queries le permite conservar SQL, el contexto empresarial y las suposiciones para que usted o su equipo puedan reutilizar el trabajo.
+
+## Cuándo guardar el análisis
+
+- La consulta se ejecutará repetidamente.
+- Responde a una pregunta comercial estable.
+- Ha sido depurado u optimizado.
+- Impulsa un gráfico, informe o flujo de trabajo operativo.
+- Otros miembros del equipo lo necesitarán.
+
+## 1. Limpiar el SQL
+
+Antes de guardar:
+
+- Eliminar experimentos temporales.
+- Mantenga comentarios útiles.
+- Dejar claros los rangos de tiempo o puntos de parámetros.
+- Utilice alias de columna legibles.
+- Confirme que la consulta contiene solo la lógica compartida.
+
+## 2. Utilice nombres orientados a negocios
+
+| nombre débil | Mejor nombre |
+| --- | --- |
+| `orders query ` | Pedidos diarios de los últimos 30 días. |
+| ` user sql ` | Ciudades principales por usuarios activos |
+| ` debug ` | Investigación de orden de pago fallida |
+| ` clickhouse test ` | Consultas lentas de ClickHouse Top 50 |
+
+## 3. Supuestos del documento
+
+Incluya la pregunta comercial, la definición de métricas, el rango de tiempo, los filtros, la lógica de deduplicación, la conexión y el caso de uso del gráfico.
+
+```text
+Counts daily paid orders for the last 30 days. Used for the operations trend chart. Aggregates by created_at date and does not deduplicate users.
+```
+
+## 4. Organizar con carpetas
+
+Patrones de carpetas útiles:
+
+- Dominio: Pedidos, Usuarios, Pagos, Eventos.
+- Caso de uso: Paneles de control, Depuración, Informes semanales.
+- Entorno: Producción de sólo lectura, puesta en escena, demostración.
+- Base de datos: ClickHouse, PostgreSQL, MySQL.
+
+## 5. Revisar y archivar
+
+Archive periódicamente consultas obsoletas, actualice SQL después de cambios de esquema, combine duplicados y marque consultas importantes con claridad.
+
+## FAQ
+
+### ¿Qué no se debe guardar?
+
+Evite guardar experimentos no verificados, valores confidenciales, operaciones de escritura o consultas que dependan de un entorno local personal.
+
+### ¿Las consultas guardadas reemplazan la documentación?
+
+No. Las consultas guardadas conservan el ejecutable SQL. Las definiciones de métricas complejas todavía pertenecen a la documentación.
+
+### ¿Cómo puede mi equipo reutilizar los análisis guardados más fácilmente?
+
+Utilice nombres claros, escriba descripciones, organice consultas en carpetas y archive periódicamente SQL obsoletos.
+
+## Próximos pasos
+
+- Generar consultas con [Generar SQL con AI](/es/docs/workflows/generate-sql-with-ai).
+- Salida del gráfico de formas con [Crear gráficos a partir de SQL](/es/docs/workflows/build-charts-from-sql).
+- Conozca los detalles de las funciones en [Consultas guardadas](/es/docs/core-features/saved-queries).

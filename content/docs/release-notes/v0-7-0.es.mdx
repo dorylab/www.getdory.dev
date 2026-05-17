@@ -1,0 +1,28 @@
+---
+title: v0.7.0
+description: Notas de la versión de Dory para v0.7.0.
+---
+
+# v0.7.0
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.7.0.md)
+
+## ¿Qué ha cambiado?
+### Características
+- **Nueva automatizaciónAPI**: se introdujo una interfaz programática (`/api/automation/*`) para sistemas externos (CLI, agentes, flujos de trabajo) para interactuar con Dory sin la interfaz de usuario. Incluye puntos finales para enumerar conexiones, recuperar esquemas de bases de datos, ejecutar consultas SQL y hacer preguntas en lenguaje natural; todo ello compatible con cookies de sesión y tokens de portador con ` x-organization-id `para multiinquilino.
+- **Soporte de cuentas anónimas**: se agregó acceso completo para invitados: los usuarios ahora pueden explorar conexiones, ejecutar SQL y usar el chatbot de IA sin iniciar sesión. Las cuentas anónimas se crean automáticamente, se vinculan a datos de demostración (incluido SQLite) y se eliminan limpiamente al crear la cuenta o darse de baja explícitamente.
+- **Experiencia de chat AI mejorada**:
+  - Nueva página de bienvenida en el chatbot con encabezado contextual, indicaciones sugeridas basadas en tablas y entradas integradas para una interacción instantánea.
+  - Se agregó el botón “Pedirle a AI que escriba SQL” al estado vacío de la Consola SQL.
+  - Sugerencias basadas en esquemas generadas dinámicamente a partir de nombres reales de tablas/columnas.
+  - Inicio en frío mejorado: la barra lateral se oculta cuando está vacía, la entrada se enfoca automáticamente y el texto de marcador de posición guía a los usuarios nuevos.
+### Correcciones
+- **Aislamiento de sesiones de chat**: se corrigió el alcance a nivel de conexión rota: las sesiones de chat ahora se filtran correctamente por ` connectionId `, lo que evita fugas de conexiones cruzadas dentro de la misma organización.
+- **Confiabilidad de la página de bienvenida del Chatbot**: se resolvieron varios errores: las menciones de la tabla ahora aparecen en el área de texto de bienvenida, las sesiones solo se crean en el primer mensaje (no al hacer clic en "+") y ` initialPrompt `ya no se borra prematuramente antes del montaje del componente.
+- **Prevención de mensajes duplicados**: se eliminaron los duplicados de condiciones de carrera al hacer clic en las indicaciones sugeridas en el chatbot.
+- **SSHy pulido de interfaz de usuario**: se agregó selector de archivos para claves privadasSSH(.pem, .key, .pub, .ppk), punteros de cursor a elementos interactivos, carga de esqueleto para la barra lateral del explorador y se corrigieron discrepancias de claves i18n entre configuraciones regionales.
+- **Estabilidad del tiempo de ejecución del escritorio**: se corrigió la resolución del slug de la organización y se garantizó que los datos de demostración de SQLite se cargaran correctamente para los usuarios invitados en la aplicación de escritorio.
+### Mejoras
+- **Flujo de autenticación**: ciclo de vida simplificado de la cuenta anónima, incluido el arranque, la vinculación y la limpieza, con un sólido manejo de la migración y cobertura de pruebas.
+- **SQL Console UX**: se implementó el requisito de cuenta completa para guardar consultas, lo que mejora la claridad de la propiedad de los datos.
+- **Accesibilidad y localización**: compatibilidad ampliada con i18n en nuevos elementos de la interfaz de usuario (selector de archivos, estados de la barra lateral, formularios de conexión) para inglés, español, japonés y chino.

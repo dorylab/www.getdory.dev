@@ -1,0 +1,137 @@
+---
+title: Proveedores de IA
+description: Configure el proveedor de modelo utilizado por las funciones de IA de Dory.
+---
+
+# Proveedores de IA
+
+Dory utiliza una arquitectura de proveedor de IA conectable para AI Chat, generación de SQL, sugerencias de gráficos y análisis de esquemas. Puede cambiar de proveedor a través de variables de entorno sin cambiar el código de la aplicación.
+
+## Proveedores compatibles
+
+| Proveedor | valor `DORY_AI_PROVIDER ` | Notas |
+| --- | --- | --- |
+| Abierto AI | ` openai ` | Utiliza el Open AI APIoficial. |
+| Compatible con Open AI | ` openai-compatible ` | Para servicios que exponen unAPIcompatible con Open AI. |
+| antrópico | ` anthropic ` | Claude modela a través deAPIde Anthropic. |
+| Google | ` google ` | Modelos Géminis a través de Google Generative AI. |
+| Qwen | ` qwen ` | Modelos Qwen a través de un punto final compatible. |
+| x AI | ` xai ` | Modelos Grok vía x AI API. |
+
+## Variables centrales
+
+La mayoría de las implementaciones necesitan los siguientes valores:
+
+```bash
+export DORY_AI_PROVIDER=openai
+export DORY_AI_MODEL=gpt-4o-mini
+export DORY_AI_API_KEY=your_api_key_here
+export DORY_AI_URL=https://api.openai.com/v1
+```
+
+| Variable | Requerido | Descripción |
+| --- | --- | --- |
+| ` DORY_AI_PROVIDER ` | Sí | Selecciona el adaptador del proveedor. |
+| ` DORY_AI_MODEL ` | Sí | Selecciona el modelo utilizado por las funciones de Dory AI. |
+| ` DORY_AI_API_KEY ` | Generalmente | ClaveAPIo token de portador aceptado por el proveedor. |
+| ` DORY_AI_URL ` | Dependiente del proveedor | BaseURLpara proveedores compatibles con Open AI o puntos finales personalizados. |
+
+No incluya las credenciales del proveedor en el código de interfaz, archivos `.env ` registrados, capturas de pantalla ni tickets de soporte.
+
+## Ejemplos de proveedores
+
+### OpenAI
+
+```bash
+DORY_AI_PROVIDER=openai
+DORY_AI_MODEL=gpt-4o-mini
+DORY_AI_API_KEY=sk-...
+DORY_AI_URL=https://api.openai.com/v1
+```
+
+Utilice esta ruta cuando desee la configuración documentada más directa para la generación Dory AI SQL.
+
+### Compatible con Open AI
+
+```bash
+DORY_AI_PROVIDER=openai-compatible
+DORY_AI_MODEL=your-model-name
+DORY_AI_API_KEY=your_provider_key
+DORY_AI_URL=https://your-compatible-endpoint.example.com/v1
+```
+
+Utilice esta ruta cuando su organización ya esté estandarizada en una superficieAPIcompatible con Open AI.
+
+### Antrópico
+
+```bash
+DORY_AI_PROVIDER=anthropic
+DORY_AI_MODEL=claude-3-5-sonnet-latest
+DORY_AI_API_KEY=your_anthropic_key
+```
+
+Utilice Anthropic cuando su equipo prefiera los modelos de Claude por razones políticas o de razonamiento contextual más extenso.
+
+### Google
+
+```bash
+DORY_AI_PROVIDER=google
+DORY_AI_MODEL=gemini-1.5-pro
+DORY_AI_API_KEY=your_google_key
+```
+
+Utilice Google cuando su organización ya ejecute flujos de trabajo de Gemini.
+
+### Qwen
+
+```bash
+DORY_AI_PROVIDER=qwen
+DORY_AI_MODEL=qwen-plus
+DORY_AI_API_KEY=your_qwen_key
+```
+
+Utilice Qwen cuando sea la familia de modelos preferida para su idioma, región o perfil de costos.
+
+### x AI
+
+```bash
+DORY_AI_PROVIDER=xai
+DORY_AI_MODEL=grok-2-latest
+DORY_AI_API_KEY=your_xai_key
+```
+
+Utilice x AI cuando los modelos Grok formen parte de su pila de IA aprobada.
+
+## Elegir un proveedor
+
+| Requisito | Dirección recomendada |
+| --- | --- |
+| Configuración estándar más rápida | Comience con Open AI. |
+| Proxy o terminal compatible existente | Utilice compatible con Open AI. |
+| Tareas de razonamiento largas | Compare los modelos Anthropic y Open AI. |
+| Uso existente de la IA de Google | Utilice Google. |
+| Ajuste de región, idioma o costo | Compare Qwen y otros proveedores aprobados. |
+| Requisito de cumplimiento interno | Elija el proveedor ya aprobado por su organización. |
+
+## Lista de verificación de validación
+
+1. Confirme que el valor del proveedor coincida con uno de los valores ` DORY_AI_PROVIDER `documentados.
+2. Confirme que el nombre del modelo existe para ese proveedor.
+3. Confirme que la claveAPItiene permiso para llamar al modelo seleccionado.
+4. Si utiliza un punto final compatible, confirme que ` DORY_AI_URL `incluya la ruta base correcta.
+5. Reinicie el servidor Dory después de cambiar las variables del proveedor.
+6. Pruebe AI Chat con una pequeña pregunta de esquema antes de probar tareas grandes de generación de SQL.
+
+## Solución de problemas
+
+| Síntoma | causa probable | Arreglar |
+| --- | --- | --- |
+| AI Chat devuelve errores de autenticación | ClaveAPIno válida o faltante. | Gire la clave y actualice ` DORY_AI_API_KEY `. |
+| Modelo no encontrado | Nombre de modelo incorrecto para el proveedor seleccionado. | Utilice un nombre de modelo compatible con ese proveedor. |
+| El punto final compatible falla | BaseURLo ruta incorrecta. | Verifique la baseURLcompatible con Open AI del proveedor. |
+| La calidad SQL es inconsistente. | El modelo tiene una capacidad limitada de razonamiento de esquemas. | Pruebe con un modelo más sólido e incluya un contexto de tabla más claro. |
+| Las respuestas son lentas | Latencia del proveedor o contexto de esquema grande. | Utilice un modelo más rápido o limite el contexto de la base de datos. |
+
+## Limitación
+
+El soporte del proveedor no garantiza una calidad de salida idéntica. La calidad de generación de SQL variará según el modelo, la complejidad del esquema y la claridad del mensaje.

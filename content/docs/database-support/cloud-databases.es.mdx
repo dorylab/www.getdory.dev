@@ -1,0 +1,70 @@
+---
+title: Bases de datos en la nube
+description: Conecte bases de datos administradas en la nube a Dory conTLS, listas de direcciones IP permitidas, túnelesSSH, secretos y límites de acceso del equipo.
+---
+
+# Bases de datos en la nube
+
+<div className="flex items-center gap-3">
+  <img src="/icons/databases/clickhouse.svg" alt="ClickHouse logo" width="40" height="40" />
+  <img src="/icons/databases/neon.svg" alt="Neon logo" width="40" height="40" />
+  <img src="/icons/databases/postgresql.svg" alt="PostgreSQL logo" width="40" height="40" />
+  <img src="/icons/databases/mysql.svg" alt="MySQL logo" width="40" height="40" />
+</div>
+
+Las bases de datos administradas requieren más que un host y una contraseña. A menudo es necesario tener en cuenta el acceso a la red, TLS, listas de direcciones IP permitidas, secretos y permisos del equipo antes de que Dory pueda conectarse.
+
+## Escenarios comunes de bases de datos en la nube
+
+- Nube ClickHouse.
+- PostgreSQL sin servidor de neón.
+- MySQL o PostgreSQL administrado.
+- Bases de datos detrás de VPC, redes privadas o grupos de seguridad.
+- Bases de datos a las que se accede a través de hosts bastiónSSH.
+- Entornos Dory autohospedados compartidos por un equipo.
+
+## Lista de verificación previa al vuelo
+
+| Artículo | Que verificar |
+| --- | --- |
+| Accesibilidad de la red | El tiempo de ejecución de Dory puede llegar al host y al puerto de la base de datos. |
+| lista de direcciones IP permitidas | La base de datos permite la IP de salida del servidor o del escritorio de Dory. |
+| TLS/SSL | Los proveedores de la nube pueden requerir conexiones cifradas. |
+| túnelSSH | Las bases de datos privadas pueden requerir un host bastión. |
+| Permisos | La producción debe utilizar roles de solo lectura o con privilegios mínimos. |
+| Gestión secreta | No se deben confirmar contraseñas, clavesAPIni tokens. |
+
+## Escritorio frente a Docker
+
+La aplicación de escritorio se conecta desde su máquina actual. Docker o Dory autohospedado se conecta desde el servidor o la red de contenedores. Si una conexión funciona localmente pero falla después de la implementación, verifique la ruta de red implementada y la lista de nube permitida.
+
+## Requisitos del túnelSSH
+
+Prepare el host, puerto, nombre de usuario, contraseña o clave privadaSSH, frase de contraseña opcional y el host y puerto de la base de datos privada.
+
+## Consejos de seguridad
+
+- Utilice un usuario de base de datos dedicado para Dory.
+- Prefiere privilegios de solo lectura para bases de datos de producción.
+- MantengaSSLhabilitado para bases de datos administradas en la nube.
+- Rotar credenciales y eliminar accesos no utilizados.
+
+## FAQ
+
+### ¿Por qué mi conexión funciona localmente pero falla en producción?
+
+Los entornos de escritorio y de implementación suelen tener diferentes salidas de red. Verifique las listas de permitidos, el enrutamientoVPC, los firewalls y las redes de contenedores.
+
+### ¿Debería habilitarSSL?
+
+UtiliceSSLsiempre que el proveedor de la base de datos lo requiera o lo recomiende. ClickHouse Cloud, Neon y muchas bases de datos administradas comúnmente requierenTLS.
+
+### ¿Cómo puedo reducir el riesgo de la base de datos de producción?
+
+Utilice credenciales de solo lectura, restrinja el acceso a la red, pruebe consultas con límites y revise SQL generado por IA antes de la ejecución.
+
+## Documentos relacionados
+
+- [Conecte su base de datos](/es/docs/getting-started/connect-your-database)
+- [Autohospedaje](/es/docs/deploy/self-hospedaje)
+- [Docker](/es/docs/deploy/docker)

@@ -1,0 +1,87 @@
+---
+title: Ajustes
+description: Referencia de configuración de Dory para el comportamiento del editor, temas, límites de consultas, conexiones y flujos de trabajo del equipo.
+---
+
+# Ajustes
+
+La configuración de Dory cubre dos capas: preferencias de flujo de trabajo local para cada usuario y opciones operativas compartidas para los equipos. Utilice esta referencia cuando estandarice un espacio de trabajo de Dory SQL o documente los valores predeterminados de incorporación.
+
+## configuración del editor SQL
+
+| Configuración | Opciones | Por defecto | lo que afecta |
+| --- | --- | --- | --- |
+| Tema del editor | `Auto `,` GitHub Light `,` GitHub Dark `,` VS Light `,` VS Dark ` | ` Auto ` | Colores y contraste del editor de Mónaco. |
+| Familia de fuentes | ` Monaco `,` Menlo `,` Consolas `,` JetBrains Mono `,` Fira Code `,` Source Code Pro `,` Custom ` | ` Monaco ` | SQL legibilidad y alineación. |
+| Tamaño de fuente | `12` a `24` | `12` | Tamaño del texto del editor. |
+| altura de la línea | `1.1` a `2.2` | `1.5` | Espaciado vertical entre líneas SQL. |
+| Números de línea | ` On `,` Off ` | ` On ` | Si se muestran los números de línea. |
+| Minimapa | ` On `,` Off ` | ` Off ` | Si se muestra el minimapa de Mónaco. |
+| ajuste de palabras | ` On `,` Off ` | ` On ` | Si las líneas largas SQL se ajustan dentro del editor. |
+| Plegable | ` On `,` Off ` | ` On ` | Si los bloques SQL se pueden contraer. |
+| Límite de consultas | `100`, `200`, `500`, `1000`, `2000`, `5000` | `200` | Límite de filas predeterminado para vistas previas de consultas y flujos de trabajo de análisis. |
+
+## Configuración del tema de la aplicación
+
+Dory también incluye temas de color a nivel de aplicación:
+
+| Grupo | Temas |
+| --- | --- |
+| Por defecto | Predeterminado, azul, verde, ámbar, líquido |
+| Escamoso | Escala predeterminada, escala azul, escala líquida |
+| monoespaciado | Mono escalado |
+
+Elija un tema restringido para pantallas compartidas, demostraciones y recorridos en equipo. Elija variantes monoespaciadas cuando SQL denso y el escaneo de tablas sean el flujo de trabajo principal.
+
+## Guía de límite de consultas
+
+| Caso de uso | Límite sugerido |
+| --- | --- |
+| Exploración de esquemas | `100` o `200` |
+| Prototipos de tableros | `200` o `500` |
+| Comprobaciones de calidad de datos | `500` o `1000` |
+| Inspección tipo exportación | `2000` o `5000` solo cuando sea necesario |
+
+Los límites más bajos hacen que Dory se sienta más rápido y reducen los escaneos grandes accidentales. Para agregados analíticos, prefiera la agrupación de nivel SQL en lugar de aumentar el límite de resultados.
+
+## Configuración de conexión
+
+La configuración de conexión varía según el controlador de la base de datos, pero la mayoría de los equipos deberían estandarizar estas decisiones:
+
+| Área | Recomendación |
+| --- | --- |
+| Nombres | Utilice nombres que incluyan el entorno y el propósito de la base de datos, como `prod-analytics-readonly `. |
+| Cartas credenciales | Utilice usuarios de bases de datos de solo lectura para conexiones de análisis. |
+| Acceso de host | Confirme que las implementaciones de Docker puedan llegar al host de la base de datos desde el interior del contenedor. |
+| Archivos locales | Para SQLite y DuckDB, use rutas absolutas y monte el directorio que lo contiene cuando se ejecuta en Docker. |
+| SSL | Siga los requisitosSSLdel proveedor de la base de datos en lugar de deshabilitar la verificación por conveniencia. |
+
+## configuración de IA
+
+El comportamiento de la IA está controlado por el proveedor y el modelo seleccionado durante la implementación. Para obtener una referencia detallada, consulte [Proveedores de IA](/es/docs/reference/ai-providers).
+
+Para uso en equipo, documente:
+
+- Proveedor y modelo homologados.
+- Qué entornos pueden utilizar funciones de IA.
+- Si se permiten nombres de esquemas de producción en las solicitudes.
+- Proceso de revisión esperado antes de ejecutar SQL generado por IA.
+
+## Configuración de consulta guardada
+
+Las consultas guardadas son más útiles cuando los equipos acuerdan convenciones de nombres y carpetas.
+
+| Convención | Ejemplo |
+| --- | --- |
+| Prefijo por dominio | ` billing - monthly revenue ` |
+| incluir grano | ` orders - daily count ` |
+| Incluir base de datos cuando sea ambigua | ` warehouse.users - active users ` |
+| Mantenga los borradores separados | ` drafts / migration checks ` |
+
+## Valores predeterminados del equipo recomendado
+
+- Mantener el límite de consultas en `200` para nuevos usuarios.
+- Mantenga el texto ajustado para la incorporación y las demostraciones.
+- Utilice credenciales de solo lectura para conexiones compartidas.
+- Guarde SQL reutilizable en lugar de compartir capturas de pantalla únicas.
+- Revisar SQL generado por IA antes de la ejecución, especialmente las uniones y los filtros.

@@ -1,0 +1,21 @@
+---
+title: v0.10.0
+description: Notas de la versión de Dory para v0.10.0.
+---
+
+# v0.10.0
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.10.0.md)
+
+## ¿Qué ha cambiado?
+### Información sobre resultados basada en IA
+- Se introdujo **creación de perfiles de IA para conjuntos de resultados SQL**, que genera automáticamente resúmenes descriptivos, información estadística y recomendaciones procesables directamente en la consola SQL.
+- Se agregó una **pestaña Resumen** dedicada y un **panel Información del conjunto de resultados** a la interfaz de usuario de la tabla de resultados, lo que muestra contexto generado por IA, como distribución de datos, valores atípicos, correlaciones y posibles anomalías.
+- Se lanzaron **acciones de análisis impulsadas por IA**, incluidas transformaciones rápidas (por ejemplo, "Filtrar los 10 principales", "Pivotar por categoría") y sugerencias de gráficos en lenguaje natural, accesibles a través del Panel Copilot y la Descripción general de resultados.
+### Mejoras en la experiencia de usuario y el rendimiento
+- **Comportamiento de diseño estabilizado**: Se corrigió el parpadeo y la desalineación al cambiar entre pestañas de tabla/gráfico/resumen; Los encabezados y gráficos ahora mantienen un posicionamiento consistente.
+- **Almacenamiento en caché de resultados optimizado**: se evitó la invalidación innecesaria de los cachés de resultados durante las actualizaciones de solo metadatos (por ejemplo, cambio de nombre de columnas), lo que mejoró la velocidad de reejecución de consultas.
+- **Herramientas de gráficos refinadas**: Lógica de generación automática de gráficos unificada en todos los perfiles de resultados, actualización de la barra de control del gráfico con mejor clasificación y agrupación de acciones, y capacidad de respuesta mejorada del lienzo.
+### Correcciones
+- Se resolvió un bucle de actualización de clasificación infinita en la tabla de resultados virtualizada que provocaba que la interfaz de usuario se congelara durante la clasificación interactiva.
+- Se eliminaron capturas previas duplicadas de información de IA y se ajustó el tiempo de carga para reducir la latencia y las llamadasAPIredundantes al generar resultados.

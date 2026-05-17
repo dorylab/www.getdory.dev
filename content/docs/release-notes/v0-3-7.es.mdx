@@ -1,0 +1,25 @@
+---
+title: v0.3.7
+description: Notas de la versión de Dory para v0.3.7.
+---
+
+# v0.3.7
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.3.7.md)
+
+## ¿Qué ha cambiado?
+### Correcciones
+- Se corrigió la lógica de reintento del copiloto SQL para evitar reintentos infinitos al generar declaraciones SQL de solo lectura.
+- Se resolvieron inconsistencias de estilo en los componentes de resultados SQL generados por Copilot, incluida la alineación de información sobre herramientas y la representación de bloques de código.
+- Se corrigieron fallas de acción de IA causadas por metadatos de columna faltantes en las indicaciones del contexto del esquema.
+- Se corrigieron problemas de diseño de la página de resumen de la base de datos, mejorando la alineación visual de las tarjetas de metadatos y la información sobre herramientas.
+- Se corrigieron errores de establecimiento de conexión en las pruebas de un extremo a otro y en la interfaz de usuario del flujo de conexión.
+- Se solucionó la desalineación del ícono de la barra lateral de la aplicación y el estilo inconsistente del botón de actualización en las secciones de navegación.
+### Pruebas y mejoras de CI
+- Se agregaron pruebas integrales de un extremo a otro que cubren la consola SQL, las conexiones y los flujos de autenticación.
+- Se introdujo un nuevo flujo de trabajo de GitHub Actions para la ejecución automatizada de pruebasE2E.
+- Se corrigieron múltiples problemas de configuración de Playwright, incluido el filtrado de directorios `.tmp ` y el manejo del estado de autenticación.
+- Conjuntos de pruebas inestablesE2Eestabilizados (por ejemplo, inicio de sesión, banco de trabajo, configuración de conexión) a través de correcciones específicas en los asistentes de prueba y la configuración de autenticación.
+### Documentación y herramientas
+- Se actualizó el comando de ejecución de Docker en `README.md ` para eliminar variables de entorno obsoletas (`BETTER_AUTH_URL `,` DB_TYPE `).
+- Se agregó un generador de notas de versión impulsado por IA con GitHub Action dedicado y script CLI.

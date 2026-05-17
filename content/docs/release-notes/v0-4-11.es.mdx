@@ -1,0 +1,22 @@
+---
+title: v0.4.11
+description: Notas de la versión de Dory para v0.4.11.
+---
+
+# v0.4.11
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.4.11.md)
+
+## ¿Qué ha cambiado?
+### Características
+- Se agregaron actualizaciones automáticas del grifo Homebrew: las versiones estables de macOS ahora activan actualizaciones automáticas del grifo `dorylab/homebrew-dory `, incluida la compatibilidad con las arquitecturas ` arm64`y ` x64`en el barril Homebrew.
+### Correcciones
+- Se corrigieron las inconsistencias en los nombres de los activos del paquete de Windows entre los flujos de trabajo de CI y la configuración del Generador de escritorio.
+- Se resolvieron nombres de artefactos incorrectos para compilaciones estables de macOS: los artefactos ahora incluyen consistentemente arquitectura (por ejemplo,` Dory-0.4.10-arm64.dmg `,` Dory-0.4.10-x64.dmg `), lo que coincide con la salida de CI de múltiples arcos y las expectativas de Homebrew.
+- Se corrigió la ejecución del comando ` desktop-builder `en compilaciones matriciales de macOS usando ` yarn workspace exec `para garantizar una resolución de dependencia correcta.
+- Se corrigieron los permisos de GitHub Actions para el envío de Homebrew cambiando a ` HOMEBREW_TAP_TOKEN `.
+### Mejoras
+- Flujo de trabajo de empaquetado de macOS optimizado con almacenamiento en caché de compilación de Yarn y Next.js, lo que reduce significativamente el tiempo de ejecución de CI.
+- Acciones clave de GitHub actualizadas (` checkout `,` setup-node `,` upload-artifact `,` cache `) a las últimas versiones estables para mejorar la confiabilidad y la seguridad.
+### Documentos
+- Actualizado ` README.md `con información actual de instalación y uso.

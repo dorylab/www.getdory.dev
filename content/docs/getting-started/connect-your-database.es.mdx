@@ -1,0 +1,91 @@
+---
+title: Conecte su base de datos
+description: Agregue una conexión de base de datos a Dory y prepare el contexto del esquema para los flujos de trabajo SQL y AI.
+---
+
+# Conecte su base de datos
+
+Dory puede conectarse a múltiples tipos de bases de datos. Después de agregar una conexión, puede explorar el esquema en el Explorador, escribir SQL en la consola SQL y hacer preguntas de IA con el contexto de la base de datos.
+
+## Bases de datos compatibles
+
+- Haga clic en Casa
+- PostgreSQL y Neón
+- MySQL y MariaDB
+- SQLite
+- DuckDB y MotherDuck
+
+## Antes de conectarse
+
+Prepare la siguiente información:
+
+- Host de base de datos, puerto, nombre de usuario y contraseña.
+- Nombre de la base de datos, esquema o ruta del archivo cuando sea necesario.
+- Acceso a la red desde la máquina o contenedor que ejecuta Dory.
+- Configuración del túnelSSLoSSHsi la base de datos lo requiere.
+- Un usuario de solo lectura cuando se conecta a datos de producción.
+
+## Flujo de conexión recomendado
+
+1. Abre Dory.
+2. Cree o seleccione un espacio de trabajo.
+3. Agregue una nueva conexión.
+4. Elija el tipo de base de datos.
+5. Complete la configuración de conexión.
+6. Pruebe la conexión.
+7. Abra el Explorador y confirme que las tablas estén visibles.
+
+## Consejos de conexión por tipo
+
+- Para ClickHouse, confirmeHTTP/puerto nativo, privilegios de usuario y si las tablas de monitoreo están disponibles.
+- Para PostgreSQL y Neon, confirme la visibilidad del esquema y los requisitos deSSL.
+- Para MySQL y MariaDB, confirme el acceso al host, el puerto, el nombre de la base de datos y el juego de caracteres.
+- Para SQLite y DuckDB, use una ruta de archivo absoluta y asegúrese de que Dory pueda leer el archivo.
+- Para implementaciones de Docker, monte los archivos de bases de datos locales en el contenedor antes de conectarse a ellos.
+
+## Después de que funcione la conexión
+
+### Explorador
+
+Explore bases de datos, esquemas, tablas, columnas y filas de muestra.
+
+### SQL Console
+
+Escriba y ejecute SQL en la conexión seleccionada.
+
+### Chat de IA
+
+Pídale a Dory que genere SQL, explique tablas o continúe un análisis utilizando el contexto del esquema.
+
+### Consultas guardadas
+
+Guarde SQL útil para que usted o su equipo lo reutilicen.
+
+## Solución de problemas comunes
+
+### No se puede conectar a la base de datos
+
+Verifique el host, el puerto, las credenciales, la configuración deSSL, las reglas del firewall y si la base de datos permite conexiones desde Dory.
+
+### La IA no puede ver la estructura de la tabla
+
+Primero abra Explorer y confirme que las tablas estén visibles. Si el esquema está oculto por permisos, utilice una función con acceso a metadatos.
+
+### La conexión de ClickHouse falla
+
+Confirme los privilegios de usuario, protocolo, base de datos y punto final correctos. Algunos entornos administrados de ClickHouse requierenSSL.
+
+### No se puede acceder a la base de datos de archivos local
+
+Utilice una ruta absoluta. En Docker, monte el directorio que contiene el archivo SQLite o DuckDB.
+
+## Consejos de seguridad
+
+- Prefiera usuarios de solo lectura para bases de datos de producción.
+- Evite compartir credenciales de administrador.
+- Revisar SQL generado por IA antes de la ejecución.
+- Limitar la exposición de la red para implementaciones autohospedadas.
+
+## Siguiente paso
+
+Continúe con [Primera consulta en 3 minutos](/es/docs/getting-started/primera-consulta-en-3-minutos).

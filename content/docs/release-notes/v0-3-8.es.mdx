@@ -1,0 +1,18 @@
+---
+title: v0.3.8
+description: Notas de la versión de Dory para v0.3.8.
+---
+
+# v0.3.8
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.3.8.md)
+
+## ¿Qué ha cambiado?
+### Correcciones
+- Comentarios de los usuarios mejorados durante las actualizaciones manuales de la aplicación: muestra cuadros de diálogo de error categorizados (de red, de servidor o genéricos), informa a los usuarios cuando una actualización en curso bloquea una verificación y respeta la preferencia de "recordar más tarde" para evitar descargas silenciosas.
+### Documentación
+- Se agregó `AGENTS.md ` para documentar la funcionalidad y el uso relacionados con el agente.
+### Mejoras
+- Implementación de conexión refactorizada para una mejor mantenibilidad y coherencia entre las API de bases de datos (por ejemplo, bases de datos, tablas, vistas, funciones, vistas materializadas).
+- Lógica de administración de privilegios refactorizada, incluidas rutas de backend, implementaciones específicas de controladores (ClickHouse) y páginas de privilegios de frontend, para mejorar la corrección, la extensibilidad y la alineación con el alcance del rol/usuario.
+- Registro de conexión refactorizado y manejo de rutas para adoptar una arquitectura basada en capacidades, lo que permite una abstracción de controladores más limpia y soporte futuro de bases de datos.

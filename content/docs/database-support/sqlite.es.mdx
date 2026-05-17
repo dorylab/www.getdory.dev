@@ -1,0 +1,53 @@
+---
+title: SQLite
+description: Conecte archivos SQLite locales a Dory, explore tablas, ejecute SQL y analice conjuntos de datos livianos o datos de demostración con IA.
+---
+
+# SQLite
+
+<img src="/icons/databases/sqlite.svg" alt="SQLite logo" width="48" height="48" />
+
+Dory admite archivos de bases de datos SQLite locales para desarrollo, prototipos, demostraciones, datos de prueba y análisis ligeros. Puede abrir archivos `.sqlite ` o `.db `, examinar tablas, ejecutar SQL, inspeccionar resultados y guardar consultas.
+
+## Casos de uso más adecuados
+
+- Inspección de bases de datos de desarrollo local.
+- Prototipos de productos y conjuntos de datos de demostración.
+- Exploración de pequeños conjuntos de datos.
+- Consultas de datos de prueba reproducibles.
+- Análisis ligero sin base de datos remota.
+
+## Requisitos de conexión
+
+Proporcione una ruta absoluta al archivo SQLite. El proceso Dory debe poder leer el archivo. En Docker, monte el directorio de archivos en el contenedor y use la ruta del contenedor.
+
+## Capacidades admitidas
+
+| Capacidad | soporte SQLite |
+| --- | --- |
+| Conexiones | Conexiones de archivos de ruta absoluta `.sqlite `/`.db `. |
+| Explorador | Tablas, columnas y estructura básica. |
+| Consola SQL | Ejecución y resultados de SQLite SQL. |
+| Chat de IA | Generación y explicación de SQL basada en esquemas. |
+| Gráficos y resultados | Análisis visual de resultados de consultas. |
+| Consultas guardadas | Guarde SQLite reutilizable SQL. |
+
+## Usando SQLite en Docker
+
+Cuando Dory se ejecuta en Docker, el archivo SQLite debe montarse en el contenedor. Utilice la ruta del contenedor en la conexión Dory, no la ruta de solo host.
+
+## FAQ
+
+### ¿Por qué Dory no puede encontrar mi archivo SQLite?
+
+Confirme que la ruta sea absoluta y legible por Dory. En Docker, confirme que el directorio esté montado en el contenedor.
+
+### ¿SQLite es adecuado para compartir en equipo?
+
+SQLite es mejor para archivos locales, demostraciones y análisis ligeros. Para entornos de equipo compartidos, considere PostgreSQL, MySQL, ClickHouse u otra base de datos de servidor.
+
+## Documentos relacionados
+
+- [Conecte su base de datos](/es/docs/getting-started/connect-your-database)
+- [Consola SQL](/es/docs/core-features/sql-console)
+- [DuckDB](/es/docs/database-support/duckdb)

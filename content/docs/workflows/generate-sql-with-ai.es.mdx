@@ -1,0 +1,82 @@
+---
+title: Genera SQL con Dory AI
+description: Utilice Dory AI Chat y SQL Console para convertir preguntas comerciales en consultas SQL ejecutables y revisables.
+---
+
+# Genera SQL con Dory AI
+
+Dory AI puede generar SQL utilizando la conexión actual, el esquema, los metadatos de la tabla y el contexto SQL. Un buen resultado proviene de una pregunta clara, un contexto de esquema real, una forma de resultado esperado y una revisión humana.
+
+## Cuándo utilizar la generación AI SQL
+
+- Conoces la cuestión empresarial pero no la SQL exacta.
+- Conoces las tablas pero necesitas ayuda con las uniones o la agregación.
+- Necesita un primer borrador de consulta para perfeccionar.
+- Quiere resultados listos para gráficos.
+- Debe adaptar la sintaxis para ClickHouse, PostgreSQL, MySQL u otra base de datos compatible.
+
+## 1. Preparar el contexto
+
+Antes de preguntarle a AI, confirme que la base de datos esté conectada, que Explorer pueda leer las tablas de destino, que la métrica sea clara, que el rango de tiempo esté definido y que se conozca la forma de salida esperada.
+
+Si aún no conoce la tabla correcta, comience con [Explorar tablas desconocidas](/es/docs/workflows/explore-unknown-tables).
+
+## 2. Utilice un mensaje específico
+
+```text
+Goal: count daily active users for the last 30 days.
+Database: ClickHouse.
+Table: events.
+Fields: user_id, event_time, event_name.
+Filter: event_name = 'app_open'.
+Output: date and dau, ordered by date ascending, suitable for a line chart.
+Requirement: avoid scanning unrelated time ranges.
+```
+
+Esto es mucho más confiable que "escribir una consultaDAU".
+
+## 3. Validar en la consola SQL
+
+Revise el SQL generado antes de tratarlo como correcto:
+
+1. ¿Son reales los nombres de tablas y columnas?
+2. ¿Es correcto el rango de tiempo?
+3. ¿La agregación coincide con la definición de negocio?
+4. ¿La consulta necesita deduplicación?
+5. ¿Hay filtros o límites presentes?
+6. ¿La sintaxis coincide con la base de datos actual?
+
+## 4. Pídale a AI que corrija errores
+
+Incluya el SQL y el mensaje de error:
+
+```text
+This SQL fails in PostgreSQL with: column "created_date" does not exist.
+Fix it using the current schema and explain the change.
+```
+
+## 5. Generar SQL listo para el gráfico
+
+```text
+Rewrite this query for a bar chart. Return only category and value, order by value descending, and limit to the top 10.
+```
+
+## FAQ
+
+### ¿Se puede ejecutar SQL generado por IA directamente en producción?
+
+No lo ejecutes a ciegas. Revise cuidadosamente el SQL generado, especialmente para tablas grandes, filtros de tiempo faltantes y cualquier operación que no sea de solo lectura.
+
+### ¿Por qué la IA hace referencia a las columnas que faltan?
+
+Confirme la tabla en Explorer y solicite a AI que se regenere usando el esquema actual.
+
+### ¿Cómo puedo hacer que la IA genere SQL más rápido?
+
+Describa el rango de tiempo esperado, el nivel de agrupación, los filtros y el tipo de base de datos. Pídale a AI que reduzca las filas escaneadas y conserve las mismas columnas de resultados.
+
+## Próximos pasos
+
+- Depurar rendimiento con [Depurar consultas lentas](/es/docs/workflows/debug-slow-queries).
+- Cree elementos visuales con [Crear gráficos a partir de SQL](/es/docs/workflows/build-charts-from-sql).
+- Guarde el trabajo estable con [Guardar y reutilizar análisis](/es/docs/workflows/save-reuse-analysis).

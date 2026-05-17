@@ -1,0 +1,95 @@
+---
+title: 環境変数
+description: Dory 認証、AI プロバイダー、電子メール、OAuth、MCP オリジン、および展開用の init ユーザーを構成します。
+---
+
+# 環境変数
+
+Dory のデプロイ動作は環境変数によって制御されます。本番環境の値をシークレットとして扱い、ソース管理にコミットしたり、公開イメージにベイクしたりしないでください。
+
+## 必須の変数
+
+| 変数 | 目的 | 例 |
+| --- | --- | --- |
+| `DS_SECRET_KEY ` | アプリケーションのセキュリティ機能によって使用されるランタイム シークレット。 | ` openssl rand -base64 32` |
+| ` BETTER_AUTH_SECRET ` | より良い認証の秘密。 | ` openssl rand -hex 32` |
+| ` BETTER_AUTH_URL ` | 公開ベースURLユーザーが開きます。 | ` https://dory.example.com ` |
+
+` BETTER_AUTH_URL `はブラウザに表示されるURLと一致する必要があります。一致しない場合、ログイン、コールバック、招待、電子メールのリンクが壊れる可能性があります。
+
+## アプリケーションデータベース
+
+Dory は、独自のワークスペース データをアプリケーション データベースに保存します。これは、Dory を介して接続してクエリを実行する外部データベースとは別のものです。
+
+| 変数 | 目的 |
+| --- | --- |
+| ` DB_TYPE ` | アプリケーション データベース プロバイダー。ローカル ファイル ストレージには` pglite `を使用し、実稼働 Postgres には` postgres `を使用します。デフォルトは` pglite `です。 |
+| ` PGLITE_DB_PATH ` | PGlite ファイルのパス。 Docker では、これを`/app/data/dory `などのマウントされたディレクトリの下に保持します。 |
+| ` DATABASE_URL ` | ` DB_TYPE=postgres `の場合の Postgres 接続文字列。 |
+| ` POSTGRES_URL ` | ` DATABASE_URL `が設定されていない場合の代替 Postgres 接続文字列。 |
+| ` POSTGRES_CONNECTION_STRING ` | 他の PostgresURL変数が設定されていない場合の代替 Postgres 接続文字列。 |
+| ` POSTGRES_SSL ` | Postgres サーバーがSSLを必要とする場合は、` true `に設定します。 |
+| ` POSTGRES_SSL_REJECT_UNAUTHORIZED ` | 意図的に証明書の検証をスキップする必要がある場合にのみ、` false `に設定します。 |
+| ` POSTGRES_MAX_CONNECTIONS ` | オプションの Postgres プール サイズ制限。 |
+
+PGlite の例:
+
+```bash
+DB_TYPE=pglite
+PGLITE_DB_PATH=/app/data/dory
+```
+
+Postgres の例:
+
+```bash
+DB_TYPE=postgres
+DATABASE_URL=postgres://dory:strong_password@postgres.example.com:5432/dory
+POSTGRES_SSL=true
+POSTGRES_SSL_REJECT_UNAUTHORIZED=true
+POSTGRES_MAX_CONNECTIONS=10
+```
+
+PGlite を使用した Docker デプロイメントの場合は、`/app/data `を永続的な Docker ボリュームまたはホスト ディレクトリにマウントします。
+
+## AI 変数
+
+| 変数 | 目的 |
+| --- | --- |
+| ` DORY_AI_PROVIDER ` | プロバイダー キー (` openai `、` anthropic `、` google `、` qwen `、` xai `、` meta `、` openai-compatible `など)。 |
+| ` DORY_AI_MODEL ` | モデル名。 |
+| ` DORY_AI_API_KEY ` | プロバイダーのAPIキー。 |
+| ` DORY_AI_URL ` | プロバイダーまたは互換性のあるエンドポイント ベースURL。 |
+
+## 認証とログイン
+
+| 変数 | 目的 |
+| --- | --- |
+| ` NEXT_PUBLIC_REQUIRE_EM AI L_VERIFICATION ` | ` false `に設定されていない限り、サインアップ後に電子メール検証が必要です。 |
+| ` TRUSTED_ORIGINS ` | 認証および MCP オリジン チェック用のカンマ区切りの信頼できるオリジン。 |
+| ` DORY_INIT_USER_EM AI L ` | ブートストラップされた初期ユーザーの電子メール。 |
+| ` DORY_INIT_USER_PASSWORD ` | ブートストラップされた初期ユーザーのパスワード。 |
+| ` GITHUB_CLIENT_ID `/` GITHUB_CLIENT_SECRET ` | GitHub OAuth ログイン。 |
+| ` GOOGLE_CLIENT_ID `/` GOOGLE_CLIENT_SECRET ` | Google OAuth ログイン。 |
+
+## 電子メール
+
+| 変数 | 目的 |
+| --- | --- |
+| ` RESEND_API_KEY ` | 確認、リセット、招待メール用にAPIキーを再送信します。 |
+| ` EM AI L_FROM ` | 送信者アドレスを確認しました。 |
+
+## 制作に関するアドバイス
+
+- ` DS_SECRET_KEY `および` BETTER_AUTH_SECRET `の強力なランダム値を生成します。
+- 導入後に認証シークレットと暗号化シークレットをむやみにローテーションしないでください。
+- ` BETTER_AUTH_URL `でHTTPSを使用します。
+- PGlite には永続ストレージを使用し、Postgres には管理されたバックアップを使用します。
+- シークレット管理プロセスを通じて`.env `を保存します。
+- AI キー、OAuth シークレット、電子メール キー、データベース認証情報を意図的にローテーションします。
+
+## 関連ドキュメント
+
+- [Docker](/ja/docs/deploy/docker)
+- [セルフホスティング](/ja/docs/deploy/self-hosting)
+- [認証](/ja/docs/deploy/auth-sso)
+- [AI プロバイダー](/ja/docs/reference/ai-providers)

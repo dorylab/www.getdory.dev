@@ -1,0 +1,17 @@
+---
+title: v0.3.10
+description: Notas de la versión de Dory para v0.3.10.
+---
+
+# v0.3.10
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.3.10.md)
+
+## ¿Qué ha cambiado?
+### Características
+- **Las consultas guardadas ahora admiten carpetas**: organice las consultas SQL guardadas en carpetas con operacionesCRUDcompletas, reordenación mediante arrastrar y soltar (tanto carpetas como consultas) y búsqueda anidada. Incluye soporte i18n para inglés y chino.
+- **Clasificación con arrastrar y soltar**: reordenación intuitiva de carpetas y consultas dentro de la barra lateral de la consola SQL, con comentarios visuales, controladores de arrastre y límites con reconocimiento de secciones.
+### Correcciones
+- **Paridad de esquema PGLite**: se agregó la migración de PGLite faltante para crear la tabla `saved_query_folders ` y actualizar `saved_queries ` con los campos `folder_id ` y `position `, lo que garantiza que los entornos de prueba y desarrollo local coincidan con Postgres.
+### Mejoras
+- **Actualizaciones de documentación**:` README.md `actualizado con instrucciones de configuración actualizadas y orientación de uso.

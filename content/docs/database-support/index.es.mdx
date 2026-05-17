@@ -1,0 +1,43 @@
+---
+title: Descripción general
+description: Revise la compatibilidad de Dory con ClickHouse, PostgreSQL, Neon, MySQL, SQLite, DuckDB, MotherDuck y conexiones de bases de datos en la nube.
+---
+
+# Descripción general
+
+Dory es un espacio de trabajo de datos nativo de IA para bases de datos modernas. Puede conectar bases de datos compatibles, explorar esquemas, escribir SQL, generar consultas con IA, inspeccionar resultados, crear gráficos y guardar consultas reutilizables.
+
+## Descripción general del soporte de bases de datos
+
+| Base de datos | Mejor ajuste | apoyo de dory |
+| --- | --- | --- |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/clickhouse.svg" alt="" width="20" height="20" />[ClickHouse](/es/docs/database-support/clickhouse)</span> | Análisis de eventos, registros, observabilidad y alto rendimiento | SQL, Explorador, IA, Monitoreo y Privilegios. |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/postgresql.svg" alt="" width="20" height="20" />[PostgreSQL](/es/docs/database-support/postgresql)</span> | Aplicaciones operativas, herramientas internas y análisis | Exploración de esquemas, SQL, asistencia de IA y análisis de resultados. |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/neon.svg" alt="" width="20" height="20" />[Neón](/es/docs/database-support/neon)</span> | PostgreSQL sin servidor y desarrollo en la nube | Soporte de conexión compatible con PostgreSQL. |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/mysql.svg" alt="" width="20" height="20" />[MySQL](/es/docs/database-support/mysql)</span> | Bases de datos e informes de aplicaciones web. | Consultas, asistencia de IA y exploración segura para la producción. |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/mariadb.svg" alt="" width="20" height="20" />[MariaDB](/es/docs/database-support/mariadb)</span> | Bases de datos e informes de la aplicación MariaDB | Soporte de conexión dedicado para SQL, Explorer y asistencia de IA. |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/sqlite.svg" alt="" width="20" height="20" />[SQLite](/es/docs/database-support/sqlite)</span> | Archivos locales, prototipos, demostraciones y análisis ligeros. | Conexiones de archivos locales `.sqlite `/`.db ` de ruta absoluta. |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/duckdb.svg" alt="" width="20" height="20" />[DuckDB](/es/docs/database-support/duckdb)</span> | Archivos analíticos locales y flujos de trabajo de MotherDuck | Archivos DuckDB locales y tokens MotherDuck. |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/postgresql.svg" alt="" width="20" height="20" />[Bases de datos en la nube](/es/docs/database-support/cloud-databases)</span> | Bases de datos administradas e implementaciones de equipos. | TLS, listas permitidas, túnelesSSHy guía de gestión de secretos. |
+
+## Flujo de trabajo típico de la base de datos de Dory
+
+1. Cree una conexión en [Conexiones](/es/docs/core-features/connections).
+2. Explore bases de datos, esquemas, tablas y columnas en [Explorador](/es/docs/core-features/explorer).
+3. Escriba y ejecute SQL en [consola SQL](/es/docs/core-features/sql-console).
+4. Utilice [Chat AI](/es/docs/core-features/ai-chat) para generar, explicar, corregir u optimizar consultas.
+5. Valide los resultados y cree gráficos en [Gráficos y resultados](/es/docs/core-features/charts-results).
+6. Guarde SQL reutilizable en [Consultas guardadas](/es/docs/core-features/saved-queries).
+
+## Elija un método de conexión
+
+- Utilice la aplicación de escritorio para desarrollo local y acceso directo desde su máquina.
+- Utilice Docker o autohospedaje cuando un equipo necesite acceso compartido.
+- Utilice rutas de archivos para SQLite y DuckDB solo cuando el tiempo de ejecución de Dory pueda leer esos archivos.
+- Utilice la configuración de red de nube o túnelSSHcuando las bases de datos no sean accesibles públicamente.
+
+## Próximos pasos
+
+- [Conecte su base de datos](/es/docs/getting-started/connect-your-database)
+- [Bases de datos en la nube](/es/docs/database-support/cloud-databases)
+- [Implementar](/es/docs/implementar)

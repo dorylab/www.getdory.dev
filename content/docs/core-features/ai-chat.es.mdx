@@ -1,0 +1,77 @@
+---
+title: Chat de IA
+description: Utilice Dory AI Chat desde la página de Chatbot independiente o el panel AI de la consola SQL para generar SQL, explicar los resultados y continuar el análisis con el contexto de la base de datos.
+---
+
+# Chat de IA
+
+Dory AI Chat está diseñado para trabajar con bases de datos. Está disponible en dos lugares:
+
+- **Chatbot** en la barra lateral izquierda para preguntas abiertas sobre la conexión seleccionada.
+- **Pídale ayuda a AI** en la consola SQL con la pestaña, el resultado y el contexto de análisis actuales de SQL.
+
+Ambos puntos de entrada utilizan la conexión activa como contexto, así que comience seleccionando la conexión sobre la que desea que la IA razone.
+
+## Página de chatbot
+
+Utilice **Chatbot** cuando desee una conversación completa sobre la base de datos seleccionada. Es mejor para generar un primer borrador SQL, preguntar qué inspeccionar a continuación o explorar tablas desconocidas.
+
+![Inicio de Dory AI Chat](/images/core-features/dory-ai-chat-home.png)
+
+Después de hacer una pregunta, Dory mantiene la conversación en una sesión y muestra la respuesta junto a la pregunta.
+
+![Pregunta y respuesta de Dory AI Chat](/images/core-features/dory-ai-chat-question-answer.png)
+
+Las buenas indicaciones son específicas sobre la tabla, la métrica, el rango de tiempo y la forma de salida:
+
+- Mostrar los 10 usuarios principales por monto del pedido.
+- Generar tendencias de pedidos diarias para este mes.
+- Resumir todas las tablas con recuentos de filas.
+- Encuentra registros de errores en las últimas 24 horas.
+
+## SQL Panel de IA de la consola
+
+Utilice **Preguntar a AI** en la consola SQL cuando ya esté escribiendo o ejecutando SQL. El panel puede funcionar con el contenido actual del editor, el esquema visible, el resultado de la ejecución reciente y la forma del resultado.
+
+![Panel AI de la consola Dory SQL](/images/core-features/dory-ai-chat-sql-console-panel.png)
+
+Este es el camino más rápido para:
+
+- Explicar el SQL actualmente en el editor.
+- Corregir un error de consulta.
+- Reescribir un resultado para que esté listo para el gráfico.
+- Análisis continuo de la tabla de resultados actual.
+- Convertir una consulta aproximada en un candidato de consulta guardada reutilizable.
+
+## Qué entiende el chat AI
+
+AI Chat puede usar contexto que ya está disponible en Dory:
+
+- Conexión y base de datos seleccionada.
+- Esquemas, tablas y columnas visibles.
+- Contenido actual del editor SQL.
+- Errores de consulta recientes o forma de resultado.
+- Historial de chat en la conversación actual.
+
+El contexto ayuda a la IA a producir SQL que coincida con su esquema real en lugar de ejemplos genéricos.
+
+## Flujo recomendado
+
+1. Seleccione la conexión correcta.
+2. Utilice **Explorador** para confirmar la tabla y las columnas de destino.
+3. Solicite al Chatbot un primer borrador o abra **Preguntar a AI** desde la consola SQL cuando ya haya una consulta en curso.
+4. Revise el SQL generado antes de ejecutarlo.
+5. Ejecute primero con un `LIMIT ` o rango de tiempo seguro.
+6. Utilice indicaciones de seguimiento para explicar, corregir, optimizar o remodelar el resultado.
+
+## Mejores prácticas
+
+- Incluya nombres de tablas exactos cuando los conozca.
+- Indique la métrica, la dimensión, el rango de tiempo y las columnas deseadas.
+- Solicite resultados listos para gráficos cuando planee utilizar gráficos.
+- Trate el SQL generado como un borrador, especialmente en bases de datos de producción.
+- Prefiera consultas de solo lectura a menos que necesite intencionalmente una operación de escritura.
+
+## Siguiente paso recomendado
+
+Continúe con [Generar SQL con Dory AI](/es/docs/workflows/generate-sql-with-ai) o [consola SQL](/es/docs/core-features/sql-console).

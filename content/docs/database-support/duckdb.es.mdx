@@ -1,0 +1,60 @@
+---
+title: PatoDB
+description: Conecte archivos DuckDB locales o MotherDuck a Dory, consulte conjuntos de datos analíticos, explore tablas y genere SQL con IA.
+---
+
+# PatoDB
+
+<img src="/icons/databases/duckdb.svg" alt="DuckDB logo" width="48" height="48" />
+
+Dory admite archivos DuckDB locales y tokens MotherDuck. DuckDB es útil para análisis locales, exploración de archivos de datos, creación de prototipos y flujos de trabajo analíticos reproducibles.
+
+## Casos de uso más adecuados
+
+- Consultar archivos analíticos locales y conjuntos de datos intermedios.
+- Explore datosCSVo Parquet procesados ​​a través de DuckDB.
+- Compartir bases de datos analíticas a través de MotherDuck.
+- Ejecute análisisOLAPlivianos sin un servidor de base de datos tradicional.
+- Generar SQL exploratorio con IA.
+
+## Pato DB local
+
+Elija el modo DuckDB local y proporcione una ruta absoluta al archivo DuckDB. En Docker, monte el directorio de archivos en el contenedor y use la ruta del contenedor.
+
+## MadrePato
+
+Elija el modo MotherDuck y proporcione un token MotherDuck. Utilice un token exclusivo para Dory para que pueda rotarse, revocarse y auditarse de forma independiente.
+
+## Capacidades admitidas
+
+| Capacidad | Soporte para DuckDB/MotherDuck |
+| --- | --- |
+| Conexiones | Archivos DuckDB locales y tokens MotherDuck. |
+| Explorador | Bases de datos, tablas y columnas. |
+| Consola SQL | Ejecución y resultados de DuckDB SQL. |
+| Chat de IA | Generación y explicación de DuckDB SQL basada en esquemas. |
+| Gráficos y resultados | Análisis visual de resultados de consultas. |
+| Consultas guardadas | Guarde DuckDB reutilizable SQL. |
+
+## Consejos de uso
+
+- Utilice rutas de archivo absolutas para archivos DuckDB locales.
+- Asegúrese de que el proceso Dory pueda leer el archivo.
+- Monte archivos locales en el contenedor cuando use Docker.
+- Utilice MotherDuck cuando necesite flujos de trabajo DuckDB respaldados en la nube.
+
+## FAQ
+
+### ¿Por qué falla la conexión de mi archivo DuckDB?
+
+Confirme que la ruta sea absoluta y legible por Dory. En Docker, confirme que el directorio esté montado en el contenedor.
+
+### ¿DuckDB o SQLite?
+
+SQLite es mejor para bases de datos de estilo aplicación local. DuckDB es mejor para conjuntos de datos analíticos, archivos en columnas y consultas de estiloOLAP.
+
+## Documentos relacionados
+
+- [Conecte su base de datos](/es/docs/getting-started/connect-your-database)
+- [Soporte de base de datos SQLite](/es/docs/database-support/sqlite)
+- [Guía de conexión a bases de datos en la nube](/es/docs/database-support/cloud-databases)

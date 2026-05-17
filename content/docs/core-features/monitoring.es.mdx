@@ -1,0 +1,54 @@
+---
+title: Escucha
+description: Utilice las vistas de monitoreo de Dory para inspeccionar la actividad de consultas de ClickHouse, consultas lentas, errores y señales operativas.
+---
+
+# Monitoreo
+
+El monitoreo lo ayuda a inspeccionar la actividad de la base de datos y los problemas operativos, especialmente para las conexiones de ClickHouse.
+
+## Puntos de entrada
+
+La supervisión está disponible desde conexiones compatibles cuando el usuario conectado tiene permiso para leer las tablas del sistema requeridas o los metadatos operativos.
+
+## Descripción general
+
+Utilice Descripción general para comprender la actividad reciente, la forma de la carga de trabajo y si la base de datos tiene señales operativas visibles que valga la pena investigar.
+
+![Métricas y gráficos generales de Dory Monitoring](/images/core-features/dory-monitoring-overview.png)
+
+## Registros de consultas
+
+Los registros de consultas muestran la actividad SQL reciente. Utilícelos para comprender quién dirigió qué, cuándo lo hizo y cómo se comportó.
+
+![Registros de consultas de Dory Monitoring](/images/core-features/dory-monitoring-query-logs.png)
+
+Haga clic en un ID de consulta en Registros de consultas, Consultas lentas o Consultas de error para abrir el panel Detalles de SQL. La vista detallada muestra los metadatos de ejecución, el volumen de lectura, el uso de la memoria, el texto de error cuando esté disponible y el SQL completo.
+
+![Panel de detalles de Dory Monitoring SQL](/images/core-features/dory-monitoring-sql-details.png)
+
+## Consultas lentas
+
+Las consultas lentas lo ayudan a identificar SQL costosos que pueden necesitar filtrado, cambios de agregación, poda de particiones u optimización a nivel de esquema.
+
+![Consultas lentas de Dory Monitoring](/images/core-features/dory-monitoring-slow-queries.png)
+
+## Consultas de error
+
+Las consultas de error lo ayudan a encontrar fallas recurrentes, problemas de sintaxis, columnas faltantes, problemas de permisos o errores de tiempo de ejecución.
+
+![Consultas de error de Dory Monitoring](/images/core-features/dory-monitoring-error-queries.png)
+
+## Recomendaciones de uso
+
+- Comience desde la descripción general antes de profundizar en los detalles.
+- Utilice rangos de tiempo para limitar la investigación.
+- Compare consultas lentas con consultas exitosas similares.
+- Pídale a AI que explique una consulta lenta o fallida, pero verifique cualquier reescritura sugerida.
+- Utilice cuentas operativas de solo lectura siempre que sea posible.
+
+## Páginas relacionadas
+
+- [Soporte de base de datos de ClickHouse](/es/docs/database-support/clickhouse)
+- [Depurar consultas SQL lentas](/es/docs/workflows/debug-slow-queries)
+- [Privilegios](/es/docs/core-features/privilegios)

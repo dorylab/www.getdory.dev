@@ -1,0 +1,75 @@
+---
+title: Haga clic en casa
+description: Aprenda a conectar ClickHouse a Dory, ejecutar SQL, explorar esquemas, generar consultas con IA y utilizar la supervisión y la gestión de privilegios.
+---
+
+# Haga clic en Casa
+
+<img src="/icons/databases/clickhouse.svg" alt="ClickHouse logo" width="48" height="48" />
+
+ClickHouse es una de las integraciones de bases de datos más profundas de Dory. Además de SQL Console, Explorer, AI Chat y gráficos, Dory proporciona monitoreo y administración de privilegios específicos de ClickHouse.
+
+## Casos de uso más adecuados
+
+- Análisis de eventos de producto.
+- Exploración de datos de registro, seguimiento y observabilidad.
+- Análisis de tablas detalladas a gran escala.
+- Investigación de consultas lentas y de errores.
+- Gestión de usuarios, roles y subvenciones de ClickHouse.
+
+## Capacidades admitidas
+
+| Capacidad | Soporte de ClickHouse |
+| --- | --- |
+| Consola SQL | Escriba, ejecute e itere ClickHouse SQL. |
+| Explorador | Explore bases de datos, tablas, vistas, columnas, DDL, claves de partición y claves de clasificación. |
+| Chat de IA | Genere, explique, corrija y optimice SQL con el contexto del esquema ClickHouse. |
+| Gráficos y resultados | Convierta los resultados de las consultas en tendencias, comparaciones y vistas detalladas. |
+| Escucha | Inspeccione el total de consultas, consultas lentas, errores, latenciaP50/P95yQPM. |
+| Privilegios | Administre usuarios, roles, privilegios globales y concesiones específicas. |
+
+## Requisitos de conexión
+
+Prepare el host, el puerto, la base de datos, el nombre de usuario, la contraseña, la configuraciónTLSy cualquier detalle requerido del túnelSSHde ClickHouse. Las conexiones de ClickHouse Cloud comúnmente requierenSSL.
+
+## Flujo recomendado
+
+1. Abra [Conexiones](/es/docs/core-features/connections).
+2. Elija ClickHouse.
+3. Ingrese el host, el puerto, el puertoHTTP, la base de datos, el nombre de usuario y la contraseña.
+4. HabiliteSSLsi su implementación requiereTLS.
+5. Pruebe y guarde la conexión.
+6. Abra la Consola SQL o el Explorador.
+
+## Consejos para consultas de IA
+
+Cuando le pida a AI que genere ClickHouse SQL, incluya el rango de tiempo, las métricas, la tabla de destino, las dimensiones de agrupación y cualquier preferencia de función como `toStartOfHour `,` quantile `o ` uniq `.
+
+## Monitoreo de ClickHouse
+
+Dory puede mostrar vistas de monitoreo de ClickHouse cuando el usuario conectado puede leer las tablas del sistema requeridas. Utilice estas vistas para inspeccionar consultas recientes, consultas lentas, errores, latencia yQPM.
+
+## Gestión de privilegios de ClickHouse
+
+Cuando los permisos están disponibles, Dory puede ayudar a revisar usuarios, roles, privilegios globales y concesiones específicas para entornos ClickHouse.
+
+## FAQ
+
+### ¿Por qué falla mi conexión con ClickHouse?
+
+Verifique el host, el puerto, el nombre de usuario, la contraseña, la configuraciónTLSy la lista de redes permitidas. Para ClickHouse Cloud, normalmente se requiereSSL.
+
+### ¿Por qué el Monitoreo está vacío?
+
+Es posible que el usuario actual no tenga permiso para leer las tablas del sistema ClickHouse o que el rango de tiempo seleccionado no contenga registros de consulta.
+
+### ¿Por qué ClickHouse SQL generado por IA necesita modificaciones?
+
+Las funciones y la sintaxis de ClickHouse pueden variar según la versión y la implementación. Verifique SQL generado con su esquema y ejecute una pequeña vista previa antes de usarlo para el análisis de producción.
+
+## Documentos relacionados
+
+- [Conecte su base de datos](/es/docs/getting-started/connect-your-database)
+- [Consola SQL](/es/docs/core-features/sql-console)
+- [Monitoreo](/es/docs/core-features/monitoreo)
+- [Privilegios](/es/docs/core-features/privilegios)

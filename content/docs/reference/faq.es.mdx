@@ -1,0 +1,83 @@
+---
+title: FAQ
+description: Preguntas frecuentes sobre la configuración de Dory, las bases de datos compatibles, la generación de IA SQL, las consultas guardadas, el acceso a MCP y la implementación.
+---
+
+# FAQ
+
+EsteFAQresponde a preguntas comunes que aparecen durante la incorporación de Dory, la configuración de la base de datos, la generación de IA SQL, el acceso del agente MCP y la implementación autohospedada.
+
+## ¿Qué es Dory?
+
+Dory es un espacio de trabajo SQL nativo de IA para conectar bases de datos, explorar esquemas, escribir SQL, generar análisis con IA, guardar consultas reutilizables y brindar a los agentes compatibles con MCP un contexto de base de datos controlado.
+
+## ¿Qué bases de datos admite Dory?
+
+La documentación de Dory cubre ClickHouse, PostgreSQL, Neon, MySQL, MariaDB, SQLite, DuckDB, MotherDuck y otras bases de datos alojadas que exponen puntos finales de conexión compatibles. Consulte [Soporte de base de datos](/es/docs/database-support) para obtener orientación específica para el controlador.
+
+## ¿Dory reemplaza mi herramienta de BI?
+
+Dory es más fuerte para la exploración SQL, el análisis ad hoc, las consultas asistidas por IA, la reutilización de consultas guardadas y los flujos de trabajo de los agentes. Puede complementar una herramienta de BI, especialmente durante la investigación y la creación de prototipos de paneles.
+
+## ¿Dory ejecuta automáticamente SQL generado por IA?
+
+No. Trate la producción de IA como un borrador. Revise SQL generado antes de ejecutarlo, especialmente las uniones, los filtros, las ventanas de tiempo y la lógica de agregación.
+
+## ¿Cómo accede la IA al contexto del esquema?
+
+Dory puede usar metadatos de conexión, tablas, columnas y contexto de consulta seleccionado para ayudar a generar SQL. La calidad de AI SQL depende del modelo seleccionado, la claridad del esquema, los nombres de las tablas, los comentarios y el mensaje que proporcione.
+
+## ¿Por qué la IA generó SQL no válido?
+
+Las causas comunes incluyen nombres de tablas ambiguos, contexto de esquema faltante, diferencias de dialecto, limitaciones del modelo o mensajes que no indican la base de datos de destino. Mencione el tipo de base de datos y pídale a Dory que adapte la sintaxis para PostgreSQL, ClickHouse, MySQL, MariaDB, SQLite o DuckDB.
+
+## ¿Por qué no puedo ver una mesa?
+
+Compruebe estos elementos:
+
+- El usuario de la base de datos tiene permiso para leer el esquema.
+- Seleccionó la conexión y la base de datos correctas.
+- La tabla está en un esquema o catálogo diferente.
+- La conexión se actualizó después de que se creó una nueva tabla.
+- Las reglas de la red permiten a Dory acceder a la base de datos.
+
+## ¿Por qué una consulta es lenta?
+
+Las consultas lentas generalmente provienen de escaneos grandes, filtros faltantes, índices faltantes, uniones costosas o agrupaciones de alta cardinalidad. Agregue una ventana de tiempo, seleccione menos columnas, use `LIMIT ` durante la exploración e inspeccione el plan de ejecución de la base de datos cuando esté disponible.
+
+## ¿Dónde se almacenan las consultas guardadas?
+
+Las consultas guardadas se almacenan en Dory y se asocian con la organización, el usuario, la conexión y la estructura de carpetas actuales. Utilice nombres y carpetas claros para que sus compañeros de equipo puedan entenderlos y reutilizarlos.
+
+## ¿Puedo compartir una consulta guardada con compañeros de equipo?
+
+Sí, si tu espacio de trabajo y permisos de Dory permiten que el compañero de equipo acceda a la misma organización y conexión. Una consulta guardada sólo es útil cuando el compañero de equipo también tiene acceso a la base de datos.
+
+## ¿MCP expone las contraseñas de las bases de datos?
+
+No. Las herramientas MCP exponen metadatos controlados y operaciones de lectura/análisis. No devuelven contraseñas de bases de datos ni secretos de conexión. Utilice un token MCP por cliente y revoque los tokens antiguos cuando ya no sean necesarios.
+
+## ¿Puede un agente MCP escribir en mi base de datos?
+
+Dory MCP está diseñado para ejecución de SQL de solo lectura. Aún debe usar credenciales de base de datos de solo lectura para conexiones de producción porque los permisos de la base de datos son el límite de seguridad final.
+
+## ¿Por qué mi implementación de Docker no logra conectarse a archivos SQLite o DuckDB?
+
+El contenedor debe poder ver la ruta del archivo. Monte el directorio de host que contiene el archivo de base de datos y configure Dory con la ruta como se ve desde el interior del contenedor.
+
+## ¿Por qué los enlaces de inicio de sesión o los redireccionamientos apuntan al host equivocado?
+
+Verifique la aplicación públicaURLconfigurada para la implementación. Debe coincidir con los usuariosURLabiertos en el navegador, incluido el protocolo y el nombre de host.
+
+## ¿Cómo debo elegir un proveedor de IA?
+
+Comience con el proveedor ya aprobado por su organización. Si necesita una ruta estándar, use Open AI. Si su organización utiliza un punto final compatible, utilice compatible con Open AI. Consulte [Proveedores de IA](/es/docs/reference/ai-providers).
+
+## ¿Qué debo hacer antes de conectar los datos de producción?
+
+- Utilice usuarios de bases de datos de solo lectura.
+- Limitar el acceso a la red a Dory.
+- Confirmar requisitosSSL.
+- Comience con límites de consulta pequeños.
+- Revisar SQL generado por IA antes de la ejecución.
+- Cree tokens MCP separados para cada cliente de agente externo.

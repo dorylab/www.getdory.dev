@@ -1,0 +1,23 @@
+---
+title: v0.12.2
+description: Notas de la versión de Dory para v0.12.2.
+---
+
+# v0.12.2
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.12.2.md)
+
+## ¿Qué ha cambiado?
+### Autenticación de escritorio sin conexión
+- Se agregó soporte completo sin conexión para aplicaciones de escritorio, incluido el flujo de inicio de sesión anónimo sin dependencia de la red.
+- Se introdujo la lógica de recuperación y manejo de sesiones de autenticación específicas de escritorio, desacoplada de la administración de sesiones web.
+- Rutas de autenticación y componentes de UI actualizados para admitir rutas de inicio de sesión de escritorio independientes y alias de tiempo de ejecución
+### Mejoras en la estabilidad del copiloto
+- Se solucionó un problema crítico por el cual se accedía incorrectamente a las conexiones DuckDB durante la ejecución de la acción Copilot, lo que evitaba fallas y mejoraba la confiabilidad de las funciones de IA relacionadas con SQL(por ejemplo, generación de gráficos, reescritura de consultas, optimización).
+### Configuración inicial del usuario
+- Se agregó inicio de sesión de arranque configurable para el usuario inicial a través de variables de entorno (por ejemplo,`INIT_USER_EM AI L `,` INIT_USER_PASSWORD `), lo que simplifica la incorporación en entornos de desarrollo locales y autohospedados.
+### Correcciones de UI y UX
+- Se corrigió la representación de información de resultados en la consola SQL para garantizar una visualización precisa de los análisis y recomendaciones generados por IA.
+### Documentación y herramientas
+- Se actualizó ` README.md `con nuevas instrucciones de configuración y aclaraciones sobre el modo fuera de línea y la configuración de inicio del usuario.
+- Script de creación de aplicaciones de escritorio independiente refinado (` build-app-standalone.sh `) para mejorar la confiabilidad y la resolución de alias

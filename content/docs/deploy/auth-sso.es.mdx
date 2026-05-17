@@ -1,0 +1,102 @@
+---
+title: autenticación
+description: Planifique el inicio de sesión de correo electrónico, la verificación de correo electrónico, el inicio de sesión de GitHub, el inicio de sesión de Google, el aprovisionamiento de usuarios y la baja para las implementaciones del equipo de Dory.
+---
+
+# autenticación
+
+Antes de implementar Dory en un equipo, decida cómo inician sesión los usuarios, quién puede unirse, cómo se invita a los miembros y cómo se elimina el acceso durante la baja.
+
+## Opciones de autenticación admitidas
+
+Las capacidades de autenticación configurables actuales incluyen:
+
+- Inicio de sesión con correo electrónico y contraseña.
+- Verificación de correo electrónico.
+- Inicio de sesión de GitHub OAuth.
+- Inicio de sesión de Google OAuth.
+- Usuario administrador inicial con bootstrap.
+- Organización y gestión de socios.
+
+## Variables de autenticación principales
+
+| Variable | Objetivo |
+| --- | --- |
+| `BETTER_AUTH_SECRET ` | Secreto de autenticación. |
+| ` BETTER_AUTH_URL ` | PúblicoURLutilizado para enlaces generados y devoluciones de llamada. |
+| ` TRUSTED_ORIGINS ` | Orígenes confiables, que generalmente incluyen al público DoryURL. |
+| ` NEXT_PUBLIC_REQUIRE_EM AI L_VERIFICATION ` | Si se requiere verificación por correo electrónico. |
+
+Las implementaciones de producción deben usarHTTPSy mantener ` BETTER_AUTH_URL `alineado con elURLpúblico.
+
+## Usuario administrador inicial
+
+```bash
+DORY_INIT_USER_EM AI L=admin@example.com
+DORY_INIT_USER_PASSWORD=change_this_password
+```
+
+Dory crea o actualiza este usuario y garantiza que exista una organización predeterminada.
+
+## Verificación por correo electrónico
+
+```bash
+NEXT_PUBLIC_REQUIRE_EM AI L_VERIFICATION=true
+RESEND_API_KEY=replace_with_resend_key
+EM AI L_FROM="Dory <noreply@example.com>"
+```
+
+` EM AI L_FROM `debe ser verificado por el proveedor de correo electrónico.
+
+## Iniciar sesión en GitHub
+
+Configure GitHub OAuth cuando su equipo use identidades de GitHub. Confirme las URL de devolución de llamada, la ID del cliente, el secreto del cliente y la aplicación públicaURL.
+
+## Iniciar sesión en Google
+
+Configure Google OAuth cuando su organización utilice identidades de Google Workspace. Confirme las URL de devolución de llamada, la ID del cliente, el secreto del cliente y los dominios permitidos, si es necesario.
+
+Configuración del proveedor de OAuth:
+
+GitHub:
+
+```bash
+GITHUB_CLIENT_ID=replace_with_client_id
+GITHUB_CLIENT_SECRET=replace_with_client_secret
+```
+
+Google:
+
+```bash
+GOOGLE_CLIENT_ID=replace_with_client_id
+GOOGLE_CLIENT_SECRET=replace_with_client_secret
+```
+
+Configure las URL de devolución de llamada de OAuth utilizando el mismo dominio público que ` BETTER_AUTH_URL `.
+
+## Aprovisionamiento y baja
+
+Defina quién puede invitar a miembros, si se requiere verificación por correo electrónico, a qué organización se unen los nuevos usuarios y cómo los administradores revisan el acceso. Durante la baja, revoque la membresía de Dory, las funciones de la base de datos, los tokens MCP, el acceso a OAuth y los secretos compartidos.
+
+## Flujo de aprovisionamiento del equipo
+
+Primero cree un administrador inicial, verifique la configuración de correo electrónico o OAuth, invite a miembros del equipo y luego asigne acceso a la base de datos a través de credenciales de base de datos con privilegios mínimos.
+
+## FAQ
+
+### ¿Por qué los enlaces de inicio de sesión redirigen alURLincorrecto?
+
+Compruebe que ` BETTER_AUTH_URL `coincida con el proxy inverso públicoURL.
+
+### ¿Por qué faltan los correos electrónicos de verificación?
+
+Verifique las carpetas ` RESEND_API_KEY `,` EM AI L_FROM `, verificación del dominio del remitente y spam.
+
+### ¿Se requiere OAuth?
+
+No. Los equipos más pequeños pueden comenzar con el inicio de sesión por correo electrónico y un usuario administrador inicial. Habilite GitHub o Google OAuth solo cuando se ajuste al flujo de identidad de su equipo.
+
+## Documentos relacionados
+
+- [Variables de entorno](/es/docs/deploy/variables-de-entorno)
+- [Autohospedaje](/es/docs/deploy/self-hospedaje)

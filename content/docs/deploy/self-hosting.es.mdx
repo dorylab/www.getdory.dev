@@ -1,0 +1,76 @@
+---
+title: Autohospedaje
+description: Planifique los límites de tiempo de ejecución, almacenamiento, red, seguridad e implementación para una implementación compartida de Dory.
+---
+
+# Autohospedaje
+
+El autohospedaje es para equipos que necesitan un punto de entrada web compartido, acceso a red privada, credenciales de base de datos dedicadas, administración de claves de IA y datos de aplicaciones persistentes.
+
+## Escenarios más adecuados
+
+- Ejecute Dory en una red privada, una nube privada o un servidor autoadministrado.
+- Administre el acceso a la base de datos, las claves de IA, los secretos y los permisos del equipo directamente.
+- Proporcionar un punto de entrada de navegador compartido para un equipo.
+- Conecte bases de datos privadas, en la nube, de prueba o de producción.
+
+## Arquitectura recomendada
+
+| Capa | Decisión |
+| --- | --- |
+| Tiempo de ejecución | Ejecute Dory como contenedor Docker. |
+| Datos de la aplicación | Elija almacenamiento PGlite persistente o Postgres. |
+| Acceso público | Coloque a Dory detrás deHTTPSa través de un proxy inverso o puerta de enlace. |
+| Misterios | Almacene los valores `.env ` a través de un proceso de gestión de secretos. |
+| Red de base de datos | Confirme que el tiempo de ejecución de Dory pueda llegar a las bases de datos de destino. |
+| Identidad | Elija inicio de sesión de correo electrónico, verificación o política de OAuth. |
+
+## Dos conceptos de bases de datos
+
+| Rol de base de datos | lo que almacena | donde configurar |
+| --- | --- | --- |
+| Base de datos de la aplicación | Usuarios, organizaciones, conexiones, consultas guardadas, configuraciones y tokens MCP de Dory. | [Variables de entorno](/es/docs/deploy/variables-de-entorno) |
+| Bases de datos conectadas | Bases de datos empresariales o analíticas consultadas a través de Dory. | [Conecte su base de datos](/es/docs/getting-started/connect-your-database) |
+
+No deje datos de la aplicación dentro de un sistema de archivos contenedor desechable para producción. PGlite necesita un volumen persistente; Postgres necesita una base de datos de respaldo dedicada.
+
+## Lista de verificación previa al vuelo
+
+| Artículo | Confirmar |
+| --- | --- |
+| Dominio | Se abrirán los usuariosURL, como `https://dory.example.com `. |
+| HTTPS | Requerido para implementaciones de equipos. |
+| AutenticaciónURL | ` BETTER_AUTH_URL `coincide con elURLdel navegador. |
+| Misterios | ` DS_SECRET_KEY `y ` BETTER_AUTH_SECRET `se generan y almacenan de forma segura. |
+| Base de datos de la aplicación | Se selecciona el almacenamiento persistente PGlite o Postgres. |
+| AI | Se deciden el proveedor, el modelo, la claveAPI, el límite de datos y la rotación de claves. |
+| Cuentas de base de datos | Las conexiones de producción utilizan primero credenciales de solo lectura. |
+| Miembros | Se definen reglas de invitación, propiedad de conexión y baja. |
+| Copias de seguridad | Los datos de la aplicación,`.env ` y las credenciales de la base de datos tienen un plan de respaldo. |
+
+## Lanzamiento recomendado
+
+1. Elija el dominio, la rutaHTTPSy el límite de la red.
+2. Elija el almacenamiento de la aplicación: PGlite o Postgres.
+3. Prepare `.env ` y secretos.
+4. Inicie una implementación de prueba con [Docker](/es/docs/deploy/docker).
+5. Inicie sesión con el usuario administrador inicial.
+6. Configure la política de autenticación.
+7. Conecte una base de datos de prueba y valide SQL Console, Explorer, AI y Saved Queries.
+8. Haga una copia de seguridad de los datos antes de agregar conexiones a la base de datos de producción.
+
+## Límites operativos
+
+- Utilice usuarios de bases de datos dedicados para conexiones de producción.
+- Prefiera credenciales de solo lectura para análisis de producción.
+- Incluir en la lista de permitidos la IP de salida del servidor Dory para bases de datos en la nube.
+- Utilice túnelesSSHo enrutamiento privado para bases de datos internas.
+- Monte archivos SQLite y DuckDB en el contenedor cuando sea necesario.
+- Dory AI envía el contexto necesario al proveedor configurado, así que decida el límite de datos permitido antes de la implementación.
+
+## Documentos relacionados
+
+- [Docker](/es/docs/deploy/docker)
+- [Variables de entorno](/es/docs/deploy/variables-de-entorno)
+- [Auth](/es/docs/deploy/auth-sso)
+- [Bases de datos en la nube](/es/docs/database-support/cloud-databases)

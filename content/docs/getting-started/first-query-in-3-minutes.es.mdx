@@ -1,0 +1,80 @@
+---
+title: Primera consulta en 3 minutos
+description: Ejecute su primera consulta segura en Dory y use IA para continuar el análisis.
+---
+
+# Primera consulta en 3 minutos
+
+Esta guía asume que ya tiene una conexión a la base de datos que funciona.
+
+## Antes de comenzar
+
+- Elija una base de datos de desarrollo, demostración o de solo lectura.
+- Abra el espacio de trabajo que contiene su conexión.
+- Confirme que Explorer puede mostrar tablas y columnas.
+
+## 1. Abra el Explorador e inspeccione el esquema
+
+Comience en el Explorador. Elija una tabla y revise sus columnas, filas de muestra y relaciones implícitas en nombres o claves.
+
+## 2. Abra la consola SQL
+
+Abra la consola SQL desde la misma conexión. Mantenga Explorer disponible para que pueda confirmar los nombres de tablas y columnas mientras escribe SQL.
+
+## 3. Ejecute la primera consulta segura
+
+Comience con una consulta limitada:
+
+```sql
+select *
+from your_table
+limit 20;
+```
+
+Revise las columnas de resultados antes de escribir filtros, uniones o agregaciones.
+
+## 4. Utilice IA para generar la siguiente consulta
+
+Pregúntele a Dory AI para una consulta más específica. Incluya el nombre de la tabla, la métrica que desee, los filtros y las columnas de salida esperadas.
+
+Ejemplo:
+
+Pídale a AI que cuente las filas por estado durante los últimos 7 días y devuelva el estado más el recuento.
+
+## 5. Revisar los resultados y crear un gráfico
+
+Si el resultado se agrega por tiempo, categoría o estado, abra los gráficos desde el área de resultados y elija un tipo de gráfico que coincida con la forma de los datos.
+
+## 6. Guarde su primer análisis
+
+Cuando la consulta sea útil, guárdela con un nombre comercial claro y una breve descripción de los supuestos.
+
+## Solución de problemas comunes
+
+### La consulta no devuelve filas
+
+Consulta filtros y rangos de tiempo. Comience con un conjunto más pequeño de condiciones.
+
+### La consulta falla
+
+Pídale a AI que explique el error y luego compare la solución sugerida con el esquema de Explorer.
+
+### El resultado es demasiado grande
+
+Agregue ` limit `, reduzca el rango de tiempo o agregue antes de devolver filas.
+
+### Falta el autocompletar
+
+Confirme que la conexión y el esquema seleccionados sean correctos.
+
+### La consulta falla después de los cambios
+
+Compare el SQL modificado con la última versión funcional y pídale a AI que explique solo el mensaje de error específico.
+
+### El resultado de la IA es inexacto
+
+Proporcione a AI los nombres exactos de las tablas, las columnas, los filtros deseados y la forma de salida esperada.
+
+## Siguiente paso
+
+Continúe con [SQL Console](/es/docs/core-features/sql-console) o [AI Chat](/es/docs/core-features/ai-chat).

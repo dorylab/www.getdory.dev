@@ -1,0 +1,64 @@
+---
+title: PostgreSQL
+description: Conecte PostgreSQL a Dory, explore esquemas, escriba SQL, genere consultas con IA y analice bases de datos operativas de forma segura.
+---
+
+# PostgreSQL
+
+<img src="/icons/databases/postgresql.svg" alt="PostgreSQL logo" width="48" height="48" />
+
+Dory admite bases de datos PostgreSQL para análisis operativos, herramientas internas, análisis de productos e investigación de datos del día a día. Después de conectar PostgreSQL, puede explorar esquemas, escribir SQL, inspeccionar resultados, crear gráficos y pedirle a AI que genere o explique consultas con el contexto real de la base de datos.
+
+## Casos de uso más adecuados
+
+- Consulta de datos operativos de la aplicación.
+- Analizar usuarios, pedidos, pagos, registros o eventos de productos.
+- Explora esquemas desconocidos rápidamente.
+- Generar el primer borrador SQL con IA y perfeccionarlo manualmente.
+- Guarde consultas de métricas y solución de problemas reutilizables.
+
+## Capacidades admitidas
+
+| Capacidad | Soporte PostgreSQL |
+| --- | --- |
+| Conexiones | Host, puerto, base de datos, nombre de usuario, contraseña, túnelSSLySSH. |
+| Explorador | Esquemas, tablas, vistas, columnas, restricciones y DDL. |
+| Consola SQL | Edición, ejecución, resultados y pestañas de PostgreSQL SQL. |
+| Chat de IA | Generación de SQL basada en esquemas, explicación de unión y ayuda para la optimización. |
+| Gráficos y resultados | Convierta los resultados agregados de las consultas en gráficos o tablas de detalles. |
+| Consultas guardadas | Guarde y organice PostgreSQL reutilizable SQL. |
+
+## Requisitos de conexión
+
+Prepare el host, el puerto, la base de datos, el nombre de usuario, la contraseña, la configuraciónSSLy los detalles del túnelSSHsi la base de datos es privada. Los entornos de producción deben utilizar roles de solo lectura siempre que sea posible.
+
+## Consejos para el esquema
+
+Los proyectos de PostgreSQL suelen utilizar varios esquemas, como `public `,` analytics `y ` internal `. Confirme el esquema de destino en Explorer antes de escribir consultas o pedirle a AI que genere SQL.
+
+## Consejos de rendimiento y seguridad
+
+- Utilice roles de solo lectura para el análisis de producción.
+- Filtrar por rango de tiempo antes de escanear tablas grandes.
+- Revise las uniones y agregaciones antes de ejecutar SQL generado por IA.
+- Confirmar el esquema activo cuando los nombres de las tablas sean ambiguos.
+
+## FAQ
+
+### ¿Por qué puedo conectarme pero no ver tablas?
+
+Es posible que el usuario actual carezca del permiso ` USAGE `en el esquema o del permiso ` SELECT `en las tablas de destino.
+
+### ¿Por qué PostgreSQL SQL generado por IA hace referencia a las columnas que faltan?
+
+Abra el Explorador y proporcione los nombres exactos de la tabla y la columna en el mensaje. Pídale a AI que reescriba la consulta usando solo columnas visibles.
+
+### ¿Dory es compatible con Neon?
+
+Sí. Neon utiliza las capacidades compatibles con PostgreSQL de Dory. Consulte [Neon](/es/docs/database-support/neon).
+
+## Documentos relacionados
+
+- [Conecte su base de datos](/es/docs/getting-started/connect-your-database)
+- [Explorador](/es/docs/core-features/explorer)
+- [Consola SQL](/es/docs/core-features/sql-console)

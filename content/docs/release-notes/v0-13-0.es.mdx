@@ -1,0 +1,19 @@
+---
+title: v0.13.0
+description: Notas de la versión de Dory para v0.13.0.
+---
+
+# v0.13.0
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.13.0.md)
+
+## ¿Qué ha cambiado?
+### Características
+- **Se agregó compatibilidad con el servidor MCP(Protocolo de contexto de modelo)**: Los nuevos puntos finalesAPI(`/api/mcp/`,`/api/mcp/settings `,`/api/mcp/tokens `) y controles de interfaz de usuario en Configuración permiten el acceso seguro de los agentes, la administración de tokens y la integración de MCP.
+- **Puerto MCP estable para escritorio**: la aplicación de escritorio ahora utiliza un puerto consistente y predecible para el proxy MCP local, lo que mejora la confiabilidad y la experiencia del usuario.
+### Mejoras
+- **Capacidades de análisis de IA mejoradas**: los campos numéricos ahora se aceptan en los esquemas de resumen de análisis de IA, lo que permite gráficos e información más completa a partir de los resultados de las consultas.
+- **Flujo de información refinado de la consola SQL**: comportamiento y capacidad de respuesta mejorados de las funciones de la consola SQL, incluido el editor, la barra lateral, las estadísticas del navegador de tablas y la introspección de esquemas, en múltiples controladores de bases de datos y API de automatización.
+### Correcciones
+- **Reforzamiento de la seguridad**: se resolvieron errores relacionados con la seguridad en los scripts de creación y certificación de escritorios, y se actualizaron las configuraciones de dependencia para abordar las vulnerabilidades.
+- **Solución de implementación de Vercel**: configuración de Yarn corregida (`.yarnrc.yml `,`.yarn/releases/`) para resolver fallas de instalación durante las implementaciones de Vercel.

@@ -1,0 +1,381 @@
+{
+  "landing": {
+    "heroTagline": "AI ネイティブのワークフロー",
+    "heroTitle": "<brand>AI ネイティブ</brand>データスタジオ",
+    "heroDescription": "データベースに接続し、SQL、AI、視覚化を使用して探索、分析、再利用します。",
+    "heroSubtitle": "データベースのクエリ、テーブルの理解、データの操作 - One</brand>モダン ワークスペースの<brand>All。",
+    "heroExperienceTitle": "ダウンロード不要、30 秒で Dory を体験",
+    "heroExperienceDescription": "公開データセットを使用してSQL+ AI を体験する",
+    "heroExperienceCta": "オンラインデモを試す",
+    "heroPreviewAlt": "Dory ワークスペースのプレビュー",
+    "heroImageAlt": "ドリーのワークスペースのヒーロービジュアル",
+    "heroContextReady": "コンテキストの準備完了",
+    "heroWindowLabel": "SQL+ AI + チャート",
+    "heroWorkflowNote": "実行、説明、視覚化、保存。",
+    "tryDory": "ドリーを試してみましょう",
+    "downloadLatest": "最新のダウンロード",
+    "downloadForMac": "macOS 版をダウンロード",
+    "downloadForWindows": "Windows版をダウンロード",
+    "allPlatform": "すべてのプラットフォーム",
+    "viewOnGitHub": "GitHub で見る",
+    "heroCards": {
+      "aiChat": {
+        "title": "AI副操縦士",
+        "description": "SQLを生成し、現在の接続、スキーマ、クエリ コンテキストからの結果を説明します。"
+      },
+      "sqlConsole": {
+        "title": "SQLワークベンチ",
+        "description": "エディター、スキーマ ブラウザー、クエリ結果、および実行履歴を 1 つのワークフローに保持します。"
+      },
+      "teamFlow": {
+        "title": "保存して再利用",
+        "description": "有用なクエリと結果コンテキストを保存すると、1 回限りの探索が再利用可能なワークフローになります。"
+      }
+    },
+    "aiNative": {
+      "badge": "AI ネイティブのワークフロー",
+      "heading": "<ask>質問してください。</ask><act>行動してください。</act><stay>接地してください。</stay>",
+      "description": "コンテキストの切り替えはありません。幻覚フィールドはありません。正確なSQLと実際の結果だけです。",
+      "tabs": {
+        "ask": {
+          "label": "聞く",
+          "title": "何でも聞いてください。作られたコラムはありません。",
+          "description": "スキーマ対応のオートコンプリートとSQLの生成により、AI は正直に保たれます。すべての提案は実際のテーブル、実際のフィールド、実際の結合に基づいています。",
+          "pills": {
+            "pill1": "スキーマ対応",
+            "pill2": "作成されたフィールドはありません",
+            "pill3": "実行可能SQL"
+          }
+        },
+        "actions": {
+          "label": "アクション",
+          "title": "チャットだけでなく、行動を起こしましょう。",
+          "description": "変換を実行し、クエリを保存して共有し、ワークフローから直接一般的な分析タスクをトリガーします。コピー＆ペーストやタブの移動は必要ありません。",
+          "pills": {
+            "pill1": "タブホッピングなし",
+            "pill2": "保存して共有する",
+            "pill3": "クイック分析"
+          }
+        },
+        "context": {
+          "label": "コンテクスト",
+          "title": "ユーザーを制御し続けるコンテキスト。",
+          "description": "Dory は、テーブル、リレーションシップ、最近のクエリなど、作業中の内容を追跡するため、Ask、Action、Context 全体で結果の一貫性が保たれます。",
+          "pills": {
+            "pill1": "テーブルとリレーションシップ",
+            "pill2": "一貫した結果",
+            "pill3": "信頼できる結合"
+          }
+        }
+      }
+    },
+    "tableOverview": {
+      "badge": "AI テーブルの概要",
+      "title": "すべての列と分布をフレーム化する自動テーブル インテリジェンス。",
+      "description": "AI がSQLを書き込む前にビジネス データを理解できるように、テーブル レベルの概要、セマンティック アノテーション、および使用状況の手がかりを自動的に生成します。",
+      "insights": {
+        "summary": {
+          "title": "自動サマリーとセマンティクス",
+          "description": "ドリーは、カウント、鮮度、関係を読み取って、テーブルに含まれる内容と、それがなぜ重要なのかを説明します。"
+        },
+        "fields": {
+          "title": "フィールドの意味と信号",
+          "description": "各列には、短い意味上のメモと、範囲、カーディナリティ、および役立つ結合に関するヒントが表示されます。"
+        },
+        "context": {
+          "title": "配布キューとSQLコンテキスト",
+          "description": "データの分布、スキュー、およびビジネス メモは、AI が信頼できるSQLに必要とする根拠のあるコンテキストを提供します。"
+        }
+      },
+      "screenshotAlt": "AIテーブル概要UI"
+    },
+    "chatbot": {
+      "badge": "データベースチャット",
+      "title": "データベースとチャットする",
+      "description": "Dory のチャットボットは一般的な AI アシスタントではありません。これは、スキーマを理解し、実際のSQLを書き込み、会話を通じてデータを探索するのに役立つデータベース ネイティブのコパイロットです。",
+      "bullets": {
+        "schema": "実際のテーブルとのスキーマ対応の会話",
+        "sql": "自然言語から実行可能ファイルへSQL",
+        "context": "マルチターン、コンテキストを意識した分析",
+        "visualization": "自動可視化と説明"
+      },
+      "multilingual": "複数の言語をサポート",
+      "callout": {
+        "label": "ライブチャット",
+        "title": "根拠のある答えを毎回",
+        "description": "クエリは、実際のフィールド、実際の結合、および実際の信頼度を使用して作成されます。"
+      }
+    },
+    "coreWorkspace": {
+      "badge": "コアワークスペース",
+      "title": "実際のSQL作業のために構築されています —<brand>、単なるチャット</brand>ではありません。",
+      "description": "高速エディター、信頼できるスキーマ ビュー、再利用できる保存された作業 - 日々のデータ作業の基盤です。",
+      "screenshotAlt": "ドリーのワークスペースのスクリーンショット",
+      "highlights": {
+        "item1": "構文ガイダンスを備えたスキーマ対応のオートコンプリート。",
+        "item2": "複数のタブ、複数の結果セットのクエリ ワークフロー。",
+        "item3": "並べ替え、フィルタリング、高速ナビゲーションを備えた高性能の結果グリッド。",
+        "item4": "大量のデータと複雑な分析向けに設計されています。"
+      },
+      "features": {
+        "editor": {
+          "title": "SQLネイティブ感覚のエディター",
+          "description": "スキーマを認識したオートコンプリートを備えたキーボードからの高速編集により、フローを中断することなく正しいSQLを作成できます。",
+          "bullets": {
+            "bullet1": "スキーマ対応のオートコンプリート",
+            "bullet2": "キーボードファーストのワークフロー",
+            "bullet3": "書いたものを正確に実行します"
+          }
+        },
+        "schema": {
+          "title": "信頼できる Schema Explorer",
+          "description": "コンテキスト内のテーブル、列、型を参照します。これは、AI が幻覚フィールドを回避するために使用するのと同じ基盤です。",
+          "bullets": {
+            "bullet1": "テーブル、列、型",
+            "bullet2": "クイックフィルタリング",
+            "bullet3": "AI のためのグラウンディング"
+          }
+        },
+        "saved": {
+          "title": "保存されたクエリと結果",
+          "description": "1 回限りの探索をワークフローに変えます。重要なクエリを保存し、再確認し、共有します。",
+          "bullets": {
+            "bullet1": "保存して整理する",
+            "bullet2": "結果の再利用",
+            "bullet3": "チームと共有する"
+          }
+        }
+      }
+    },
+    "databaseSupport": {
+      "badge": "データベース対応",
+      "title": "すでに使用しているデータスタックを接続します。",
+      "description": "PostgreSQL、MySQL、SQLite、MariaDB、Neon、ClickHouse をサポートします。\nデータのクエリ、探索、分析のための最新のワークスペース。",
+      "panelTitle": "対応データベース",
+      "highlightTitle": "⭐ ClickHouse の高度な体験",
+      "highlightFeatures": [
+        "深いスキーマ対応",
+        "クエリ分析ダッシュボード",
+        "チームで使えるワークスペース"
+      ],
+      "comingNextLabel": "今後対応予定"
+    },
+    "moreFeatures": {
+      "badge": "その他の機能",
+      "title": "日常のデータ作業のために設計されたSQLワークスペース",
+      "description": "ローカルファースト、即応性のある",
+      "features": {
+        "secure": {
+          "title": "ローカルファーストのセキュリティ",
+          "description": "クエリ、個人設定、ワークフローはコンピュータ上に残るため、プライバシーと制御があなたの手を離れることはありません。"
+        },
+        "connectivity": {
+          "title": "SSHトンネリング",
+          "description": "SSHトンネルはすべての接続を強力な暗号化でラップするため、資格情報、クエリ、データがプレーン テキストでネットワークから流出することはありません。"
+        },
+        "save": {
+          "title": "クエリとワークフローを保存",
+          "description": "クエリ、コンテキスト、結果を保存すると、作業を何度も再実行して構築できます。"
+        },
+        "modern": {
+          "title": "モダンな体験",
+          "description": "すっきりと抑制されたインターフェイスにより、作業のリズムに没入できます。"
+        },
+        "themes": {
+          "title": "明るい/暗い、マルチテーマ",
+          "description": "明るい、暗い、複数のアクセントのテーマは、ビジュアルを読みやすく快適に保ちながら、環境に適応します。"
+        },
+        "open-source": {
+          "title": "オープンソース",
+          "description": "Apache 2.0 はライセンスを取得しており、拡張可能で、セルフホスティングの準備ができています。"
+        }
+      }
+    },
+    "cta": {
+      "badge": "数分で Dory を試してみよう",
+      "title": "今すぐ始めましょう",
+      "subtitle": "最新のデータベース用の AI ネイティブのSQLワークスペース。",
+      "description": "今すぐ Dory をダウンロードするか、Docker を使用してローカルにデプロイし、実際のデータベースに接続します。",
+      "dockerDeploy": "ドッカーのデプロイ",
+      "quickStart": "ドッカーのデプロイ",
+      "commands": {
+        "copy": "コピーコマンド",
+        "copied": "コピーされました"
+      },
+      "tip": "起動後、UI にデータベース接続を追加します。"
+    },
+    "faq": {
+      "headerLabel": "FAQ",
+      "title": "質疑応答",
+      "items": {
+        "free": {
+          "question": "ドリーは無料で使えますか？",
+          "answer": {
+            "paragraph1": "はい。 Dory は、個人プロジェクトやローカル ワークフローに使用できる無料バージョンを提供します。",
+            "paragraph2": "プロジェクトが進化するにつれて、有料機能やチーム機能も検討していきますが、コアとなるSQLワークスペースは引き続き無料です。"
+          }
+        },
+        "aiCopilot": {
+          "question": "AI 副操縦士はどのように機能しますか?",
+          "answer": {
+            "paragraph1": "Dory の AI Copilot は、データベース スキーマ、テーブル、クエリ コンテキストを理解して、SQLの生成、クエリの説明、データの迅速な探索を支援します。",
+            "paragraph2": "一般的なプロンプトの代わりに、Dory はワークスペースから構造化されたコンテキストを提供するため、AI の応答はより正確かつ実用的になります。"
+          }
+        },
+        "providers": {
+          "question": "どの AI プロバイダーがサポートされていますか?",
+          "answer": {
+            "paragraph1": "デスクトップ バージョンには、すぐに使える優れたエクスペリエンスを実現する OpenAI モデルが組み込まれています。オープンソース バージョンは、OpenAI、Anthropic、Google Gemini などを含む、構成可能な環境変数を通じて複数のモデル プロバイダーをサポートします。",
+            "paragraph2": "独自の AI ゲートウェイまたはエンタープライズ インフラストラクチャを介してリクエストをルーティングすることもできます。"
+          }
+        },
+        "databases": {
+          "question": "Dory はどのデータベースをサポートしていますか?",
+          "answer": {
+            "paragraph1": "Dory は現在、ClickHouse、PostgreSQL、Neon、MySQL、MariaDB、SQLite をサポートしており、ClickHouse に深く統合されたエクスペリエンスを備えています。",
+            "paragraph2": "DuckDB は計画されており、最新のデータベース全体で一貫した AI ネイティブのワークスペースを提供するためのサポートを拡大し続けます。"
+          }
+        },
+        "openSource": {
+          "question": "Dory はオープンソースですか?",
+          "answer": {
+            "paragraph1": "Dory は Apache 2.0 に基づいてライセンスされており、開発者にとって使いやすく、自己ホストすることができます。",
+            "paragraph2": "コード、ドキュメント、新機能のアイデアなど、コミュニティからの貢献を歓迎します。"
+          }
+        },
+        "dataSafety": {
+          "question": "私のデータは安全ですか?",
+          "answer": {
+            "paragraph1": "ドリーは地元第一の哲学に従っています。デスクトップ バージョンを使用している場合、接続とワークスペースのメタデータはマシン上に残ることができます。",
+            "paragraph2": "AI 機能は、構成に基づいて必要最小限のコンテキストのみを送信します。現時点では、Dory は OpenAI モデルを使用しています。"
+          }
+        }
+      }
+    },
+    "deployment": {
+      "badge": "データベースと展開",
+      "heading": "<brand>your data</brand>が存在する Dory を実行します。",
+      "description": "実際のデータベースに接続し、ローカル、Docker、または完全に自己ホストされた環境にデプロイします。",
+      "databases": {
+        "title": "データベース",
+        "description": "スキーマを認識したクエリネイティブの統合。",
+        "shield": "強制的なアップロードはありません。 Dory はユーザーの環境内で実行され、ユーザーが制御する接続を介してデータベースと通信します。",
+        "items": {
+          "clickhouse": {
+            "note": "主な経験"
+          },
+          "postgres": {
+            "note": "進行中"
+          },
+          "mysql": {
+            "note": "進行中"
+          },
+          "sqlite": {
+            "note": "進行中"
+          }
+        }
+      },
+      "deployment": {
+        "title": "導入",
+        "description": "ローカルファーストの速度またはセルフホスト制御を選択します。",
+        "options": {
+          "local": {
+            "title": "ローカルアプリ",
+            "description": "マシン上で実行すると、最も速く、最も簡単なセットアップが可能になります。"
+          },
+          "docker": {
+            "title": "ドッカー",
+            "description": "単一のコンテナーで数分で自己ホストします。"
+          },
+          "selfhost": {
+            "title": "自己ホスト型",
+            "description": "独自の環境でデータベースと一緒にデプロイします。"
+          },
+          "cloud": {
+            "title": "あなたのクラウド",
+            "description": "データが存在する場所 (VPC、VPN、または内部ネットワーク) で実行します。"
+          }
+        }
+      },
+      "status": {
+        "stable": "安定した",
+        "beta": "ベータ",
+        "planned": "計画済み"
+      },
+      "extra": "プライベート ネットワーク (VPC/VPN) および自己管理データベースで動作します。キー、ネットワーク、データ パスは保持します。",
+      "footer": "次にデータベースを統合したいですか?<open>GitHub</open>で問題を開きます。"
+    }
+  },
+  "downloadPage": {
+    "eyebrow": "ドリーのダウンロード",
+    "title": "{product}をダウンロードしていただきありがとうございます",
+    "description": "{platform}のダウンロードが自動的に開始されます。そうでない場合は、下の直接ダウンロード ボタンを使用してください。",
+    "statusPreparing": "ダウンロードの準備中",
+    "statusStarted": "ダウンロードが開始されました",
+    "cardTitle": "{platform}インストーラーの起動",
+    "cardDescription": "通常、これは数秒以内に始まります。ブラウザがダウンロードをブロックする場合は、以下の手動リンクを使用してください。",
+    "manualDownload": "今すぐダウンロード",
+    "retryFromRelease": "リリースからの再試行",
+    "fallbackLink": "ダウンロードが開始されない場合は、ここをクリックして{platform}ビルドを参照してください",
+    "tip": "別のプラットフォームまたは完全な変更ログが必要ですか?最新のリリースページを開きます。",
+    "viewAllReleases": "すべてのダウンロードを表示"
+  },
+  "downloadCenter": {
+    "eyebrow": "すべてのプラットフォーム",
+    "title": "ダウンロード",
+    "description": "ご使用のマシン用の最新の{product}ビルドをダウンロードするか、Homebrew 経由でインストールするか、GitHub で完全なリリース アーカイブを開きます。",
+    "latestVersion": "最新バージョン",
+    "tip": "代わりに素早いハンドオフが必要ですか?自動検出ページを使用して、Dory にこのデバイスに最適なインストーラーを選択させます。",
+    "autoDetect": "自動検出ダウンロードを開く",
+    "homebrewTitle": "Homebrew 経由でインストールする",
+    "homebrewDescription": "macOS にターミナルをインストールしたいですか? Dory Cask を使用して、Homebrew に合わせて更新を維持してください。",
+    "allPlatformsTitle": "すべてのプラットフォーム",
+    "allPlatformsDescription": "最新の GitHub リリース タグから直接ダウンロードします。",
+    "appleSilicon": "アップルシリコン",
+    "intel": "インテル",
+    "portable": "ポータブル",
+    "installer": "インストーラ",
+    "macTitle": "macOS",
+    "macAppleSiliconDescription": "Apple Silicon Mac のディスク イメージ。",
+    "macIntelDescription": "Intel Mac のディスク イメージ。",
+    "windowsTitle": "窓",
+    "windowsPortableDescription": "インストーラーなしでポータブルに実行可能。",
+    "windowsInstallerDescription": "標準の Windows インストール用のセットアップ実行可能ファイル。",
+    "releaseTitle": "すべてのリリース",
+    "releaseDescription": "Dory GitHub リポジトリから公開されているすべてのビルド、リリース ノート、およびフォールバック アセットを参照します。",
+    "releaseRowDescription": "完全なリリース ページを開いて、チェックサム、リリース ノート、および公開されているすべてのアセットを確認してください。",
+    "downloadAsset": "ダウンロード",
+    "viewAllReleases": "リリースを参照する"
+  },
+  "navbar": {
+    "toggleMenu": "ナビゲーションメニューを切り替えます",
+    "tagline": "AI ネイティブ データ ワークスペース",
+    "githubDescription": "ソースコード、進捗、リリースを確認",
+    "theme": {
+      "toggle": "テーマの切り替え",
+      "switchToLight": "ライトモードに切り替える",
+      "switchToDark": "ダークモードに切り替える",
+      "currentDark": "現在ダークテーマを使用中",
+      "currentLight": "現在ライトテーマを使用しています"
+    },
+    "home": "ホーム",
+    "blog": "ブログ",
+    "releaseNotes": "リリースノート",
+    "download": "ダウンロード"
+  },
+  "blog": {
+    "eyebrow": "ドリーのブログ",
+    "title": "ブログとリリースノート",
+    "description": "Dory 製品のアップデート、リリース ノート、チームによる今後の記事をフォローしてください。",
+    "categoryLabel": "カテゴリ",
+    "releaseNotes": "リリースノート",
+    "releaseNotesDescription": "新機能、改善点、修正など、Dory の各リリースに含まれる内容を確認してください。",
+    "postCount": "{count, plural, one {# note}その他{# notes}}",
+    "latestRelease": "最新リリース",
+    "readLatest": "最新のノートを読む",
+    "readPost": "投稿を読む",
+    "empty": "まだリリースノートはありません。",
+    "blogHome": "ブログ",
+    "backToReleaseNotes": "リリースノートに戻る"
+  }
+}

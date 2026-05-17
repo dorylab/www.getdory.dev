@@ -1,0 +1,127 @@
+---
+title: Estibador
+description: Ejecute Dory con Docker y configure puertos, secretos, usuarios de inicio, proveedores de IA y datos persistentes.
+---
+
+# acoplador
+
+Docker es el camino más directo para el autohospedaje de Dory en un entorno accesible por navegador. El contenedor escucha en el puerto `3000`.
+
+## Comando mínimo
+
+```bash
+docker run -d --name dory \
+  - p 3000:3000 \
+  - e DS_SECRET_KEY="$(openssl rand -base64 32 | tr -d '\n')" \
+  - e BETTER_AUTH_SECRET="$(openssl rand -hex 32)" \
+  - e BETTER_AUTH_URL="http://localhost:3000" \
+  - e NEXT_PUBLIC_REQUIRE_EM AI L_VERIFICATION=false \
+  - e DORY_INIT_USER_EM AI L=admin@getdory.dev \
+  - e DORY_INIT_USER_PASSWORD=admin \
+  dorylab/dory:latest
+```
+
+Abra ` http://localhost:3000`e inicie sesión con el usuario inicializado.
+
+## Habilitar IA
+
+Agregue variables de entorno de IA cuando desee generación de SQL, chat de IA y análisis de resultados:
+
+```bash
+  - e DORY_AI_PROVIDER=openai \
+  - e DORY_AI_MODEL=gpt-4o-mini \
+  - e DORY_AI_API_KEY=your_api_key_here \
+  - e DORY_AI_URL=https://api.openai.com/v1 \
+```
+
+Los proveedores admitidos incluyen ` openai `,` openai-compatible `,` anthropic `,` google `,` qwen `,` xai `y ` meta `.
+
+## Utilice un archivo `.env `
+
+```bash
+docker run -d --name dory \
+  - p 3000:3000 \
+  - -env-file .env \
+  dorylab/dory:latest
+```
+
+## Persistir datos
+
+Dory utiliza el almacenamiento de archivos PGlite de forma predeterminada para los datos de su propia aplicación. En Docker, mantenga ese archivo en `/app/data ` y monte `/app/data ` en un almacenamiento de disco persistente:
+
+```bash
+docker volume create dory-data
+
+docker run -d --name dory \
+  - p 3000:3000 \
+  - -env-file .env \
+  - e DB_TYPE=pglite \
+  - v dory-data:/app/data \
+  dorylab/dory:latest
+```
+
+También puede utilizar un directorio de host:
+
+```bash
+mkdir -p /srv/dory/data
+
+docker run -d --name dory \
+  - p 3000:3000 \
+  - -env-file .env \
+  - e DB_TYPE=pglite \
+  - v /srv/dory/data:/app/data \
+  dorylab/dory:latest
+```
+
+Los archivos SQLite y DuckDB también deben montarse en el contenedor si desea que Dory los lea.
+
+## Utilice Postgres para los datos de la aplicación
+
+Para producción, puede almacenar datos de la aplicación Dory en Postgres:
+
+```bash
+DB_TYPE=postgres
+DATABASE_URL=postgres://dory:strong_password@postgres.example.com:5432/dory
+POSTGRES_SSL=true
+```
+
+Luego ejecute el contenedor con el mismo archivo `.env `:
+
+```bash
+docker run -d --name dory \
+  - p 3000:3000 \
+  - -env-file .env \
+  dorylab/dory:latest
+```
+
+## Proxy inverso yHTTPS
+
+Pon a Dory detrás deHTTPSpara los despliegues en equipo. Establezca ` BETTER_AUTH_URL `en el público DoryURLe incluya eseURLen ` TRUSTED_ORIGINS `.
+
+## Lista de verificación de actualización
+
+1. Haga una copia de seguridad de los datos persistentes y `.env `.
+2. Extraiga la nueva imagen.
+3. Detenga el contenedor viejo.
+4. Inicie el nuevo contenedor con el mismo archivo env y volumen.
+5. Verifique el inicio de sesión, las conexiones, la consola SQL, la IA y las consultas guardadas.
+
+## FAQ
+
+### ¿Por qué los enlaces de autenticación utilizan el dominio incorrecto?
+
+Compruebe que ` BETTER_AUTH_URL `coincida exactamente con el públicoURLque abren los usuarios.
+
+### ¿Por qué la IA no está disponible?
+
+Marque ` DORY_AI_PROVIDER `,` DORY_AI_MODEL `,` DORY_AI_API_KEY `y ` DORY_AI_URL `.
+
+### ¿Por qué Docker no puede acceder a archivos SQLite o DuckDB locales?
+
+El archivo debe montarse en el contenedor. Utilice la ruta dentro del contenedor al crear la conexión Dory.
+
+## Próximos pasos
+
+- [Variables de entorno](/es/docs/deploy/variables-de-entorno)
+- [Autohospedaje](/es/docs/deploy/self-hospedaje)
+- [Bases de datos en la nube](/es/docs/database-support/cloud-databases)

@@ -10,6 +10,12 @@ export const { GET } = createFromSource(source, {
     },
     zh: {
       language: 'english'
+    },
+    ja: {
+      language: 'english'
+    },
+    es: {
+      language: 'spanish'
     }
   }
 });

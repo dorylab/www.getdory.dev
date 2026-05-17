@@ -1,0 +1,19 @@
+---
+title: v0.7.12
+description: Notas de la versión de Dory para v0.7.12.
+---
+
+# v0.7.12
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.7.12.md)
+
+## ¿Qué ha cambiado?
+### Correcciones
+- Se solucionó un problema por el cual el contenido del editor SQL se perdía ocasionalmente durante el cambio de pestaña o el guardado automático.
+- Se resolvió el manejo incorrecto de la base de datos PostgreSQL y los metadatos del esquema en contextos de chatbot y consola SQL, mejorando la precisión de las consultas y las sugerencias de tablas.
+### Características
+- Se agregó un **botón de actualización** a la barra lateral de la consola SQL para recargar manualmente la base de datos y los listados de esquemas.
+- Se introdujo la generación dinámica de mensajes SQL(`buildDialectSqlPrompt `) que se adapta al tipo de conexión activa (por ejemplo, PostgreSQL, MySQL), lo que mejora la relevancia de las consultas generadas por IA.
+### Mejoras
+- Se optimizó el rendimiento del navegador de tablas mediante la carga diferida de etiquetas de columnas, lo que reduce el tiempo de procesamiento inicial para esquemas grandes.
+- Comentarios de interfaz de usuario mejorados en múltiples componentes (botones, menús desplegables, barra lateral, etc.) con un estilo ` cursor-pointer `consistente.

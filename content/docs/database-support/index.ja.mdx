@@ -1,0 +1,43 @@
+---
+title: 概要
+description: ClickHouse、PostgreSQL、Neon、MySQL、SQLite、DuckDB、MotherDuck、およびクラウド データベース接続に対する Dory のサポートを確認してください。
+---
+
+＃ 概要
+
+Dory は、最新のデータベース用の AI ネイティブ データ ワークスペースです。サポートされているデータベースに接続し、スキーマを参照し、SQL を書き込み、AI を使用してクエリを生成し、結果を検査し、グラフを作成し、再利用可能なクエリを保存することができます。
+
+## データベースサポートの概要
+
+| データベース | ベストフィット | ドリーのサポート |
+| --- | --- | --- |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/clickhouse.svg" alt="" width="20" height="20" />[ClickHouse](/ja/docs/database-support/clickhouse)</span> | イベント、ログ、可観測性、および高スループット分析 | SQL、エクスプローラー、AI、監視、および権限。 |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/postgresql.svg" alt="" width="20" height="20" />[PostgreSQL](/ja/docs/database-support/postgresql)</span> | 運用アプリ、内部ツール、分析 | スキーマの参照、SQL、AI 支援、結果分析。 |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/neon.svg" alt="" width="20" height="20" />[Neon](/ja/docs/database-support/neon)</span> | サーバーレス PostgreSQL とクラウド開発 | PostgreSQL と互換性のある接続のサポート。 |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/mysql.svg" alt="" width="20" height="20" />[MySQL](/ja/docs/database-support/mysql)</span> | Web アプリケーションのデータベースとレポート作成 | クエリ、AI 支援、本番環境に安全な探索。 |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/mariadb.svg" alt="" width="20" height="20" />[MariaDB](/ja/docs/database-support/mariadb)</span> | MariaDB アプリケーション データベースとレポート | SQL、Explorer、AI 支援の専用接続サポート。 |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/sqlite.svg" alt="" width="20" height="20" />[SQLite](/ja/docs/database-support/sqlite)</span> | ローカル ファイル、プロトタイプ、デモ、軽量分析 | 絶対パスのローカル`.sqlite `/`.db `ファイル接続。 |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/duckdb.svg" alt="" width="20" height="20" />[DuckDB](/ja/docs/database-support/duckdb)</span> | ローカル分析ファイルと MotherDuck ワークフロー | ローカル DuckDB ファイルと MotherDuck トークン。 |
+| <span class="dory-db-name"><img class="dory-db-icon" src="/icons/databases/postgresql.svg" alt="" width="20" height="20" />[クラウド データベース](/ja/docs/database-support/cloud-databases)</span> | 管理されたデータベースとチーム展開 | TLS、ホワイトリスト、SSHトンネル、およびシークレット管理ガイダンス。 |
+
+## 一般的な Dory データベースのワークフロー
+
+1. [接続](/ja/docs/core-features/connections) に接続を作成します。
+2. [エクスプローラー](/ja/docs/core-features/explorer) でデータベース、スキーマ、テーブル、列を参照します。
+3. [SQL Console](/ja/docs/core-features/sql-console) で SQL を記述して実行します。
+4. [AI Chat](/ja/docs/core-features/ai-chat) を使用して、クエリを生成、説明、修正、または最適化します。
+5. 結果を検証し、[グラフと結果](/ja/docs/core-features/charts-results) でグラフを作成します。
+6. 再利用可能な SQL を [保存されたクエリ](/ja/docs/core-features/saved-queries) に保存します。
+
+## 接続方法を選択します
+
+- ローカル開発およびマシンからの直接アクセスにはデスクトップ アプリを使用します。
+- チームが共有アクセスを必要とする場合は、Docker またはセルフホスティングを使用します。
+- SQLite および DuckDB のファイル パスは、Dory ランタイムがこれらのファイルを読み取れる場合にのみ使用します。
+- データベースがパブリックにアクセスできない場合は、SSHトンネルまたはクラウド ネットワーク設定を使用します。
+
+## 次のステップ
+
+- [データベースに接続する](/ja/docs/getting-started/connect-your-database)
+- [クラウド データベース](/ja/docs/database-support/cloud-databases)
+- [デプロイ](/ja/docs/deploy)

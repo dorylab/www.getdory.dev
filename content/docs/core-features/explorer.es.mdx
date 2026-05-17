@@ -1,0 +1,125 @@
+---
+title: Explorador
+description: Utilice Dory Explorer para inspeccionar bases de datos, esquemas, tablas, columnas y datos de muestra antes de escribir SQL.
+---
+
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
+# Explorador
+
+Explorer le ayuda a comprender una base de datos antes de escribir SQL. Es el lugar más seguro para comenzar cuando no está familiarizado con un esquema.
+
+## Lo que puedes inspeccionar
+
+| Área | Qué buscar |
+| --- | --- |
+| Bases de datos y esquemas | Espacios de nombres disponibles y agrupación de tablas |
+| Mesas | Nombres de tablas, propósito y forma de fila |
+| columnas | Nombres, tipos y significados probables |
+| Filas de muestra | Valores representativos y patrones nulos. |
+| Relaciones | ID, nombres similares a claves externas y candidatos para unirse |
+
+## Explorador de bases de datos
+
+Comience desde la lista de bases de datos para confirmar que la conexión expone los espacios de nombres esperados. El panel izquierdo le permite filtrar objetos y moverse entre bases de datos sin abandonar la conexión actual.
+
+![Lista de bases de datos de Dory Explorer](/images/core-features/dory-explorer-databases.png)
+
+## Diferencias de tipos de bases de datos
+
+Explorer adapta los grupos de objetos y las pestañas de detalles de las tablas al controlador de la base de datos. La siguiente tabla refleja lo que Dory muestra para cada tipo de base de datos.
+
+<Tabs items={['ClickHouse', 'Postgres', 'MySQL']}>
+  <Tab>
+    | Área | Lo que muestra el Explorador |
+    | --- | --- |
+    | Nivel de base de datos | Resumen, Tablas, Vistas y Vistas Materializadas. |
+    | Objetos de la barra lateral | Bases de datos, Tablas, Vistas y Vistas materializadas. |
+    | Pestañas de detalles de la tabla | Descripción general, vista previa de datos, estructura y estadísticas. |
+  </Tab>
+  <Tab>
+    | Área | Lo que muestra el Explorador |
+    | --- | --- |
+    | Nivel de base de datos | Bases de datos y esquemas. |
+    | Objetos de la barra lateral | Esquemas, Tablas, Vistas, Vistas materializadas y Funciones. |
+    | Pestañas de detalles de la tabla | Descripción general, datos, estructura, estadísticas e índices. |
+  </Tab>
+  <Tab>
+    | Área | Lo que muestra el Explorador |
+    | --- | --- |
+    | Nivel de base de datos | Bases de datos. |
+    | Objetos de la barra lateral | Tablas y Vistas. |
+    | Pestañas de detalles de la tabla | Descripción general, datos, estructura, estadísticas e índices. |
+  </Tab>
+</Tabs>
+
+## Detalles de la base de datos
+
+### Resumen
+
+Abra una base de datos para revisar metadatos de alto nivel, como el recuento de tablas, el recuento de vistas, el tamaño total, la combinación de objetos, las tablas más grandes y los objetos actualizados recientemente.
+
+![Resumen de la base de datos de Dory Explorer](/images/core-features/dory-explorer-database-summary.png)
+
+### Tablas
+
+Utilice la pestaña **Tablas** para comparar nombres de tablas, motores, recuentos de filas, tamaño de datos y tiempo de actualización antes de elegir qué tabla inspeccionar o consultar.
+
+![Lista de tablas de Dory Explorer](/images/core-features/dory-explorer-tables.png)
+
+### Vistas
+
+Utilice la pestaña **Vistas** para buscar tablas virtuales guardadas expuestas por la base de datos actual. Busque por nombre o comentario, luego verifique el motor, los metadatos del recuento de filas, el tamaño y la hora de la última actualización cuando la base de datos lo proporciona.
+
+![Lista de vistas de Dory Explorer](/images/core-features/dory-explorer-database-views.png)
+
+### Vistas materializadas
+
+Utilice la pestaña **Vistas materializadas** para inspeccionar objetos similares a vistas persistentes por separado de las tablas y vistas normales. Esto le ayuda a distinguir las definiciones de consultas reutilizables de los objetos precalculados o respaldados por almacenamiento antes de realizar la consulta.
+
+![Lista de vistas materializadas de Dory Explorer](/images/core-features/dory-explorer-database-materialized-views.png)
+
+## Detalles de la tabla
+
+### Descripción general
+
+Abra una tabla y comience desde **Descripción general** para obtener un resumen generado por IA, aspectos destacados clave, datos de esquema y almacenamiento, agrupación de campos semánticos y fragmentos de consulta listos para adaptar.
+
+![Descripción general de la tabla de Dory Explorer](/images/core-features/dory-explorer-table-overview.png)
+
+### Vista previa de datos
+
+Utilice **Vista previa de datos** para inspeccionar filas de muestra antes de escribir filtros, uniones o agregaciones. La cuadrícula admite escanear valores reales, comparar columnas, buscar, paginar y actualizar la vista previa.
+
+![Vista previa de datos de la tabla de Dory Explorer](/images/core-features/dory-explorer-table-data-preview.png)
+
+### Estructura
+
+Abra una tabla y use **Estructura** para inspeccionar columnas, tipos, capacidad de nulos, etiquetas, claves, propiedades de la tabla y DDL. Este es el mejor lugar para verificar los nombres exactos de las columnas antes de escribir SQL o pedirle a AI que genere una consulta.
+
+![Estructura de la tabla de Dory Explorer](/images/core-features/dory-explorer-table-structure.png)
+
+### Estadísticas
+
+Utilice **Estadísticas** para revisar el tamaño, el recuento de filas, la compresión, las particiones, las piezas y las mutaciones activas cuando la base de datos exponga esas métricas. Esto resulta útil antes del trabajo de rendimiento o al decidir si se debe muestrear primero una consulta.
+
+![Estadísticas de la tabla de Dory Explorer](/images/core-features/dory-explorer-table-stats.png)
+
+## Por qué es importante
+
+- Puedes evitar adivinar los nombres de tablas y columnas.
+- AI Chat puede funcionar con un mejor contexto de esquema.
+- Las consultas de la consola SQL son más fáciles de validar.
+- Puede identificar consultas de vista previa seguras antes de ejecutar un análisis más amplio.
+
+## Flujo recomendado
+
+1. Seleccione una conexión.
+2. Explore esquemas y tablas.
+3. Abra una tabla e inspeccione las columnas.
+4. Obtenga una vista previa de una pequeña muestra cuando esté disponible.
+5. Vaya a la consola SQL o al chat AI con el contexto de la tabla en mente.
+
+## Trabajar con IA
+
+Cuando le pida a AI que genere SQL, mencione la tabla y las columnas exactas que confirmó en Explorer. Esto reduce los nombres de columnas alucinados y hace que el primer borrador sea más fácil de revisar.

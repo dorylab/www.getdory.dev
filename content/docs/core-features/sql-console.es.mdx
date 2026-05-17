@@ -1,0 +1,148 @@
+---
+title: Consola SQL
+description: Escriba, ejecute, depure y guarde SQL en Dory con contexto de esquema y asistencia de IA.
+---
+
+# SQL Console
+
+La consola SQL es el espacio de trabajo principal para escribir y ejecutar SQL en Dory. Funciona junto con Explorer, AI Chat, tablas de resultados, gráficos y consultas guardadas.
+
+## Estructura de la interfaz
+
+La consola SQL normalmente incluye:
+
+- Un contexto de conexión y esquema.
+- Un editor SQL.
+- Controles de ejecución de consultas.
+- Tablas de resultados y puntos de entrada de gráficos.
+- Acceso a asistencia de IA.
+- Acciones de consulta guardadas.
+
+![Interfaz de consola Dory SQL](/images/sql-console.png)
+
+## Escribiendo SQL
+
+Comience con consultas pequeñas y seguras. Confirme los nombres de tablas y columnas en Explorer antes de agregar filtros, combinaciones o agregaciones complejos.
+
+![Dory SQL Editor de consola y autocompletar](/images/sql-editor.png)
+
+## Ejecución de consultas
+
+Ejecute SQL con la conexión seleccionada. Revise los resultados, los errores y el comportamiento de ejecución antes de utilizar los resultados para tomar decisiones.
+
+![Resultado de la consulta de la consola Dory SQL](/images/resultset.png)
+
+## Flujo de trabajo de varias pestañas
+
+Utilice varias pestañas para mantener separados los borradores de exploración, análisis final y consultas alternativas.
+
+![Dory SQL Pestañas de la consola y controles superiores](/images/top-panel.png)
+
+## Utilice el panel de esquema izquierdo
+
+El panel de esquema le ayuda a evitar adivinar nombres:
+
+```sql
+select *
+from your_table
+limit 20;
+```
+
+Abra tablas en Explorer cuando necesite más detalles.
+
+![Panel de esquema de consola Dory SQL](/images/table-panel.png)
+
+## Copiloto de IA
+
+Utilice IA para generar SQL, explicar SQL, corregir errores, optimizar consultas o remodelar la salida de los gráficos. Copilot está organizado en pestañas **Preguntar**, **Acción** y **Contexto**. Siempre revise SQL generado antes de ejecutarlo.
+
+### Preguntar
+
+Utilice **Preguntar** para obtener ayuda abierta de SQL. Puede pedirle a Copilot que genere una consulta, explique SQL actual, el motivo de un error o sugiera el siguiente paso de análisis desde el editor actual y el contexto del resultado.
+
+![Dory SQL Consola Preguntar panel AI](/images/ask.png)
+
+### Acción
+
+Abra la pestaña **Acción** en Copilot para ejecutar acciones SQL enfocadas en el editor actual SQL y el contexto de ejecución más reciente.
+
+![Acciones de Dory SQL Console Copilot](/images/core-features/dory-copilot-actions.png)
+
+Utilice las acciones integradas para bucles de iteración SQL comunes:
+
+- **Reparar errores SQL**: utiliza el último error de ejecución para proponer una versión corregida de SQL.
+- **Optimizar el rendimiento**: reescribe SQL para reducir escaneos innecesarios, simplificar filtros o mejorar la forma de ejecución.
+- **Reescribir SQL**: reestructura SQL para facilitar la lectura y al mismo tiempo preservar la intención.
+- **Convertir a agregación**: convierte SQL de nivel de fila en SQL agrupado y orientado a métricas para resúmenes y gráficos.
+
+Después de ejecutar una acción, Copilot abre un panel de resultados con una breve explicación, vista previa o comparación SQL y controles **Copiar** / **Aplicar**.
+
+#### Corregir errores SQL
+
+![Resultado de errores de Dory Copilot Fix SQL](/images/core-features/dory-copilot-action-fix-sql-errors.png)
+
+#### Optimizar el rendimiento
+
+![Resultado de rendimiento de Dory Copilot Optimize](/images/core-features/dory-copilot-action-optimize-performance.png)
+
+#### Reescribir SQL
+
+![Resultado de Dory Copilot Rewrite SQL](/images/core-features/dory-copilot-action-rewrite-sql.png)
+
+#### Convertir a agregación
+
+![Dory Copilot Convertir a resultado de agregación](/images/core-features/dory-copilot-action-convert-to-aggregation.png)
+
+### Contexto
+
+Abra la pestaña **Contexto** para inspeccionar qué utilizará Copilot antes de responder: editor SQL, SQL seleccionado, base de datos, tablas referenciadas, confianza, estado de ejecución, recuento de filas y perfil de resultados. Úselo para confirmar que Copilot está trabajando a partir de la consulta y el conjunto de resultados correctos.
+
+![Contexto del copiloto de consola Dory SQL](/images/core-features/dory-copilot-context.png)
+
+## Resultados y gráficos
+
+Después de la ejecución, inspeccione la tabla de resultados. Si el resultado está agregado y tiene buena forma, cree un gráfico a partir de él.
+
+![Vista de gráficos de consola Dory SQL](/images/charts.png)
+
+## Ejemplo de SQLite de escritorio
+
+Después de crear una conexión SQLite desde `/Users/Shared/Data/demo.sqlite `, abra **SQL Console** con esa conexión seleccionada. El panel de esquema izquierdo debería mostrar la base de datos SQLite ` main `y sus tablas.
+
+Ejecute una consulta agregada compatible con gráficos:
+
+```sql
+select strftime('%Y-%m', created_at) as month,
+       status,
+       round(sum(amount), 2) as revenue,
+       count(*) as orders
+from orders
+group by month, status
+order by month, status;
+```
+
+La tabla de resultados confirma que Dory ejecutó SQL en el archivo SQLite local.
+
+![Resultado SQLite de la consola Dory Desktop SQL](/images/core-features/dory-desktop-sql-console-sqlite-results.png)
+
+Cambie de **Tabla** a **Gráficos** para inspeccionar visualmente el mismo resultado. Dory puede usar la columna del mes como eje X y una métrica numérica como ingresos o recuento como eje Y.
+
+![Gráfico SQLite de consola Dory Desktop SQL](/images/core-features/dory-desktop-sql-console-sqlite-charts.png)
+
+## Guardar consultas
+
+Guarde SQL útil con un nombre y una descripción claros después de haber sido validado.
+
+![Diálogo de consulta para guardar de la consola Dory SQL](/images/core-features/dory-sql-console-save-query.png)
+
+## Mejores prácticas
+
+- Utilice credenciales de solo lectura para datos de producción.
+- Comience con ` limit `y filtros estrechos.
+- Mantenga un objetivo de consulta por pestaña.
+- Validar la salida de AI contra el esquema y las filas de muestra.
+- Guarde solo las consultas que sean útiles más allá de la sesión actual.
+
+## Siguiente paso recomendado
+
+Continúe con [Chat AI](/es/docs/core-features/ai-chat), [Gráficos y resultados](/es/docs/core-features/charts-results) o [Consultas guardadas](/es/docs/core-features/saved-queries).

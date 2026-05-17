@@ -1,0 +1,44 @@
+---
+title: インストール
+description: Homebrew、GitHub リリース、または Docker を通じて Dory をインストールします。
+---
+
+# インストール
+
+## デスクトップのインストール
+
+### macOS 上の Homebrew
+
+```bash
+brew install dorylab/dory/dory
+```
+
+### リリースのダウンロード
+
+macOS または Windows 用のパッケージ化されたデスクトップ ビルドが必要な場合は、GitHub リリース ページを使用してください。
+
+- ` https://github.com/dorylab/dory/releases `
+
+## Docker のインストール
+
+現在、パブリック リポジトリにこの Docker 起動例が文書化されています。
+
+```bash
+docker run -d --name dory \
+  - p 3000:3000 \
+  - e DS_SECRET_KEY="$(openssl rand -base64 32 | tr -d '\n')" \
+  - e BETTER_AUTH_SECRET="$(openssl rand -hex 32)" \
+  - e BETTER_AUTH_URL="http://localhost:3000" \
+  - e DORY_AI_PROVIDER=openai \
+  - e DORY_AI_MODEL=gpt-4o-mini \
+  - e DORY_AI_API_KEY=your_api_key_here \
+  - e DORY_AI_URL=https://api.openai.com/v1 \
+  dorylab/dory:latest
+```
+
+## 最小構成に関する注意事項
+
+- ` DS_SECRET_KEY `および` BETTER_AUTH_SECRET `は、デプロイメントごとに一意である必要があります。
+- ` BETTER_AUTH_URL `は、Dory へのアクセスに使用するパブリックURLと一致する必要があります。
+- Dory の AI 機能を動作させるには、AI 関連の環境変数が必要です。
+- デプロイメント ガイダンスの詳細については、[Docker](/ja/docs/deploy/docker) および [セルフホスティング](/ja/docs/deploy/self-hosting) に進みます。

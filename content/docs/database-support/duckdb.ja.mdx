@@ -1,0 +1,60 @@
+---
+title: アヒルDB
+description: ローカルの DuckDB ファイルまたは MotherDuck を Dory に接続し、分析データセットをクエリし、テーブルを参照し、AI で SQL を生成します。
+---
+
+# ダックDB
+
+<img src="/icons/databases/duckdb.svg" alt="DuckDB logo" width="48" height="48" />
+
+Dory は、ローカルの DuckDB ファイルと MotherDuck トークンをサポートします。 DuckDB は、ローカル分析、データ ファイルの探索、プロトタイピング、および再現可能な分析ワークフローに役立ちます。
+
+## 最適な使用例
+
+- ローカル分析ファイルと中間データセットをクエリします。
+- DuckDB を通じて処理されたCSVまたは Parquet データを探索します。
+- MotherDuck を通じて分析データベースを共有します。
+- 従来のデータベース サーバーを使用せずに、軽量のOLAP分析を実行します。
+- AI を使用して探索的な SQL を生成します。
+
+## ローカル DuckDB
+
+ローカル DuckDB モードを選択し、DuckDB ファイルへの絶対パスを指定します。 Docker で、ファイル ディレクトリをコンテナにマウントし、コンテナのパスを使用します。
+
+## マザーダック
+
+MotherDuck モードを選択し、MotherDuck トークンを提供します。 Dory 専用のトークンを使用して、独立してローテーション、取り消し、監査できるようにします。
+
+## サポートされる機能
+
+| 能力 | DuckDB / MotherDuck のサポート |
+| --- | --- |
+| 接続 | ローカル DuckDB ファイルと MotherDuck トークン。 |
+| エクスプローラ | データベース、テーブル、列。 |
+| SQL コンソール | DuckDB SQL の実行と結果。 |
+| AI チャット | スキーマベースの DuckDB SQL の生成と説明。 |
+| チャートと結果 | クエリ結果の視覚的な分析。 |
+| 保存されたクエリ | 再利用可能な DuckDB SQL を保存します。 |
+
+## 使用上のアドバイス
+
+- ローカル DuckDB ファイルには絶対ファイル パスを使用します。
+- Dory プロセスがファイルを読み取れることを確認してください。
+- Docker を使用する場合は、ローカル ファイルをコンテナーにマウントします。
+- クラウドを利用した DuckDB ワークフローが必要な場合は MotherDuck を使用してください。
+
+## FAQ
+
+### DuckDB ファイル接続が失敗するのはなぜですか?
+
+パスが絶対パスであり、Dory が読み取り可能であることを確認します。 Docker で、ディレクトリがコンテナにマウントされていることを確認します。
+
+### DuckDB それとも SQLite?
+
+SQLite は、ローカル アプリケーション スタイルのデータベースに適しています。 DuckDB は、分析データセット、列指向ファイル、およびOLAPスタイルのクエリに適しています。
+
+## 関連ドキュメント
+
+- [データベースに接続する](/ja/docs/getting-started/connect-your-database)
+- [SQLite データベース サポート](/ja/docs/database-support/sqlite)
+- [クラウドデータベース接続ガイド](/ja/docs/database-support/cloud-databases)

@@ -1,0 +1,102 @@
+---
+title: 認証
+description: Dory チームのデプロイメントのための電子メール ログイン、電子メール検証、GitHub ログイン、Google ログイン、ユーザー プロビジョニング、オフボーディングを計画します。
+---
+
+# 認証
+
+Dory をチームにロールアウトする前に、ユーザーのサインイン方法、参加できるユーザー、メンバーの招待方法、オフボーディング中にアクセスを削除する方法を決定します。
+
+## サポートされている認証オプション
+
+現在構成可能な認証機能には次のものがあります。
+
+- メールアドレスとパスワードによるログイン。
+- 電子メール認証。
+- GitHub OAuth ログイン。
+- Google OAuth ログイン。
+- ブートストラップされた初期管理者ユーザー。
+- 組織とメンバーの管理。
+
+## コア認証変数
+
+| 変数 | 目的 |
+| --- | --- |
+| `BETTER_AUTH_SECRET ` | 認証シークレット。 |
+| ` BETTER_AUTH_URL ` | 生成されたリンクとコールバックに使用されるパブリックURL。 |
+| ` TRUSTED_ORIGINS ` | 信頼できるオリジン。通常はパブリックの DoryURLが含まれます。 |
+| ` NEXT_PUBLIC_REQUIRE_EM AI L_VERIFICATION ` | 電子メール認証が必要かどうか。 |
+
+運用環境ではHTTPSを使用し、` BETTER_AUTH_URL `をパブリックURLと一致させておく必要があります。
+
+## 初期管理者ユーザー
+
+```bash
+DORY_INIT_USER_EM AI L=admin@example.com
+DORY_INIT_USER_PASSWORD=change_this_password
+```
+
+Dory はこのユーザーを作成または更新し、デフォルトの組織が存在することを確認します。
+
+## 電子メールの検証
+
+```bash
+NEXT_PUBLIC_REQUIRE_EM AI L_VERIFICATION=true
+RESEND_API_KEY=replace_with_resend_key
+EM AI L_FROM="Dory <noreply@example.com>"
+```
+
+` EM AI L_FROM `は電子メール プロバイダーによって検証される必要があります。
+
+## GitHub ログイン
+
+チームが GitHub ID を使用する場合は、GitHub OAuth を構成します。コールバック URL、クライアント ID、クライアント シークレット、およびパブリック アプリケーションURLを確認します。
+
+## Google ログイン
+
+組織で Google Workspace ID を使用する場合は、Google OAuth を構成します。必要に応じて、コールバック URL、クライアント ID、クライアント シークレット、および許可されたドメインを確認します。
+
+OAuth プロバイダーの構成:
+
+GitHub:
+
+```bash
+GITHUB_CLIENT_ID=replace_with_client_id
+GITHUB_CLIENT_SECRET=replace_with_client_secret
+```
+
+グーグル：
+
+```bash
+GOOGLE_CLIENT_ID=replace_with_client_id
+GOOGLE_CLIENT_SECRET=replace_with_client_secret
+```
+
+` BETTER_AUTH_URL `と同じパブリック ドメインを使用して OAuth コールバック URL を構成します。
+
+## プロビジョニングとオフボード
+
+メンバーを招待できる人、メール認証が必要かどうか、新しいユーザーが参加する組織、管理者がアクセスを確認する方法を定義します。オフボード中に、Dory メンバーシップ、データベース ロール、MCP トークン、OAuth アクセス、および共有シークレットを取り消します。
+
+## チームプロビジョニングフロー
+
+最初に初期管理者を作成し、電子メールまたは OAuth 設定を確認し、チーム メンバーを招待してから、最小特権のデータベース資格情報を使用してデータベース アクセスを割り当てます。
+
+## FAQ
+
+### ログイン リンクが間違ったURLにリダイレクトされるのはなぜですか?
+
+` BETTER_AUTH_URL `がパブリック リバース プロキシURLと一致することを確認します。
+
+### 確認メールが届かないのはなぜですか?
+
+` RESEND_API_KEY `、` EM AI L_FROM `、送信者ドメインの検証、およびスパム フォルダーを確認してください。
+
+### OAuth は必要ですか?
+
+いいえ。小規模なチームは、電子メール ログインと初期管理者ユーザーから始めることができます。チームの ID フローに適合する場合にのみ、GitHub または Google OAuth を有効にしてください。
+
+## 関連ドキュメント
+
+- [環境変数](/ja/docs/deploy/environment-variables)
+- [セルフホスティング](/ja/docs/deploy/self-hosting)

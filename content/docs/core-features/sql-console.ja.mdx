@@ -1,0 +1,148 @@
+---
+title: SQL コンソール
+description: スキーマ コンテキストと AI 支援を使用して、Dory で SQL を書き込み、実行、デバッグ、保存します。
+---
+
+# SQL コンソール
+
+SQL コンソールは、Dory で SQL を作成および実行するためのメイン ワークスペースです。 Explorer、AI Chat、結果テーブル、グラフ、保存されたクエリと連携して動作します。
+
+## インターフェース構造
+
+SQL コンソールには通常、次のものが含まれます。
+
+- 接続とスキーマのコンテキスト。
+- SQL エディター。
+- クエリ実行制御。
+- 結果テーブルとチャートのエントリ ポイント。
+- AI 支援へのアクセス。
+- 保存されたクエリ アクション。
+
+![Dory SQL コンソール インターフェイス](/images/sql-console.png)
+
+## SQL を書く
+
+小さくて安全なクエリから始めてください。複雑なフィルター、結合、または集計を追加する前に、エクスプローラーでテーブルと列の名前を確認してください。
+
+![Dory SQL コンソール エディターとオートコンプリート](/images/sql-editor.png)
+
+## クエリの実行
+
+選択した接続に対して SQL を実行します。出力を意思決定に使用する前に、結果、エラー、および実行動作を確認してください。
+
+![Dory SQL コンソール クエリ結果](/images/resultset.png)
+
+## 複数タブのワークフロー
+
+複数のタブを使用して、探索、最終分析、代替クエリの下書きを分けて保存します。
+
+![Dory SQL コンソールのタブとトップ コントロール](/images/top-panel.png)
+
+## 左側のスキーマ パネルを使用する
+
+スキーマ パネルは、名前の推測を避けるのに役立ちます。
+
+```sql
+select *
+from your_table
+limit 20;
+```
+
+さらに詳細が必要な場合は、エクスプローラーでテーブルを開きます。
+
+![Dory SQL コンソール スキーマ パネル](/images/table-panel.png)
+
+## AI 副操縦士
+
+AI を使用して、SQL の生成、SQL の説明、エラーの修正、クエリの最適化、グラフの出力の再形成を行います。コパイロットは、**質問**、**アクション**、**コンテキスト** タブで構成されています。生成された SQL を実行する前に必ず確認してください。
+
+＃＃＃ 聞く
+
+自由形式の SQL ヘルプについては、**質問** を使用してください。 Copilot にクエリの生成、現在の SQL の説明、エラーの理由の説明、または現在のエディターと結果コンテキストからの次の分析ステップの提案を依頼できます。
+
+![Dory SQL コンソールの Ask AI パネル](/images/ask.png)
+
+＃＃＃ アクション
+
+Copilot で [**アクション**] タブを開き、現在のエディターSQL および最新の実行コンテキストに対してフォーカスされた SQL アクションを実行します。
+
+![Dory SQL コンソール コパイロット アクション](/images/core-features/dory-copilot-actions.png)
+
+一般的な SQL 反復ループの組み込みアクションを使用します。
+
+- **SQL エラーを修正**: 最新の実行エラーを使用して、修正された SQL バージョンを提案します。
+- **パフォーマンスの最適化**:SQL を書き換えて、不必要なスキャンを削減し、フィルターを簡素化し、実行形状を改善します。
+- **SQL を再構築**: 意図を維持しながら読みやすいように SQL を再構築します。
+- **集計に変換**: 行レベルの SQL を、要約とグラフ用にグループ化されたメトリック指向の SQL に変換します。
+
+アクションを実行すると、Copilot は短い説明、SQL プレビューまたは差分、および **Copy** / **Apply** コントロールを含む結果パネルを開きます。
+
+#### SQL エラーを修正
+
+![Dory Copilot による SQL エラーの修正結果](/images/core-features/dory-copilot-action-fix-sql-errors.png)
+
+#### パフォーマンスを最適化する
+
+![Dory Copilot のパフォーマンス最適化の結果](/images/core-features/dory-copilot-action-optimize-performance.png)
+
+#### SQL を書き換える
+
+![Dory Copilot Rewrite SQL の結果](/images/core-features/dory-copilot-action-rewrite-sql.png)
+
+#### 集計に変換する
+
+![Dory Copilot の集計結果への変換](/images/core-features/dory-copilot-action-convert-to-aggregation.png)
+
+＃＃＃ コンテクスト
+
+[**コンテキスト**] タブを開いて、応答前に Copilot が使用するものを検査します: エディターSQL、選択された SQL、データベース、参照テーブル、信頼性、実行ステータス、行数、結果プロファイル。これを使用して、Copilot が正しいクエリと結果セットから動作していることを確認します。
+
+![Dory SQL コンソール コパイロット コンテキスト](/images/core-features/dory-copilot-context.png)
+
+## 結果とグラフ
+
+実行後、結果テーブルを検査します。結果が集計され、整形されている場合は、それからグラフを作成します。
+
+![Dory SQL コンソール チャート ビュー](/images/charts.png)
+
+## デスクトップ SQLite の例
+
+`/Users/Shared/Data/demo.sqlite `から SQLite 接続を作成した後、その接続を選択した状態で **SQL コンソール** を開きます。左側のスキーマ パネルには、SQLite ` main `データベースとそのテーブルが表示されます。
+
+グラフに適した集計クエリを実行します。
+
+```sql
+select strftime('%Y-%m', created_at) as month,
+       status,
+       round(sum(amount), 2) as revenue,
+       count(*) as orders
+from orders
+group by month, status
+order by month, status;
+```
+
+結果テーブルは、Dory がローカル SQLite ファイルに対して SQL を実行したことを確認します。
+
+![Dory デスクトップ SQL コンソール SQLite の結果](/images/core-features/dory-desktop-sql-console-sqlite-results.png)
+
+* *表**から**グラフ**に切り替えて、同じ結果を視覚的に検査します。 Dory は、月列を X 軸として使用し、収益やカウントなどの数値指標を Y 軸として使用できます。
+
+![Dory デスクトップ SQL コンソール SQLite チャート](/images/core-features/dory-desktop-sql-console-sqlite-charts.png)
+
+## クエリの保存
+
+有効な SQL は、検証後に明確な名前と説明を付けて保存します。
+
+![Dory SQL コンソールのクエリ保存ダイアログ](/images/core-features/dory-sql-console-save-query.png)
+
+## ベストプラクティス
+
+- 運用データには読み取り専用の資格情報を使用します。
+- ` limit `から始めてフィルタを絞ります。
+- タブごとに 1 つのクエリ目標を保持します。
+- スキーマおよびサンプル行に対して AI 出力を検証します。
+- 現在のセッションを超えて役立つクエリのみを保存します。
+
+## 推奨される次のステップ
+
+[AI チャット](/ja/docs/core-features/ai-chat)、[チャートと結果](/ja/docs/core-features/charts-results)、または [保存されたクエリ](/ja/docs/core-features/saved-queries) に進みます。

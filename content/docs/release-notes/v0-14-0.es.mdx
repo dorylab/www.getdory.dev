@@ -1,0 +1,29 @@
+---
+title: v0.14.0
+description: Notas de la versión de Dory para v0.14.0.
+---
+
+# v0.14.0
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.14.0.md)
+
+## ¿Qué ha cambiado?
+
+### Características
+- **Compatibilidad con archivos locales**: se agregó integración completa para conectarse y consultar archivos locales (por ejemplo, Excel, CSV) directamente desde la aplicación web, incluida la carga de archivos, la inspección de esquemas, la vista previa de tablas y la ejecución de SQL.
+- **Selector de archivos de escritorio**: habilitó la selección de archivos del sistema operativo nativo en la aplicación de escritorio de Electron para una incorporación de archivos local sin problemas.
+
+### Mejoras
+- **Refinamientos de la interfaz de usuario**: espaciado y bordes ajustados en los cuadros de diálogo de conexión y tablas de resultados SQL para mejorar la coherencia y claridad visual.
+- **Localización**: soporte i18n ampliado con traducciones actualizadas (inglés, español, japonés, chino) en configuraciones MCP, mensajesAPIy componentes de interfaz de usuario de conexión.
+- **Open Files UX**: aislamiento refinado del conjunto de datos, etiquetado de la barra lateral y lógica de generación de mensajes de confirmación para una mejor capacidad de descubrimiento y conocimiento del contexto al trabajar con archivos locales.
+
+### Correcciones
+- **Confiabilidad de compilación de Docker**: se corrigió un error en `Dockerfile ` que impedía la compilación exitosa de imágenes.
+
+### Documentos
+- Se actualizó `README.md ` con instrucciones de autohospedaje y una sección dedicada que enlaza con la documentación completa sobre autohospedaje.
+
+### Interno
+- Se agregó un flujo de trabajo de GitHub Actions de lanzamiento manual de Docker para la publicación controlada de contenedores.
+- Pruebas de CI estabilizadas de un extremo a otro, particularmente la conexión de demostración y el flujo de la consola SQL.

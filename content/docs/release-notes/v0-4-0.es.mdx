@@ -1,0 +1,24 @@
+---
+title: v0.4.0
+description: Notas de la versión de Dory para v0.4.0.
+---
+
+# v0.4.0
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.4.0.md)
+
+## ¿Qué ha cambiado?
+### Características
+- **Se agregó soporte para PostgreSQL**: conexión básica, descubrimiento de metadatos, información de tablas y exploración de esquemas ahora disponibles para bases de datos PostgreSQL.
+- **Nueva interfaz Explorer lanzada**: un explorador de bases de datos unificado y compatible con controladores reemplaza la vista de catálogo heredada y admite PostgreSQL y ClickHouse con base de datos, esquema, tabla, vista, vista materializada, función y exploración de extensiones.
+- **Información sobre tablas específicas de PostgreSQL**: se agregaron tarjetas de estadísticas de PostgreSQL para el uso del índice, el tamaño de la tabla y el estado de vacío en el navegador de tablas.
+### Mejoras
+- **barra lateral de consola SQL mejorada**: refactorizada para admitir mejor conexiones de múltiples bases de datos, con i18n mejorado, problemas de recarga solucionados al cambiar de conexión y desplazamiento y estilo actualizados.
+- **Barra lateral de esquemas extendida**: ahora es compatible con PostgreSQL e incluye estilos de interfaz de usuario actualizados e internacionalización consistente.
+- **Navegador de tablas modernizado**: refactorizado para que tenga en cuenta los controladores, movió la lógica de vista previa de datos a los controladores y mejoró la organización de las pestañas y la capacidad de respuesta.
+### Correcciones
+- Se corrigió la inserción de sugerencias duplicadas en el editor SQL.
+- Se corrigieron sugerencias automáticas de esquemas faltantes en el editor SQL.
+- Se corrigieron discrepancias de claves i18n en los componentes del resumen del catálogo y del explorador.
+- Se corrigió que los datos no se mostraran en las listas de objetos de la barra lateral del explorador (por ejemplo, funciones, objetos de esquema).
+- Se corrigió el resaltado del estado activo en las barras laterales del explorador y de la aplicación.

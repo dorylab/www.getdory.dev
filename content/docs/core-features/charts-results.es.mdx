@@ -1,0 +1,51 @@
+---
+title: Gráficos y resultados
+description: Revise los resultados de la consulta y convierta la salida SQL bien formada en gráficos en Dory.
+---
+
+# Gráficos y resultados
+
+Dory te ayuda a inspeccionar los resultados de SQL y a convertir conjuntos de resultados útiles en gráficos. La calidad del gráfico depende de la forma de la salida SQL.
+
+## Tablas de resultados
+
+Después de ejecutar SQL, primero revise la tabla de resultados:
+
+| Controlar | Por qué es importante |
+| --- | --- |
+| Nombres de columnas | Los nombres claros facilitan la configuración del gráfico. |
+| recuento de filas | Los conjuntos de resultados muy grandes son más difíciles de representar directamente. |
+| tipos de datos | Las fechas, números y categorías deben tener la forma correcta. |
+| Valores nulos | Los valores faltantes pueden distorsionar los gráficos. |
+| Nivel de agregación | Los datos del gráfico normalmente funcionan mejor después de la agregación SQL. |
+
+## Secuencia recomendada
+
+1. Escriba o genere SQL.
+2. Ejecute la consulta.
+3. Revise las columnas de resultados y las filas de muestra.
+4. Agregue o remodele el resultado si es necesario.
+5. Abra los gráficos desde el área de resultados.
+6. Elija un tipo de gráfico que coincida con los datos.
+
+## Buenos candidatos para los gráficos
+
+- Series temporales con columnas de fecha y métricas.
+- Comparación de categorías con columnas de categoría y valor.
+- Distribución de estado con columnas de estado y recuento.
+- Listas Top-N con columnas de nombre y métricas.
+
+## Formas comunes de datos de gráficos
+
+| Objetivo del gráfico | Columnas recomendadas |
+| --- | --- |
+| gráfico de líneas | fecha, métrica |
+| gráfico de barras | categoría, métrica |
+| gráfico circular | categoría, valor |
+| Resumen de la tabla | columnas de dimensiones más columnas de métricas |
+
+## Deje que la IA ayude a dar forma a los resultados
+
+Si el resultado actual es difícil de representar gráficamente, pídale a AI que reescriba SQL en una salida compatible con gráficos. Sea específico sobre el tipo de gráfico y las columnas requeridas.
+
+Ejemplo: solicite a AI que devuelva el recuento de pedidos diarios y los ingresos totales de los últimos 30 días, con una fila por día.

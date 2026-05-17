@@ -1,0 +1,46 @@
+---
+title: Privilegios
+description: Comprenda los flujos de trabajo de privilegios de Dory para usuarios, roles, permisos y operaciones de clúster.
+---
+
+# Privilegios
+
+Los privilegios ayudan a los equipos a gestionar el acceso a la base de datos de forma segura. En Dory, los flujos de trabajo relacionados con privilegios son más relevantes para ClickHouse y otras bases de datos donde Dory puede inspeccionar usuarios, roles y permisos.
+
+## Qué puedes hacer
+
+- Inspeccionar usuarios y roles.
+- Revisar privilegios concedidos.
+- Comprender quién puede acceder a qué bases de datos o tablas.
+- Soporte en revisión de acceso y resolución de problemas operativos.
+- Coordinar operaciones de producción o cluster más seguras.
+
+## Gestión de usuarios
+
+Revise los usuarios de la base de datos, su propósito y si tienen más acceso del necesario.
+
+## Gestión de roles
+
+Utilice roles para agrupar permisos por responsabilidad, entorno o carga de trabajo.
+
+## Detalles del permiso
+
+Inspeccione las subvenciones para comprender qué puede leer, escribir, administrar o modificar un usuario o rol.
+
+## Operaciones de clúster
+
+Para los clústeres de ClickHouse, la revisión de privilegios puede respaldar operaciones más seguras entre nodos y entornos cuando el usuario conectado tiene permiso.
+
+## Recomendaciones de seguridad
+
+- Prefiera cuentas de solo lectura para el análisis.
+- Evite compartir credenciales de administrador.
+- Producción, puesta en escena y acceso local separados.
+- Revisar las subvenciones antes de habilitar el acceso para todo el equipo.
+- Mantenga los flujos de trabajo asistidos por IA en conexiones con privilegios mínimos.
+
+## Páginas relacionadas
+
+- [Soporte de base de datos de ClickHouse](/es/docs/database-support/clickhouse)
+- [Monitoreo](/es/docs/core-features/monitoreo)
+- [Dory autoanfitrión](/es/docs/deploy/self-hosting)

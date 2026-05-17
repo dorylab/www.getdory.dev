@@ -1,0 +1,85 @@
+---
+title: Construir gráficos a partir de SQL en Dory
+description: Dé forma a los resultados de consultas SQL para gráficos de líneas, gráficos de barras, gráficos circulares y tablas de detalles en Dory.
+---
+
+# Construir gráficos a partir de SQL en Dory
+
+Los buenos gráficos provienen de una salida clara de SQL. Dory Charts & Results puede visualizar los resultados de la consulta, pero la consulta ya debería expresar la columna de tiempo, dimensión y métrica correctas.
+
+## Cuándo utilizar este flujo de trabajo
+
+- Tu SQL funciona pero el gráfico parece incorrecto.
+- El resultado tiene demasiadas columnas.
+- Debe convertir las filas de detalles en tendencias o comparaciones Top-N.
+- Quieres que AI reescriba SQL en una forma lista para gráficos.
+- Necesitas compartir un análisis con el equipo.
+
+## 1. Definir la pregunta del gráfico
+
+Decida qué debería responder el cuadro:
+
+- Tendencia: ¿cómo cambia una métrica con el tiempo?
+- Comparación: ¿qué categoría es más alta?
+- Compartir: ¿qué porcentaje representa cada parte?
+- Distribución: ¿dónde se agrupan los valores?
+- Detalle: ¿qué registros necesitan investigación?
+
+## 2. Dale forma al resultado
+
+| Tipo de gráfico | Resultado recomendado | Columnas de ejemplo |
+| --- | --- | --- |
+| gráfico de líneas | Columna de tiempo + métrica | `date `,` revenue ` |
+| gráfico de barras | Categoría + métrica | ` channel `,` orders ` |
+| gráfico circular | Conjunto de categorías pequeñas + valor | ` status `,` count ` |
+| Tendencia multimétrica | Columna de tiempo + métricas | ` date `,` dau `,` orders ` |
+| tabla de detalles | ID, hora, estado, campos clave | ` order_id `,` created_at `,` status ` |
+
+## 3. Agregado en SQL
+
+```sql
+SELECT
+  DATE(created_at) AS date,
+  COUNT(*) AS orders
+FROM orders
+WHERE created_at >= CURRENT_DATE - INTERVAL '30 days'
+GROUP BY date
+ORDER BY date;
+```
+
+Utilice las funciones de fecha para el dialecto de su base de datos.
+
+## 4. Solicite a AI SQL listo para gráficos
+
+```text
+Rewrite the current SQL for a line chart:
+- first column: date
+- second column: orders
+- order by date ascending
+- last 30 days only
+- keep the current filters
+```
+
+## 5. Validar en gráficos y resultados
+
+Verifique el eje X, el eje Y, el orden, el comportamiento Top-N, el recuento de categorías, los valores nulos y los valores atípicos.
+
+## FAQ
+
+### ¿Por qué mi gráfico está desordenado?
+
+El resultado normalmente no está agregado, tiene demasiadas categorías, nombres de columnas poco claros o carece de un orden estable.
+
+### ¿Cuándo debo evitar los gráficos circulares?
+
+Evite los gráficos circulares cuando haya muchas categorías o pequeñas diferencias. Utilice un gráfico de barras o Top-N en su lugar.
+
+### ¿Por qué los valores del gráfico difieren de los valores de la tabla?
+
+Es posible que el gráfico esté utilizando un nivel de agregación diferente o un resultado filtrado. Confirme la salida SQL, la métrica seleccionada y las columnas de agrupación antes de confiar en la visualización.
+
+## Próximos pasos
+
+- Generar SQL con [Generar SQL con AI](/es/docs/workflows/generate-sql-with-ai).
+- Depurar rendimiento con [Depurar consultas lentas](/es/docs/workflows/debug-slow-queries).
+- Guarde consultas de gráficos estables en [Consultas guardadas](/es/docs/core-features/saved-queries).

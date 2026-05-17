@@ -1,0 +1,52 @@
+---
+title: ネオン
+description: Neon Serverless PostgreSQL を Dory に接続し、クラウド Postgres データをクエリし、スキーマを参照し、AI で SQL を生成します。
+---
+
+# ネオン
+
+<img src="/icons/databases/neon.svg" alt="Neon logo" width="48" height="48" />
+
+Neon はサーバーレス PostgreSQL プラットフォームです。 Dory は PostgreSQL 互換機能を通じて Neon に接続し、クラウド開発、ブランチ データベース、製品分析、チーム SQL ワークフローに役立ちます。
+
+## 最適な使用例
+
+- Neon プロジェクトのビジネス データをクエリします。
+- 開発、ステージング、または運用ブランチを分析します。
+- AI を使用してPostgreSQL 互換の SQL を生成します。
+- アプリケーション データの問題を迅速に検証します。
+- チーム用に再利用可能な Neon クエリを保存します。
+
+## 接続要件
+
+Neon 接続文字列または接続の詳細、プロジェクト、ブランチ、データベース、ユーザー名、パスワード、SSL設定、およびスキーマ権限を準備します。通常、ネオンにはSSLが必要です。
+
+## サポートされる機能
+
+| 能力 | ネオンのサポート |
+| --- | --- |
+| SQL コンソール | PostgreSQL 互換の SQL の実行。 |
+| エクスプローラ | スキーマ、テーブル、ビュー、列、および DDL。 |
+| AI チャット | スキーマに基づいた SQL の生成、説明、および修正。 |
+| チャートと結果 | クエリ結果の視覚的な分析。 |
+| 保存されたクエリ | 再利用可能な SQL を保存します。 |
+
+## PostgreSQL との関係
+
+Neon はサーバーレス PostgreSQL です。 Dory では、Neon は PostgreSQL 互換の動作を使用するため、スキーマの選択、読み取り専用ロール、AI SQL レビューなど、ほとんどの PostgreSQL ガイダンスも適用されます。
+
+## FAQ
+
+### Neon 接続が失敗するのはなぜですか?
+
+接続文字列、ホスト、データベース、ユーザー名、パスワード、SSL設定、および Neon プロジェクトが一時停止されているかどうかを確認してください。
+
+### Neon ブランチ データベースはどのように区別すればよいですか?
+
+`neon-prod-main `や` neon-staging-preview `など、プロジェクトとブランチを含む接続名を使用します。
+
+## 関連ドキュメント
+
+- [PostgreSQL](/ja/docs/database-support/postgresql)
+- [データベースに接続する](/ja/docs/getting-started/connect-your-database)
+- [クラウド データベース](/ja/docs/database-support/cloud-databases)

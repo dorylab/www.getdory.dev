@@ -1,0 +1,118 @@
+---
+title: MCP/ Acceso del agente
+description: Configure tokens de acceso de Dory MCP para Codex, Claude y otros clientes de agentes de IA.
+---
+
+# MCP/ Acceso del agente
+
+Dory expone un endpoint MCP para que los agentes externos de IA puedan leer de forma segura conexiones de Dory, inspeccionar esquemas, leer consultas guardadas, inspeccionar resúmenes de monitoreo, ejecutar SQL de solo lectura limitada y crear contexto de análisis.
+
+## Casos de uso
+
+- Consultar conexiones de Dory desde Codex, Claude u otro cliente compatible con MCP.
+- Busque tablas, vistas y columnas antes de escribir SQL.
+- Leer estructura de tablas, DDL, estadísticas y vistas previas.
+- Ejecute SQL de solo lectura con un tamaño de resultado limitado.
+- Cree un contexto de análisis o recomendaciones de gráficos a partir de los resultados de la consulta.
+- Leer resúmenes de monitoreo de bases de datos cuando sea posible.
+
+## Crear un token de acceso
+
+1. Abra la configuración de Dory.
+2. Vaya a **Acceso de agente**.
+3. Introduzca un nombre de token como `Codex ` o `Claude Desktop `.
+4. Cree el token.
+5. Copie el token completo. Sólo se muestra una vez.
+
+Los tokens utilizan el prefijo ` dory_mcp_`. Si pierde el token completo, revóquelo y cree uno nuevo.
+
+## Ámbitos predeterminados
+
+Los nuevos tokens incluyen los siguientes alcances de lectura y análisis:
+
+| Alcance | Capacidad |
+| --- | --- |
+| ` connections:read ` | Leer metadatos de conexión, base de datos y tablas. |
+| ` query:read ` | Obtenga una vista previa de las tablas y ejecute SQL de solo lectura. |
+| ` analysis:run ` | Cree contexto de resultados, perfiles de gráficos y acciones de análisis. |
+| ` schema:read ` | Buscar esquema y leer perfiles de tabla. |
+| ` saved_queries:read ` | Leer consultas guardadas. |
+| ` monitoring:read ` | Lea resúmenes de monitoreo y ejemplos de consultas lentas o fallidas. |
+
+Las herramientas MCP no devuelven contraseñas de bases de datos ni secretos de conexión.
+
+## Ejemplo de Codex CLI
+
+```bash
+export DORY_MCP_TOKEN="dory_mcp_xxx"
+codex mcp add dory --url https://your-dory.example.com/api/mcp --bearer-token-env-var DORY_MCP_TOKEN
+codex mcp list
+```
+
+Utilice un token independiente para cada cliente y revoque los tokens que ya no sean necesarios.
+
+## Ejemplo genérico de MCP JSON
+
+```json
+{
+  "mcpServers": {
+    "dory": {
+      "type": "http",
+      "url": "https://your-dory.example.com/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${DORY_MCP_TOKEN}"
+      }
+    }
+  }
+}
+```
+
+## Herramientas disponibles
+
+| Herramienta | Objetivo |
+| --- | --- |
+| ` dory_list_connections ` | Lista de conexiones visibles de Dory. |
+| ` dory_list_databases ` | Listar las bases de datos para una conexión. |
+| ` dory_list_tables ` | Enumere tablas y vistas para una base de datos. |
+| ` dory_describe_table ` | Lea columnas, tipos y metadatos de tablas. |
+| ` dory_get_database_summary ` | Cree un resumen de base de datos de alto nivel. |
+| ` dory_get_table_profile ` | Leer perfil de tabla y estadísticas. |
+| ` dory_search_schema ` | Busque esquema por nombre de tabla, vista o columna. |
+| ` dory_list_saved_queries ` | Enumere las consultas guardadas disponibles para el token. |
+| ` dory_get_saved_query ` | Lea una consulta guardada. |
+| ` dory_get_monitoring_summary ` | Lea los resúmenes de seguimiento cuando sea posible. |
+| ` dory_preview_table ` | Vista previa de filas de una tabla. |
+| ` dory_run_readonly_sql ` | Ejecute SQL de solo lectura con límites de filas. |
+| ` dory_build_result_context ` | Convierta los datos de resultados en un contexto amigable para los agentes. |
+| ` dory_build_chart_profile ` | Cree sugerencias de gráficos a partir de la forma de los resultados. |
+| ` dory_run_analysis ` | Ejecute una acción de análisis de nivel superior. |
+
+` dory_run_readonly_sql `rechaza declaraciones de escritura y limita las filas devueltas. Se siguen recomendando credenciales de solo lectura a nivel de base de datos para los datos de producción.
+
+## Flujo de trabajo del agente
+
+1. Utilice ` dory_list_connections `para elegir la conexión correcta.
+2. Utilice ` dory_list_databases `y ` dory_list_tables `para localizar objetos relevantes.
+3. Utilice ` dory_describe_table `o ` dory_search_schema `antes de escribir SQL.
+4. Utilice ` dory_preview_table `para muestras de filas pequeñas.
+5. Utilice ` dory_run_readonly_sql `para consultasSELECTrevisadas.
+6. Utilice ` dory_build_result_context `o ` dory_build_chart_profile `para resumir los resultados.
+
+## Guía de seguridad
+
+- Cree un token por cliente para que la auditoría y la revocación sean sencillas.
+- No envíe tokens al control de fuente.
+- Almacenar tokens en variables de entorno o en el almacén de secretos del cliente.
+- Revocar tokens cuando un cliente, computadora portátil o compañero de equipo ya no necesite acceso.
+- Utilice usuarios de bases de datos de solo lectura para conexiones de producción.
+- Trate los nombres de esquemas y las filas de muestra como confidenciales si revelan datos comerciales o de clientes.
+
+## Solución de problemas
+
+| Síntoma | causa probable | Arreglar |
+| --- | --- | --- |
+| El cliente MCP devuelve 401 | Token faltante o no válido. | Vuelva a crear el token y actualice el entorno del cliente. |
+| El cliente no puede enumerar las conexiones | Falta el token ` connections:read `o el usuario no tiene acceso. | Cree un token a partir de la cuenta y organización de Dory adecuadas. |
+| SQL es rechazado | La declaración no es de solo lectura o contiene una sintaxis no compatible. | Utilice una consulta ` SELECT `simple y elimine las operaciones de escritura. |
+| Se devolvieron muy pocas filas | Se aplican límites de fila MCP. | Agregue SQL o limite la consulta antes de solicitar más filas. |
+| El cliente no puede conectarse | URLes incorrecto o no se puede acceder a Dory desde el cliente. | Verifique `/api/mcp ` URLen un entorno accesible. |

@@ -1,0 +1,73 @@
+---
+title: Conexiones
+description: Administre conexiones de bases de datos en Dory para SQL, Explorer, AI, gráficos y flujos de trabajo guardados.
+---
+
+# Conexiones
+
+Las conexiones son el punto de partida para la mayoría de los flujos de trabajo de Dory. Una conexión define cómo Dory llega a una base de datos y qué credenciales utiliza.
+
+## Lo que puedes gestionar
+
+- Tipo de base de datos.
+- Host, puerto, base de datos, nombre de usuario y contraseña.
+- TúnelSSL, SSHy opciones específicas de implementación.
+- Rutas de archivos de bases de datos locales para SQLite o DuckDB.
+- Organización y naming a nivel de espacio de trabajo.
+
+## Tipos de conexión admitidos
+
+| Tipo | Uso típico |
+| --- | --- |
+| Haga clic en casa | Análisis, eventos, monitoreo y datos operativos. |
+| PostgreSQL/Neón | Bases de datos de productos y aplicaciones. |
+| MySQL/MariaDB | Sistemas empresariales y aplicaciones web. |
+| SQLite | Archivos locales, demostraciones y pequeños conjuntos de datos. |
+| PatoDB / MadrePato | Análisis local y análisis basado en archivos |
+
+## Crear una conexión
+
+1. Abre tu espacio de trabajo.
+2. Elija Agregar conexión.
+3. Seleccione el tipo de base de datos.
+4. Complete la configuración requerida.
+5. Pruebe la conexión.
+6. Abra el Explorador para confirmar la visibilidad del esquema.
+
+## Flujo de archivos SQLite de escritorio
+
+En la aplicación de escritorio Dory, los archivos SQLite locales se pueden usar directamente como conexiones de bases de datos. Este es el flujo común para demostraciones, conjuntos de datos locales y análisis basados ​​en archivos pequeños:
+
+1. Abra la aplicación de escritorio Dory.
+2. Vaya a **Conexiones** y elija **Agregar conexión**.
+3. Seleccione **SQLite** como tipo de conexión.
+4. Ingrese una ruta de archivo de base de datos absoluta, como `/Users/Shared/Data/demo.sqlite `.
+5. Cree la conexión.
+6. Seleccione la nueva conexión antes de pasar a la consola SQL.
+
+Para SQLite, importar el archivo significa señalar a Dory a la ruta del archivo local `.sqlite ` o `.db `. El archivo permanece en su máquina y el tiempo de ejecución del escritorio lo lee a través de esa ruta.
+
+![Conexión SQLite de escritorio de Dory](/images/core-features/dory-desktop-connections-sqlite.png)
+
+## Lista de verificación de conexión
+
+- Utilice credenciales con los privilegios mínimos necesarios.
+- Confirmar el acceso a la red desde el tiempo de ejecución de Dory.
+- UtiliceSSLcuando lo requiera el proveedor de la base de datos.
+- Utilice rutas absolutas para archivos de bases de datos locales.
+- En Docker, monte las rutas de los archivos locales en el contenedor.
+
+## Recomendaciones de nombres
+
+Utilice nombres que aclaren el entorno y la propiedad, como por ejemplo:
+
+- ` prod-clickhouse-events `
+- ` staging-postgres-app `
+- ` local-sqlite-demo `
+- ` analytics-duckdb-reports `
+
+## Páginas relacionadas
+
+- [Conecte su base de datos](/es/docs/getting-started/connect-your-database)
+- [Soporte de base de datos](/es/docs/database-support)
+- [Guía de conexión a bases de datos en la nube](/es/docs/database-support/cloud-databases)

@@ -3,7 +3,9 @@ import type { AbstractIntlMessages } from 'next-intl';
 
 export const languages = {
   en: 'English',
-  zh: '中文'
+  es: 'Español',
+  zh: '中文',
+  ja: '日本語'
 } as const;
 
 export type Language = keyof typeof languages;
