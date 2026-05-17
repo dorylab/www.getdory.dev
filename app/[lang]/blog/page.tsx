@@ -13,13 +13,17 @@ import {
   getBlogCategories,
   getReleaseNotes,
 } from "@/lib/blog";
+import { defaultLanguage } from "@/lib/i18n";
+import { generateMarketingMetadata } from "@/lib/marketing-og";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "Blog",
-    description:
-      "Product updates, release notes, and future writing from the Dory team.",
-  };
+export async function generateMetadata({
+  params,
+}: {
+  params?: Promise<{ lang: string }>;
+} = {}): Promise<Metadata> {
+  const { lang } = params ? await params : { lang: defaultLanguage };
+
+  return generateMarketingMetadata({ page: "blog", lang });
 }
 
 export default async function BlogIndexPage({

@@ -10,6 +10,7 @@ import {
   Table2,
   TerminalSquare,
 } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
@@ -20,6 +21,7 @@ import { MarketingLayout } from "@/components/marketing-layout";
 import FooterSection from "@/components/sections/footer";
 import { Link } from "@/i18n/navigation";
 import { getLatestReleaseDownloads } from "@/lib/github-release";
+import { generateMarketingMetadata } from "@/lib/marketing-og";
 import { cn } from "@/lib/utils";
 import AiTablePreview from "@/public/ai-table-overview.png";
 import ChatbotPreview from "@/public/chatbot.png";
@@ -28,6 +30,14 @@ import HeroPreview from "@/public/easy-to-use-sql-console.png";
 type PageProps = {
   params: Promise<{ lang: string }>;
 };
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { lang } = await params;
+
+  return generateMarketingMetadata({ page: 'home', lang });
+}
 
 const heroCardKeys = ["aiChat", "sqlConsole", "teamFlow"] as const;
 const workspaceFeatureKeys = ["editor", "schema", "saved"] as const;

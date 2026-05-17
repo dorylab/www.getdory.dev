@@ -5,6 +5,7 @@ import {
   Package,
   SquareTerminal,
 } from "lucide-react";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { DownloadButton } from "@/components/landing/download-button";
@@ -13,7 +14,18 @@ import { buttonVariants } from "@/components/landing/variants";
 import { MarketingLayout } from "@/components/marketing-layout";
 import FooterSection from "@/components/sections/footer";
 import { getLatestReleaseDownloads } from "@/lib/github-release";
+import { generateMarketingMetadata } from "@/lib/marketing-og";
 import { cn } from "@/lib/utils";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+
+  return generateMarketingMetadata({ page: "download", lang });
+}
 
 export default async function DownloadPage({
   params,

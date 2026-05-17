@@ -5,7 +5,7 @@ import { DocsBody, DocsPage } from 'fumadocs-ui/layouts/docs/page';
 
 import { Feedback } from '@/components/feedback/client';
 import { getMDXComponents } from '@/mdx-components';
-import { source } from '@/lib/source';
+import { getPageImage, source } from '@/lib/source';
 
 const lang = 'en';
 
@@ -28,9 +28,22 @@ export async function generateMetadata({
     return {};
   }
 
+  const image = getPageImage(page);
+
   return {
     title: page.data.title,
-    description: page.data.description
+    description: page.data.description,
+    openGraph: {
+      title: page.data.title,
+      description: page.data.description,
+      images: [image.url]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: page.data.title,
+      description: page.data.description,
+      images: [image.url]
+    }
   };
 }
 
