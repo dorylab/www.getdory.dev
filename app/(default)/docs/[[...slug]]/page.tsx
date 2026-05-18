@@ -2,12 +2,18 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { DocsBody, DocsPage } from 'fumadocs-ui/layouts/docs/page';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import { Feedback } from '@/components/feedback/client';
 import { getMDXComponents } from '@/mdx-components';
+import { getReleaseNoteBySlug } from '@/lib/blog';
 import { getPageImage, source } from '@/lib/source';
 
 const lang = 'en';
+
+function getReleaseNoteSlug(slug?: string[]) {
+  return slug?.[0] === 'release-notes' && slug.length === 2 ? slug[1] : null;
+}
 
 export function generateStaticParams() {
   return source
@@ -25,6 +31,28 @@ export async function generateMetadata({
   const page = source.getPage(slug, lang);
 
   if (!page) {
+    const releaseNoteSlug = getReleaseNoteSlug(slug);
+
+    if (releaseNoteSlug) {
+      const releaseNote = await getReleaseNoteBySlug(releaseNoteSlug);
+
+      if (releaseNote) {
+        return {
+          title: releaseNote.title,
+          description: releaseNote.description,
+          openGraph: {
+            title: releaseNote.title,
+            description: releaseNote.description
+          },
+          twitter: {
+            card: 'summary_large_image',
+            title: releaseNote.title,
+            description: releaseNote.description
+          }
+        };
+      }
+    }
+
     return {};
   }
 
@@ -56,7 +84,31 @@ export default async function DocPage({
   const page = source.getPage(slug, lang);
 
   if (!page) {
-    notFound();
+    const releaseNoteSlug = getReleaseNoteSlug(slug);
+
+    if (!releaseNoteSlug) {
+      notFound();
+    }
+
+    const releaseNote = await getReleaseNoteBySlug(releaseNoteSlug);
+
+    if (!releaseNote) {
+      notFound();
+    }
+
+    return (
+      <DocsPage toc={[]} full={false}>
+        <DocsBody>
+          <h1>{releaseNote.title}</h1>
+          <MDXRemote
+            source={releaseNote.body}
+            options={{ parseFrontmatter: true }}
+            components={getMDXComponents()}
+          />
+          <Feedback locale={lang} />
+        </DocsBody>
+      </DocsPage>
+    );
   }
 
   const MDX = page.data.body;

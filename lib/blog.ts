@@ -9,6 +9,7 @@ const GITHUB_REPO = "dory";
 const RELEASE_NOTES_DIR = "release-notes";
 const RELEASE_NOTES_CATEGORY = "release-notes" as const;
 const BLOG_CATEGORY = "blog" as const;
+const GITHUB_RELEASE_NOTES_REVALIDATE_SECONDS = 60;
 
 const GITHUB_API_HEADERS = {
   Accept: "application/vnd.github+json",
@@ -204,7 +205,7 @@ async function fetchReleaseNoteIndex(): Promise<GitHubContentItem[]> {
     `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${RELEASE_NOTES_DIR}`,
     {
       headers: GITHUB_API_HEADERS,
-      next: { revalidate: 3600 },
+      next: { revalidate: GITHUB_RELEASE_NOTES_REVALIDATE_SECONDS },
     },
   );
 
@@ -220,7 +221,7 @@ async function fetchReleaseNoteBody(downloadUrl: string) {
     headers: {
       "User-Agent": "getdory.dev",
     },
-    next: { revalidate: 3600 },
+    next: { revalidate: GITHUB_RELEASE_NOTES_REVALIDATE_SECONDS },
   });
 
   if (!response.ok) {
@@ -235,7 +236,7 @@ async function fetchReleaseNoteFile(path: string) {
     `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`,
     {
       headers: GITHUB_API_HEADERS,
-      next: { revalidate: 3600 },
+      next: { revalidate: GITHUB_RELEASE_NOTES_REVALIDATE_SECONDS },
     },
   );
 
@@ -293,10 +294,17 @@ export const getReleaseNotes = cache(
 
 export const getReleaseNoteBySlug = cache(async (slug: string) => {
   const normalizedSlug = normalizeContentSlug(slug);
-  const directCandidates = [
-    `${RELEASE_NOTES_DIR}/${normalizedSlug}.mdx`,
-    `${RELEASE_NOTES_DIR}/${normalizedSlug}.md`,
-  ];
+  const dottedSlug = isVersionSlug(normalizedSlug)
+    ? normalizedSlug.replaceAll("-", ".")
+    : normalizedSlug;
+  const directCandidates = Array.from(
+    new Set(
+      [normalizedSlug, dottedSlug].flatMap((candidate) => [
+        `${RELEASE_NOTES_DIR}/${candidate}.mdx`,
+        `${RELEASE_NOTES_DIR}/${candidate}.md`,
+      ]),
+    ),
+  );
 
   for (const path of directCandidates) {
     try {
