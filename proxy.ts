@@ -38,8 +38,7 @@ export default function proxy(request: NextRequest, event: NextFetchEvent) {
   if (
     defaultLanguagePaths.includes(pathname) ||
     pathname.startsWith('/docs/') ||
-    pathname === '/blog/release-notes' ||
-    pathname.startsWith('/blog/release-notes/')
+    pathname.startsWith('/blog/')
   ) {
     return NextResponse.next();
   }
