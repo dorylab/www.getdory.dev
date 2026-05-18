@@ -1,18 +1,14 @@
 import matter from "gray-matter";
-import { readdir, readFile } from "node:fs/promises";
-import path from "node:path";
 import { cache } from "react";
+import { blog as blogCollection } from "collections/server";
 
-import { defaultLanguage, type Language } from "@/lib/i18n";
+import { defaultLanguage, type Language, locales } from "@/lib/i18n";
 
 const GITHUB_OWNER = "dorylab";
 const GITHUB_REPO = "dory";
 const RELEASE_NOTES_DIR = "release-notes";
 const RELEASE_NOTES_CATEGORY = "release-notes" as const;
-const LOCAL_RELEASE_NOTES_DIR = path.join(
-  process.cwd(),
-  "content/docs/release-notes",
-);
+const BLOG_CATEGORY = "blog" as const;
 
 const GITHUB_API_HEADERS = {
   Accept: "application/vnd.github+json",
@@ -35,7 +31,7 @@ type GitHubFileResponse = {
   type: "file";
 };
 
-export type BlogCategory = typeof RELEASE_NOTES_CATEGORY;
+export type BlogCategory = typeof BLOG_CATEGORY | typeof RELEASE_NOTES_CATEGORY;
 
 export type BlogPost = {
   slug: string;
@@ -43,6 +39,7 @@ export type BlogPost = {
   title: string;
   description: string;
   version: string;
+  href: string;
   url: string;
   body: string;
   excerpt: string;
@@ -102,7 +99,7 @@ function buildGitHubBlobUrl(path: string) {
   return `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/blob/main/${path}`;
 }
 
-function normalizeReleaseSlug(value: string) {
+function normalizeContentSlug(value: string) {
   return value.trim().replace(/(?:\.(?:es|ja|zh))?\.mdx?$/i, "");
 }
 
@@ -111,7 +108,7 @@ function buildReleasePost(
   raw: string,
 ): BlogPost {
   const { data, content } = matter(raw);
-  const slug = normalizeReleaseSlug(item.name);
+  const slug = normalizeContentSlug(item.name);
   const version =
     typeof data.version === "string" && data.version.trim().length > 0
       ? data.version
@@ -133,62 +130,73 @@ function buildReleasePost(
     title,
     description: descriptionSource.slice(0, 180),
     version,
+    href: `/docs/release-notes/${slug.replaceAll(".", "-")}`,
     url: buildGitHubBlobUrl(item.path),
     body: content,
     excerpt: descriptionSource,
   };
 }
 
-function getLocalizedReleaseFile(
-  files: string[],
-  slug: string,
-  locale: Language,
-) {
-  const localizedSuffixes =
-    locale === defaultLanguage ? [] : [`.${locale}.mdx`, `.${locale}.md`];
-  const defaultSuffixes = [".mdx", ".md"];
+function getEntryLocale(pathname: string): Language {
+  const match = pathname.match(/\.([a-z]{2})\.mdx?$/i);
+  const locale = match?.[1];
 
-  return [...localizedSuffixes, ...defaultSuffixes]
-    .map((suffix) => `${slug}${suffix}`)
-    .find((file) => files.includes(file));
+  return locales.includes(locale as Language) ? (locale as Language) : defaultLanguage;
 }
 
-async function getLocalReleaseNotes(locale: Language): Promise<BlogPost[]> {
-  try {
-    const files = await readdir(LOCAL_RELEASE_NOTES_DIR);
-    const slugs = Array.from(
-      new Set(
-        files
-          .filter((file) => /\.mdx?$/i.test(file))
-          .map((file) => normalizeReleaseSlug(file)),
-      ),
-    ).filter((slug) => slug !== "index" && !isVersionSlug(slug));
+function getBlogEntrySlug(pathname: string) {
+  return normalizeContentSlug(pathname.split("/").pop() ?? pathname);
+}
 
-    const posts = await Promise.all(
-      slugs.map(async (slug) => {
-        const file = getLocalizedReleaseFile(files, slug, locale);
+function getLocalizedBlogEntries(locale: Language) {
+  const entriesBySlug = new Map<string, typeof blogCollection>();
 
-        if (!file) return null;
+  for (const entry of blogCollection) {
+    const slug = getBlogEntrySlug(entry.info.path);
+    const entries = entriesBySlug.get(slug) ?? [];
 
-        const raw = await readFile(
-          path.join(LOCAL_RELEASE_NOTES_DIR, file),
-          "utf8",
-        );
-
-        return buildReleasePost(
-          {
-            name: file,
-            path: `content/docs/release-notes/${file}`,
-          },
-          raw,
-        );
-      }),
-    );
-
-    return posts.filter((post): post is BlogPost => Boolean(post));
-  } catch {
-    return [];
+    entries.push(entry);
+    entriesBySlug.set(slug, entries);
   }
+
+  return Array.from(entriesBySlug.entries()).flatMap(([slug, entries]) => {
+    const localized =
+      entries.find((entry) => getEntryLocale(entry.info.path) === locale) ??
+      entries.find((entry) => getEntryLocale(entry.info.path) === defaultLanguage);
+
+    return localized ? [{ slug, entry: localized }] : [];
+  });
+}
+
+async function buildLocalBlogPost(
+  slug: string,
+  entry: (typeof blogCollection)[number],
+  locale: Language,
+): Promise<BlogPost> {
+  const descriptionSource =
+    typeof entry.description === "string" && entry.description.trim().length > 0
+      ? entry.description
+      : stripMarkdown(await entry.getText("processed"));
+
+  return {
+    slug,
+    category: BLOG_CATEGORY,
+    title: entry.title,
+    description: descriptionSource.slice(0, 180),
+    version: "Blog",
+    href: `${locale === defaultLanguage ? "" : `/${locale}`}/blog/${slug}`,
+    url: `${locale === defaultLanguage ? "" : `/${locale}`}/blog/${slug}`,
+    body: await entry.getText("processed"),
+    excerpt: descriptionSource,
+  };
+}
+
+async function getLocalBlogPosts(locale: Language): Promise<BlogPost[]> {
+  return Promise.all(
+    getLocalizedBlogEntries(locale).map(({ slug, entry }) =>
+      buildLocalBlogPost(slug, entry, locale),
+    ),
+  );
 }
 
 async function fetchReleaseNoteIndex(): Promise<GitHubContentItem[]> {
@@ -263,8 +271,8 @@ async function getRemoteReleaseNotes(): Promise<BlogPost[]> {
 
 export const getReleaseNotes = cache(
   async (locale: Language = defaultLanguage): Promise<BlogPost[]> => {
-    const [localPosts, remotePosts] = await Promise.all([
-      getLocalReleaseNotes(locale),
+    const [blogPosts, remotePosts] = await Promise.all([
+      getLocalBlogPosts(locale),
       getRemoteReleaseNotes(),
     ]);
     const postsBySlug = new Map<string, BlogPost>();
@@ -273,7 +281,7 @@ export const getReleaseNotes = cache(
       postsBySlug.set(post.slug, post);
     }
 
-    for (const post of localPosts) {
+    for (const post of blogPosts) {
       postsBySlug.set(post.slug, post);
     }
 
@@ -284,7 +292,7 @@ export const getReleaseNotes = cache(
 );
 
 export const getReleaseNoteBySlug = cache(async (slug: string) => {
-  const normalizedSlug = normalizeReleaseSlug(slug);
+  const normalizedSlug = normalizeContentSlug(slug);
   const directCandidates = [
     `${RELEASE_NOTES_DIR}/${normalizedSlug}.mdx`,
     `${RELEASE_NOTES_DIR}/${normalizedSlug}.md`,
@@ -308,16 +316,40 @@ export const getReleaseNoteBySlug = cache(async (slug: string) => {
   const posts = await getReleaseNotes();
   return (
     posts.find((post) => {
-      const normalizedPostSlug = normalizeReleaseSlug(post.slug);
-      const normalizedVersion = normalizeReleaseSlug(post.version);
+      const normalizedPostSlug = normalizeContentSlug(post.slug);
+      const normalizedVersion = normalizeContentSlug(post.version);
 
       return normalizedPostSlug === normalizedSlug || normalizedVersion === normalizedSlug;
     }) ?? null
   );
 });
 
+export const getBlogPostBySlug = cache(
+  async (slug: string, locale: Language = defaultLanguage) => {
+    const normalizedSlug = normalizeContentSlug(slug);
+
+    return (
+      getLocalizedBlogEntries(locale).find(
+        (post) => post.slug === normalizedSlug,
+      )?.entry ?? null
+    );
+  },
+);
+
+export function getBlogSlugs() {
+  return Array.from(
+    new Set(blogCollection.map((entry) => getBlogEntrySlug(entry.info.path))),
+  );
+}
+
 export function getBlogCategories() {
   return [
+    {
+      slug: BLOG_CATEGORY,
+      title: "Blog",
+      description: "Product essays, launch notes, and workflow updates from the Dory team.",
+      countLabel: (count: number) => `${count} post${count === 1 ? "" : "s"}`,
+    },
     {
       slug: RELEASE_NOTES_CATEGORY,
       title: "Release Notes",

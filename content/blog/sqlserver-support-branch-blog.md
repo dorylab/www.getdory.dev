@@ -135,4 +135,3 @@ SQL Server support is a step toward making Dory a better workspace for real-worl
 As more teams connect SQL Server to Dory, we will continue improving the experience around schema exploration, query assistance, database object understanding, and cross-database workflows.
 
 If SQL Server is part of your data stack, Dory can now meet it where it is.
-

@@ -46,8 +46,6 @@ export default async function BlogIndexPage({
   const latestPost = posts[0] ?? null;
   const featuredPosts = posts.slice(0, 4);
   const recentPosts = posts.slice(0, 12);
-  const releaseNoteHref = (slug: string) =>
-    `/docs/release-notes/${slug.replaceAll(".", "-")}`;
 
   return (
     <MarketingLayout lang={lang}>
@@ -56,7 +54,7 @@ export default async function BlogIndexPage({
         <section className="grid min-h-[28rem] gap-px overflow-hidden border border-slate-950/10 bg-slate-950/10 md:grid-cols-[1.22fr_0.78fr] dark:border-white/10 dark:bg-white/10">
           {latestPost ? (
             <Link
-              href={releaseNoteHref(latestPost.slug)}
+              href={latestPost.href}
               className="group relative flex min-h-[26rem] flex-col justify-end overflow-hidden bg-dory-brand-panel p-6 text-[#f7f7f4] md:p-8 lg:p-10"
             >
               <div className="absolute inset-0 bg-[image:var(--dory-release-background)]" />
@@ -83,7 +81,7 @@ export default async function BlogIndexPage({
             {featuredPosts.slice(1, 4).map((post, index) => (
               <Link
                 key={post.slug}
-                href={releaseNoteHref(post.slug)}
+                href={post.href}
                   className="group flex min-h-[9rem] flex-col justify-between bg-dory-page-wash p-5 text-dory-ink transition hover:bg-dory-surface md:p-6 dark:bg-[#111827] dark:text-[#eaf2ff] dark:hover:bg-white/[0.06]"
               >
                 <div>
@@ -124,7 +122,7 @@ export default async function BlogIndexPage({
           {categories.map((category) => (
             <Link
               key={category.slug}
-              href="/docs/release-notes"
+              href={category.slug === "blog" ? "/blog" : "/docs/release-notes"}
               className="border border-slate-950/12 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-950 hover:text-slate-950 dark:border-white/12 dark:text-slate-300 dark:hover:border-white dark:hover:text-white"
             >
               {category.title}
@@ -137,7 +135,7 @@ export default async function BlogIndexPage({
             recentPosts.map((post) => (
               <Link
                 key={post.slug}
-                href={releaseNoteHref(post.slug)}
+                href={post.href}
                 className="group grid gap-4 border-b border-slate-950/10 py-6 transition hover:bg-white/60 md:grid-cols-[10rem_minmax(0,1fr)_8rem] md:items-start md:px-2 dark:border-white/10 dark:hover:bg-white/5"
               >
                 <div className="text-sm font-medium text-slate-500 dark:text-slate-400">
