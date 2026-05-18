@@ -1,0 +1,37 @@
+name: Sync release notes
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Sync release notes
+        run: npm run release-notes:sync
+
+      - name: Commit synchronized release notes
+        run: |
+          if git diff --quiet; then
+            echo "Release notes are already synchronized."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/docs/release-notes package.json scripts/sync-release-notes.mjs
+          git commit -m "Sync release notes"
+          git push

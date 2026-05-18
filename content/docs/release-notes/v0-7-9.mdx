@@ -8,9 +8,11 @@ description: Dory release notes for v0.7.9.
 [View source on GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.7.9.md)
 
 ## What's Changed
+
 ### Fixes
 - Fixed a prompt error when using multiple databases (MySQL + ClickHouse) in AI-assisted SQL generation.
 - Fixed chatbot layout issues and improved aggregation of agent tool execution steps for clearer visibility.
+
 ### Improvements
 - Enhanced SQL safety checks to allow `PRAGMA` and `DESCRIBE` statements in read-only mode—enabling broader compatibility with SQLite and other dialects.
 - Simplified and refined SQL result rendering: intermediate retries are now hidden, folding behavior is more intuitive, and spacing around results is tighter and more consistent.
@@ -18,3 +20,6 @@ description: Dory release notes for v0.7.9.
 - Improved fallback handling and message rendering for SQL-related chat interactions, making errors and partial results more understandable.
 - Allowed SSH private key selection without requiring file extensions (e.g., keys named `id_rsa` instead of `id_rsa.pem`).
 - Removed unnecessary background styling from chat tools and bundled the demo SQLite database (including `-shm` and `-wal` files) for reliable portable demos.
+
+### Internal
+- Refactored AI tool and SQL result component styles for consistency and maintainability across the chat interface.

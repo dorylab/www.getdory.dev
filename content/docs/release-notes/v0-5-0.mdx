@@ -8,8 +8,14 @@ description: Dory release notes for v0.5.0.
 [View source on GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.5.0.md)
 
 ## What's Changed
+
 ### New Database Support
 - Added basic MySQL connection support, including connection form, metadata exploration, table information retrieval, and SQL dialect handling.
 - Added MariaDB connection support, reusing much of the MySQL infrastructure while providing MariaDB-specific capabilities and explorer components.
+
 ### UI Improvements
 - Removed grayscale filter from user avatars in the app sidebar for improved visual consistency and accessibility.
+
+### Internal
+- Consolidated database driver registration and type definitions to support extensibility across MySQL and MariaDB.
+- Updated SQL console and connection summary endpoints to accommodate new database drivers.

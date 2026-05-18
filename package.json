@@ -6,6 +6,7 @@
     "dev": "next dev --webpack",
     "dev:turbo": "next dev --turbopack",
     "clean:dev-cache": "rm -rf .next/dev/cache/turbopack .next/dev/cache/webpack",
+    "release-notes:sync": "node scripts/sync-release-notes.mjs",
     "build": "next build",
     "start": "next start",
     "types:check": "fumadocs-mdx && next typegen && tsc --noEmit",

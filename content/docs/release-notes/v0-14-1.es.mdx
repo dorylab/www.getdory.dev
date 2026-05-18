@@ -1,0 +1,20 @@
+---
+title: v0.14.1
+description: Notas de la versión de Dory para v0.14.1.
+---
+
+# v0.14.1
+
+[Ver fuente en GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.14.1.md)
+
+## Cambios
+
+### Correcciones
+- Se corrigió un error crítico por el que las acciones de SQL Copilot fallaban debido a la ausencia de `schemaContext` en el contexto de la acción, lo que mejora la confiabilidad de las correcciones de consultas asistidas por IA y las consultas inline.
+
+### Mejoras
+- Se mejoró el botón AI Fix en la consola SQL con el nuevo efecto visual `BorderBeam` para ofrecer mejor retroalimentación al usuario y mayor consistencia.
+- Se extrajo `BorderBeamButton` al paquete compartido `@dorylab/ui`, lo que permite reutilizarlo entre aplicaciones y mejora la mantenibilidad de los componentes de interfaz.
+
+### Documentación
+- Se actualizó `README.md` con aclaraciones y guía de uso actualizada.

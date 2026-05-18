@@ -8,5 +8,9 @@ description: Dory release notes for v0.3.9.
 [View source on GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.3.9.md)
 
 ## What's Changed
+
 ### Fixes
 - Fixed duplicate error dialogs appearing when update checks fail — now only one dialog is shown per failure, improving user experience during updater errors.
+
+### Internal
+- Refactored updater error handling in Electron main process to separate state reset/logging (via `autoUpdater` error event) from user-facing notifications (handled in `catch` blocks).
