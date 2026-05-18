@@ -13,17 +13,22 @@ import {
   getBlogCategories,
   getReleaseNotes,
 } from "@/lib/blog";
-import { defaultLanguage } from "@/lib/i18n";
+import { defaultLanguage, locales, type Language } from "@/lib/i18n";
 import { generateMarketingMetadata } from "@/lib/marketing-og";
+
+function resolveLanguage(lang: string): Language {
+  return locales.includes(lang as Language) ? (lang as Language) : defaultLanguage;
+}
 
 export async function generateMetadata({
   params,
 }: {
-  params?: Promise<{ lang: string }>;
-} = {}): Promise<Metadata> {
-  const { lang } = params ? await params : { lang: defaultLanguage };
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const locale = resolveLanguage(lang);
 
-  return generateMarketingMetadata({ page: "blog", lang });
+  return generateMarketingMetadata({ page: "blog", lang: locale });
 }
 
 export default async function BlogIndexPage({
@@ -32,9 +37,10 @@ export default async function BlogIndexPage({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
+  const locale = resolveLanguage(lang);
   const [t, posts] = await Promise.all([
-    getTranslations({ locale: lang, namespace: "blog" }),
-    getReleaseNotes(),
+    getTranslations({ locale, namespace: "blog" }),
+    getReleaseNotes(locale),
   ]);
   const categories = getBlogCategories();
   const latestPost = posts[0] ?? null;

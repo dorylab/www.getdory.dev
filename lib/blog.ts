@@ -1,10 +1,18 @@
 import matter from "gray-matter";
+import { readdir, readFile } from "node:fs/promises";
+import path from "node:path";
 import { cache } from "react";
+
+import { defaultLanguage, type Language } from "@/lib/i18n";
 
 const GITHUB_OWNER = "dorylab";
 const GITHUB_REPO = "dory";
 const RELEASE_NOTES_DIR = "release-notes";
 const RELEASE_NOTES_CATEGORY = "release-notes" as const;
+const LOCAL_RELEASE_NOTES_DIR = path.join(
+  process.cwd(),
+  "content/docs/release-notes",
+);
 
 const GITHUB_API_HEADERS = {
   Accept: "application/vnd.github+json",
@@ -47,6 +55,17 @@ function toTitleCase(value: string) {
 }
 
 function compareVersions(a: string, b: string) {
+  const aIsVersion = isVersionSlug(a);
+  const bIsVersion = isVersionSlug(b);
+
+  if (aIsVersion !== bIsVersion) {
+    return aIsVersion ? 1 : -1;
+  }
+
+  if (!aIsVersion && !bIsVersion) {
+    return a.localeCompare(b);
+  }
+
   const aParts = a.replace(/^v/i, "").split(".").map((part) => Number.parseInt(part, 10) || 0);
   const bParts = b.replace(/^v/i, "").split(".").map((part) => Number.parseInt(part, 10) || 0);
   const maxLength = Math.max(aParts.length, bParts.length);
@@ -60,6 +79,10 @@ function compareVersions(a: string, b: string) {
   }
 
   return 0;
+}
+
+function isVersionSlug(value: string) {
+  return /^v?\d+(?:[-.]\d+)*$/i.test(value);
 }
 
 function stripMarkdown(markdown: string) {
@@ -80,13 +103,21 @@ function buildGitHubBlobUrl(path: string) {
 }
 
 function normalizeReleaseSlug(value: string) {
-  return value.trim().replace(/\.mdx?$/i, "");
+  return value.trim().replace(/(?:\.(?:es|ja|zh))?\.mdx?$/i, "");
 }
 
-function buildReleasePost(item: Pick<GitHubContentItem, "name" | "path">, raw: string): BlogPost {
+function buildReleasePost(
+  item: Pick<GitHubContentItem, "name" | "path">,
+  raw: string,
+): BlogPost {
   const { data, content } = matter(raw);
   const slug = normalizeReleaseSlug(item.name);
-  const version = typeof data.version === "string" ? data.version : slug;
+  const version =
+    typeof data.version === "string" && data.version.trim().length > 0
+      ? data.version
+      : isVersionSlug(slug)
+        ? slug.replaceAll("-", ".")
+        : "SQL Server";
   const title =
     typeof data.title === "string" && data.title.trim().length > 0
       ? data.title
@@ -106,6 +137,58 @@ function buildReleasePost(item: Pick<GitHubContentItem, "name" | "path">, raw: s
     body: content,
     excerpt: descriptionSource,
   };
+}
+
+function getLocalizedReleaseFile(
+  files: string[],
+  slug: string,
+  locale: Language,
+) {
+  const localizedSuffixes =
+    locale === defaultLanguage ? [] : [`.${locale}.mdx`, `.${locale}.md`];
+  const defaultSuffixes = [".mdx", ".md"];
+
+  return [...localizedSuffixes, ...defaultSuffixes]
+    .map((suffix) => `${slug}${suffix}`)
+    .find((file) => files.includes(file));
+}
+
+async function getLocalReleaseNotes(locale: Language): Promise<BlogPost[]> {
+  try {
+    const files = await readdir(LOCAL_RELEASE_NOTES_DIR);
+    const slugs = Array.from(
+      new Set(
+        files
+          .filter((file) => /\.mdx?$/i.test(file))
+          .map((file) => normalizeReleaseSlug(file)),
+      ),
+    ).filter((slug) => slug !== "index" && !isVersionSlug(slug));
+
+    const posts = await Promise.all(
+      slugs.map(async (slug) => {
+        const file = getLocalizedReleaseFile(files, slug, locale);
+
+        if (!file) return null;
+
+        const raw = await readFile(
+          path.join(LOCAL_RELEASE_NOTES_DIR, file),
+          "utf8",
+        );
+
+        return buildReleasePost(
+          {
+            name: file,
+            path: `content/docs/release-notes/${file}`,
+          },
+          raw,
+        );
+      }),
+    );
+
+    return posts.filter((post): post is BlogPost => Boolean(post));
+  } catch {
+    return [];
+  }
 }
 
 async function fetchReleaseNoteIndex(): Promise<GitHubContentItem[]> {
@@ -161,11 +244,11 @@ async function fetchReleaseNoteFile(path: string) {
   return Buffer.from(file.content, "base64").toString("utf8");
 }
 
-export const getReleaseNotes = cache(async (): Promise<BlogPost[]> => {
+async function getRemoteReleaseNotes(): Promise<BlogPost[]> {
   try {
     const files = await fetchReleaseNoteIndex();
 
-    const posts = await Promise.all(
+    return Promise.all(
       files
         .filter((item) => item.type === "file" && /\.mdx?$/i.test(item.name) && item.download_url)
         .map(async (item) => {
@@ -173,12 +256,32 @@ export const getReleaseNotes = cache(async (): Promise<BlogPost[]> => {
           return buildReleasePost(item, raw);
         }),
     );
-
-    return posts.sort((left, right) => compareVersions(left.version, right.version));
   } catch {
     return [];
   }
-});
+}
+
+export const getReleaseNotes = cache(
+  async (locale: Language = defaultLanguage): Promise<BlogPost[]> => {
+    const [localPosts, remotePosts] = await Promise.all([
+      getLocalReleaseNotes(locale),
+      getRemoteReleaseNotes(),
+    ]);
+    const postsBySlug = new Map<string, BlogPost>();
+
+    for (const post of remotePosts) {
+      postsBySlug.set(post.slug, post);
+    }
+
+    for (const post of localPosts) {
+      postsBySlug.set(post.slug, post);
+    }
+
+    return Array.from(postsBySlug.values()).sort((left, right) =>
+      compareVersions(left.version, right.version),
+    );
+  },
+);
 
 export const getReleaseNoteBySlug = cache(async (slug: string) => {
   const normalizedSlug = normalizeReleaseSlug(slug);
@@ -225,7 +328,11 @@ export function getBlogCategories() {
 }
 
 export function formatReleaseLabel(version: string) {
-  return version.toUpperCase().startsWith("V") ? version : `v${version}`;
+  if (/^v?\d+(?:\.\d+)*$/i.test(version)) {
+    return version.toUpperCase().startsWith("V") ? version : `v${version}`;
+  }
+
+  return version;
 }
 
 export function getBlogCategoryTitle(category: BlogCategory) {
