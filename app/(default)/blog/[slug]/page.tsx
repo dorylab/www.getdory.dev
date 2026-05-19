@@ -4,6 +4,8 @@ import LangBlogPostPage, {
 
 const lang = "en";
 
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return [];
 }
