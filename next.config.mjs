@@ -4,6 +4,20 @@ import createNextIntlPlugin from 'next-intl/plugin';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: '/blog/sqlserver-support-branch-blog',
+        destination: '/blog/sqlserver-support',
+        permanent: true
+      },
+      {
+        source: '/:lang/blog/sqlserver-support-branch-blog',
+        destination: '/:lang/blog/sqlserver-support',
+        permanent: true
+      }
+    ];
+  },
   async rewrites() {
     return [
       {
