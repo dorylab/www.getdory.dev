@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { existsSync } from 'node:fs';
 
+import { getBlogSlugs } from '@/lib/blog';
 import { defaultLanguage, locales } from '@/lib/i18n';
 import { source } from '@/lib/source';
 
@@ -161,9 +162,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
   });
 
+  const blogPostEntries = getBlogSlugs().flatMap((slug) => {
+    const pathname = `/blog/${slug}`;
+    const alternates = locales.map((locale) => ({
+      language: locale as SitemapLanguage,
+      url: canonicalPath(locale, pathname)
+    }));
+    const englishAlternate = alternates.find(
+      (alternate) => alternate.language === defaultLanguage
+    );
+
+    if (englishAlternate) {
+      alternates.push({
+        language: 'x-default',
+        url: englishAlternate.url
+      });
+    }
+
+    return locales.map<SitemapEntry>((locale) => ({
+      url: absoluteUrl(canonicalPath(locale, pathname)),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+      alternates: buildAlternates(alternates)
+    }));
+  });
+
   const uniqueEntries = new Map<string, SitemapEntry>();
 
-  for (const entry of [...marketingEntries, ...docEntries]) {
+  for (const entry of [...marketingEntries, ...blogPostEntries, ...docEntries]) {
     uniqueEntries.set(entry.url, entry);
   }
 

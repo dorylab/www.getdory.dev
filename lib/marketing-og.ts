@@ -6,6 +6,12 @@ import { defaultLanguage, type Language } from '@/lib/i18n';
 export type MarketingOgPage = 'home' | 'blog' | 'download';
 
 const siteName = 'Dory';
+const homeTitles: Partial<Record<Language, string>> = {
+  en: 'Dory - AI Native Data Workspace for SQL, Databases and Spreadsheets',
+  zh: 'Dory - AI 原生数据工作空间，连接数据库、SQL 与可视化分析',
+  ja: 'Dory - SQL、データベース、スプレッドシートのための AI ネイティブデータワークスペース',
+  es: 'Dory - Espacio de datos nativo de IA para SQL, bases de datos y hojas de cálculo'
+};
 
 export function getMarketingOgImage(page: MarketingOgPage, lang: string) {
   const localeSegment = lang === defaultLanguage ? '' : `/${lang}`;
@@ -46,9 +52,10 @@ export async function getMarketingOgContent(
   }
 
   const t = await getTranslations({ locale: lang, namespace: 'landing' });
+  const locale = lang as Language;
 
   return {
-    title: 'Dory',
+    title: homeTitles[locale] ?? homeTitles[defaultLanguage] ?? siteName,
     description: t('heroDescription'),
     site: siteName,
     label: 'AI Native Data Workspace',
@@ -65,9 +72,13 @@ export async function generateMarketingMetadata({
 }): Promise<Metadata> {
   const content = await getMarketingOgContent(page, lang);
   const image = getMarketingOgImage(page, lang);
+  const title =
+    content.title.includes(siteName) || page === 'home'
+      ? { absolute: content.title }
+      : content.title;
 
   return {
-    title: content.title,
+    title,
     description: content.description,
     openGraph: {
       title: content.title,
