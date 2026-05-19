@@ -10,6 +10,7 @@ const RELEASE_NOTES_DIR = "release-notes";
 const RELEASE_NOTES_CATEGORY = "release-notes" as const;
 const BLOG_CATEGORY = "blog" as const;
 const GITHUB_RELEASE_NOTES_REVALIDATE_SECONDS = 60;
+const GITHUB_RELEASE_NOTES_FETCH_TIMEOUT_MS = 5_000;
 
 const GITHUB_API_HEADERS = {
   Accept: "application/vnd.github+json",
@@ -31,6 +32,13 @@ type GitHubFileResponse = {
   path: string;
   type: "file";
 };
+
+function fetchGitHubContent(input: string, init: RequestInit = {}) {
+  return fetch(input, {
+    ...init,
+    signal: AbortSignal.timeout(GITHUB_RELEASE_NOTES_FETCH_TIMEOUT_MS),
+  });
+}
 
 export type BlogCategory = typeof BLOG_CATEGORY | typeof RELEASE_NOTES_CATEGORY;
 
@@ -206,7 +214,7 @@ async function getLocalBlogPosts(locale: Language): Promise<BlogPost[]> {
 }
 
 async function fetchReleaseNoteIndex(): Promise<GitHubContentItem[]> {
-  const response = await fetch(
+  const response = await fetchGitHubContent(
     `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${RELEASE_NOTES_DIR}`,
     {
       headers: GITHUB_API_HEADERS,
@@ -222,7 +230,7 @@ async function fetchReleaseNoteIndex(): Promise<GitHubContentItem[]> {
 }
 
 async function fetchReleaseNoteBody(downloadUrl: string) {
-  const response = await fetch(downloadUrl, {
+  const response = await fetchGitHubContent(downloadUrl, {
     headers: {
       "User-Agent": "getdory.dev",
     },
@@ -237,7 +245,7 @@ async function fetchReleaseNoteBody(downloadUrl: string) {
 }
 
 async function fetchReleaseNoteFile(path: string) {
-  const response = await fetch(
+  const response = await fetchGitHubContent(
     `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`,
     {
       headers: GITHUB_API_HEADERS,

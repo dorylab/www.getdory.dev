@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-export const dynamic = "force-dynamic";
-
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
