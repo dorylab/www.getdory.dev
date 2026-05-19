@@ -1,5 +1,6 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import { NextIntlClientProvider } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 import type { ReactNode } from 'react';
 
 import { ThemeProvider } from '@/components/contexts/theme-provider';
@@ -13,6 +14,8 @@ export default async function DefaultLanguageLayout({
 }: {
   children: ReactNode;
 }) {
+  setRequestLocale(lang);
+
   const messages = await getMessages(lang);
 
   return (
