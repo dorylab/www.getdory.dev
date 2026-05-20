@@ -376,6 +376,7 @@
     "readPost": "阅读文章",
     "empty": "暂时还没有发布说明。",
     "blogHome": "博客",
+    "backToBlog": "返回博客",
     "backToReleaseNotes": "返回发布说明"
   }
 }

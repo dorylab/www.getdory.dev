@@ -72,8 +72,14 @@ function compareVersions(a: string, b: string) {
     return a.localeCompare(b);
   }
 
-  const aParts = a.replace(/^v/i, "").split(".").map((part) => Number.parseInt(part, 10) || 0);
-  const bParts = b.replace(/^v/i, "").split(".").map((part) => Number.parseInt(part, 10) || 0);
+  const aParts = a
+    .replace(/^v/i, "")
+    .split(".")
+    .map((part) => Number.parseInt(part, 10) || 0);
+  const bParts = b
+    .replace(/^v/i, "")
+    .split(".")
+    .map((part) => Number.parseInt(part, 10) || 0);
   const maxLength = Math.max(aParts.length, bParts.length);
 
   for (let index = 0; index < maxLength; index += 1) {
@@ -114,6 +120,12 @@ function buildReleaseNoteBlogPath(slug: string, locale: Language) {
   return localizePath(`/blog/release-notes/${versionSlug}`, locale);
 }
 
+function buildReleaseNoteHref(slug: string) {
+  const versionSlug = isVersionSlug(slug) ? slug.replaceAll("-", ".") : slug;
+
+  return `/blog/release-notes/${versionSlug}`;
+}
+
 function normalizeContentSlug(value: string) {
   return value.trim().replace(/(?:\.(?:es|ja|zh))?\.mdx?$/i, "");
 }
@@ -146,7 +158,7 @@ function buildReleasePost(
     title,
     description: descriptionSource.slice(0, 180),
     version,
-    href: buildReleaseNoteBlogPath(slug, locale),
+    href: buildReleaseNoteHref(slug),
     url: buildReleaseNoteBlogPath(slug, locale),
     body: content,
     excerpt: descriptionSource,
@@ -157,7 +169,9 @@ function getEntryLocale(pathname: string): Language {
   const match = pathname.match(/\.([a-z]{2})\.mdx?$/i);
   const locale = match?.[1];
 
-  return locales.includes(locale as Language) ? (locale as Language) : defaultLanguage;
+  return locales.includes(locale as Language)
+    ? (locale as Language)
+    : defaultLanguage;
 }
 
 function getBlogEntrySlug(pathname: string) {
@@ -178,7 +192,9 @@ function getLocalizedBlogEntries(locale: Language) {
   return Array.from(entriesBySlug.entries()).flatMap(([slug, entries]) => {
     const localized =
       entries.find((entry) => getEntryLocale(entry.info.path) === locale) ??
-      entries.find((entry) => getEntryLocale(entry.info.path) === defaultLanguage);
+      entries.find(
+        (entry) => getEntryLocale(entry.info.path) === defaultLanguage,
+      );
 
     return localized ? [{ slug, entry: localized }] : [];
   });
@@ -200,7 +216,7 @@ async function buildLocalBlogPost(
     title: entry.title,
     description: descriptionSource.slice(0, 180),
     version: "Blog",
-    href: localizePath(`/blog/${slug}`, locale),
+    href: `/blog/${slug}`,
     url: localizePath(`/blog/${slug}`, locale),
     body: await entry.getText("processed"),
     excerpt: descriptionSource,
@@ -274,7 +290,12 @@ async function getRemoteReleaseNotes(locale: Language): Promise<BlogPost[]> {
 
     return Promise.all(
       files
-        .filter((item) => item.type === "file" && /\.mdx?$/i.test(item.name) && item.download_url)
+        .filter(
+          (item) =>
+            item.type === "file" &&
+            /\.mdx?$/i.test(item.name) &&
+            item.download_url,
+        )
         .map(async (item) => {
           const raw = await fetchReleaseNoteBody(item.download_url!);
           return buildReleasePost(item, raw, locale);
@@ -307,46 +328,51 @@ export const getReleaseNotes = cache(
   },
 );
 
-export const getReleaseNoteBySlug = cache(async (slug: string, locale: Language = defaultLanguage) => {
-  const normalizedSlug = normalizeContentSlug(slug);
-  const dottedSlug = isVersionSlug(normalizedSlug)
-    ? normalizedSlug.replaceAll("-", ".")
-    : normalizedSlug;
-  const directCandidates = Array.from(
-    new Set(
-      [normalizedSlug, dottedSlug].flatMap((candidate) => [
-        `${RELEASE_NOTES_DIR}/${candidate}.mdx`,
-        `${RELEASE_NOTES_DIR}/${candidate}.md`,
-      ]),
-    ),
-  );
+export const getReleaseNoteBySlug = cache(
+  async (slug: string, locale: Language = defaultLanguage) => {
+    const normalizedSlug = normalizeContentSlug(slug);
+    const dottedSlug = isVersionSlug(normalizedSlug)
+      ? normalizedSlug.replaceAll("-", ".")
+      : normalizedSlug;
+    const directCandidates = Array.from(
+      new Set(
+        [normalizedSlug, dottedSlug].flatMap((candidate) => [
+          `${RELEASE_NOTES_DIR}/${candidate}.mdx`,
+          `${RELEASE_NOTES_DIR}/${candidate}.md`,
+        ]),
+      ),
+    );
 
-  for (const path of directCandidates) {
-    try {
-      const raw = await fetchReleaseNoteFile(path);
-      return buildReleasePost(
-        {
-          name: path.split("/").pop() ?? `${normalizedSlug}.md`,
-          path,
-        },
-        raw,
-        locale,
-      );
-    } catch {
-      continue;
+    for (const path of directCandidates) {
+      try {
+        const raw = await fetchReleaseNoteFile(path);
+        return buildReleasePost(
+          {
+            name: path.split("/").pop() ?? `${normalizedSlug}.md`,
+            path,
+          },
+          raw,
+          locale,
+        );
+      } catch {
+        continue;
+      }
     }
-  }
 
-  const posts = await getReleaseNotes(locale);
-  return (
-    posts.find((post) => {
-      const normalizedPostSlug = normalizeContentSlug(post.slug);
-      const normalizedVersion = normalizeContentSlug(post.version);
+    const posts = await getReleaseNotes(locale);
+    return (
+      posts.find((post) => {
+        const normalizedPostSlug = normalizeContentSlug(post.slug);
+        const normalizedVersion = normalizeContentSlug(post.version);
 
-      return normalizedPostSlug === normalizedSlug || normalizedVersion === normalizedSlug;
-    }) ?? null
-  );
-});
+        return (
+          normalizedPostSlug === normalizedSlug ||
+          normalizedVersion === normalizedSlug
+        );
+      }) ?? null
+    );
+  },
+);
 
 export const getBlogPostBySlug = cache(
   async (slug: string, locale: Language = defaultLanguage) => {
@@ -371,13 +397,15 @@ export function getBlogCategories() {
     {
       slug: BLOG_CATEGORY,
       title: "Blog",
-      description: "Product essays, launch notes, and workflow updates from the Dory team.",
+      description:
+        "Product essays, launch notes, and workflow updates from the Dory team.",
       countLabel: (count: number) => `${count} post${count === 1 ? "" : "s"}`,
     },
     {
       slug: RELEASE_NOTES_CATEGORY,
       title: "Release Notes",
-      description: "Version-by-version product updates synced from the main Dory repository.",
+      description:
+        "Version-by-version product updates synced from the main Dory repository.",
       countLabel: (count: number) => `${count} post${count === 1 ? "" : "s"}`,
     },
   ];

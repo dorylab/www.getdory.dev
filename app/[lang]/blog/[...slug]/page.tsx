@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { ArrowLeft } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { mdxComponents as blogMdxComponents } from "@/components/blog/mdx-components";
 import FooterSection from "@/components/sections/footer";
 import { MarketingLayout } from "@/components/marketing-layout";
 import { getMDXComponents } from "@/mdx-components";
-import { getBlogPostBySlug, getBlogSlugs, getReleaseNoteBySlug } from "@/lib/blog";
+import {
+  getBlogPostBySlug,
+  getBlogSlugs,
+  getReleaseNoteBySlug,
+} from "@/lib/blog";
 import { defaultLanguage, locales, type Language } from "@/lib/i18n";
 import { source } from "@/lib/source";
+import { Link } from "@/i18n/navigation";
 
 function resolveLanguage(lang: string): Language {
-  return locales.includes(lang as Language) ? (lang as Language) : defaultLanguage;
+  return locales.includes(lang as Language)
+    ? (lang as Language)
+    : defaultLanguage;
 }
 
 function getBlogSlug(slug: string[]) {
@@ -45,7 +54,10 @@ export async function generateMetadata({
   const blogSlug = getBlogSlug(slug);
   const releaseNoteSlug = getReleaseNoteSlug(slug);
   const releaseNotePage = releaseNoteSlug
-    ? source.getPage(["release-notes", normalizeReleaseNoteSlug(releaseNoteSlug)], locale)
+    ? source.getPage(
+        ["release-notes", normalizeReleaseNoteSlug(releaseNoteSlug)],
+        locale,
+      )
     : null;
 
   if (releaseNotePage) {
@@ -99,7 +111,10 @@ export default async function BlogPostPage({
   const blogSlug = getBlogSlug(slug);
   const releaseNoteSlug = getReleaseNoteSlug(slug);
   const releaseNotePage = releaseNoteSlug
-    ? source.getPage(["release-notes", normalizeReleaseNoteSlug(releaseNoteSlug)], locale)
+    ? source.getPage(
+        ["release-notes", normalizeReleaseNoteSlug(releaseNoteSlug)],
+        locale,
+      )
     : null;
   const post = blogSlug
     ? await getBlogPostBySlug(blogSlug, locale)
@@ -112,14 +127,24 @@ export default async function BlogPostPage({
   }
 
   const isReleaseNote = Boolean(releaseNoteSlug);
-  const releaseNoteBody = post && typeof post.body === "string" ? post.body : null;
+  const releaseNoteBody =
+    post && typeof post.body === "string" ? post.body : null;
   const MDX =
-    releaseNotePage?.data.body ?? (post && typeof post.body !== "string" ? post.body : null);
+    releaseNotePage?.data.body ??
+    (post && typeof post.body !== "string" ? post.body : null);
+  const t = await getTranslations({ locale, namespace: "blog" });
 
   return (
     <MarketingLayout lang={locale}>
       <main className="min-h-screen bg-dory-page px-4 pt-10 pb-20 text-dory-ink sm:px-6 md:px-10">
         <article className="mx-auto w-full max-w-3xl">
+          <Link
+            href={isReleaseNote ? "/docs/release-notes" : "/blog"}
+            className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
+          >
+            <ArrowLeft className="size-4" />
+            {isReleaseNote ? t("backToReleaseNotes") : t("backToBlog")}
+          </Link>
           <div className="mb-4 text-sm font-medium tracking-[0.18em] text-slate-500 uppercase dark:text-slate-400">
             {isReleaseNote ? "Release Notes" : "Blog"}
           </div>
@@ -132,9 +157,7 @@ export default async function BlogPostPage({
               />
             ) : MDX ? (
               <MDX components={getMDXComponents()} />
-            ) : (
-              null
-            )}
+            ) : null}
           </div>
         </article>
       </main>

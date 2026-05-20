@@ -616,6 +616,7 @@
     "readPost": "Read post",
     "empty": "No release notes are available yet.",
     "blogHome": "Blog",
+    "backToBlog": "Back to blog",
     "backToReleaseNotes": "Back to release notes"
   }
 }

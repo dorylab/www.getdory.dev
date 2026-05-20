@@ -376,6 +376,7 @@
     "readPost": "Leer publicación",
     "empty": "Aún no hay notas de versión disponibles.",
     "blogHome": "Blog",
+    "backToBlog": "Volver al blog",
     "backToReleaseNotes": "Volver a las notas de la versión"
   }
 }
