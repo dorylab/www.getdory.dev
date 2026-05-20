@@ -133,6 +133,7 @@ export default async function BlogPostPage({
     releaseNotePage?.data.body ??
     (post && typeof post.body !== "string" ? post.body : null);
   const t = await getTranslations({ locale, namespace: "blog" });
+  const linkLocale = locale === defaultLanguage ? undefined : locale;
 
   return (
     <MarketingLayout lang={locale}>
@@ -140,6 +141,7 @@ export default async function BlogPostPage({
         <article className="mx-auto w-full max-w-3xl">
           <Link
             href={isReleaseNote ? "/docs/release-notes" : "/blog"}
+            locale={linkLocale}
             className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
           >
             <ArrowLeft className="size-4" />

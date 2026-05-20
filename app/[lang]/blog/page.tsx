@@ -46,6 +46,7 @@ export default async function BlogIndexPage({
   const latestPost = posts[0] ?? null;
   const featuredPosts = posts.slice(0, 4);
   const recentPosts = posts.slice(0, 12);
+  const linkLocale = locale === defaultLanguage ? undefined : locale;
 
   return (
     <MarketingLayout lang={lang}>
@@ -55,6 +56,7 @@ export default async function BlogIndexPage({
             {latestPost ? (
               <Link
                 href={latestPost.href}
+                locale={linkLocale}
                 className="group relative flex min-h-[26rem] flex-col justify-end overflow-hidden bg-dory-brand-panel p-6 text-[#f7f7f4] md:p-8 lg:p-10"
               >
                 <div className="absolute inset-0 bg-[image:var(--dory-release-background)]" />
@@ -83,6 +85,7 @@ export default async function BlogIndexPage({
                 <Link
                   key={post.slug}
                   href={post.href}
+                  locale={linkLocale}
                   className="group flex min-h-[9rem] flex-col justify-between bg-dory-page-wash p-5 text-dory-ink transition hover:bg-dory-surface md:p-6 dark:bg-[#111827] dark:text-[#eaf2ff] dark:hover:bg-white/[0.06]"
                 >
                   <div>
@@ -126,6 +129,7 @@ export default async function BlogIndexPage({
                 href={
                   category.slug === "blog" ? "/blog" : "/docs/release-notes"
                 }
+                locale={linkLocale}
                 className="border border-slate-950/12 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-950 hover:text-slate-950 dark:border-white/12 dark:text-slate-300 dark:hover:border-white dark:hover:text-white"
               >
                 {category.title}
@@ -139,6 +143,7 @@ export default async function BlogIndexPage({
                 <Link
                   key={post.slug}
                   href={post.href}
+                  locale={linkLocale}
                   className="group grid gap-4 border-b border-slate-950/10 py-6 transition hover:bg-white/60 md:grid-cols-[10rem_minmax(0,1fr)_8rem] md:items-start md:px-2 dark:border-white/10 dark:hover:bg-white/5"
                 >
                   <div className="text-sm font-medium text-slate-500 dark:text-slate-400">
@@ -177,6 +182,7 @@ export default async function BlogIndexPage({
             {latestPost ? (
               <Link
                 href="/docs/release-notes"
+                locale={linkLocale}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-slate-950 dark:text-white"
               >
                 {t("readLatest")}
