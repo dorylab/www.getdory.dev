@@ -1,4 +1,4 @@
-import { BookOpen, Newspaper } from 'lucide-react';
+import { BookOpen, House, Newspaper } from 'lucide-react';
 import { defineI18nUI } from 'fumadocs-ui/i18n';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
@@ -55,26 +55,31 @@ export function baseOptions(locale: string): BaseLayoutProps {
   const localePrefix = locale === defaultLanguage ? '' : `/${locale}`;
   const navCopy = {
     en: {
+      home: 'Home',
       docs: 'Docs',
       blog: 'Blog',
       download: 'Download'
     },
     zh: {
+      home: '首页',
       docs: '文档',
       blog: '博客',
       download: '下载'
     },
     ja: {
+      home: 'ホーム',
       docs: 'ドキュメント',
       blog: 'ブログ',
       download: 'ダウンロード'
     },
     es: {
+      home: 'Inicio',
       docs: 'Documentación',
       blog: 'Blog',
       download: 'Descargar'
     }
   }[locale] ?? {
+    home: 'Home',
     docs: 'Docs',
     blog: 'Blog',
     download: 'Download'
@@ -98,6 +103,13 @@ export function baseOptions(locale: string): BaseLayoutProps {
       )
     },
     links: [
+      {
+        type: 'main',
+        text: navCopy.home,
+        url: localePrefix || '/',
+        active: 'url',
+        icon: <House />
+      },
       {
         type: 'main',
         text: navCopy.docs,

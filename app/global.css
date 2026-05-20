@@ -453,6 +453,69 @@ a {
   background: var(--dory-surface-hover);
 }
 
+.dory-artwork-frame {
+  --dory-artwork-image: none;
+  --dory-artwork-position: center;
+  --dory-artwork-fallback:
+    radial-gradient(circle at 18% 18%, rgba(210, 180, 111, 0.26), transparent 30%),
+    radial-gradient(circle at 82% 28%, rgba(36, 73, 111, 0.26), transparent 34%),
+    linear-gradient(135deg, #e9eef7 0%, #f7f1e8 48%, #d8e1ee 100%);
+  isolation: isolate;
+}
+
+.dory-artwork-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(90deg, rgba(247, 247, 243, 0.22), rgba(247, 247, 243, 0.04) 46%, rgba(247, 247, 243, 0.3)),
+    var(--dory-artwork-image),
+    var(--dory-artwork-fallback);
+  background-position: center, var(--dory-artwork-position), center;
+  background-size: cover, cover, cover;
+  filter: saturate(0.82) contrast(0.96);
+  transform: scale(1.015);
+}
+
+.dory-artwork-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.08) 48%, rgba(8, 17, 31, 0.08)),
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.38), transparent 46%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.dory-artwork-sunrise {
+  --dory-artwork-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1280px-Monet_-_Impression%2C_Sunrise.jpg');
+  --dory-artwork-position: center 42%;
+}
+
+.dory-artwork-temeraire {
+  --dory-artwork-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Turner_-_The_Fighting_Temeraire.jpg/1280px-Turner_-_The_Fighting_Temeraire.jpg');
+  --dory-artwork-position: center 46%;
+}
+
+.dory-artwork-fog {
+  --dory-artwork-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Wanderer_above_the_Sea_of_Fog.jpg');
+  --dory-artwork-position: center 34%;
+}
+
+.dark .dory-artwork-frame::before {
+  filter: saturate(0.72) contrast(0.9) brightness(0.54);
+}
+
+.dark .dory-artwork-frame::after {
+  background:
+    linear-gradient(180deg, rgba(8, 17, 31, 0.34), rgba(8, 17, 31, 0.18) 48%, rgba(8, 17, 31, 0.42)),
+    radial-gradient(circle at 50% 18%, rgba(233, 238, 247, 0.12), transparent 44%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
 #nd-nav > div {
   border-bottom-color: transparent !important;
   background: var(--dory-page) !important;

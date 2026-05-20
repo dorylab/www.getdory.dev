@@ -1,11 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="74px" height="74px" viewBox="0 0 74 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icon-Architecture-Category/48/Database_48</title>
-    <g id="Icon-Architecture-Category/48/Database_48" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#C925D1" x="5" y="5" width="64" height="64"></rect>
-        <rect id="#879196-Border-Copy-9" stroke="#879196" stroke-width="2" x="1" y="1" width="72" height="72"></rect>
-        <g id="Icon-Category/48/Database_48" transform="translate(22.000000, 15.000000)" fill="#FFFFFF">
-            <path d="M15,21.764 C7.56,21.764 2,19.419 2,17.323 L2,9.777 C4.768,11.811 9.991,12.882 15,12.882 C20.009,12.882 25.232,11.811 28,9.777 L28,17.323 C28,19.419 22.44,21.764 15,21.764 M15,32.455 C7.56,32.455 2,30.11 2,28.014 L2,20.659 C4.768,22.693 9.991,23.764 15,23.764 C20.009,23.764 25.232,22.693 28,20.659 L28,28.014 C28,30.11 22.44,32.455 15,32.455 M15,42 C7.56,42 2,39.656 2,37.559 L2,31.35 C4.768,33.384 9.991,34.455 15,34.455 C20.009,34.455 25.232,33.384 28,31.35 L28,37.559 C28,39.656 22.44,42 15,42 M15,2 C22.44,2 28,4.345 28,6.441 C28,8.537 22.44,10.882 15,10.882 C7.56,10.882 2,8.537 2,6.441 C2,4.345 7.56,2 15,2 M15,0 C7.729,0 0,2.258 0,6.441 L0,37.559 C0,41.743 7.729,44 15,44 C22.271,44 30,41.743 30,37.559 L30,6.441 C30,2.258 22.271,0 15,0" id="Database_Category-Icon_48_Squid--"></path>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+  <defs>
+    <linearGradient id="more-db-body" x1="0.5" x2="12.43" y1="9.96" y2="9.96" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#005ba1" />
+      <stop offset="0.07" stop-color="#0060a9" />
+      <stop offset="0.36" stop-color="#0071c8" />
+      <stop offset="0.52" stop-color="#0078d4" />
+      <stop offset="0.64" stop-color="#0074cd" />
+      <stop offset="0.82" stop-color="#006abb" />
+      <stop offset="1" stop-color="#005ba1" />
+    </linearGradient>
+    <linearGradient id="more-db-cloud" x1="11.77" x2="11.77" y1="17.03" y2="8.9" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#198ab3" />
+      <stop offset="0.11" stop-color="#22a5cb" />
+      <stop offset="0.23" stop-color="#29bade" />
+      <stop offset="0.37" stop-color="#2ec9eb" />
+      <stop offset="0.53" stop-color="#31d1f3" />
+      <stop offset="0.78" stop-color="#32d4f5" />
+    </linearGradient>
+  </defs>
+  <title>Managed Database</title>
+  <path d="M6.47 5.3c-3.3 0-6-1-6-2.16v11.49c0 1.18 2.63 2.15 5.88 2.16h.09c3.29 0 6-1 6-2.16V3.14C12.43 4.33 9.76 5.3 6.47 5.3Z" fill="url(#more-db-body)" />
+  <path d="M12.43 3.14c0 1.19-2.67 2.16-6 2.16s-6-1-6-2.16S3.17 1 6.47 1s5.96.97 5.96 2.14Z" fill="#eaeaea" />
+  <path d="M11 3c0 .76-2 1.37-4.57 1.37S1.89 3.72 1.89 3 3.94 1.59 6.47 1.59 11 2.2 11 3Z" fill="#50e6ff" />
+  <path d="M6.47 3.28a11 11 0 0 0-3.63.52 10.89 10.89 0 0 0 3.63.53 10.86 10.86 0 0 0 3.62-.53 11 11 0 0 0-3.62-.52Z" fill="#198ab3" />
+  <path d="M16.75 12.74A2.89 2.89 0 0 0 15.26 12a3.24 3.24 0 0 0-3.34-3.1 3.35 3.35 0 0 0-3.2 2.17A3.06 3.06 0 0 0 6 14a3.12 3.12 0 0 0 3.22 3l.29-.01h5.23l.13-.01a2.61 2.61 0 0 0 2.59-2.51 2.46 2.46 0 0 0-.71-1.73Z" fill="url(#more-db-cloud)" />
+  <path d="M14.3 15.8h-.94v-2.53q0-.4.01-.9h-.02c-.04.25-.1.44-.13.56l-1 2.87h-.78l-1-2.85a4.61 4.61 0 0 1-.13-.58h-.02c.01.41.01.78.01 1.09v2.34h-.82v-4.23h1.4l.86 2.51a3.29 3.29 0 0 1 .15.6h.02c.05-.23.11-.44.16-.61l.87-2.5h1.38Z" fill="#fff" />
 </svg>

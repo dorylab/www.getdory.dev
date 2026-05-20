@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 
@@ -72,12 +73,55 @@ const moreFeatureIcons = [
   LayoutGrid,
   Braces,
 ];
+const artworkClasses = {
+  sunrise: "dory-artwork-sunrise",
+  temeraire: "dory-artwork-temeraire",
+  fog: "dory-artwork-fog",
+} as const;
+
+type ArtworkKey = keyof typeof artworkClasses;
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
     <div className="mb-5 inline-flex items-center gap-2 border border-dory-brand-line bg-dory-brand-soft px-3 py-1.5 text-xs font-semibold tracking-wide text-brand uppercase shadow-[var(--dory-shadow-sm)]">
       <Sparkles className="size-3.5" />
       {children}
+    </div>
+  );
+}
+
+function ScreenshotFrame({
+  src,
+  alt,
+  artwork = "sunrise",
+  priority,
+  className,
+  imageClassName,
+}: {
+  src: StaticImageData;
+  alt: string;
+  artwork?: ArtworkKey;
+  priority?: boolean;
+  className?: string;
+  imageClassName?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "dory-artwork-frame relative overflow-hidden rounded-[28px] bg-dory-brand-soft p-6 shadow-[var(--dory-shadow-panel)] sm:rounded-[32px] sm:p-8",
+        artworkClasses[artwork],
+        className,
+      )}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        priority={priority}
+        className={cn(
+          "relative z-10 aspect-[1.45/1] w-full rounded-[18px] bg-white object-cover object-left-top shadow-[0_22px_70px_rgba(8,17,31,0.2)] sm:rounded-[22px]",
+          imageClassName,
+        )}
+      />
     </div>
   );
 }
@@ -134,14 +178,13 @@ export default async function Page({ params }: PageProps) {
             </div>
 
             <div className="relative z-10 min-w-0 md:h-[520px] lg:h-[580px]">
-              <div className="border border-dory-line bg-dory-brand-soft p-3 shadow-[var(--dory-shadow-panel)] md:absolute md:top-1/2 md:left-0 md:w-[760px] md:-translate-y-1/2 md:rounded-[28px] md:p-0 lg:w-[900px] xl:w-[980px]">
-                <Image
-                  src={HeroPreview}
-                  alt={t("heroPreviewAlt")}
-                  priority
-                  className="aspect-[1.45/1] w-full border border-dory-line object-cover object-left-top md:rounded-[28px]"
-                />
-              </div>
+              <ScreenshotFrame
+                src={HeroPreview}
+                alt={t("heroPreviewAlt")}
+                priority
+                artwork="sunrise"
+                className="md:absolute md:top-1/2 md:left-0 md:w-[760px] md:-translate-y-1/2 lg:w-[900px] xl:w-[980px]"
+              />
             </div>
           </section>
 
@@ -223,13 +266,12 @@ export default async function Page({ params }: PageProps) {
             </div>
 
             <div className="grid gap-5 lg:grid-cols-[1.25fr_0.75fr]">
-              <div className="min-w-0 border border-slate-950/10 bg-white p-2 dark:border-white/12 dark:bg-white/6">
-                <Image
-                  src={HeroPreview}
-                  alt={t("coreWorkspace.screenshotAlt")}
-                  className="aspect-[1.45/1] w-full object-cover object-left-top"
-                />
-              </div>
+              <ScreenshotFrame
+                src={HeroPreview}
+                alt={t("coreWorkspace.screenshotAlt")}
+                artwork="temeraire"
+                className="min-w-0 shadow-[var(--dory-shadow-card)]"
+              />
               <div className="grid gap-3">
                 {workspaceFeatureKeys.map((key, index) => {
                   const Icon = workspaceFeatureIcons[index];
@@ -262,13 +304,13 @@ export default async function Page({ params }: PageProps) {
                   {t("tableOverview.description")}
                 </p>
               </div>
-              <div className="border-t border-slate-950/10 p-2 dark:border-white/12">
-                <Image
-                  src={AiTablePreview}
-                  alt={t("tableOverview.screenshotAlt")}
-                  className="aspect-[1.38/1] w-full object-cover object-left-top"
-                />
-              </div>
+              <ScreenshotFrame
+                src={AiTablePreview}
+                alt={t("tableOverview.screenshotAlt")}
+                artwork="fog"
+                className="mx-5 mb-5 rounded-[24px] p-5 shadow-none sm:mx-6 sm:mb-6 sm:p-6"
+                imageClassName="aspect-[1.38/1]"
+              />
             </div>
 
             <div className="border border-slate-950/10 bg-white dark:border-white/12 dark:bg-white/6">
@@ -281,13 +323,13 @@ export default async function Page({ params }: PageProps) {
                   {t("chatbot.description")}
                 </p>
               </div>
-              <div className="border-t border-slate-950/10 p-2 dark:border-white/12">
-                <Image
-                  src={ChatbotPreview}
-                  alt={t("chatbot.title")}
-                  className="aspect-[1.38/1] w-full object-cover object-left-top"
-                />
-              </div>
+              <ScreenshotFrame
+                src={ChatbotPreview}
+                alt={t("chatbot.title")}
+                artwork="sunrise"
+                className="mx-5 mb-5 rounded-[24px] p-5 shadow-none sm:mx-6 sm:mb-6 sm:p-6"
+                imageClassName="aspect-[1.38/1]"
+              />
             </div>
           </section>
 
@@ -315,6 +357,7 @@ export default async function Page({ params }: PageProps) {
                       width={32}
                       height={32}
                       className="max-h-8 max-w-8 object-contain"
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </div>
                   <div className="min-w-0 text-base font-medium md:text-lg">{database.name}</div>
