@@ -13,7 +13,11 @@ export const metadata: Metadata = {
   description:
     'Dory is an AI-native data workspace for querying databases, understanding spreadsheets, and talking with data.',
   icons: {
-    icon: '/logo.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/logo.png', type: 'image/png' }
+    ],
+    shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png'
   }
 };
