@@ -1,6 +1,6 @@
 import LangBlogPostPage, {
   generateMetadata as generateLangMetadata,
-} from "../../../[lang]/blog/[slug]/page";
+} from "../../../[lang]/blog/[...slug]/page";
 
 const lang = "en";
 
@@ -13,7 +13,7 @@ export function generateStaticParams() {
 export function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }) {
   return generateLangMetadata({
     params: params.then(({ slug }) => ({
@@ -26,7 +26,7 @@ export function generateMetadata({
 export default function BlogPostPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }) {
   return (
     <LangBlogPostPage

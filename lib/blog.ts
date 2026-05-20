@@ -104,12 +104,14 @@ function stripMarkdown(markdown: string) {
     .trim();
 }
 
-function buildGitHubBlobUrl(path: string) {
-  return `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/blob/main/${path}`;
-}
-
 function localizePath(path: string, locale: Language) {
   return locale === defaultLanguage ? path : `/${locale}${path}`;
+}
+
+function buildReleaseNoteBlogPath(slug: string, locale: Language) {
+  const versionSlug = isVersionSlug(slug) ? slug.replaceAll("-", ".") : slug;
+
+  return localizePath(`/blog/release-notes/${versionSlug}`, locale);
 }
 
 function normalizeContentSlug(value: string) {
@@ -144,8 +146,8 @@ function buildReleasePost(
     title,
     description: descriptionSource.slice(0, 180),
     version,
-    href: localizePath(`/docs/release-notes/${slug.replaceAll(".", "-")}`, locale),
-    url: buildGitHubBlobUrl(item.path),
+    href: buildReleaseNoteBlogPath(slug, locale),
+    url: buildReleaseNoteBlogPath(slug, locale),
     body: content,
     excerpt: descriptionSource,
   };
@@ -305,7 +307,7 @@ export const getReleaseNotes = cache(
   },
 );
 
-export const getReleaseNoteBySlug = cache(async (slug: string) => {
+export const getReleaseNoteBySlug = cache(async (slug: string, locale: Language = defaultLanguage) => {
   const normalizedSlug = normalizeContentSlug(slug);
   const dottedSlug = isVersionSlug(normalizedSlug)
     ? normalizedSlug.replaceAll("-", ".")
@@ -328,13 +330,14 @@ export const getReleaseNoteBySlug = cache(async (slug: string) => {
           path,
         },
         raw,
+        locale,
       );
     } catch {
       continue;
     }
   }
 
-  const posts = await getReleaseNotes();
+  const posts = await getReleaseNotes(locale);
   return (
     posts.find((post) => {
       const normalizedPostSlug = normalizeContentSlug(post.slug);
