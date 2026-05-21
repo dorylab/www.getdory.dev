@@ -297,7 +297,7 @@ export function DoryOgImage({
           fontWeight: 600
         }}
       >
-        <div>www.getdory.dev</div>
+        <div>getdory.dev</div>
         <div
           style={{
             display: 'flex',

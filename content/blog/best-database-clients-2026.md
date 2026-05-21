@@ -15,7 +15,7 @@ This guide compares popular database clients and SQL GUI tools for developers, a
 
 | Database client                                            | Best for                                                                    | Platforms                      | Open source       | Notable strengths                                                       |
 | ---------------------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------ | ----------------- | ----------------------------------------------------------------------- |
-| [Dory](https://www.getdory.dev/)                           | AI-native database work across SQL, schema exploration, results, and charts | Desktop, Docker, self-hosted   | Yes               | SQL Console, Explorer, schema-aware AI Chat, charts, saved queries      |
+| [Dory](https://getdory.dev/)                           | AI-native database work across SQL, schema exploration, results, and charts | Desktop, Docker, self-hosted   | Yes               | SQL Console, Explorer, schema-aware AI Chat, charts, saved queries      |
 | [DBeaver](https://dbeaver.io/)                             | Broad database coverage and power-user administration                       | Windows, macOS, Linux          | Community edition | Universal database tool, SQL editor, data editor, import/export         |
 | [DataGrip](https://www.jetbrains.com/datagrip/)            | IDE-style SQL development                                                   | Windows, macOS, Linux          | No                | Smart completion, refactoring, inspections, JetBrains workflow          |
 | [TablePlus](https://tableplus.com/)                        | Fast native database management with a polished interface                   | macOS, Windows, Linux, iOS     | No                | Native UI, inline editing, safe mode, multiple tabs                     |
@@ -42,7 +42,7 @@ A strong database client should do more than open a connection string. Before ch
 
 ## 1. Dory
 
-[Dory](https://www.getdory.dev/) is an AI-native data workspace and database client built for SQL, schema exploration, results, charts, and AI-assisted analysis in one workflow.
+[Dory](https://getdory.dev/) is an AI-native data workspace and database client built for SQL, schema exploration, results, charts, and AI-assisted analysis in one workflow.
 
 Dory supports ClickHouse, PostgreSQL, Neon, MySQL, MariaDB, SQL Server, Oracle, SQLite, DuckDB, MotherDuck, and cloud database setups. After creating a connection, you can browse databases and schemas in Explorer, write SQL in SQL Console, inspect result tables, create charts, save reusable queries, and ask AI for help with schema context.
 
@@ -247,7 +247,7 @@ Dory is both. It works as a database client for connecting to databases, browsin
 
 Start from your workflow, not from a feature checklist.
 
-If you want a modern AI-native database client for SQL, schema exploration, charts, saved queries, and result-aware assistance, try [Dory](https://www.getdory.dev/).
+If you want a modern AI-native database client for SQL, schema exploration, charts, saved queries, and result-aware assistance, try [Dory](https://getdory.dev/).
 
 If you need the widest traditional database tooling, try DBeaver or DbVisualizer. If you want a developer IDE, try DataGrip. If you want a fast native GUI, try TablePlus or Postico 2. If you need database-specific administration, use pgAdmin, MySQL Workbench, phpMyAdmin, or HeidiSQL.
 

@@ -15,7 +15,7 @@ description: "对比 2026 年值得关注的数据库客户端与 SQL GUI 工具
 
 | 数据库客户端                                               | 适合场景                                         | 平台                          | 开源              | 主要优势                                                    |
 | ---------------------------------------------------------- | ------------------------------------------------ | ----------------------------- | ----------------- | ----------------------------------------------------------- |
-| [Dory](https://www.getdory.dev/)                           | AI 原生的 SQL、schema 探索、结果分析和图表工作流 | Desktop、Docker、自托管       | 是                | SQL Console、Explorer、schema-aware AI Chat、图表、保存查询 |
+| [Dory](https://getdory.dev/)                           | AI 原生的 SQL、schema 探索、结果分析和图表工作流 | Desktop、Docker、自托管       | 是                | SQL Console、Explorer、schema-aware AI Chat、图表、保存查询 |
 | [DBeaver](https://dbeaver.io/)                             | 广泛数据库支持和高级数据库管理                   | Windows、macOS、Linux         | Community edition | 通用数据库工具、SQL 编辑器、数据编辑、导入导出              |
 | [DataGrip](https://www.jetbrains.com/datagrip/)            | IDE 风格的 SQL 开发                              | Windows、macOS、Linux         | 否                | 智能补全、重构、检查、JetBrains 工作流                      |
 | [TablePlus](https://tableplus.com/)                        | 快速、原生、界面精致的数据库管理                 | macOS、Windows、Linux、iOS    | 否                | 原生 UI、行内编辑、安全模式、多标签                         |
@@ -42,7 +42,7 @@ description: "对比 2026 年值得关注的数据库客户端与 SQL GUI 工具
 
 ## 1. Dory
 
-[Dory](https://www.getdory.dev/) 是一个 AI 原生数据工作区，也是一个面向 SQL、schema 探索、结果分析、图表和 AI 辅助分析的数据库客户端。
+[Dory](https://getdory.dev/) 是一个 AI 原生数据工作区，也是一个面向 SQL、schema 探索、结果分析、图表和 AI 辅助分析的数据库客户端。
 
 Dory 支持 ClickHouse、PostgreSQL、Neon、MySQL、MariaDB、SQL Server、Oracle、SQLite、DuckDB、MotherDuck 和云数据库配置。创建连接后，你可以在 Explorer 中浏览数据库和 schema，在 SQL Console 中写 SQL，查看结果表，创建图表，保存可复用查询，并让 AI 基于 schema 上下文提供帮助。
 
@@ -247,7 +247,7 @@ Dory 两者都是。它可以作为数据库客户端连接数据库、浏览 sc
 
 从你的工作流出发，而不是从功能清单出发。
 
-如果你想要一个现代 AI 原生数据库客户端，用于 SQL、schema 探索、图表、保存查询和 result-aware assistance，可以试试 [Dory](https://www.getdory.dev/)。
+如果你想要一个现代 AI 原生数据库客户端，用于 SQL、schema 探索、图表、保存查询和 result-aware assistance，可以试试 [Dory](https://getdory.dev/)。
 
 如果你需要最广泛的传统数据库工具能力，可以试试 DBeaver 或 DbVisualizer。如果你想要开发者 IDE，可以试试 DataGrip。如果你想要快速原生 GUI，可以试试 TablePlus 或 Postico 2。如果你需要数据库专项管理，可以使用 pgAdmin、MySQL Workbench、phpMyAdmin 或 HeidiSQL。
 

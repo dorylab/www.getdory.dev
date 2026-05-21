@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.getdory.dev'),
+  metadataBase: new URL('https://getdory.dev'),
   title: {
     default: 'Dory',
     template: '%s | Dory'

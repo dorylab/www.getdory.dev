@@ -15,7 +15,7 @@ description: "2026 年に検討したいデータベースクライアントと 
 
 | データベースクライアント                                   | 得意な用途                                           | プラットフォーム               | オープンソース    | 主な強み                                                              |
 | ---------------------------------------------------------- | ---------------------------------------------------- | ------------------------------ | ----------------- | --------------------------------------------------------------------- |
-| [Dory](https://www.getdory.dev/)                           | AI ネイティブな SQL、schema 探索、結果分析、チャート | Desktop、Docker、セルフホスト  | はい              | SQL Console、Explorer、schema-aware AI Chat、チャート、保存済みクエリ |
+| [Dory](https://getdory.dev/)                           | AI ネイティブな SQL、schema 探索、結果分析、チャート | Desktop、Docker、セルフホスト  | はい              | SQL Console、Explorer、schema-aware AI Chat、チャート、保存済みクエリ |
 | [DBeaver](https://dbeaver.io/)                             | 幅広いデータベース対応と管理機能                     | Windows、macOS、Linux          | Community edition | 汎用 DB ツール、SQL エディター、データ編集、インポート/エクスポート   |
 | [DataGrip](https://www.jetbrains.com/datagrip/)            | IDE 形式の SQL 開発                                  | Windows、macOS、Linux          | いいえ            | スマート補完、リファクタリング、検査、JetBrains ワークフロー          |
 | [TablePlus](https://tableplus.com/)                        | 高速で洗練されたネイティブ DB 管理                   | macOS、Windows、Linux、iOS     | いいえ            | ネイティブ UI、インライン編集、安全モード、複数タブ                   |
@@ -42,7 +42,7 @@ description: "2026 年に検討したいデータベースクライアントと 
 
 ## 1. Dory
 
-[Dory](https://www.getdory.dev/) は、SQL、schema 探索、結果、チャート、AI 支援分析を 1 つの流れにまとめた AI ネイティブなデータワークスペース兼データベースクライアントです。
+[Dory](https://getdory.dev/) は、SQL、schema 探索、結果、チャート、AI 支援分析を 1 つの流れにまとめた AI ネイティブなデータワークスペース兼データベースクライアントです。
 
 Dory は ClickHouse、PostgreSQL、Neon、MySQL、MariaDB、SQL Server、Oracle、SQLite、DuckDB、MotherDuck、クラウド DB 構成に対応しています。接続を作成した後、Explorer でデータベースと schema を閲覧し、SQL Console で SQL を書き、結果テーブルを確認し、チャートを作成し、再利用可能なクエリを保存し、schema コンテキストを使って AI に質問できます。
 
@@ -247,7 +247,7 @@ Dory は両方です。データベースに接続し、schema を閲覧し、SQ
 
 機能リストではなく、自分のワークフローから選びましょう。
 
-SQL、schema 探索、チャート、保存済みクエリ、結果を理解した支援を備えたモダンな AI ネイティブ DB クライアントが欲しいなら、[Dory](https://www.getdory.dev/) を試してください。
+SQL、schema 探索、チャート、保存済みクエリ、結果を理解した支援を備えたモダンな AI ネイティブ DB クライアントが欲しいなら、[Dory](https://getdory.dev/) を試してください。
 
 最も広い従来型 DB ツールが必要なら DBeaver または DbVisualizer。開発者向け IDE が欲しいなら DataGrip。高速なネイティブ GUI が欲しいなら TablePlus または Postico 2。DB 専用管理が必要なら pgAdmin、MySQL Workbench、phpMyAdmin、HeidiSQL を選ぶとよいでしょう。
 

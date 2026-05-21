@@ -50,7 +50,7 @@ async function fetchJson(url) {
   const response = await fetch(url, {
     headers: {
       Accept: "application/vnd.github+json",
-      "User-Agent": "docs.getdory.dev-release-notes-sync",
+      "User-Agent": "getdory.dev-release-notes-sync",
     },
   });
 
@@ -64,7 +64,7 @@ async function fetchJson(url) {
 async function fetchText(url) {
   const response = await fetch(url, {
     headers: {
-      "User-Agent": "docs.getdory.dev-release-notes-sync",
+      "User-Agent": "getdory.dev-release-notes-sync",
     },
   });
 

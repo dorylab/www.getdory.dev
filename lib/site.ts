@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Dory - AI Native Data Workspace, Database Client, SQL Console With AI Assistance",
   description:
     "Navicat alternative - Dory is an AI native database client and SQL console that helps developers and data professionals manage databases more efficiently with AI assistance.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.getdory.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://getdory.dev",
   locale: "en_US",
   creator: "Dory Team",
   keywords: [
@@ -52,8 +52,8 @@ export const siteConfig = {
     twitter: "@dorystudio",
   },
   getStartedUrl:
-    "https://www.getdory.dev/getting-started/introduction",
-  ogImage: "https://www.getdory.dev/og.png",
+    "https://getdory.dev/getting-started/introduction",
+  ogImage: "https://getdory.dev/og.png",
   links: {
     twitter: "https://x.com/dorystudio",
     github: "https://github.com/dorylab/dory",

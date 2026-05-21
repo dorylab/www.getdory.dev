@@ -5,7 +5,7 @@ import { getBlogSlugs } from '@/lib/blog';
 import { defaultLanguage, locales } from '@/lib/i18n';
 import { source } from '@/lib/source';
 
-const siteUrl = 'https://www.getdory.dev';
+const siteUrl = 'https://getdory.dev';
 const docsBasePath = '/docs';
 const localizedDocExtensions = ['es', 'zh', 'ja'] as const;
 
