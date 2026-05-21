@@ -6,6 +6,7 @@ import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://getdory.dev'),
+  manifest: '/site.webmanifest',
   title: {
     default: 'Dory',
     template: '%s | Dory'
@@ -15,10 +16,15 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/logo.png', type: 'image/png' }
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' }
     ],
     shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png'
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }
+    ]
   }
 };
 

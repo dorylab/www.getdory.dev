@@ -45,9 +45,13 @@ docker run -d --name dory \
   dorylab/dory:latest
 ```
 
-## Persist Data
+## Persistent Data: PGlite (Lightweight Deployments)
 
-Dory uses PGlite file storage by default for its own application data. In Docker, keep that file under `/app/data` and mount `/app/data` to persistent disk storage:
+Dory uses PGlite as a lightweight embedded application database by default. It is a good fit for local evaluation, demos, single-node self-hosting, and small-team trials.
+
+PGlite can persist data through the filesystem, but it is not a traditional multi-connection Postgres server. For formal team production environments, use external Postgres instead.
+
+If you continue using PGlite, mount `/app/data` to persistent disk storage and back up that directory regularly:
 
 ```bash
 docker volume create dory-data
@@ -75,9 +79,9 @@ docker run -d --name dory \
 
 SQLite and DuckDB files also need to be mounted into the container if you want Dory to read them.
 
-## Use Postgres for Application Data
+## Recommended Production Setup: Postgres
 
-For production, you can store Dory application data in Postgres:
+For formal team production environments, store Dory application data in external Postgres and manage backups, recovery, monitoring, and permissions for that database:
 
 ```bash
 DB_TYPE=postgres

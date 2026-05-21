@@ -63,9 +63,13 @@ DORY_AI_API_KEY=replace_with_api_key
 DORY_AI_URL=https://api.openai.com/v1
 ```
 
-## 持久化数据
+## 持久化数据：PGlite（适合轻量部署）
 
-Dory 默认使用 PGlite 文件存储自己的应用数据。Docker 中默认数据路径位于 `/app/data` 下，生产环境应挂载持久化目录，避免容器重建后数据丢失。
+Dory 默认使用 PGlite 作为轻量级内置应用数据库，适合本地评估、Demo、单机自托管和小团队试用。
+
+PGlite 使用文件系统持久化时可以保存数据，但它不是传统多连接 Postgres Server。正式团队生产环境建议使用外部 Postgres。
+
+如果继续使用 PGlite，请务必挂载 `/app/data` 到持久化存储，并定期备份这个目录。
 
 使用 Docker named volume：
 
@@ -95,9 +99,9 @@ docker run -d --name dory \
 
 如果要连接 SQLite 或 DuckDB 文件，也需要把文件所在目录挂载到容器中，并在 Dory 连接表单中填写容器内绝对路径。
 
-## 使用 Postgres 存储应用数据
+## 推荐生产方案：Postgres
 
-生产环境也可以用 Postgres 存储 Dory 自己的应用数据：
+如用于正式团队生产环境，推荐使用外部 Postgres 存储 Dory 自己的应用数据，并对数据库进行备份、恢复、监控和权限管理：
 
 ```bash
 DB_TYPE=postgres

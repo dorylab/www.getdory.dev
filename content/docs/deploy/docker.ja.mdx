@@ -45,9 +45,13 @@ docker run -d --name dory \
   dorylab/dory:latest
 ```
 
-## データを永続化する
+## 永続データ: PGlite（軽量デプロイ向け）
 
-Dory は、独自のアプリケーション データにデフォルトで PGlite ファイル ストレージを使用します。 Docker で、そのファイルを`/app/data `の下に保持し、`/app/data `を永続ディスク ストレージにマウントします。
+Dory は、軽量な組み込みアプリケーション データベースとして PGlite をデフォルトで使用します。ローカル評価、デモ、単一ノードのセルフホスティング、小規模チームでの試用に適しています。
+
+PGlite はファイルシステムにデータを永続化できますが、従来のマルチ接続 Postgres Server ではありません。正式なチーム本番環境では、外部 Postgres を使用してください。
+
+PGlite を引き続き使用する場合は、`/app/data `を永続ストレージにマウントし、このディレクトリを定期的にバックアップしてください。
 
 ```bash
 docker volume create dory-data
@@ -75,9 +79,9 @@ docker run -d --name dory \
 
 Dory に SQLite および DuckDB ファイルを読み取らせたい場合は、それらのファイルもコンテナにマウントする必要があります。
 
-## アプリケーション データに Postgres を使用する
+## 推奨本番構成: Postgres
 
-運用環境では、Dory アプリケーション データを Postgres に保存できます。
+正式なチーム本番環境では、Dory のアプリケーション データを外部 Postgres に保存し、そのデータベースのバックアップ、復旧、監視、権限管理を行ってください。
 
 ```bash
 DB_TYPE=postgres
