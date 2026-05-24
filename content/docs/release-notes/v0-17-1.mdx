@@ -1,0 +1,19 @@
+---
+title: v0.17.1
+description: Dory release notes for v0.17.1.
+---
+
+# v0.17.1
+
+[View source on GitHub](https://github.com/dorylab/dory/blob/main/release-notes/v0.17.1.md)
+
+## What's Changed
+
+### Improvements
+- **Cloud AI provider resolution**: Organization-level AI provider configuration now uses cloud-based system status to determine available providers, improving reliability and consistency across environments.
+
+### Fixes
+- **Desktop authentication reliability**: Desktop login flow is now fully decoupled from the local session mirror, eliminating race conditions and session synchronization issues during sign-in.
+
+### Internal
+- Refactored and consolidated AI provider logic across API routes and server utilities, with expanded test coverage for cloud system provider resolution and desktop session handling.
