@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 let cachedLogoDataUrl: string | undefined;
+let cachedHomeScreenshotDataUrl: string | undefined;
 
 export async function getOgLogoDataUrl() {
   if (!cachedLogoDataUrl) {
@@ -10,4 +11,13 @@ export async function getOgLogoDataUrl() {
   }
 
   return cachedLogoDataUrl;
+}
+
+export async function getHomeOgScreenshotDataUrl() {
+  if (!cachedHomeScreenshotDataUrl) {
+    const screenshot = await readFile(path.join(process.cwd(), 'public/actions.png'));
+    cachedHomeScreenshotDataUrl = `data:image/png;base64,${screenshot.toString('base64')}`;
+  }
+
+  return cachedHomeScreenshotDataUrl;
 }

@@ -311,6 +311,168 @@ export function DoryOgImage({
   );
 }
 
+export function HomeOgImage({
+  logoSrc,
+  screenshotSrc
+}: {
+  title: string;
+  description?: string;
+  logoSrc: string;
+  screenshotSrc: string;
+}) {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        display: 'flex',
+        width: '1200px',
+        height: '630px',
+        overflow: 'hidden',
+        background: '#f3f7fb',
+        color: '#142033',
+        fontFamily:
+          'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'radial-gradient(circle at 18% 18%, rgba(45, 132, 255, 0.14), transparent 34%), radial-gradient(circle at 82% 8%, rgba(115, 94, 255, 0.1), transparent 28%), linear-gradient(180deg, #fbfdff 0%, #eef4fa 100%)'
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          opacity: 0.58,
+          backgroundImage:
+            'linear-gradient(rgba(38, 62, 92, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(38, 62, 92, 0.08) 1px, transparent 1px)',
+          backgroundSize: '44px 44px'
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          left: 40,
+          top: 126,
+          display: 'flex',
+          width: 1120,
+          height: 464,
+          overflow: 'hidden',
+          borderRadius: 26,
+          background: '#111317',
+          boxShadow: '0 22px 54px rgba(17, 24, 39, 0.16)'
+        }}
+      >
+        <img
+          src={screenshotSrc}
+          alt="Dory SQL console"
+          width={1120}
+          height={464}
+          style={{
+            width: 1120,
+            height: 464,
+            objectFit: 'cover',
+            objectPosition: 'center top'
+          }}
+        />
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          left: 40,
+          top: 126,
+          display: 'flex',
+          width: 1120,
+          height: 464,
+          borderRadius: 26,
+          background:
+            'linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 48%, rgba(5, 6, 8, 0.12) 100%)'
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 42,
+          display: 'flex',
+          width: 1200,
+          height: 58,
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 16
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 10
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              width: 30,
+              height: 30,
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+              borderRadius: 7,
+              background: '#ffffff',
+              boxShadow: '0 10px 30px rgba(25, 74, 128, 0.16)'
+            }}
+          >
+            <img
+              src={logoSrc}
+              alt="Dory"
+              width={30}
+              height={30}
+              style={{ width: 30, height: 30, objectFit: 'contain' }}
+            />
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              fontSize: 36,
+              lineHeight: 1,
+              fontWeight: 850,
+              letterSpacing: 0,
+              textShadow: '0 12px 40px rgba(32, 80, 130, 0.1)'
+            }}
+          >
+            Dory
+          </div>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            width: 1,
+            height: 28,
+            background: 'rgba(20, 32, 51, 0.18)'
+          }}
+        />
+        <div
+          style={{
+            display: 'flex',
+            color: 'rgba(20, 32, 51, 0.62)',
+            fontSize: 28,
+            lineHeight: 1.2,
+            fontWeight: 660,
+            letterSpacing: 0
+          }}
+        >
+          AI-Native Data Workspace
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export type BlogOgVariant = 'default' | 'ai-providers';
 
 type BlogOgImageProps = {
