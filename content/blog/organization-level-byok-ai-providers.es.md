@@ -1,6 +1,8 @@
 ---
 title: "Dory presenta BYOK de IA a nivel de organizacion"
 description: "Dory ahora admite BYOK de IA a nivel de organizacion, para que los equipos puedan elegir su propio proveedor, modelo y endpoint manteniendo un proveedor del sistema como fallback."
+category: "AI Providers"
+ogVariant: "ai-providers"
 ---
 
 # Dory presenta BYOK de IA a nivel de organizacion

@@ -1,6 +1,8 @@
 ---
 title: "Dory 现已支持组织级 AI BYOK"
 description: "Dory 现已支持组织级 AI BYOK，让团队可以为不同组织选择自己的 AI Provider、模型和 endpoint，同时保留系统 Provider 作为 fallback。"
+category: "AI Providers"
+ogVariant: "ai-providers"
 ---
 
 # Dory 现已支持组织级 AI BYOK

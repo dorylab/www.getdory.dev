@@ -1,9 +1,10 @@
 import { ImageResponse } from "next/og";
 import { notFound } from "next/navigation";
 
+import { getBlogOgConfig } from "@/lib/blog-og";
 import { getBlogPostBySlug, getBlogSlugs } from "@/lib/blog";
 import { locales, type Language } from "@/lib/i18n";
-import { DoryOgImage } from "@/lib/og-image";
+import { BlogOgImage } from "@/lib/og-image";
 import { getOgLogoDataUrl } from "@/lib/og-logo";
 
 export const revalidate = false;
@@ -25,16 +26,18 @@ export async function GET(
   }
 
   const logoSrc = await getOgLogoDataUrl();
+  const ogConfig = getBlogOgConfig(post, slug);
 
   return new ImageResponse(
     (
-      <DoryOgImage
+      <BlogOgImage
         title={post.title}
         description={post.description}
-        site="Dory Blog"
-        label="Blog"
+        slug={slug}
+        category={ogConfig.category}
         logoSrc={logoSrc}
-        tone="release"
+        locale={lang}
+        variant={ogConfig.variant}
       />
     ),
     {

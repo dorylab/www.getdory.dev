@@ -1,6 +1,8 @@
 ---
 title: "Introducing Organization-Level BYOK for AI in Dory"
 description: "Dory now supports organization-level BYOK for AI, so teams can choose their own provider, model, and endpoint while keeping a system provider as fallback."
+category: "AI Providers"
+ogVariant: "ai-providers"
 ---
 
 # Introducing Organization-Level BYOK for AI in Dory

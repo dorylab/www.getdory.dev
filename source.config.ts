@@ -17,7 +17,7 @@ export const docs = defineDocs({
 export const blog = defineCollections({
   type: 'doc',
   dir: 'content/blog',
-  schema: pageSchema,
+  schema: pageSchema.loose(),
   postprocess: {
     includeProcessedMarkdown: true
   }

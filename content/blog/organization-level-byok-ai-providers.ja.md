@@ -1,6 +1,8 @@
 ---
 title: "Dory が組織単位の AI BYOK に対応しました"
 description: "Dory は組織単位の AI BYOK に対応し、チームが独自の Provider、モデル、エンドポイントを選びながら、System Provider を fallback として残せるようになりました。"
+category: "AI Providers"
+ogVariant: "ai-providers"
 ---
 
 # Dory が組織単位の AI BYOK に対応しました

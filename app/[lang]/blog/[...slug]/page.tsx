@@ -35,6 +35,21 @@ function normalizeReleaseNoteSlug(slug: string) {
   return /^v?\d+(?:[-.]\d+)*$/i.test(slug) ? slug.replaceAll(".", "-") : slug;
 }
 
+function getBlogPostPath(slug: string, lang: Language) {
+  return lang === defaultLanguage ? `/blog/${slug}` : `/${lang}/blog/${slug}`;
+}
+
+function getBlogPostOgImage(slug: string, lang: Language) {
+  const localeSegment = lang === defaultLanguage ? "" : `/${lang}`;
+
+  return {
+    url: `/og${localeSegment}/blog/${slug}/image.png`,
+    width: 1200,
+    height: 630,
+    alt: "Dory blog post preview",
+  };
+}
+
 export function generateStaticParams() {
   return locales.flatMap((lang) =>
     getBlogSlugs().map((slug) => ({
@@ -86,17 +101,30 @@ export async function generateMetadata({
     return {};
   }
 
+  const postPath = blogSlug ? getBlogPostPath(blogSlug, locale) : undefined;
+  const image = blogSlug ? getBlogPostOgImage(blogSlug, locale) : undefined;
+
   return {
     title: post.title,
     description: post.description,
+    alternates: postPath
+      ? {
+          canonical: postPath,
+        }
+      : undefined,
     openGraph: {
       title: post.title,
       description: post.description,
+      url: postPath,
+      siteName: "Dory Blog",
+      type: "article",
+      images: image ? [image] : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
+      images: image ? [image.url] : undefined,
     },
   };
 }

@@ -310,3 +310,440 @@ export function DoryOgImage({
     </div>
   );
 }
+
+export type BlogOgVariant = 'default' | 'ai-providers';
+
+type BlogOgImageProps = {
+  title: string;
+  description?: string;
+  slug: string;
+  category: string;
+  logoSrc: string;
+  locale?: string;
+  variant?: BlogOgVariant;
+};
+
+function getBlogOgTerms(title: string, description?: string) {
+  const source = `${title} ${description ?? ''}`;
+  const tokens = source
+    .replace(/[^a-zA-Z0-9\s-]/g, ' ')
+    .split(/\s+/)
+    .map((word) => word.trim())
+    .filter((word) => word.length > 2)
+    .filter(
+      (word) =>
+        ![
+          'the',
+          'and',
+          'for',
+          'with',
+          'your',
+          'from',
+          'that',
+          'this',
+          'into',
+          'now',
+          'can',
+          'while'
+        ].includes(word.toLowerCase())
+    );
+
+  return Array.from(new Set(tokens))
+    .slice(0, 9)
+    .map((word) => word.toUpperCase());
+}
+
+function getBlogOgTitleSize(title: string) {
+  if (title.length > 72) {
+    return 48;
+  }
+
+  if (title.length > 48) {
+    return 56;
+  }
+
+  return 66;
+}
+
+function DoryBlogOgCard({
+  title,
+  description,
+  slug,
+  category,
+  logoSrc,
+  locale = 'en',
+  variant = 'default'
+}: BlogOgImageProps) {
+  const terms = getBlogOgTerms(title, description);
+  const displayTerms =
+    terms.length >= 6
+      ? terms.slice(0, 4)
+      : [
+          ...terms,
+          'DATABASES',
+          'WORKFLOWS',
+          'CONTEXT',
+          'SQL',
+          'AI',
+          'DORY'
+        ].slice(0, 4);
+  const displayTitle = title.length > 88 ? `${title.slice(0, 85)}...` : title;
+  const displayDescription =
+    description && description.length > 138
+      ? `${description.slice(0, 135)}...`
+      : description;
+  const footerPath =
+    slug.length > 46 ? `getdory.dev/blog/${slug.slice(0, 43)}...` : `getdory.dev/blog/${slug}`;
+  const isAiProviders = variant === 'ai-providers';
+  const signalRows = [
+    ['SOURCE', locale.toUpperCase()],
+    ['TYPE', category.toUpperCase()],
+    ['CONTEXT', isAiProviders ? 'BYOK' : displayTerms[0] ?? 'DORY']
+  ];
+
+  return (
+    <div
+      style={{
+        position: 'relative',
+        display: 'flex',
+        width: '1200px',
+        height: '630px',
+        overflow: 'hidden',
+        background: '#08090b',
+        color: '#f8fbff',
+        fontFamily:
+          'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            isAiProviders
+              ? 'radial-gradient(circle at 14% 18%, rgba(100, 92, 255, 0.22), transparent 28%), radial-gradient(circle at 92% 70%, rgba(42, 168, 255, 0.18), transparent 30%), linear-gradient(135deg, #08090b 0%, #101018 48%, #07101f 100%)'
+              : 'radial-gradient(circle at 14% 18%, rgba(57, 151, 255, 0.2), transparent 28%), radial-gradient(circle at 92% 70%, rgba(16, 185, 129, 0.16), transparent 30%), linear-gradient(135deg, #08090b 0%, #101318 48%, #04111c 100%)'
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          left: -120,
+          bottom: -180,
+          display: 'flex',
+          width: 720,
+          height: 420,
+          borderRadius: '50%',
+          border: '1px solid rgba(42, 168, 255, 0.22)'
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          opacity: 0.18,
+          backgroundImage:
+            'linear-gradient(120deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
+          backgroundSize: '26px 26px'
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          left: 44,
+          top: 42,
+          display: 'flex',
+          width: 1112,
+          height: 546,
+          border: '1px solid rgba(255, 255, 255, 0.14)',
+          borderRadius: 24,
+          background: 'rgba(3, 5, 8, 0.72)',
+          boxShadow: '0 30px 90px rgba(0, 0, 0, 0.36)'
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          left: 76,
+          right: 76,
+          top: 70,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          color: 'rgba(248, 251, 255, 0.72)',
+          fontSize: 18,
+          fontWeight: 720
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <div
+            style={{
+              display: 'flex',
+              width: 44,
+              height: 44,
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+              borderRadius: 12,
+              background: '#ffffff'
+            }}
+          >
+            <img
+              src={logoSrc}
+              alt="Dory"
+              width={44}
+              height={44}
+              style={{ width: 44, height: 44, objectFit: 'contain' }}
+            />
+          </div>
+          <div style={{ display: 'flex' }}>Dory Blog</div>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            border: '1px solid rgba(42, 168, 255, 0.38)',
+            borderRadius: 999,
+            padding: '9px 15px',
+            color: '#9ed8ff',
+            fontSize: 14,
+            fontWeight: 760,
+            letterSpacing: 1.6,
+            textTransform: 'uppercase'
+          }}
+        >
+          {category}
+        </div>
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          left: 76,
+          right: 76,
+          top: 132,
+          display: 'flex',
+          height: 1,
+          background: 'linear-gradient(90deg, rgba(42, 168, 255, 0.44), rgba(255,255,255,0.08), rgba(18, 195, 140, 0.32))'
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          left: 76,
+          top: 166,
+          display: 'flex',
+          width: 650,
+          flexDirection: 'column'
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            width: 104,
+            height: 28,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 999,
+            background: 'rgba(42, 168, 255, 0.16)',
+            color: '#65c3ff',
+            fontSize: 13,
+            fontWeight: 820,
+            letterSpacing: 2.2,
+            textTransform: 'uppercase'
+          }}
+        >
+          {isAiProviders ? 'BYOK AI' : 'Article'}
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            marginTop: 22,
+            fontSize: getBlogOgTitleSize(displayTitle),
+            lineHeight: 0.98,
+            fontWeight: 850,
+            letterSpacing: 0
+          }}
+        >
+          {displayTitle}
+        </div>
+        {displayDescription ? (
+          <div
+            style={{
+              display: 'flex',
+              marginTop: 24,
+              width: 620,
+              color: 'rgba(248, 251, 255, 0.62)',
+              fontSize: 25,
+              lineHeight: 1.32,
+              fontWeight: 520
+            }}
+          >
+            {displayDescription}
+          </div>
+        ) : null}
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          right: 76,
+          top: 166,
+          display: 'flex',
+          width: 330,
+          height: 330,
+          flexDirection: 'column',
+          borderRadius: 20,
+          border: '1px solid rgba(255, 255, 255, 0.13)',
+          background: 'linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.028))',
+          overflow: 'hidden'
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            height: 58,
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            borderBottom: '1px solid rgba(255,255,255,0.12)',
+            padding: '0 20px',
+            color: 'rgba(248, 251, 255, 0.58)',
+            fontSize: 13,
+            fontWeight: 800,
+            letterSpacing: 1.8,
+            textTransform: 'uppercase'
+          }}
+        >
+          <div style={{ display: 'flex' }}>Context Map</div>
+          <div style={{ display: 'flex', color: '#12c38c' }}>Live</div>
+        </div>
+        <div
+          style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: 20 }}
+        >
+          {signalRows.map(([label, value], index) => (
+            <div
+              key={label}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                borderRadius: 14,
+                background:
+                  index === 0
+                    ? 'rgba(42, 168, 255, 0.12)'
+                    : index === 1
+                      ? 'rgba(255, 129, 70, 0.12)'
+                      : 'rgba(18, 195, 140, 0.12)',
+                padding: '14px 16px'
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  color: 'rgba(248, 251, 255, 0.5)',
+                  fontSize: 12,
+                  fontWeight: 820,
+                  letterSpacing: 1.4
+                }}
+              >
+                {label}
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  maxWidth: 150,
+                  color: '#f8fbff',
+                  fontSize: 15,
+                  fontWeight: 820
+                }}
+              >
+                {value}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 20
+          }}
+        >
+          <div
+            style={{
+              position: 'relative',
+              display: 'flex',
+              width: 160,
+              height: 58,
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            {(isAiProviders
+              ? ['OPENAI', 'ANTH', 'AZURE']
+              : ['SQL', 'AI', 'DB']
+            ).map((label, index) => (
+                <div
+                  key={label}
+                  style={{
+                    position: 'absolute',
+                    left: 14 + index * 44,
+                    top: 8 + (index % 2) * 14,
+                    display: 'flex',
+                    width: isAiProviders ? 38 : 32,
+                    height: 32,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: 999,
+                    background:
+                      index === 0
+                        ? '#2aa8ff'
+                        : index === 1
+                          ? '#12c38c'
+                          : '#ff8146',
+                    boxShadow: '0 0 28px rgba(42, 168, 255, 0.28)',
+                    color: '#061018',
+                    fontSize: isAiProviders ? 7 : 9,
+                    fontWeight: 900
+                  }}
+                >
+                  {label}
+                </div>
+              ))}
+            <div
+              style={{
+                position: 'absolute',
+                left: 36,
+                right: 34,
+                top: 27,
+                display: 'flex',
+                height: 2,
+                background: 'rgba(248, 251, 255, 0.22)'
+              }}
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          left: 76,
+          right: 76,
+          bottom: 58,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          color: 'rgba(248, 251, 255, 0.6)',
+          fontSize: 18,
+          fontWeight: 700
+        }}
+      >
+        <div style={{ display: 'flex' }}>{footerPath}</div>
+        <div style={{ display: 'flex', color: '#65c3ff' }}>DORY</div>
+      </div>
+    </div>
+  );
+}
+
+export function BlogOgImage(props: BlogOgImageProps) {
+  return <DoryBlogOgCard {...props} />;
+}
