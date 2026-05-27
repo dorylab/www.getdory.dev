@@ -6,6 +6,7 @@ import { defaultLanguage, type Language } from '@/lib/i18n';
 export type MarketingOgPage = 'home' | 'blog' | 'download';
 
 const siteName = 'Dory';
+const homeOgImageVersion = '20260527-actions-large';
 const homeTitles: Partial<Record<Language, string>> = {
   en: 'Dory - AI Native Data Workspace for SQL, Databases and Spreadsheets',
   zh: 'Dory - AI 原生数据工作空间，连接数据库、SQL 与可视化分析',
@@ -15,9 +16,10 @@ const homeTitles: Partial<Record<Language, string>> = {
 
 export function getMarketingOgImage(page: MarketingOgPage, lang: string) {
   const localeSegment = lang === defaultLanguage ? '' : `/${lang}`;
+  const version = page === 'home' ? `?v=${homeOgImageVersion}` : '';
 
   return {
-    url: `/og${localeSegment}/pages/${page}/image.png`,
+    url: `/og${localeSegment}/pages/${page}/image.png${version}`,
     width: 1200,
     height: 630
   };
