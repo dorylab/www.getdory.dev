@@ -874,6 +874,40 @@ a {
   background: transparent;
 }
 
+.dory-docs-layout #nd-page figure.shiki > div:has(> button) {
+  border: 1px solid color-mix(in oklab, white 12%, transparent);
+  background: color-mix(in oklab, #0b0b0b 78%, transparent);
+  box-shadow: 0 8px 22px color-mix(in oklab, black 28%, transparent);
+}
+
+.dory-docs-layout #nd-page figure.shiki button {
+  border-radius: 0.45rem;
+  color: color-mix(in oklab, #e6edf3 72%, transparent);
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    color 120ms ease,
+    transform 120ms ease;
+}
+
+.dory-docs-layout #nd-page figure.shiki button:hover,
+.dory-docs-layout #nd-page figure.shiki button:focus-visible {
+  background: color-mix(in oklab, white 12%, transparent);
+  color: #ffffff;
+}
+
+.dory-docs-layout #nd-page figure.shiki button:active {
+  background: color-mix(in oklab, white 17%, transparent);
+  color: #ffffff;
+  transform: translateY(1px);
+}
+
+.dory-docs-layout #nd-page figure.shiki button[data-checked],
+.dory-docs-layout #nd-page figure.shiki button[aria-label*='Copied'] {
+  background: color-mix(in oklab, #48d597 18%, transparent);
+  color: #7ee2ad;
+}
+
 .dory-docs-layout #nd-page figure.shiki pre {
   border: 0;
   border-radius: 0;
