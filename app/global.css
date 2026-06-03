@@ -644,13 +644,7 @@ a {
 
 .dory-docs-shell #nd-sidebar {
   border-right: 0;
-  background:
-    linear-gradient(
-      90deg,
-      color-mix(in oklab, var(--dory-page) 92%, transparent),
-      color-mix(in oklab, var(--dory-page) 42%, transparent) 72%,
-      transparent
-    );
+  background: color-mix(in oklab, var(--dory-page) 94%, white 6%);
   box-shadow: none;
 }
 
@@ -663,7 +657,8 @@ a {
 }
 
 .dory-docs-shell #nd-sidebar [data-radix-scroll-area-viewport] {
-  padding-top: 0.85rem;
+  padding-top: 1.15rem;
+  padding-inline: 0.45rem;
 }
 
 .dory-docs-shell #nd-sidebar [data-radix-scroll-area-viewport] > div {
@@ -673,7 +668,7 @@ a {
 }
 
 .dory-docs-shell #nd-sidebar p {
-  margin: 1.7rem 0 0.5rem;
+  margin: 1.55rem 0 0.5rem;
   padding: 0 0.75rem;
   color: color-mix(in oklab, var(--dory-muted) 78%, transparent);
   font-size: 0.76rem;
@@ -685,10 +680,10 @@ a {
 .dory-docs-shell #nd-sidebar a,
 .dory-docs-shell #nd-sidebar button {
   border: 1px solid transparent;
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   min-height: 2rem;
   color: color-mix(in oklab, var(--dory-ink) 76%, transparent);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.35;
   text-decoration: none;
   transition:
@@ -704,8 +699,8 @@ a {
 
 .dory-docs-shell #nd-sidebar a:hover,
 .dory-docs-shell #nd-sidebar button:hover {
-  border-color: transparent;
-  background: color-mix(in oklab, var(--dory-ink) 5%, transparent) !important;
+  border-color: color-mix(in oklab, var(--dory-line) 72%, transparent);
+  background: color-mix(in oklab, var(--dory-ink) 4%, transparent) !important;
   color: var(--dory-ink);
 }
 
@@ -720,8 +715,8 @@ a {
 
 .dory-docs-shell #nd-sidebar a[data-active='true'],
 .dory-docs-shell #nd-sidebar a[aria-current='page'] {
-  border-color: transparent;
-  background: color-mix(in oklab, var(--dory-ink) 6%, transparent) !important;
+  border-color: color-mix(in oklab, var(--dory-line) 82%, transparent);
+  background: color-mix(in oklab, var(--dory-ink) 5%, transparent) !important;
   color: var(--dory-ink);
   font-weight: 500;
 }
@@ -747,7 +742,7 @@ a {
 
 .dory-docs-shell #nd-sidebar .border-s,
 .dory-docs-shell #nd-sidebar [class*='border-s'] {
-  border-inline-start-color: color-mix(in oklab, var(--dory-line) 44%, transparent);
+  border-inline-start-width: 0;
 }
 
 .dory-docs-layout #nd-page {
@@ -755,13 +750,13 @@ a {
 }
 
 .dory-docs-layout #nd-page {
-  max-width: 48rem;
+  max-width: 52rem;
 }
 
 .dory-docs-layout #nd-page > div:first-child:not(.prose) {
-  margin-bottom: -0.3rem;
+  margin-bottom: 0.1rem;
   color: var(--dory-toc-foreground);
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   line-height: 1.35;
 }
 
@@ -771,40 +766,40 @@ a {
 }
 
 .dory-docs-layout #nd-page .prose {
-  flex: 0 1 42rem;
-  max-width: 42rem;
+  flex: 0 1 44rem;
+  max-width: 44rem;
   font-family: var(--dory-docs-font);
-  font-size: 15.5px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.76;
+  line-height: 1.78;
   letter-spacing: 0;
 }
 
 .dory-docs-layout #nd-page .prose h1 {
-  margin-bottom: 1.15rem;
+  margin-bottom: 1.25rem;
   color: var(--dory-ink);
-  font-size: clamp(2.65rem, 4.6vw, 3.85rem);
-  font-weight: 650;
-  line-height: 0.96;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.8rem, 4.8vw, 4.25rem);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: 0;
   text-wrap: balance;
 }
 
 .dory-docs-layout #nd-page .prose h2 {
-  margin-top: 2.65rem;
-  padding-top: 1.35rem;
+  margin-top: 2.8rem;
+  padding-top: 1.45rem;
   border-top: 1px solid var(--dory-line);
   color: var(--dory-ink);
-  font-size: 1.55rem;
-  font-weight: 600;
+  font-size: 1.62rem;
+  font-weight: 500;
   letter-spacing: 0;
 }
 
 .dory-docs-layout #nd-page .prose h3 {
-  margin-top: 1.8rem;
+  margin-top: 1.95rem;
   color: var(--dory-ink);
-  font-size: 1.08rem;
-  font-weight: 600;
+  font-size: 1.12rem;
+  font-weight: 500;
   letter-spacing: 0;
 }
 
@@ -848,8 +843,8 @@ a {
 
 .dory-docs-layout #nd-page .prose code:not(pre code) {
   border: 1px solid var(--dory-line);
-  border-radius: 0.2rem;
-  background: color-mix(in oklab, var(--dory-brand-soft) 72%, var(--dory-surface-soft));
+  border-radius: 0.32rem;
+  background: color-mix(in oklab, var(--dory-brand-soft) 68%, var(--dory-surface-soft));
   padding: 0.12rem 0.3rem;
   font-size: 0.86em;
   font-weight: 450;
@@ -857,16 +852,22 @@ a {
 
 .dory-docs-layout #nd-page .prose pre {
   border: 1px solid var(--dory-line);
-  border-radius: 0;
-  background: var(--dory-panel);
-  box-shadow: var(--dory-shadow-sm);
+  border-radius: 0.5rem;
+  background: #0b0b0b;
+  color: #e6edf3;
+  box-shadow: 0 18px 42px color-mix(in oklab, var(--dory-ink) 9%, transparent);
 }
 
 .dory-docs-layout #nd-page figure.shiki {
+  --shiki-light-bg: #0b0b0b;
+  --shiki-dark-bg: #0b0b0b;
+  --shiki-light: #e6edf3;
+  --shiki-dark: #e6edf3;
   border: 1px solid var(--dory-line);
-  border-radius: 0;
-  background: var(--dory-panel);
-  box-shadow: var(--dory-shadow-sm);
+  border-radius: 0.5rem;
+  background: #0b0b0b;
+  color: #e6edf3;
+  box-shadow: 0 18px 42px color-mix(in oklab, var(--dory-ink) 9%, transparent);
 }
 
 .dory-docs-layout #nd-page figure.shiki > div[role='region'] {
@@ -880,26 +881,31 @@ a {
   box-shadow: none;
 }
 
+.dory-docs-layout #nd-page figure.shiki code,
+.dory-docs-layout #nd-page figure.shiki span {
+  color: var(--shiki-dark, #e6edf3) !important;
+}
+
 .dory-docs-layout #nd-page .prose blockquote {
   border: 1px solid var(--dory-line);
-  border-left: 4px solid var(--dory-brand-accent);
-  background: color-mix(in oklab, var(--dory-brand-soft) 72%, transparent);
-  padding: 0.9rem 1rem;
+  border-left: 2px solid var(--dory-brand-accent);
+  background: color-mix(in oklab, var(--dory-brand-soft) 58%, transparent);
+  padding: 0.95rem 1rem;
   color: color-mix(in oklab, var(--dory-ink) 78%, transparent);
 }
 
 .dory-docs-layout #nd-page .prose table {
   overflow: hidden;
   border: 1px solid var(--dory-line);
-  border-radius: 0;
+  border-radius: 0.5rem;
   background: var(--dory-surface-strong);
   box-shadow: var(--dory-shadow-sm);
 }
 
 .dory-docs-layout #nd-page .prose th {
-  background: color-mix(in oklab, var(--dory-brand-soft) 64%, var(--dory-surface-soft));
+  background: color-mix(in oklab, var(--dory-brand-soft) 58%, var(--dory-surface-soft));
   color: var(--dory-ink);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .dory-docs-layout #nd-page .prose th:last-child,
@@ -909,7 +915,7 @@ a {
 
 .dory-docs-layout #nd-toc {
   border-left: 0;
-  padding-top: 1.9rem;
+  padding-top: 2.1rem;
   color: var(--dory-toc-foreground);
 }
 
@@ -924,10 +930,11 @@ a {
 }
 
 .dory-docs-layout #nd-toc a {
-  border-radius: 0.5rem;
+  border-radius: 0.45rem;
   background: transparent;
   color: var(--dory-toc-foreground);
   font-weight: inherit;
+  line-height: 1.35;
 }
 
 .dory-docs-layout #nd-toc a:hover {
@@ -950,18 +957,25 @@ a {
 
 @media (max-width: 640px) {
   .dory-docs-layout #nd-page .prose h1 {
-    font-size: 2.15rem;
+    font-size: 2.35rem;
+    line-height: 0.98;
   }
 
   .dory-docs-layout #nd-page .prose {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
   }
 
   .dory-docs-layout #nd-page .prose table {
     display: block;
     max-width: 100%;
     overflow-x: auto;
-    white-space: nowrap;
+    white-space: normal;
+  }
+
+  .dory-docs-layout #nd-page .prose th,
+  .dory-docs-layout #nd-page .prose td {
+    min-width: 12rem;
+    vertical-align: top;
   }
 }
 
