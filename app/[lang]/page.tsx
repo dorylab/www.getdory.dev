@@ -26,7 +26,7 @@ import { generateMarketingMetadata } from "@/lib/marketing-og";
 import { cn } from "@/lib/utils";
 import ActionsPreview from "@/public/actions-focus.png";
 import AiTablePreview from "@/public/ai-table-overview.png";
-import AskPreview from "@/public/ask.png";
+import AskPreview from "@/public/ask-focus.png";
 import ChatbotPreview from "@/public/chatbot.png";
 import ContextPreview from "@/public/context-focus.png";
 import ConsolePreview from "@/public/easy-to-use-sql-console.png";
