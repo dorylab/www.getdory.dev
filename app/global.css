@@ -54,30 +54,30 @@
 
 :root {
   --spacing-page: 1300px;
-  --dory-brand: #26251e;
-  --dory-brand-hover: #172033;
+  --dory-brand: #171615;
+  --dory-brand-hover: #272522;
   --dory-brand-foreground: #ffffff;
-  --dory-brand-secondary: #24496f;
+  --dory-brand-secondary: #2f6cff;
   --dory-brand-secondary-foreground: #ffffff;
-  --dory-brand-accent: #6b7f9f;
-  --dory-brand-accent-strong: #2f4668;
-  --dory-brand-panel: #0f172a;
-  --dory-brand-panel-2: #172033;
-  --dory-brand-muted: #6b7f9f;
-  --dory-brand-soft: #e9eef7;
-  --dory-brand-soft-2: #f4f6fb;
-  --dory-brand-line: rgba(8, 17, 31, 0.12);
-  --dory-brand-line-strong: rgba(8, 17, 31, 0.22);
-  --dory-page: #f7f7f3;
-  --dory-page-wash: #fbfbf7;
+  --dory-brand-accent: #6f6b63;
+  --dory-brand-accent-strong: #2f6cff;
+  --dory-brand-panel: #111110;
+  --dory-brand-panel-2: #1a1917;
+  --dory-brand-muted: #77736b;
+  --dory-brand-soft: #ece9df;
+  --dory-brand-soft-2: #f1eee6;
+  --dory-brand-line: rgba(23, 22, 21, 0.12);
+  --dory-brand-line-strong: rgba(23, 22, 21, 0.22);
+  --dory-page: #f5f3ed;
+  --dory-page-wash: #fbfaf6;
   --dory-page-panel: #ffffff;
   --dory-landing-foreground: #26251e;
-  --dory-landing-muted: #42526b;
-  --dory-warm-accent: #d2b46f;
+  --dory-landing-muted: #6f6b63;
+  --dory-warm-accent: #d9c48b;
   --dory-danger-accent: #ef6b5b;
   --dory-success-accent: #24496f;
-  --dory-grid-soft: rgba(8, 17, 31, 0.035);
-  --dory-grid-faint: rgba(8, 17, 31, 0.026);
+  --dory-grid-soft: rgba(23, 22, 21, 0.035);
+  --dory-grid-faint: rgba(23, 22, 21, 0.026);
   --dory-brand-glow:
     radial-gradient(circle at 24% 28%, rgba(36, 73, 111, 0.16), transparent 30%),
     radial-gradient(circle at 78% 42%, rgba(210, 180, 111, 0.16), transparent 28%);
@@ -91,11 +91,11 @@
   --dory-release-fade:
     linear-gradient(to top, var(--dory-brand), color-mix(in oklab, var(--dory-brand) 74%, transparent), transparent);
   --dory-shadow-sm: 0 1px 0 rgba(8, 17, 31, 0.04);
-  --dory-shadow-brand: 0 16px 36px rgba(8, 17, 31, 0.16);
-  --dory-shadow-card: 0 18px 40px rgba(8, 17, 31, 0.08);
-  --dory-shadow-panel: 0 34px 100px rgba(8, 17, 31, 0.22);
-  --dory-shadow-floating: 0 18px 44px rgba(8, 17, 31, 0.1);
-  --dory-shadow-landing: 0 20px 60px rgba(8, 17, 31, 0.06);
+  --dory-shadow-brand: 0 16px 36px rgba(23, 22, 21, 0.14);
+  --dory-shadow-card: 0 18px 40px rgba(23, 22, 21, 0.07);
+  --dory-shadow-panel: 0 34px 100px rgba(23, 22, 21, 0.2);
+  --dory-shadow-floating: 0 18px 44px rgba(23, 22, 21, 0.09);
+  --dory-shadow-landing: 0 20px 60px rgba(23, 22, 21, 0.05);
   --color-brand: var(--dory-brand);
   --color-brand-foreground: var(--dory-brand-foreground);
   --color-brand-200: var(--dory-brand-hover);
@@ -192,30 +192,30 @@
 :root[class~='dark'],
 :root[data-theme='dark'],
 .dark {
-  --dory-brand: #e9eef7;
+  --dory-brand: #f1eee7;
   --dory-brand-hover: #ffffff;
   --dory-brand-foreground: #08111f;
-  --dory-brand-secondary: #9fb1cf;
+  --dory-brand-secondary: #88b6ff;
   --dory-brand-secondary-foreground: #08111f;
-  --dory-brand-accent: #9fb1cf;
-  --dory-brand-accent-strong: #c8d4e8;
-  --dory-brand-panel: #08111f;
-  --dory-brand-panel-2: #111827;
-  --dory-brand-muted: #9eabc0;
+  --dory-brand-accent: #aaa59b;
+  --dory-brand-accent-strong: #88b6ff;
+  --dory-brand-panel: #0b0b0a;
+  --dory-brand-panel-2: #141312;
+  --dory-brand-muted: #aaa59b;
   --dory-brand-soft: rgba(233, 238, 247, 0.1);
   --dory-brand-soft-2: rgba(233, 238, 247, 0.06);
   --dory-brand-line: rgba(233, 238, 247, 0.16);
   --dory-brand-line-strong: rgba(233, 238, 247, 0.28);
-  --dory-page: #0d1117;
-  --dory-page-wash: #111827;
+  --dory-page: #0b0b0a;
+  --dory-page-wash: #141312;
   --dory-page-panel: rgb(17, 17, 17);
   --dory-landing-foreground: #eaf2ff;
-  --dory-landing-muted: #9eabc0;
+  --dory-landing-muted: #aaa59b;
   --dory-warm-accent: #e6d3ad;
   --dory-danger-accent: #ef8d82;
   --dory-success-accent: #c8d4e8;
-  --dory-grid-soft: rgba(233, 238, 247, 0.045);
-  --dory-grid-faint: rgba(148, 163, 184, 0.06);
+  --dory-grid-soft: rgba(241, 238, 231, 0.045);
+  --dory-grid-faint: rgba(241, 238, 231, 0.055);
   --dory-brand-glow:
     radial-gradient(circle at 24% 28%, rgba(159, 177, 207, 0.14), transparent 30%),
     radial-gradient(circle at 78% 42%, rgba(230, 211, 173, 0.12), transparent 28%);
@@ -644,13 +644,7 @@ a {
 
 .dory-docs-shell #nd-sidebar {
   border-right: 0;
-  background:
-    linear-gradient(
-      90deg,
-      color-mix(in oklab, var(--dory-page) 92%, transparent),
-      color-mix(in oklab, var(--dory-page) 42%, transparent) 72%,
-      transparent
-    );
+  background: color-mix(in oklab, var(--dory-page) 94%, white 6%);
   box-shadow: none;
 }
 
@@ -663,7 +657,8 @@ a {
 }
 
 .dory-docs-shell #nd-sidebar [data-radix-scroll-area-viewport] {
-  padding-top: 0.85rem;
+  padding-top: 1.15rem;
+  padding-inline: 0.45rem;
 }
 
 .dory-docs-shell #nd-sidebar [data-radix-scroll-area-viewport] > div {
@@ -673,7 +668,7 @@ a {
 }
 
 .dory-docs-shell #nd-sidebar p {
-  margin: 1.7rem 0 0.5rem;
+  margin: 1.55rem 0 0.5rem;
   padding: 0 0.75rem;
   color: color-mix(in oklab, var(--dory-muted) 78%, transparent);
   font-size: 0.76rem;
@@ -685,10 +680,10 @@ a {
 .dory-docs-shell #nd-sidebar a,
 .dory-docs-shell #nd-sidebar button {
   border: 1px solid transparent;
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   min-height: 2rem;
   color: color-mix(in oklab, var(--dory-ink) 76%, transparent);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.35;
   text-decoration: none;
   transition:
@@ -704,8 +699,8 @@ a {
 
 .dory-docs-shell #nd-sidebar a:hover,
 .dory-docs-shell #nd-sidebar button:hover {
-  border-color: transparent;
-  background: color-mix(in oklab, var(--dory-ink) 5%, transparent) !important;
+  border-color: color-mix(in oklab, var(--dory-line) 72%, transparent);
+  background: color-mix(in oklab, var(--dory-ink) 4%, transparent) !important;
   color: var(--dory-ink);
 }
 
@@ -720,8 +715,8 @@ a {
 
 .dory-docs-shell #nd-sidebar a[data-active='true'],
 .dory-docs-shell #nd-sidebar a[aria-current='page'] {
-  border-color: transparent;
-  background: color-mix(in oklab, var(--dory-ink) 6%, transparent) !important;
+  border-color: color-mix(in oklab, var(--dory-line) 82%, transparent);
+  background: color-mix(in oklab, var(--dory-ink) 5%, transparent) !important;
   color: var(--dory-ink);
   font-weight: 500;
 }
@@ -747,7 +742,7 @@ a {
 
 .dory-docs-shell #nd-sidebar .border-s,
 .dory-docs-shell #nd-sidebar [class*='border-s'] {
-  border-inline-start-color: color-mix(in oklab, var(--dory-line) 44%, transparent);
+  border-inline-start-width: 0;
 }
 
 .dory-docs-layout #nd-page {
@@ -755,13 +750,13 @@ a {
 }
 
 .dory-docs-layout #nd-page {
-  max-width: 48rem;
+  max-width: 52rem;
 }
 
 .dory-docs-layout #nd-page > div:first-child:not(.prose) {
-  margin-bottom: -0.3rem;
+  margin-bottom: 0.1rem;
   color: var(--dory-toc-foreground);
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   line-height: 1.35;
 }
 
@@ -771,40 +766,40 @@ a {
 }
 
 .dory-docs-layout #nd-page .prose {
-  flex: 0 1 42rem;
-  max-width: 42rem;
+  flex: 0 1 44rem;
+  max-width: 44rem;
   font-family: var(--dory-docs-font);
-  font-size: 15.5px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.76;
+  line-height: 1.78;
   letter-spacing: 0;
 }
 
 .dory-docs-layout #nd-page .prose h1 {
-  margin-bottom: 1.15rem;
+  margin-bottom: 1.25rem;
   color: var(--dory-ink);
-  font-size: clamp(2.65rem, 4.6vw, 3.85rem);
-  font-weight: 650;
-  line-height: 0.96;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.8rem, 4.8vw, 4.25rem);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: 0;
   text-wrap: balance;
 }
 
 .dory-docs-layout #nd-page .prose h2 {
-  margin-top: 2.65rem;
-  padding-top: 1.35rem;
+  margin-top: 2.8rem;
+  padding-top: 1.45rem;
   border-top: 1px solid var(--dory-line);
   color: var(--dory-ink);
-  font-size: 1.55rem;
-  font-weight: 600;
+  font-size: 1.62rem;
+  font-weight: 500;
   letter-spacing: 0;
 }
 
 .dory-docs-layout #nd-page .prose h3 {
-  margin-top: 1.8rem;
+  margin-top: 1.95rem;
   color: var(--dory-ink);
-  font-size: 1.08rem;
-  font-weight: 600;
+  font-size: 1.12rem;
+  font-weight: 500;
   letter-spacing: 0;
 }
 
@@ -848,8 +843,8 @@ a {
 
 .dory-docs-layout #nd-page .prose code:not(pre code) {
   border: 1px solid var(--dory-line);
-  border-radius: 0.2rem;
-  background: color-mix(in oklab, var(--dory-brand-soft) 72%, var(--dory-surface-soft));
+  border-radius: 0.32rem;
+  background: color-mix(in oklab, var(--dory-brand-soft) 68%, var(--dory-surface-soft));
   padding: 0.12rem 0.3rem;
   font-size: 0.86em;
   font-weight: 450;
@@ -857,20 +852,60 @@ a {
 
 .dory-docs-layout #nd-page .prose pre {
   border: 1px solid var(--dory-line);
-  border-radius: 0;
-  background: var(--dory-panel);
-  box-shadow: var(--dory-shadow-sm);
+  border-radius: 0.5rem;
+  background: #0b0b0b;
+  color: #e6edf3;
+  box-shadow: 0 18px 42px color-mix(in oklab, var(--dory-ink) 9%, transparent);
 }
 
 .dory-docs-layout #nd-page figure.shiki {
+  --shiki-light-bg: #0b0b0b;
+  --shiki-dark-bg: #0b0b0b;
+  --shiki-light: #e6edf3;
+  --shiki-dark: #e6edf3;
   border: 1px solid var(--dory-line);
-  border-radius: 0;
-  background: var(--dory-panel);
-  box-shadow: var(--dory-shadow-sm);
+  border-radius: 0.5rem;
+  background: #0b0b0b;
+  color: #e6edf3;
+  box-shadow: 0 18px 42px color-mix(in oklab, var(--dory-ink) 9%, transparent);
 }
 
 .dory-docs-layout #nd-page figure.shiki > div[role='region'] {
   background: transparent;
+}
+
+.dory-docs-layout #nd-page figure.shiki > div:has(> button) {
+  border: 1px solid color-mix(in oklab, white 12%, transparent);
+  background: color-mix(in oklab, #0b0b0b 78%, transparent);
+  box-shadow: 0 8px 22px color-mix(in oklab, black 28%, transparent);
+}
+
+.dory-docs-layout #nd-page figure.shiki button {
+  border-radius: 0.45rem;
+  color: color-mix(in oklab, #e6edf3 72%, transparent);
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    color 120ms ease,
+    transform 120ms ease;
+}
+
+.dory-docs-layout #nd-page figure.shiki button:hover,
+.dory-docs-layout #nd-page figure.shiki button:focus-visible {
+  background: color-mix(in oklab, white 12%, transparent);
+  color: #ffffff;
+}
+
+.dory-docs-layout #nd-page figure.shiki button:active {
+  background: color-mix(in oklab, white 17%, transparent);
+  color: #ffffff;
+  transform: translateY(1px);
+}
+
+.dory-docs-layout #nd-page figure.shiki button[data-checked],
+.dory-docs-layout #nd-page figure.shiki button[aria-label*='Copied'] {
+  background: color-mix(in oklab, #48d597 18%, transparent);
+  color: #7ee2ad;
 }
 
 .dory-docs-layout #nd-page figure.shiki pre {
@@ -880,26 +915,31 @@ a {
   box-shadow: none;
 }
 
+.dory-docs-layout #nd-page figure.shiki code,
+.dory-docs-layout #nd-page figure.shiki span {
+  color: var(--shiki-dark, #e6edf3) !important;
+}
+
 .dory-docs-layout #nd-page .prose blockquote {
   border: 1px solid var(--dory-line);
-  border-left: 4px solid var(--dory-brand-accent);
-  background: color-mix(in oklab, var(--dory-brand-soft) 72%, transparent);
-  padding: 0.9rem 1rem;
+  border-left: 2px solid var(--dory-brand-accent);
+  background: color-mix(in oklab, var(--dory-brand-soft) 58%, transparent);
+  padding: 0.95rem 1rem;
   color: color-mix(in oklab, var(--dory-ink) 78%, transparent);
 }
 
 .dory-docs-layout #nd-page .prose table {
   overflow: hidden;
   border: 1px solid var(--dory-line);
-  border-radius: 0;
+  border-radius: 0.5rem;
   background: var(--dory-surface-strong);
   box-shadow: var(--dory-shadow-sm);
 }
 
 .dory-docs-layout #nd-page .prose th {
-  background: color-mix(in oklab, var(--dory-brand-soft) 64%, var(--dory-surface-soft));
+  background: color-mix(in oklab, var(--dory-brand-soft) 58%, var(--dory-surface-soft));
   color: var(--dory-ink);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .dory-docs-layout #nd-page .prose th:last-child,
@@ -909,7 +949,7 @@ a {
 
 .dory-docs-layout #nd-toc {
   border-left: 0;
-  padding-top: 1.9rem;
+  padding-top: 2.1rem;
   color: var(--dory-toc-foreground);
 }
 
@@ -924,10 +964,11 @@ a {
 }
 
 .dory-docs-layout #nd-toc a {
-  border-radius: 0.5rem;
+  border-radius: 0.45rem;
   background: transparent;
   color: var(--dory-toc-foreground);
   font-weight: inherit;
+  line-height: 1.35;
 }
 
 .dory-docs-layout #nd-toc a:hover {
@@ -950,18 +991,25 @@ a {
 
 @media (max-width: 640px) {
   .dory-docs-layout #nd-page .prose h1 {
-    font-size: 2.15rem;
+    font-size: 2.35rem;
+    line-height: 0.98;
   }
 
   .dory-docs-layout #nd-page .prose {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
   }
 
   .dory-docs-layout #nd-page .prose table {
     display: block;
     max-width: 100%;
     overflow-x: auto;
-    white-space: nowrap;
+    white-space: normal;
+  }
+
+  .dory-docs-layout #nd-page .prose th,
+  .dory-docs-layout #nd-page .prose td {
+    min-width: 12rem;
+    vertical-align: top;
   }
 }
 
