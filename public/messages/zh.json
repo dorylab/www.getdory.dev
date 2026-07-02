@@ -1,8 +1,8 @@
 {
   "landing": {
     "heroTagline": "AI 原生工作流",
-    "heroTitle": "<brand>AI 原生</brand>数据工作室",
-    "heroDescription": "连接数据库，用 SQL、AI 与可视化完成探索、分析与复用。",
+    "heroTitle": "Agent 时代的 SQL 客户端",
+    "heroDescription": "Dory 是一个 AI 原生 SQL 客户端，让人类和 Agent 共享同一个数据库工作台：Schema、SQL 标签页、查询结果、图表和可复用上下文。",
     "heroSubtitle": "查询数据库、理解表格并与数据对话——都在<brand>一个</brand>现代化工作空间中。",
     "heroExperienceTitle": "无需下载，30 秒体验 Dory",
     "heroExperienceDescription": "使用公开数据集体验 SQL + AI",
@@ -18,6 +18,162 @@
     "downloadForWindows": "下载 Windows 版",
     "allPlatform": "全平台",
     "viewOnGitHub": "在 GitHub 上查看",
+    "agentHome": {
+      "hero": {
+        "kicker": "AI 原生 SQL 客户端",
+        "title": "Agent 时代的 SQL 客户端",
+        "description": "Dory 让人类和 AI Agent 使用同一个数据库工作台：连接、Schema、SQL 标签页、查询结果、图表，以及可以检查、编辑和继续的上下文。",
+        "agentCta": "用于 Codex / Claude Code",
+        "imageAlt": "Dory AI 原生 SQL 工作台",
+        "trailLabel": "Agent 工作轨迹",
+        "trail": [
+          "已检查 Schema",
+          "已执行只读 SQL",
+          "结果集已保存为标签页",
+          "人类可以编辑、制图并重新运行"
+        ]
+      },
+      "proof": {
+        "label": "为什么是 Dory",
+        "title": "AI 会写 SQL，但工作现场在哪里？",
+        "description": "真实数据工作不能只停在 Agent 的文本输出里。团队需要看到准确 SQL、真实结果集、图表、导出，以及人类可以信任的工作区历史。",
+        "items": [
+          {
+            "title": "不藏在聊天里",
+            "description": "Agent 生成的 SQL 和结果会成为真实工作区标签页，而不是一次性的终端文本。"
+          },
+          {
+            "title": "真实 SQL 工作面",
+            "description": "打开查询、检查行数据、修改 SQL、添加筛选、生成图表，然后自己重新运行。"
+          },
+          {
+            "title": "上下文会留下来",
+            "description": "连接、Schema 上下文、保存的查询和执行历史都会跟着这次工作保留下来。"
+          }
+        ]
+      },
+      "workspace": {
+        "label": "共享工作台",
+        "title": "人类和 Agent 共用一个工作台",
+        "description": "Dory 把同一套底层数据库动作提供给 UI 和 MCP 客户端，所以 Agent 的工作会落在人类已经用于检查和继续 SQL 的地方。",
+        "columns": [
+          {
+            "title": "人类",
+            "description": "写 SQL、浏览 Schema、检查结果表、创建图表、保存有用查询，并组织日常分析。"
+          },
+          {
+            "title": "Agent",
+            "description": "通过 MCP 列出连接、探索 Schema、运行只读 SQL、创建分析标签页并收集上下文。"
+          },
+          {
+            "title": "共享工作台",
+            "description": "标签页、结果、图表、保存的查询和执行上下文都可以检查、编辑和复用。"
+          }
+        ]
+      },
+      "mcp": {
+        "label": "Desktop MCP",
+        "title": "从 Codex、Claude Code 和其他 MCP 客户端使用 Dory",
+        "description": "Dory 把桌面 SQL 客户端变成 Agent 的数据库执行层，同时不让普通用户手动管理 API Token。",
+        "codeLabel": "本地 MCP 端点",
+        "imageAlt": "Dory MCP 设置与 Agent 访问",
+        "steps": [
+          "Agent 可以安全探索 Schema 并运行只读 SQL。",
+          "结果可以写回 Dory，成为可编辑的工作区标签页。",
+          "Desktop MCP 授权由 Dory 管理，不需要手动复制粘贴 Token。"
+        ]
+      },
+      "classic": {
+        "label": "日常 SQL 客户端",
+        "title": "仍然是快速、熟悉的 SQL 客户端",
+        "description": "Dory 保留人类日常工作需要的核心能力：真实编辑器、Schema 浏览器、结果表格、图表、保存查询和查询历史。",
+        "imageAlt": "Dory SQL 编辑器和 Schema 浏览器",
+        "resultsAlt": "Dory 查询结果表格",
+        "chartsAlt": "Dory AI 表概览与图表上下文",
+        "features": [
+          {
+            "title": "SQL 编辑器",
+            "description": "多标签编辑，带 Schema 上下文和执行历史。"
+          },
+          {
+            "title": "Schema 浏览器",
+            "description": "在同一个工作台里浏览表、字段、类型和数据库对象。"
+          },
+          {
+            "title": "结果表格",
+            "description": "检查真实行数据、快速筛选，并让结果集始终关联到产生它的 SQL。"
+          },
+          {
+            "title": "筛选和搜索",
+            "description": "不用为了理解结果而先导出数据。"
+          },
+          {
+            "title": "图表",
+            "description": "直接在 SQL 工作台里把查询输出变成可视化证据。"
+          },
+          {
+            "title": "保存工作",
+            "description": "保存有用查询，并在人类和 Agent 工作流之间保留上下文。"
+          }
+        ]
+      },
+      "database": {
+        "label": "数据库支持",
+        "title": "连接你已经在使用的数据栈",
+        "description": "Dory 是多数据库 SQL 客户端，并在工作台能提供超过通用 SQL 执行能力的地方做更深集成。",
+        "clickhouseNote": "原生运维工作面",
+        "groups": [
+          {
+            "label": "深度支持",
+            "items": ["ClickHouse"]
+          },
+          {
+            "label": "已支持",
+            "items": [
+              "PostgreSQL",
+              "MySQL",
+              "MariaDB",
+              "SQLite",
+              "DuckDB",
+              "SQL Server",
+              "Oracle",
+              "Neon"
+            ]
+          },
+          {
+            "label": "计划中",
+            "items": ["Snowflake"]
+          }
+        ]
+      },
+      "faq": {
+        "label": "FAQ",
+        "title": "人类和 Agent 都会问的问题",
+        "items": {
+          "plainMcp": {
+            "question": "Dory 和普通数据库 MCP Server 有什么不同？",
+            "answer": "普通 MCP Server 可以把查询结果返回到聊天里。Dory 会把工作留在可编辑的 SQL 工作台中，包括标签页、结果集、图表、保存查询和执行上下文。"
+          },
+          "dailyClient": {
+            "question": "我能把 Dory 当普通 SQL 客户端用吗？",
+            "answer": "可以。Dory 包含日常 SQL 客户端需要的编辑器、Schema 浏览器、结果表、筛选、图表、保存查询和历史记录。"
+          },
+          "desktopMcp": {
+            "question": "哪些 Agent 客户端可以使用 Dory？",
+            "answer": "Desktop MCP 端点可用于支持 MCP 的客户端，例如 Codex CLI 和 Claude Code。"
+          },
+          "dataSafety": {
+            "question": "Agent 访问是否意味着可以写入我的数据？",
+            "answer": "首页强调的是安全的 Schema 探索和只读 SQL 执行。人类可以先检查生成的标签页，再决定是否继续工作。"
+          }
+        }
+      },
+      "cta": {
+        "label": "从真实工作台开始",
+        "title": "给 Agent 一个让人类可信任的 SQL 工作台",
+        "description": "下载 Dory，体验在线 Demo，或者在 GitHub 查看开源项目。"
+      }
+    },
     "heroCards": {
       "aiChat": {
         "title": "AI 副驾驶",

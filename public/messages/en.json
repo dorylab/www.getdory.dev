@@ -241,8 +241,8 @@
   "positiveAssociation": "Create positive associations with alone time",
   "landing": {
     "heroTagline": "AI-native workflow",
-    "heroTitle": "<brand>AI-native</brand> Data Studio",
-    "heroDescription": "Connect databases and use SQL, AI, and visualization to explore, analyze, and reuse.",
+    "heroTitle": "The SQL client built for the agent era",
+    "heroDescription": "Dory is an AI-native SQL client where humans and agents share the same database workspace: schemas, SQL tabs, query results, charts, and reusable context.",
     "heroSubtitle": "Query databases, understand tables, and talk to data - <brand>All in One</brand> modern workspace.",
     "heroExperienceTitle": "No download needed, experience Dory in 30 seconds",
     "heroExperienceDescription": "Use a public dataset to experience SQL + AI",
@@ -258,6 +258,162 @@
     "downloadForWindows": "Download Windows version",
     "allPlatform": "All Platform",
     "viewOnGitHub": "View on GitHub",
+    "agentHome": {
+      "hero": {
+        "kicker": "AI-native SQL client",
+        "title": "The SQL client built for the agent era",
+        "description": "Dory gives humans and AI agents the same database workspace: connections, schemas, SQL tabs, query results, charts, and context you can inspect, edit, and continue.",
+        "agentCta": "Use with Codex / Claude Code",
+        "imageAlt": "Dory AI-native SQL workspace",
+        "trailLabel": "Agent workspace trail",
+        "trail": [
+          "Schema inspected",
+          "Read-only SQL executed",
+          "Result set saved as a tab",
+          "Human can edit, chart, and rerun"
+        ]
+      },
+      "proof": {
+        "label": "Why Dory",
+        "title": "AI can write SQL. But where does the work go?",
+        "description": "Raw agent output is not enough for real data work. Teams need exact SQL, real result sets, charts, exports, and a workspace history humans can trust.",
+        "items": [
+          {
+            "title": "Not hidden in chat",
+            "description": "Agent-generated SQL and results become real workspace tabs, not one-off terminal text."
+          },
+          {
+            "title": "Real SQL surfaces",
+            "description": "Open the query, inspect rows, change the SQL, add filters, chart the output, and run it again."
+          },
+          {
+            "title": "Context that survives",
+            "description": "Connections, schema context, saved queries, and execution history stay attached to the work."
+          }
+        ]
+      },
+      "workspace": {
+        "label": "Shared workspace",
+        "title": "One workspace for humans and agents",
+        "description": "Dory exposes the same underlying database actions to the UI and to MCP clients, so agent work lands where humans already review and continue SQL.",
+        "columns": [
+          {
+            "title": "Humans",
+            "description": "Write SQL, browse schemas, inspect result tables, create charts, save useful queries, and keep daily analysis organized."
+          },
+          {
+            "title": "Agents",
+            "description": "List connections, explore schemas, run read-only SQL, create analysis tabs, and gather context through MCP."
+          },
+          {
+            "title": "Shared workspace",
+            "description": "Tabs, results, charts, saved queries, and execution context stay inspectable, editable, and reusable."
+          }
+        ]
+      },
+      "mcp": {
+        "label": "Desktop MCP",
+        "title": "Use Dory from Codex, Claude Code, and other MCP clients",
+        "description": "Dory turns your desktop SQL client into a database execution layer for agents without making normal users manage API tokens.",
+        "codeLabel": "Local MCP endpoint",
+        "imageAlt": "Dory MCP settings and agent access",
+        "steps": [
+          "Agents can safely explore schemas and run read-only SQL.",
+          "Results can be written back into Dory as editable workspace tabs.",
+          "Desktop MCP grants are managed by Dory instead of manual token copy/paste."
+        ]
+      },
+      "classic": {
+        "label": "Daily SQL client",
+        "title": "Still a fast, familiar SQL client",
+        "description": "Dory keeps the essentials sharp for humans: a real editor, schema explorer, result grid, charts, saved queries, and query history.",
+        "imageAlt": "Dory SQL editor and schema explorer",
+        "resultsAlt": "Dory result table",
+        "chartsAlt": "Dory AI table overview and chart context",
+        "features": [
+          {
+            "title": "SQL editor",
+            "description": "Multi-tab editing with schema-aware context and execution history."
+          },
+          {
+            "title": "Schema explorer",
+            "description": "Browse tables, columns, types, and database objects without leaving the workspace."
+          },
+          {
+            "title": "Result table",
+            "description": "Inspect real rows, filter quickly, and keep result sets attached to the SQL that produced them."
+          },
+          {
+            "title": "Filters and search",
+            "description": "Review returned data without exporting just to understand what happened."
+          },
+          {
+            "title": "Charts",
+            "description": "Turn query output into visual evidence directly inside the SQL workspace."
+          },
+          {
+            "title": "Saved work",
+            "description": "Save useful queries and preserve context across human and agent workflows."
+          }
+        ]
+      },
+      "database": {
+        "label": "Database support",
+        "title": "Connect the data stack you already use",
+        "description": "Dory is a multi-database SQL client, with deeper integrations where the workspace can provide more than generic SQL execution.",
+        "clickhouseNote": "Native operations surfaces",
+        "groups": [
+          {
+            "label": "Deeply supported",
+            "items": ["ClickHouse"]
+          },
+          {
+            "label": "Supported",
+            "items": [
+              "PostgreSQL",
+              "MySQL",
+              "MariaDB",
+              "SQLite",
+              "DuckDB",
+              "SQL Server",
+              "Oracle",
+              "Neon"
+            ]
+          },
+          {
+            "label": "Planned",
+            "items": ["Snowflake"]
+          }
+        ]
+      },
+      "faq": {
+        "label": "FAQ",
+        "title": "Questions agents and humans both ask",
+        "items": {
+          "plainMcp": {
+            "question": "How is Dory different from a plain database MCP server?",
+            "answer": "A plain MCP server can return query output to a chat. Dory keeps the work in an editable SQL workspace with tabs, result sets, charts, saved queries, and execution context."
+          },
+          "dailyClient": {
+            "question": "Can I use Dory as my normal SQL client?",
+            "answer": "Yes. Dory includes the everyday SQL client surfaces: editor, schema explorer, result table, filters, charts, saved queries, and history."
+          },
+          "desktopMcp": {
+            "question": "Which agent clients can use Dory?",
+            "answer": "The desktop MCP endpoint works with MCP-compatible clients such as Codex CLI and Claude Code."
+          },
+          "dataSafety": {
+            "question": "Does agent access mean write access to my data?",
+            "answer": "The homepage flow emphasizes safe schema exploration and read-only SQL execution. Humans can inspect the resulting tabs before continuing work."
+          }
+        }
+      },
+      "cta": {
+        "label": "Start with a real workspace",
+        "title": "Give agents a SQL workspace humans can trust",
+        "description": "Download Dory, try the live demo, or inspect the open source project on GitHub."
+      }
+    },
     "heroCards": {
       "aiChat": {
         "title": "AI copilot",

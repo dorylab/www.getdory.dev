@@ -1,11 +1,14 @@
 import {
   ArrowRight,
   Bot,
-  Braces,
-  Check,
+  ChartColumn,
+  Code2,
   Database,
-  LayoutGrid,
-  LockKeyhole,
+  FileClock,
+  Layers3,
+  Play,
+  Search,
+  ShieldCheck,
   Sparkles,
   Table2,
   TerminalSquare,
@@ -13,27 +16,38 @@ import {
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
-import type { ReactNode } from "react";
+import type { ComponentType, ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 
 import { DownloadButton } from "@/components/landing/download-button";
 import { buttonVariants } from "@/components/landing/variants";
+import Github from "@/components/logos/github";
 import { MarketingLayout } from "@/components/marketing-layout";
 import FooterSection from "@/components/sections/footer";
 import { Link } from "@/i18n/navigation";
 import { getLatestReleaseDownloads } from "@/lib/github-release";
 import { generateMarketingMetadata } from "@/lib/marketing-og";
 import { cn } from "@/lib/utils";
-import ActionsPreview from "@/public/actions-focus.png";
 import AiTablePreview from "@/public/ai-table-overview.png";
-import AskPreview from "@/public/ask-focus.png";
-import ChatbotPreview from "@/public/chatbot.png";
-import ContextPreview from "@/public/context-focus.png";
 import ConsolePreview from "@/public/easy-to-use-sql-console.png";
 import HeroPreview from "@/public/hero.png";
+import McpPreview from "@/public/mcp.png";
+import ResultPreview from "@/public/result-table.png";
 
 type PageProps = {
   params: Promise<{ lang: string }>;
+};
+
+type Icon = ComponentType<{ className?: string }>;
+
+type TextItem = {
+  title: string;
+  description: string;
+};
+
+type DatabaseGroup = {
+  label: string;
+  items: string[];
 };
 
 export async function generateMetadata({
@@ -41,49 +55,33 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lang } = await params;
 
-  return generateMarketingMetadata({ page: 'home', lang });
+  return generateMarketingMetadata({ page: "home", lang });
 }
 
-const heroCardKeys = ["aiChat", "sqlConsole", "teamFlow"] as const;
-const aiWorkflowItems = [
-  { key: "ask", image: AskPreview },
-  { key: "actions", image: ActionsPreview },
-  { key: "context", image: ContextPreview },
-] as const;
-const workspaceFeatureKeys = ["editor", "schema", "saved"] as const;
-const coreHighlightKeys = ["item1", "item2", "item3", "item4"] as const;
-const databaseHighlightFeatureIndexes = [0, 1, 2] as const;
-const databaseSupportItems = [
-  { name: "ClickHouse", icon: "/icons/databases/clickhouse.svg" },
-  { name: "PostgreSQL", icon: "/icons/databases/postgresql.svg" },
-  { name: "MySQL", icon: "/icons/databases/mysql.svg" },
-  { name: "SQL Server", icon: "/icons/databases/sqlserver.svg" },
-  { name: "Oracle", icon: "/icons/databases/oracle.svg" },
-  { name: "SQLite", icon: "/icons/databases/sqlite.svg" },
-  { name: "MariaDB", icon: "/icons/databases/mariadb.svg" },
-  { name: "DuckDB", icon: "/icons/databases/duckdb.svg" },
-  { name: "More", icon: "/icons/databases/more.svg" },
-] as const;
-const moreFeatureKeys = [
-  "secure",
-  "connectivity",
-  "save",
-  "modern",
-  "themes",
-  "open-source",
-] as const;
-const faqKeys = ["free", "aiCopilot", "databases", "dataSafety"] as const;
-
-const heroCardIcons = [Bot, TerminalSquare, Braces];
-const workspaceFeatureIcons = [TerminalSquare, Database, Table2];
-const moreFeatureIcons = [
-  LockKeyhole,
+const proofIcons = [Bot, TerminalSquare, FileClock] as const;
+const workspaceIcons = [TerminalSquare, Bot, Layers3] as const;
+const classicIcons = [
+  Code2,
   Database,
-  Check,
-  Sparkles,
-  LayoutGrid,
-  Braces,
-];
+  Table2,
+  Search,
+  ChartColumn,
+  FileClock,
+] as const;
+const faqKeys = ["plainMcp", "dailyClient", "desktopMcp", "dataSafety"] as const;
+const databaseIcons: Record<string, string> = {
+  ClickHouse: "/icons/databases/clickhouse.svg",
+  PostgreSQL: "/icons/databases/postgresql.svg",
+  MySQL: "/icons/databases/mysql.svg",
+  MariaDB: "/icons/databases/mariadb.svg",
+  SQLite: "/icons/databases/sqlite.svg",
+  DuckDB: "/icons/databases/duckdb.svg",
+  "SQL Server": "/icons/databases/sqlserver.svg",
+  Oracle: "/icons/databases/oracle.svg",
+  Neon: "/icons/databases/neon.svg",
+  Snowflake: "/icons/databases/more.svg",
+};
+
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
     <div className="mb-5 inline-flex items-center gap-2 border border-dory-line bg-dory-surface-soft px-3 py-1.5 text-xs font-medium tracking-normal text-dory-muted">
@@ -99,17 +97,19 @@ function ProductFrame({
   priority,
   className,
   imageClassName,
+  children,
 }: {
   src: StaticImageData;
   alt: string;
   priority?: boolean;
   className?: string;
   imageClassName?: string;
+  children?: ReactNode;
 }) {
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-[22px] border border-black/10 bg-[#0b0b0b] p-2 shadow-[0_36px_120px_rgba(16,16,15,0.2)] dark:border-white/12 dark:shadow-[0_36px_120px_rgba(0,0,0,0.5)]",
+        "relative overflow-hidden rounded-[22px] border border-black/10 bg-[#11100f] p-2 shadow-[0_36px_120px_rgba(16,16,15,0.2)] dark:border-white/12 dark:shadow-[0_36px_120px_rgba(0,0,0,0.5)]",
         className,
       )}
     >
@@ -128,36 +128,7 @@ function ProductFrame({
           imageClassName,
         )}
       />
-    </div>
-  );
-}
-
-function MediaCard({
-  src,
-  alt,
-  className,
-  imageClassName,
-}: {
-  src: StaticImageData;
-  alt: string;
-  className?: string;
-  imageClassName?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "overflow-hidden border border-dory-line bg-[#0b0b0b] p-1.5",
-        className,
-      )}
-    >
-      <Image
-        src={src}
-        alt={alt}
-        className={cn(
-          "aspect-[1.38/1] w-full bg-black object-cover object-left-top",
-          imageClassName,
-        )}
-      />
+      {children}
     </div>
   );
 }
@@ -186,6 +157,54 @@ function SectionHeader({
   );
 }
 
+function IconItem({
+  icon: IconComponent,
+  title,
+  description,
+  index,
+}: TextItem & {
+  icon: Icon;
+  index?: number;
+}) {
+  return (
+    <article className="border border-dory-line bg-dory-surface p-5 md:p-6">
+      <div className="mb-8 flex items-center justify-between text-sm text-dory-muted">
+        <IconComponent className="size-5" />
+        {typeof index === "number" ? <span>0{index + 1}</span> : null}
+      </div>
+      <h3 className="text-xl leading-tight font-medium text-balance md:text-2xl">
+        {title}
+      </h3>
+      <p className="mt-3 text-sm leading-6 text-dory-muted">{description}</p>
+    </article>
+  );
+}
+
+function MiniImage({
+  src,
+  alt,
+  className,
+}: {
+  src: StaticImageData;
+  alt: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "overflow-hidden border border-dory-line bg-[#11100f] p-1.5",
+        className,
+      )}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        className="aspect-[1.42/1] w-full bg-black object-cover object-left-top"
+      />
+    </div>
+  );
+}
+
 export default async function Page({ params }: PageProps) {
   const { lang } = await params;
   const [t, downloads] = await Promise.all([
@@ -193,27 +212,27 @@ export default async function Page({ params }: PageProps) {
     getLatestReleaseDownloads(),
   ]);
 
-  const heroTitle = t.rich("heroTitle", {
-    brand: (chunks) => (
-      <span className="block text-brand">{chunks}</span>
-    ),
-  });
-  const heroSubtitle = t.rich("heroSubtitle", {
-    brand: (chunks) => <span className="text-slate-950 dark:text-white">{chunks}</span>,
-  });
+  const proofItems = t.raw("agentHome.proof.items") as TextItem[];
+  const workspaceColumns = t.raw("agentHome.workspace.columns") as TextItem[];
+  const classicFeatures = t.raw("agentHome.classic.features") as TextItem[];
+  const mcpSteps = t.raw("agentHome.mcp.steps") as string[];
+  const databaseGroups = t.raw(
+    "agentHome.database.groups",
+  ) as DatabaseGroup[];
 
   return (
     <MarketingLayout lang={lang}>
       <main className="min-h-screen overflow-x-clip bg-dory-page px-4 pb-20 text-dory-ink sm:px-6 md:px-10">
         <div className="mx-auto flex w-full max-w-[1280px] flex-col">
-          <section className="relative overflow-hidden border-b border-dory-line pt-18 pb-14 text-center md:pt-24 md:pb-20">
-            <div className="pointer-events-none absolute inset-x-[-20%] top-0 h-[520px] bg-[radial-gradient(circle_at_50%_0%,rgba(49,114,255,0.12),transparent_34%),linear-gradient(to_bottom,rgba(255,255,255,0.52),transparent_58%)] dark:bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.14),transparent_34%),linear-gradient(to_bottom,rgba(255,255,255,0.04),transparent_58%)]" />
+          <section className="relative overflow-hidden border-b border-dory-line pt-18 pb-0 text-center md:pt-24">
+            <div className="pointer-events-none absolute inset-x-[-12%] top-0 h-[700px] bg-[radial-gradient(circle_at_50%_0%,rgba(47,108,255,0.12),transparent_34%),linear-gradient(to_bottom,rgba(255,255,255,0.5),transparent_58%)] dark:bg-[radial-gradient(circle_at_50%_0%,rgba(136,182,255,0.12),transparent_34%),linear-gradient(to_bottom,rgba(255,255,255,0.04),transparent_58%)]" />
+
             <div className="relative z-10 mx-auto max-w-5xl">
-              <h1 className="mx-auto max-w-[980px] text-[clamp(3.6rem,11vw,9.4rem)] leading-[0.84] font-medium tracking-normal text-balance [word-break:keep-all]">
-                {heroTitle}
+              <h1 className="mx-auto max-w-[980px] text-[clamp(3.8rem,10.4vw,9.2rem)] leading-[0.88] font-medium tracking-normal text-balance [word-break:keep-all]">
+                {t("agentHome.hero.title")}
               </h1>
-              <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-dory-muted md:text-xl md:leading-9">
-                {t("heroDescription")}
+              <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-dory-muted md:text-xl md:leading-9">
+                {t("agentHome.hero.description")}
               </p>
 
               <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -236,106 +255,125 @@ export default async function Page({ params }: PageProps) {
 
             <ProductFrame
               src={HeroPreview}
-              alt={t("heroPreviewAlt")}
+              alt={t("agentHome.hero.imageAlt")}
               priority
-              className="relative z-10 mx-auto mt-14 max-w-[1180px]"
+              className="relative z-10 mx-auto mt-14 max-w-[1180px] translate-y-8 shadow-[0_28px_90px_rgba(16,16,15,0.16)] md:translate-y-12"
             />
           </section>
 
-          <section className="grid gap-8 border-b border-dory-line py-10 md:grid-cols-[0.9fr_1.1fr] md:items-start md:py-14">
-            <p className="max-w-2xl text-3xl leading-[1.08] font-medium text-balance md:text-5xl">
-              {heroSubtitle}
-            </p>
-            <div className="grid gap-0 divide-y divide-dory-line border-y border-dory-line md:grid-cols-3 md:divide-x md:divide-y-0">
-              {heroCardKeys.map((key, index) => {
-                const Icon = heroCardIcons[index];
-
-                return (
-                  <div key={key} className="p-5 md:p-6">
-                    <Icon className="mb-8 size-5 text-dory-muted" />
-                    <h2 className="text-lg font-medium">{t(`heroCards.${key}.title`)}</h2>
-                    <p className="mt-3 text-sm leading-6 text-dory-muted">
-                      {t(`heroCards.${key}.description`)}
-                    </p>
-                  </div>
-                );
-              })}
+          <section className="grid gap-10 border-b border-dory-line py-14 md:grid-cols-[0.82fr_1.18fr] md:py-20">
+            <SectionHeader
+              label={t("agentHome.proof.label")}
+              title={t("agentHome.proof.title")}
+              description={t("agentHome.proof.description")}
+            />
+            <div className="grid gap-4 md:grid-cols-3">
+              {proofItems.map((item, index) => (
+                <IconItem
+                  key={item.title}
+                  icon={proofIcons[index] ?? Sparkles}
+                  title={item.title}
+                  description={item.description}
+                />
+              ))}
             </div>
           </section>
 
           <section className="grid gap-10 border-b border-dory-line py-16 md:py-24">
             <div className="grid gap-6 md:grid-cols-[0.78fr_1.22fr] md:items-end">
               <SectionHeader
-                label={t("aiNative.badge")}
-                title={t.rich("aiNative.heading", {
-                  ask: (chunks) => <span>{chunks}</span>,
-                  act: (chunks) => <span className="text-brand">{chunks}</span>,
-                  stay: (chunks) => <span className="text-dory-muted">{chunks}</span>,
-                })}
+                label={t("agentHome.workspace.label")}
+                title={t("agentHome.workspace.title")}
               />
               <p className="max-w-2xl text-base leading-7 text-dory-muted md:justify-self-end md:text-lg md:leading-8">
-                {t("aiNative.description")}
+                {t("agentHome.workspace.description")}
               </p>
             </div>
 
             <div className="grid gap-4 lg:grid-cols-3">
-              {aiWorkflowItems.map(({ key, image }, index) => (
-                <article
-                  key={key}
-                  className="flex min-h-full flex-col justify-between border border-dory-line bg-dory-surface p-5 md:p-6"
-                >
-                  <div>
-                    <div className="mb-7 flex items-center justify-between text-sm text-dory-muted">
-                      <span>0{index + 1}</span>
-                      <span>{t(`aiNative.tabs.${key}.label`)}</span>
-                    </div>
-                    <h3 className="text-2xl leading-tight font-medium text-balance">
-                      {t(`aiNative.tabs.${key}.title`)}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-dory-muted">
-                      {t(`aiNative.tabs.${key}.description`)}
-                    </p>
-                  </div>
-                  <MediaCard
-                    src={image}
-                    alt={t(`aiNative.tabs.${key}.title`)}
-                    className="mt-8"
-                    imageClassName="aspect-[1.08/1] lg:aspect-[1.03/1]"
-                  />
-                </article>
+              {workspaceColumns.map((item, index) => (
+                <IconItem
+                  key={item.title}
+                  icon={workspaceIcons[index] ?? Sparkles}
+                  title={item.title}
+                  description={item.description}
+                  index={index}
+                />
               ))}
             </div>
           </section>
 
-          <section className="grid gap-10 border-b border-dory-line py-16 md:py-24">
-            <div className="grid gap-6 md:grid-cols-[0.82fr_1.18fr] md:items-end">
+          <section className="grid gap-10 border-b border-dory-line py-16 md:grid-cols-[0.78fr_1.22fr] md:py-24">
+            <div>
               <SectionHeader
-                label={t("coreWorkspace.badge")}
-                title={t.rich("coreWorkspace.title", {
-                  brand: (chunks) => <span className="text-dory-muted">{chunks}</span>,
-                })}
+                label={t("agentHome.mcp.label")}
+                title={t("agentHome.mcp.title")}
+                description={t("agentHome.mcp.description")}
+              />
+
+              <div className="mt-8 grid gap-3">
+                {mcpSteps.map((step) => (
+                  <div
+                    key={step}
+                    className="flex items-start gap-3 border-b border-dory-line py-3 text-sm leading-6 text-dory-muted last:border-b-0"
+                  >
+                    <ShieldCheck className="mt-0.5 size-4 shrink-0 text-dory-ink" />
+                    <span>{step}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              <div className="border border-dory-line bg-[#171615] p-5 text-[#f7f1e8] shadow-[0_26px_90px_rgba(16,16,15,0.18)]">
+                <div className="mb-5 flex items-center justify-between text-xs text-[#f7f1e8]/55">
+                  <span>{t("agentHome.mcp.codeLabel")}</span>
+                  <TerminalSquare className="size-4" />
+                </div>
+                <pre className="overflow-x-auto text-sm leading-7">
+                  <code>{`codex mcp add dory --url http://127.0.0.1:3318/api/mcp\nclaude mcp add --transport http dory http://127.0.0.1:3318/api/mcp`}</code>
+                </pre>
+              </div>
+
+              <ProductFrame
+                src={McpPreview}
+                alt={t("agentHome.mcp.imageAlt")}
+                className="rounded-[18px] p-1.5 shadow-none"
+                imageClassName="aspect-[1.62/1]"
+              />
+            </div>
+          </section>
+
+          <section className="grid gap-10 border-b border-dory-line py-16 md:py-24">
+            <div className="grid gap-6 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+              <SectionHeader
+                label={t("agentHome.classic.label")}
+                title={t("agentHome.classic.title")}
               />
               <p className="max-w-2xl text-base leading-7 text-dory-muted md:justify-self-end md:text-lg md:leading-8">
-                {t("coreWorkspace.description")}
+                {t("agentHome.classic.description")}
               </p>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-[1.34fr_0.66fr]">
+            <div className="grid gap-6 lg:grid-cols-[1.24fr_0.76fr]">
               <ProductFrame
                 src={ConsolePreview}
-                alt={t("coreWorkspace.screenshotAlt")}
+                alt={t("agentHome.classic.imageAlt")}
                 className="min-w-0 shadow-[0_28px_90px_rgba(16,16,15,0.16)]"
               />
-              <div className="grid border-y border-dory-line lg:border-y-0">
-                {workspaceFeatureKeys.map((key, index) => {
-                  const Icon = workspaceFeatureIcons[index];
+              <div className="grid border-y border-dory-line sm:grid-cols-2 lg:grid-cols-1 lg:border-y-0">
+                {classicFeatures.map((feature, index) => {
+                  const IconComponent = classicIcons[index] ?? Sparkles;
 
                   return (
-                    <div key={key} className="border-b border-dory-line py-6 last:border-b-0 lg:first:pt-0">
-                      <Icon className="mb-8 size-5 text-dory-muted" />
-                      <h3 className="text-xl font-medium">{t(`coreWorkspace.features.${key}.title`)}</h3>
-                      <p className="mt-3 text-sm leading-6 text-dory-muted">
-                        {t(`coreWorkspace.features.${key}.description`)}
+                    <div
+                      key={feature.title}
+                      className="border-b border-dory-line py-5 sm:border-r sm:p-5 sm:[&:nth-child(2n)]:border-r-0 lg:border-r-0 lg:px-0 lg:first:pt-0 lg:last:border-b-0"
+                    >
+                      <IconComponent className="mb-5 size-5 text-dory-muted" />
+                      <h3 className="text-lg font-medium">{feature.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-dory-muted">
+                        {feature.description}
                       </p>
                     </div>
                   );
@@ -343,140 +381,77 @@ export default async function Page({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="grid border-t border-l border-dory-line md:grid-cols-4">
-              {coreHighlightKeys.map((key) => (
+            <div className="grid gap-6 md:grid-cols-2">
+              <MiniImage src={ResultPreview} alt={t("agentHome.classic.resultsAlt")} />
+              <MiniImage src={AiTablePreview} alt={t("agentHome.classic.chartsAlt")} />
+            </div>
+          </section>
+
+          <section className="grid gap-10 border-b border-dory-line py-16 md:grid-cols-[0.72fr_1.28fr] md:py-24">
+            <SectionHeader
+              label={t("agentHome.database.label")}
+              title={t("agentHome.database.title")}
+              description={t("agentHome.database.description")}
+            />
+
+            <div className="grid gap-4">
+              {databaseGroups.map((group, groupIndex) => (
                 <div
-                  key={key}
-                  className="border-r border-b border-dory-line bg-dory-surface/55 p-5 text-sm leading-6 text-dory-muted md:p-6"
+                  key={group.label}
+                  className={cn(
+                    "border border-dory-line bg-dory-surface p-5",
+                    groupIndex === 0 &&
+                      "bg-[linear-gradient(135deg,rgba(217,196,139,0.18),transparent_55%),var(--dory-surface-strong)]",
+                  )}
                 >
-                  {t(`coreWorkspace.highlights.${key}`)}
+                  <div className="mb-4 flex items-center justify-between gap-4">
+                    <h3 className="text-xl font-medium">{group.label}</h3>
+                    {groupIndex === 0 ? (
+                      <span className="text-xs font-medium text-dory-muted">
+                        {t("agentHome.database.clickhouseNote")}
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    {group.items.map((name) => (
+                      <div
+                        key={name}
+                        className="flex min-h-16 items-center gap-3 border border-dory-line bg-dory-page p-3"
+                      >
+                        <span className="flex size-10 shrink-0 items-center justify-center border border-dory-line bg-dory-surface">
+                          <Image
+                            src={databaseIcons[name] ?? "/icons/databases/more.svg"}
+                            alt=""
+                            width={28}
+                            height={28}
+                            className="h-7 w-7 object-contain"
+                          />
+                        </span>
+                        <span className="min-w-0 text-sm font-medium md:text-base">
+                          {name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
           </section>
 
-          <section className="grid gap-6 border-b border-dory-line py-16 md:grid-cols-2 md:py-24">
-            <div className="flex min-h-full flex-col justify-between border border-dory-line bg-dory-surface p-5 md:p-6">
-              <div>
-                <SectionLabel>{t("tableOverview.badge")}</SectionLabel>
-                <h2 className="text-3xl leading-[1.05] font-medium text-balance md:text-5xl">
-                  {t("tableOverview.title")}
-                </h2>
-                <p className="mt-5 text-sm leading-6 text-dory-muted md:text-base md:leading-7">
-                  {t("tableOverview.description")}
-                </p>
-              </div>
-              <ProductFrame
-                src={AiTablePreview}
-                alt={t("tableOverview.screenshotAlt")}
-                className="mt-8 rounded-[18px] p-1.5 shadow-none"
-                imageClassName="aspect-[1.38/1]"
-              />
-            </div>
-
-            <div className="flex min-h-full flex-col justify-between border border-dory-line bg-dory-surface p-5 md:p-6">
-              <div>
-                <SectionLabel>{t("chatbot.badge")}</SectionLabel>
-                <h2 className="text-3xl leading-[1.05] font-medium text-balance md:text-5xl">
-                  {t("chatbot.title")}
-                </h2>
-                <p className="mt-5 text-sm leading-6 text-dory-muted md:text-base md:leading-7">
-                  {t("chatbot.description")}
-                </p>
-              </div>
-              <ProductFrame
-                src={ChatbotPreview}
-                alt={t("chatbot.title")}
-                className="mt-8 rounded-[18px] p-1.5 shadow-none"
-                imageClassName="aspect-[1.38/1]"
-              />
-            </div>
-          </section>
-
           <section className="grid gap-10 border-b border-dory-line py-16 md:grid-cols-[0.72fr_1.28fr] md:py-24">
             <SectionHeader
-              label={t("databaseSupport.badge")}
-              title={t("databaseSupport.title")}
-              description={
-                <span className="whitespace-pre-line">{t("databaseSupport.description")}</span>
-              }
+              label={t("agentHome.faq.label")}
+              title={t("agentHome.faq.title")}
             />
-
-            <div className="grid gap-4">
-              <div className="grid auto-rows-fr grid-cols-2 border-t border-l border-dory-line md:grid-cols-3">
-                {databaseSupportItems.map((database) => (
-                  <div
-                    key={database.name}
-                    className="flex min-h-24 items-center gap-3 border-r border-b border-dory-line bg-dory-surface/55 p-4"
-                  >
-                    <div className="flex size-11 shrink-0 items-center justify-center border border-dory-line bg-dory-page">
-                      <Image
-                        src={database.icon}
-                        alt=""
-                        width={32}
-                        height={32}
-                        className="h-8 w-8 object-contain"
-                      />
-                    </div>
-                    <div className="min-w-0 text-base font-medium md:text-lg">{database.name}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="grid gap-5 border border-dory-line bg-dory-surface p-5 md:grid-cols-[0.72fr_1.28fr] md:p-6">
-                <h3 className="text-2xl leading-tight font-medium text-balance">
-                  {t("databaseSupport.highlightTitle")}
-                </h3>
-                <div className="grid gap-3 md:grid-cols-3">
-                  {databaseHighlightFeatureIndexes.map((index) => (
-                    <div
-                      key={index}
-                      className="border border-dory-line bg-dory-page p-4 text-sm leading-6 text-dory-muted"
-                    >
-                      {t.raw("databaseSupport.highlightFeatures")[index]}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="grid gap-10 border-b border-dory-line py-16 md:grid-cols-[0.7fr_1.3fr] md:py-24">
-            <SectionHeader
-              label={t("moreFeatures.badge")}
-              title={t("moreFeatures.title")}
-              description={t("moreFeatures.description")}
-            />
-
-            <div className="grid border-y border-dory-line md:grid-cols-2">
-              {moreFeatureKeys.map((key, index) => {
-                const Icon = moreFeatureIcons[index];
-
-                return (
-                  <div
-                    key={key}
-                    className="border-b border-dory-line p-5 md:border-r md:p-6 md:even:border-r-0"
-                  >
-                    <Icon className="mb-9 size-5 text-dory-muted" />
-                    <h3 className="text-lg font-medium">{t(`moreFeatures.features.${key}.title`)}</h3>
-                    <p className="mt-3 text-sm leading-6 text-dory-muted">
-                      {t(`moreFeatures.features.${key}.description`)}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          <section className="grid gap-10 border-b border-dory-line py-16 md:grid-cols-[0.72fr_1.28fr] md:py-24">
-            <SectionHeader label={t("faq.headerLabel")} title={t("faq.title")} />
 
             <div className="divide-y divide-dory-line border-y border-dory-line">
               {faqKeys.map((key) => (
                 <div key={key} className="py-6">
-                  <h3 className="text-xl font-medium">{t(`faq.items.${key}.question`)}</h3>
+                  <h3 className="text-xl font-medium">
+                    {t(`agentHome.faq.items.${key}.question`)}
+                  </h3>
                   <p className="mt-3 max-w-3xl text-sm leading-6 text-dory-muted md:text-base md:leading-7">
-                    {t(`faq.items.${key}.answer.paragraph1`)}
+                    {t(`agentHome.faq.items.${key}.answer`)}
                   </p>
                 </div>
               ))}
@@ -485,12 +460,12 @@ export default async function Page({ params }: PageProps) {
 
           <section className="grid gap-8 pt-16 md:grid-cols-[1fr_auto] md:items-end md:pt-24">
             <div>
-              <SectionLabel>{t("cta.badge")}</SectionLabel>
-              <h2 className="max-w-[720px] text-5xl leading-[0.9] font-medium text-balance md:text-8xl">
-                {t("cta.title")}
+              <SectionLabel>{t("agentHome.cta.label")}</SectionLabel>
+              <h2 className="max-w-[760px] text-5xl leading-[0.9] font-medium text-balance md:text-8xl">
+                {t("agentHome.cta.title")}
               </h2>
               <p className="mt-6 max-w-2xl text-base leading-7 text-dory-muted md:text-lg md:leading-8">
-                {t("cta.description")}
+                {t("agentHome.cta.description")}
               </p>
             </div>
 
@@ -499,13 +474,24 @@ export default async function Page({ params }: PageProps) {
                 {t("downloadLatest")}
                 <ArrowRight className="size-4" />
               </Link>
-              <Link
-                href="/docs"
+              <a
+                href="https://app.getdory.dev"
+                target="_blank"
+                rel="noreferrer"
                 className={cn(buttonVariants({ variant: "secondary" }), "gap-2")}
               >
-                Docs
-                <ArrowRight className="size-4" />
-              </Link>
+                <Play className="size-4" />
+                {t("heroExperienceCta")}
+              </a>
+              <a
+                href="https://github.com/dorylab/dory"
+                target="_blank"
+                rel="noreferrer"
+                className={cn(buttonVariants({ variant: "secondary" }), "gap-2")}
+              >
+                <Github className="size-4" />
+                {t("viewOnGitHub")}
+              </a>
             </div>
           </section>
         </div>

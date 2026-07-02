@@ -1,8 +1,8 @@
 {
   "landing": {
     "heroTagline": "Flujo de trabajo nativo de IA",
-    "heroTitle": "<brand>Estudio de datos</brand> nativo de IA",
-    "heroDescription": "Conecte bases de datos y utiliceSQL, IA y visualización para explorar, analizar y reutilizar.",
+    "heroTitle": "El cliente SQL creado para la era de los agentes",
+    "heroDescription": "Dory es un cliente SQL nativo de IA donde humanos y agentes comparten el mismo espacio de trabajo de base de datos: esquemas, pestañas SQL, resultados, gráficos y contexto reutilizable.",
     "heroSubtitle": "Consultar bases de datos, comprender tablas y hablar con datos:<brand>Todo en el espacio de trabajo moderno One</brand>.",
     "heroExperienceTitle": "No es necesario descargarlo, experimenta Dory en 30 segundos",
     "heroExperienceDescription": "Utilice un conjunto de datos público para experimentarSQL+ AI",
@@ -18,6 +18,162 @@
     "downloadForWindows": "Descargar la versión de Windows",
     "allPlatform": "Toda la plataforma",
     "viewOnGitHub": "Ver en GitHub",
+    "agentHome": {
+      "hero": {
+        "kicker": "Cliente SQL nativo de IA",
+        "title": "El cliente SQL creado para la era de los agentes",
+        "description": "Dory da a humanos y agentes de IA el mismo espacio de trabajo de base de datos: conexiones, esquemas, pestañas SQL, resultados, gráficos y contexto que puedes revisar, editar y continuar.",
+        "agentCta": "Usar con Codex / Claude Code",
+        "imageAlt": "Espacio de trabajo SQL nativo de IA de Dory",
+        "trailLabel": "Rastro de trabajo del agente",
+        "trail": [
+          "Esquema inspeccionado",
+          "SQL de solo lectura ejecutado",
+          "Resultado guardado como pestaña",
+          "Un humano puede editar, graficar y volver a ejecutar"
+        ]
+      },
+      "proof": {
+        "label": "Por qué Dory",
+        "title": "La IA puede escribir SQL. ¿Pero dónde queda el trabajo?",
+        "description": "La salida cruda de un agente no basta para el trabajo real con datos. Los equipos necesitan SQL exacto, resultados reales, gráficos, exportaciones e historial de workspace que los humanos puedan confiar.",
+        "items": [
+          {
+            "title": "No queda oculto en el chat",
+            "description": "El SQL y los resultados generados por agentes se convierten en pestañas reales del workspace, no en texto temporal de una terminal."
+          },
+          {
+            "title": "Superficies SQL reales",
+            "description": "Abre la consulta, inspecciona filas, cambia el SQL, agrega filtros, grafica la salida y vuelve a ejecutarla."
+          },
+          {
+            "title": "Contexto que permanece",
+            "description": "Conexiones, contexto de esquema, consultas guardadas e historial de ejecución permanecen unidos al trabajo."
+          }
+        ]
+      },
+      "workspace": {
+        "label": "Workspace compartido",
+        "title": "Un workspace para humanos y agentes",
+        "description": "Dory expone las mismas acciones de base de datos a la UI y a clientes MCP, para que el trabajo del agente llegue al lugar donde los humanos revisan y continúan SQL.",
+        "columns": [
+          {
+            "title": "Humanos",
+            "description": "Escriben SQL, exploran esquemas, revisan tablas de resultados, crean gráficos, guardan consultas útiles y organizan el análisis diario."
+          },
+          {
+            "title": "Agentes",
+            "description": "Listan conexiones, exploran esquemas, ejecutan SQL de solo lectura, crean pestañas de análisis y reúnen contexto mediante MCP."
+          },
+          {
+            "title": "Workspace compartido",
+            "description": "Pestañas, resultados, gráficos, consultas guardadas y contexto de ejecución quedan visibles, editables y reutilizables."
+          }
+        ]
+      },
+      "mcp": {
+        "label": "Desktop MCP",
+        "title": "Usa Dory desde Codex, Claude Code y otros clientes MCP",
+        "description": "Dory convierte tu cliente SQL de escritorio en una capa de ejecución de bases de datos para agentes, sin pedir a usuarios normales que gestionen tokens de API.",
+        "codeLabel": "Endpoint MCP local",
+        "imageAlt": "Configuración MCP y acceso de agentes en Dory",
+        "steps": [
+          "Los agentes pueden explorar esquemas de forma segura y ejecutar SQL de solo lectura.",
+          "Los resultados pueden volver a Dory como pestañas editables del workspace.",
+          "Dory gestiona los permisos de Desktop MCP sin copiar y pegar tokens manualmente."
+        ]
+      },
+      "classic": {
+        "label": "Cliente SQL diario",
+        "title": "Sigue siendo un cliente SQL rápido y familiar",
+        "description": "Dory mantiene lo esencial para humanos: editor real, explorador de esquemas, grilla de resultados, gráficos, consultas guardadas e historial.",
+        "imageAlt": "Editor SQL y explorador de esquemas de Dory",
+        "resultsAlt": "Tabla de resultados de Dory",
+        "chartsAlt": "Resumen de tabla con IA y contexto de gráficos en Dory",
+        "features": [
+          {
+            "title": "Editor SQL",
+            "description": "Edición con múltiples pestañas, contexto de esquema e historial de ejecución."
+          },
+          {
+            "title": "Explorador de esquemas",
+            "description": "Explora tablas, columnas, tipos y objetos de base de datos sin salir del workspace."
+          },
+          {
+            "title": "Tabla de resultados",
+            "description": "Inspecciona filas reales, filtra rápido y mantiene los resultados unidos al SQL que los produjo."
+          },
+          {
+            "title": "Filtros y búsqueda",
+            "description": "Revisa los datos devueltos sin exportar solo para entender qué ocurrió."
+          },
+          {
+            "title": "Gráficos",
+            "description": "Convierte la salida de una consulta en evidencia visual dentro del workspace SQL."
+          },
+          {
+            "title": "Trabajo guardado",
+            "description": "Guarda consultas útiles y preserva contexto entre flujos humanos y de agentes."
+          }
+        ]
+      },
+      "database": {
+        "label": "Bases de datos",
+        "title": "Conecta la pila de datos que ya usas",
+        "description": "Dory es un cliente SQL multi-base de datos, con integraciones más profundas cuando el workspace puede aportar más que ejecución SQL genérica.",
+        "clickhouseNote": "Superficies operativas nativas",
+        "groups": [
+          {
+            "label": "Soporte profundo",
+            "items": ["ClickHouse"]
+          },
+          {
+            "label": "Compatible",
+            "items": [
+              "PostgreSQL",
+              "MySQL",
+              "MariaDB",
+              "SQLite",
+              "DuckDB",
+              "SQL Server",
+              "Oracle",
+              "Neon"
+            ]
+          },
+          {
+            "label": "Planeado",
+            "items": ["Snowflake"]
+          }
+        ]
+      },
+      "faq": {
+        "label": "FAQ",
+        "title": "Preguntas que hacen agentes y humanos",
+        "items": {
+          "plainMcp": {
+            "question": "¿En qué se diferencia Dory de un servidor MCP de base de datos común?",
+            "answer": "Un servidor MCP común puede devolver resultados de consulta a un chat. Dory conserva el trabajo en un workspace SQL editable con pestañas, resultados, gráficos, consultas guardadas y contexto de ejecución."
+          },
+          "dailyClient": {
+            "question": "¿Puedo usar Dory como mi cliente SQL normal?",
+            "answer": "Sí. Dory incluye las superficies diarias de un cliente SQL: editor, explorador de esquemas, tabla de resultados, filtros, gráficos, consultas guardadas e historial."
+          },
+          "desktopMcp": {
+            "question": "¿Qué clientes de agentes pueden usar Dory?",
+            "answer": "El endpoint Desktop MCP funciona con clientes compatibles con MCP, como Codex CLI y Claude Code."
+          },
+          "dataSafety": {
+            "question": "¿El acceso de agentes significa acceso de escritura a mis datos?",
+            "answer": "El flujo de la página enfatiza exploración segura de esquemas y ejecución SQL de solo lectura. Los humanos pueden inspeccionar las pestañas generadas antes de continuar el trabajo."
+          }
+        }
+      },
+      "cta": {
+        "label": "Empieza con un workspace real",
+        "title": "Dale a los agentes un workspace SQL en el que los humanos puedan confiar",
+        "description": "Descarga Dory, prueba la demo en vivo o revisa el proyecto open source en GitHub."
+      }
+    },
     "heroCards": {
       "aiChat": {
         "title": "copiloto de IA",
