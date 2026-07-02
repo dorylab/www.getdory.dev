@@ -1,8 +1,8 @@
 {
   "landing": {
     "heroTagline": "AI 原生工作流",
-    "heroTitle": "Agent 时代的 SQL 客户端",
-    "heroDescription": "Dory 是一个 AI 原生 SQL 客户端，让人类和 Agent 共享同一个数据库工作台：Schema、SQL 标签页、查询结果、图表和可复用上下文。",
+    "heroTitle": "Agent 时代的 SQL 工作台",
+    "heroDescription": "Dory 让人类和 AI Agent 使用同一个数据库工作台：连接数据源、探索 Schema、运行 SQL，并把查询结果、图表和上下文沉淀为可检查、可编辑、可继续的工作现场。",
     "heroSubtitle": "查询数据库、理解表格并与数据对话——都在<brand>一个</brand>现代化工作空间中。",
     "heroExperienceTitle": "无需下载，30 秒体验 Dory",
     "heroExperienceDescription": "使用公开数据集体验 SQL + AI",
@@ -21,8 +21,8 @@
     "agentHome": {
       "hero": {
         "kicker": "AI 原生 SQL 客户端",
-        "title": "Agent 时代的 SQL 客户端",
-        "description": "Dory 让人类和 AI Agent 使用同一个数据库工作台：连接、Schema、SQL 标签页、查询结果、图表，以及可以检查、编辑和继续的上下文。",
+        "title": "Agent 时代的 SQL 工作台",
+        "description": "Dory 让人类和 AI Agent 使用同一个数据库工作台：连接数据源、探索 Schema、运行 SQL，并把查询结果、图表和上下文沉淀为可检查、可编辑、可继续的工作现场。",
         "agentCta": "用于 Codex / Claude Code",
         "imageAlt": "Dory AI 原生 SQL 工作台",
         "trailLabel": "Agent 工作轨迹",

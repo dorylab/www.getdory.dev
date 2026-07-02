@@ -8,10 +8,10 @@ export type MarketingOgPage = 'home' | 'blog' | 'download';
 const siteName = 'Dory';
 const homeOgImageVersion = '20260527-actions-large';
 const homeTitles: Partial<Record<Language, string>> = {
-  en: 'Dory - AI-native SQL client for humans and agents',
-  zh: 'Dory - 面向人类和 Agent 的 AI 原生 SQL 客户端',
-  ja: 'Dory - 人間とエージェントのための AI ネイティブ SQL クライアント',
-  es: 'Dory - Cliente SQL nativo de IA para humanos y agentes'
+  en: 'Dory - SQL workspace for humans and agents',
+  zh: 'Dory - 面向人类和 Agent 的 SQL 工作台',
+  ja: 'Dory - 人間とエージェントのための SQL ワークスペース',
+  es: 'Dory - Workspace SQL para humanos y agentes'
 };
 
 export function getMarketingOgImage(page: MarketingOgPage, lang: string) {
@@ -60,7 +60,7 @@ export async function getMarketingOgContent(
     title: homeTitles[locale] ?? homeTitles[defaultLanguage] ?? siteName,
     description: t('heroDescription'),
     site: siteName,
-    label: 'AI-native SQL Client',
+    label: 'SQL Workspace',
     tone: 'default' as const
   };
 }

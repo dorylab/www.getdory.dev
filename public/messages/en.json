@@ -241,8 +241,8 @@
   "positiveAssociation": "Create positive associations with alone time",
   "landing": {
     "heroTagline": "AI-native workflow",
-    "heroTitle": "The SQL client built for the agent era",
-    "heroDescription": "Dory is an AI-native SQL client where humans and agents share the same database workspace: schemas, SQL tabs, query results, charts, and reusable context.",
+    "heroTitle": "Agent-era SQL Workspace",
+    "heroDescription": "Dory gives humans and AI agents the same database workspace: connect data sources, explore schemas, run SQL, and preserve query results, charts, and context as inspectable, editable work that can be continued.",
     "heroSubtitle": "Query databases, understand tables, and talk to data - <brand>All in One</brand> modern workspace.",
     "heroExperienceTitle": "No download needed, experience Dory in 30 seconds",
     "heroExperienceDescription": "Use a public dataset to experience SQL + AI",
@@ -261,8 +261,8 @@
     "agentHome": {
       "hero": {
         "kicker": "AI-native SQL client",
-        "title": "The SQL client built for the agent era",
-        "description": "Dory gives humans and AI agents the same database workspace: connections, schemas, SQL tabs, query results, charts, and context you can inspect, edit, and continue.",
+        "title": "Agent-era SQL Workspace",
+        "description": "Dory gives humans and AI agents the same database workspace: connect data sources, explore schemas, run SQL, and preserve query results, charts, and context as inspectable, editable work that can be continued.",
         "agentCta": "Use with Codex / Claude Code",
         "imageAlt": "Dory AI-native SQL workspace",
         "trailLabel": "Agent workspace trail",

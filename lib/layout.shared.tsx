@@ -2,6 +2,7 @@ import { BookOpen, House, Newspaper } from 'lucide-react';
 import { defineI18nUI } from 'fumadocs-ui/i18n';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
+import Github from '@/components/logos/github';
 import { defaultLanguage, i18n } from '@/lib/i18n';
 
 export const i18nUI = defineI18nUI(i18n, {
@@ -123,6 +124,16 @@ export function baseOptions(locale: string): BaseLayoutProps {
         url: `${localePrefix}/blog`,
         active: 'nested-url',
         icon: <Newspaper />
+      },
+      {
+        type: 'icon',
+        text: 'GitHub',
+        label: 'GitHub',
+        icon: <Github />,
+        url: 'https://github.com/dorylab/dory',
+        active: 'none',
+        external: true,
+        secondary: true
       },
       {
         type: 'button',

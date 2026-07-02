@@ -1,8 +1,8 @@
 {
   "landing": {
     "heroTagline": "Flujo de trabajo nativo de IA",
-    "heroTitle": "El cliente SQL creado para la era de los agentes",
-    "heroDescription": "Dory es un cliente SQL nativo de IA donde humanos y agentes comparten el mismo espacio de trabajo de base de datos: esquemas, pestañas SQL, resultados, gráficos y contexto reutilizable.",
+    "heroTitle": "Workspace SQL para la era de los agentes",
+    "heroDescription": "Dory da a humanos y agentes de IA el mismo workspace de base de datos: conectar fuentes de datos, explorar schemas, ejecutar SQL y conservar resultados, gráficos y contexto como trabajo que se puede revisar, editar y continuar.",
     "heroSubtitle": "Consultar bases de datos, comprender tablas y hablar con datos:<brand>Todo en el espacio de trabajo moderno One</brand>.",
     "heroExperienceTitle": "No es necesario descargarlo, experimenta Dory en 30 segundos",
     "heroExperienceDescription": "Utilice un conjunto de datos público para experimentarSQL+ AI",
@@ -21,8 +21,8 @@
     "agentHome": {
       "hero": {
         "kicker": "Cliente SQL nativo de IA",
-        "title": "El cliente SQL creado para la era de los agentes",
-        "description": "Dory da a humanos y agentes de IA el mismo espacio de trabajo de base de datos: conexiones, esquemas, pestañas SQL, resultados, gráficos y contexto que puedes revisar, editar y continuar.",
+        "title": "Workspace SQL para la era de los agentes",
+        "description": "Dory da a humanos y agentes de IA el mismo workspace de base de datos: conectar fuentes de datos, explorar schemas, ejecutar SQL y conservar resultados, gráficos y contexto como trabajo que se puede revisar, editar y continuar.",
         "agentCta": "Usar con Codex / Claude Code",
         "imageAlt": "Espacio de trabajo SQL nativo de IA de Dory",
         "trailLabel": "Rastro de trabajo del agente",
